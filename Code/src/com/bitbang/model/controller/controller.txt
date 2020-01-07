@@ -1,0 +1,11 @@
+각자 [게시판이름Controller.java] 만드시고
+
+@WebServlet("/각자컨트롤러이름")
+
+switch(type) {
+	case "사용할타입":	comm = new 해당하는Command(); break;
+	//case "":		comm = new (); break;
+}
+
+
+17~18장참고 하시면됩니다
