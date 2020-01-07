@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bitbang.model.command.Command;
-import com.bitbang.model.command.ForSaleListCommand;
+import com.bitbang.model.command.ForSalePageCommand;
 
 @WebServlet("/ForSaleController")
 public class ForSaleController extends HttpServlet {
@@ -19,14 +19,16 @@ public class ForSaleController extends HttpServlet {
 		String type = request.getParameter("type");
 		//System.out.println(type);
 		
+		//String path="jsp/forsale/";
 		String path="";
 		Command comm=null;
 		
 		switch(type) {
-		case "ForSaleList":		comm = new ForSaleListCommand(); break;
+		case "FsPage":		comm = new ForSalePageCommand(); break;
 		//case "":		comm = new (); break;
 		}
-		path=comm.exec(request, response);
+		
+		path+=comm.exec(request, response);
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
