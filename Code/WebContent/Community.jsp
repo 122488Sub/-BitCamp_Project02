@@ -7,25 +7,22 @@
 <title>자유 게시판</title>
 </head>
 <body>
-	<table>
+	<table border="1">
 		<thead>
 			<tr>
-				<td>게시글 번호</td>
-				<td>아이디</td>
-				<td>게시글</td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<th>게시글 번호</th>
+				<th>아이디</th>
+				<th>게시글</th>
+				<th>조회수</th>
+				<th>작성일자</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td></td>
-			</tr>
-			<tr>
 				<td></td>
-			</tr>
-			<tr>
+				<td></td>
+				<td></td>
 				<td></td>
 			</tr>
 		</tbody>
