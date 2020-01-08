@@ -9,7 +9,7 @@
 </head>
 <body>
    <div class="mapWrap"> 
-   <div id="map" style="width:500px;height:400px;"></div> 
+   <div id="map" style="width:100%;height:400px;"></div> 
    </div> 
    <div id="coordXY"></div> 
    
@@ -21,7 +21,7 @@
       //검색 지도 경도위도 알아내기 
       var container = document.getElementById('map'); 
       //지도를 담을 영역의 DOM 레퍼런스 
-      var options = { center: new kakao.maps.LatLng(37.546510, 126.988169), level: 8} // 위도경도 level: 3 //지도의 레벨(확대, 축소 정도) }; 
+      var options = { center: new kakao.maps.LatLng(37.546510, 126.988169)} // 위도경도 level: 3 //지도의 레벨(확대, 축소 정도) }; 
       var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴 // 지도타입 컨트롤, 줌 컨트롤 생성 
       var mapTypeControl = new kakao.maps.MapTypeControl(); 
       map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT); 
@@ -30,11 +30,7 @@
       // ★ 주소-좌표 변환 객체를 생성 
       var geocoder = new kakao.maps.services.Geocoder();
       // ★ 주소로 좌표를 검색 
-      //geocoder.addressSearch('신 주소 입력', function(result, status) {
-      <%
-      request.setCharacterEncoding("UTF-8");
-	  %>
-      geocoder.addressSearch('<%=request.getParameter("address")%>', function(result, status) {
+      geocoder.addressSearch('신 주소 입력', function(result, status) { 
       // 정상적으로 검색이 완료됐으면 
       if (status === kakao.maps.services.Status.OK) { 
          var coords = new kakao.maps.LatLng(result[0].y, result[0].x); 
