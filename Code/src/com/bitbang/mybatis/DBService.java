@@ -32,7 +32,7 @@ public class DBService {
 			*************************************/
 			
 			factory = new SqlSessionFactoryBuilder()
-					.build(Resources.getResourceAsReader("com/bc/mybatis/config.xml"));
+					.build(Resources.getResourceAsReader("com/bitbang/mybatis/config.xml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

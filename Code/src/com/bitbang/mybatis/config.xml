@@ -8,7 +8,7 @@
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="oracle.jdbc.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:112.169.196.125:1521:xe"/>
+        <property name="url" value="jdbc:oracle:thin:@112.169.196.125:1521:xe"/>
         <property name="username" value="mystudy"/>
         <property name="password" value="mystudypw"/>
       </dataSource>
@@ -17,11 +17,11 @@
   
   <!-- SQL 작성파일인 매퍼 파일 위치 지정 -->
   <mappers>
-    <mapper resource="com/bc/mybatis/mapperBnb.xml"/>
-    <mapper resource="com/bc/mybatis/mapperCommunity.xml"/>
-    <mapper resource="com/bc/mybatis/mapperForSale.xml"/>
-    <mapper resource="com/bc/mybatis/mapperReSale.xml"/>
-    <mapper resource="com/bc/mybatis/mapperReview.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperBnb.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperCommunity.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperForSale.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperReSale.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperReview.xml"/>
   </mappers>
 </configuration>
 
