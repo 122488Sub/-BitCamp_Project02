@@ -1,16 +1,15 @@
 package com.bitbang.model.vo;
 
 public class ForSaleVO {
-	int forsale_seq,forsale_idx=1, hit;
-	
+	int forsale_seq, forsale_idx = 1, hit;
+
 	String member_id, name, subject, address, content, filename, file_ori_name, regdate;
 
-	public ForSaleVO(int forsale_seq, int forsale_idx, int hit, String member_id, String name, String subject,
-			String address, String content, String filename, String file_ori_name, String regdate) {
+	public ForSaleVO(int forsale_seq, int forsale_idx, String member_id, String name, String subject,
+			String address, String content, String filename, String file_ori_name, String regdate, int hit) {
 		super();
 		this.forsale_seq = forsale_seq;
-		this.forsale_idx = 1;
-		this.hit = hit;
+		this.forsale_idx = forsale_idx;
 		this.member_id = member_id;
 		this.name = name;
 		this.subject = subject;
@@ -19,6 +18,7 @@ public class ForSaleVO {
 		this.filename = filename;
 		this.file_ori_name = file_ori_name;
 		this.regdate = regdate;
+		this.hit = hit;
 	}
 
 	public int getForsale_seq() {
@@ -45,11 +45,11 @@ public class ForSaleVO {
 		this.hit = hit;
 	}
 
-	public String getMember_Id() {
+	public String getMember_id() {
 		return member_id;
 	}
 
-	public void setMember_Id(String member_id) {
+	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
 
@@ -111,10 +111,13 @@ public class ForSaleVO {
 
 	@Override
 	public String toString() {
-		return "ForSaleVO [forsale_seq=" + forsale_seq + ", forsale_idx=" + forsale_idx
-				+ ", hit=" + hit + ", id=" + member_id + ", name=" + name + ", subject=" + subject + ", address=" + address
+		return "ForSaleVO [forsale_seq=" + forsale_seq + ", forsale_idx=" + forsale_idx + ", hit=" + hit
+				+ ", member_id=" + member_id + ", name=" + name + ", subject=" + subject + ", address=" + address
 				+ ", content=" + content + ", filename=" + filename + ", file_ori_name=" + file_ori_name + ", regdate="
 				+ regdate + "]";
 	}
 	
+	
+	
+
 }
