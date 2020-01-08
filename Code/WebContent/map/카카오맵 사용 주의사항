@@ -1,0 +1,17 @@
+
+본인이 꾸미고있는 JSP 파일에서 Include 한다는 전제로 만든 사용법입니다.
+사용할 HTML 내부에다 아래와 같이 합니다.
+=====================================================
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+
+<jsp:include page="map/kakaoMap.jsp">
+	<jsp:param name="address" value=@@@/>
+</jsp:include>
+
+====================================================
+value 안에 @@@ 대신
+ "${주소가 있는 el값}"
+  혹은
+ 주소값 문자열 혹은 변수이름을 넣으면됩니다. 
