@@ -17,9 +17,7 @@ public class ControllerCommunity extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type = request.getParameter("type");
-		//System.out.println(type);
-		
-		//String path="jsp/forsale/";
+
 		String path="";
 		Command comm=null;
 		
