@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.bitbang.model.dao.forsaleDAO;
 import com.bitbang.model.vo.ForSaleVO;
 
-public class ForSalePageCommand implements Command {
+public class ForSaleOnePageCommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//List 반환 DAO
-		List<ForSaleVO> list = new forsaleDAO().selectListPage();
-		request.setAttribute("FSList", list);
-		return "ForSale.jsp";
-		//return null;
+		ForSaleVO vo = new forsaleDAO().selectOnePage(request.getParameter("idx"));
+		request.setAttribute("FSVo", vo);
+		System.out.println(vo);
+		return "ForSaleOne.jsp";
 	}
 
 }

@@ -10,7 +10,7 @@ import com.bitbang.mybatis.DBService;
 public class forsaleDAO implements DAO{
 
 	@Override
-	public List<?> selectListPage() {
+	public List<ForSaleVO> selectListPage() {
 		
 		SqlSession ss = DBService.getFactory().openSession(true);
 		List<ForSaleVO> list = ss.selectList("FSList");
@@ -22,14 +22,15 @@ public class forsaleDAO implements DAO{
 	}
 
 	@Override
-	public Object selectOnePage() {
+	public ForSaleVO selectOnePage() {return null;}
+	
+	public ForSaleVO selectOnePage(String seq) {
 		SqlSession ss = DBService.getFactory().openSession(true);
-		ForSaleVO vo= ss.selectOne("",null);
-		//ForSaleVO vo= ss.selectOne("");
+		ForSaleVO vo= ss.selectOne("FSOne",seq);
 		ss.close();
 		return vo;
 	}
-
+	
 	@Override
 	public int selectTotclCount() {
 		SqlSession ss = DBService.getFactory().openSession(true);
