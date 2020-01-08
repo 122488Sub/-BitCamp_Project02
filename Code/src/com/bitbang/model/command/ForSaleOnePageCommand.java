@@ -6,14 +6,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ForSaleListCommand implements Command {
+import com.bitbang.model.dao.forsaleDAO;
+import com.bitbang.model.vo.ForSaleVO;
+
+public class ForSaleOnePageCommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//List 반환 DAO
-		
-		return "ForSale.jsp";
-		//return null;
+		ForSaleVO vo = new forsaleDAO().selectOnePage(request.getParameter("idx"));
+		request.setAttribute("FSVo", vo);
+		System.out.println(vo);
+		return "ForSaleOne.jsp";
 	}
 
 }
