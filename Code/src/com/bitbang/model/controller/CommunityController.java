@@ -12,21 +12,24 @@ import com.bitbang.model.command.Command;
 import com.bitbang.model.command.CommunityPageCommand;
 
 @WebServlet("/ControllerCommunity")
-public class ControllerCommunity extends HttpServlet {
+public class CommunityController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type = request.getParameter("type");
 
 		String path="";
-		Command comm=null;
+		Command comm = null;
+		System.out.println("type : " + type);
 		
-		switch(type) {
-		default : comm = new CommunityPageCommand(); break;
+		
+		switch(type != null ? type : "list") {
+		
+		case "list" : comm = new CommunityPageCommand(); break;
+		
 		}
 		
 		path+=comm.exec(request, response);
-		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
