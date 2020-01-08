@@ -17,7 +17,7 @@ public class ForSaleController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type = request.getParameter("type");
-		//System.out.println(type);
+		System.out.println(type);
 		
 		//String path="jsp/forsale/";
 		String path="";
@@ -28,8 +28,8 @@ public class ForSaleController extends HttpServlet {
 		//case "":		comm = new (); break;
 		}
 		
-		path+=comm.exec(request, response);
-		
+		path=comm.exec(request, response);
+		System.out.println(path);
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
