@@ -17,6 +17,15 @@
 		FROM 
 			FORSALE_BOARD
 	</select>
+	
+	<select id="FSOne" parameterType="String" resultType="com.bitbang.model.vo.ForSaleVO">
+		SELECT 
+			*
+		FROM 
+			FORSALE_BOARD
+		WHERE
+			FORSALE_SEQ = #{seq}
+	</select>
 </mapper>
 
 

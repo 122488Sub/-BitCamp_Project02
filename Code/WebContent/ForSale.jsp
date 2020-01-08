@@ -75,7 +75,7 @@
 							<%--choose~when대신 if가능 --%>
 							<c:forEach var="vo" items="${FSList}">
 							<tr>
-								<td><a href="#">${vo.forsale_seq}</a></td>
+								<td><a href="ForSaleController?type=FsOne&idx=${vo.forsale_seq}">${vo.forsale_seq}</a></td>
 								<td>${vo.name }</td>
 								<td><a href="#">${vo.subject }</a></td>
 								<td>${vo.regdate }</td>
