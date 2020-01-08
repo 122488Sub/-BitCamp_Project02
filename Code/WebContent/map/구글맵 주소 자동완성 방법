@@ -1,0 +1,22 @@
+집에서 일단 구글 API만 돌아가서.... 
+
+------사용 형태---------
+=====================================================
+<body>
+<div class="pac-card" id="pac-card">
+	<div id="pac-container">
+       <input id="pac-input" type="text" placeholder="Enter a location">
+	</div>
+</div>
+<div id="map"></div>
+
+<script type="text/javascript" src="map/googleJS.js" ></script> 
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW24W9sP9njddFNugiBUaJ-AzVfpQb_MY&libraries=places&callback=initMap"
+        async defer></script>
+</body>
+=====================================================
+body태그가 끝나기전에 스크립트 두개 꼭 삽입
+
+>> 텍스트 상자에 주소를 입력하면 
+   해당 초성에 대한 근접한 주소를 아래에 보여줍니다.
+* 참조 - resale.jsp   거래지역 input 텍스트박스 

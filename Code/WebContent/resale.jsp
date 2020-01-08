@@ -130,11 +130,16 @@
 			<button>주소 검색</button>
 			<button>지하철 검색</button>
 			</span>
-			
 			</div>
 			<br>
 			<label>거래지역 : &nbsp;</label>
-			<input type="text" name="address" placeholder="주소를 입력하세요">
+			<div class="pac-card" id="pac-card">
+		      <div id="pac-container">
+		        <input id="pac-input" type="text"
+		            placeholder="주소를 입력하세요">
+		      </div>
+		    </div>
+			<div id="map"></div>
 			<hr>
 			<label>가격 : &nbsp;</label>
 			<input type="text" name="price" placeholder="숫자만 입력하세요">
@@ -151,5 +156,10 @@
 			<input type="submit" value="등록하기">
 		</form>
 	</div>
+	
+	<script type="text/javascript" src="map/googleJS.js" ></script> 
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW24W9sP9njddFNugiBUaJ-AzVfpQb_MY&libraries=places&callback=initMap"
+        async defer></script>
+	
 </body>
 </html>
