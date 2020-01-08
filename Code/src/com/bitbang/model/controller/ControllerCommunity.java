@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bitbang.model.command.Command;
-import com.bitbang.model.command.ForSalePageCommand;
+import com.bitbang.model.command.CommunityPageCommand;
 
 @WebServlet("/ControllerCommunity")
 public class ControllerCommunity extends HttpServlet {
@@ -24,7 +24,7 @@ public class ControllerCommunity extends HttpServlet {
 		Command comm=null;
 		
 		switch(type) {
-		case "FsPage":		comm = new ForSalePageCommand(); break;
+		default : comm = new CommunityPageCommand(); break;
 		}
 		
 		path+=comm.exec(request, response);
