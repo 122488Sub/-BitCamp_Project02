@@ -1,6 +1,6 @@
-package com.bitbang.model.controller;
+package com.bitbang.model.vo;
 
-public class PagingCommunity {
+public class PagingVO {
 	private int nowPage = 1; //현재페이지
 	private int nowBlock = 1; //현재 블록(페이지 담는 단위)
 	
@@ -22,7 +22,7 @@ public class PagingCommunity {
 		if (totalRecord % numPerPage > 0) totalPage++;
 	}
 	
-	public PagingCommunity() {
+	public PagingVO() {
 		super();
 	}
 	
