@@ -11,6 +11,8 @@ public class CommunityDAO {
 
 	public static List<CommunityVO> selectStartPaging() {
 		SqlSession ss = DBService.getFactory().openSession();
+		
+		ss.selectOne("");
 		return null;
 	}
 }
