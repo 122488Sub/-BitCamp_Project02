@@ -75,10 +75,10 @@
 							<%--choose~when대신 if가능 --%>
 							<c:forEach var="vo" items="${list}">
 							<tr>
-								<td><a href="#">${vo.forsale_seq}</a></td>
-								<td>${vo.name }</td>
-								<td><a href="#">${vo.subject }</a></td>
-								<td>${vo.regdate }</td>
+								<td><a href="#">${vo.c_seq}</a></td>
+								<td>${vo.user_id }</td>
+								<td><a href="#">${vo.c_title }</a></td>
+								<td>${vo.c_content }</td>
 							</tr>
 						</c:forEach>
 						</c:when>

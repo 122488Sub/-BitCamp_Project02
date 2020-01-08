@@ -3,8 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="community">
-	<select id="communityPostList">
-		SELECT * FROM (SELECT ROWNUM R_NUM, B.* FROM ((SELECT *FROM COMMUNITY ORDER BY C_REPARENT DESC, C_REDEPTH ASC)) B) WHERE R_NUM BETWEEN #{START} AND #{END};
+	<select id="SelectCommunityPostList" resultType="com.bitbang.model.vo.CommunityVO" parameterType="Map">
+		SELECT * FROM (SELECT ROWNUM R_NUM, B.* FROM ((SELECT * FROM COMMUNITY 
+		ORDER BY C_SEQ DESC, C_PARENT ASC)) B) WHERE R_NUM BETWEEN #{BEGIN} AND #{END}
+	</select>
+	<select id="SelectCommunityAllCount" resultType="Int">
+		SELECT COUNT(*) FROM COMMUNITY
 	</select>
 </mapper>
 

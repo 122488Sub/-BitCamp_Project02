@@ -19,14 +19,13 @@ public class CommunityController extends HttpServlet {
 		String type = request.getParameter("type");
 
 		String path="";
-		Command comm=null;
-		
-		switch(type) {
-		default : comm = new CommunityPageCommand(); break;
+		Command comm = null;
+		System.out.println("type : " + type);
+		switch(type != null ? type : "list") {
+		case "list" : comm = new CommunityPageCommand(); break;
 		}
 		
 		path+=comm.exec(request, response);
-		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
