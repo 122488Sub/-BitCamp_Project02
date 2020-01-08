@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+
+div#content {
+		width: 800px;
+		height: 600px;
+	}
+	
+	#cateMain {
+		width: 800px;
+		height: 200px;
+	}
+	
+	.cateBox {
+		
+		border: 1px solid black;
+		width: 100px;
+		height: 150px;
+	}
+	
+	
+	#cateBox1 {
+		float: left; 
+				 }
+	#cateBox2 {
+		margin-left: 153px; 
+		position:absolute;
+		float: left;
+				 }
+	#cateLabel {
+		float: left;
+	}
+	#contentBox {
+		width: 300px;
+		height: 200px;
+	}
+	
+	img {
+		width: 200px;
+		height: 200px;
+	}
+	img {
+		width: 200px;
+		height: 200px;
+	}
+	
+	ul { 
+		margin: 0;
+		padding: 0;
+		width: 100px;
+		height: 150px;
+		list-style:none;
+ 		overflow: scroll;
+    	overflow-x: hidden;
+ 		}
+ 		
+	li {
+		display: inline;
+		
+		}
+		
+	li:hover {
+		background-color: lightgray;
+	
+	}
+		
+	button.cate1, button.cate2 {
+		border : 0;
+		background-color: #ffffff;
+		cursor:pointer;
+
+	}
+	
+	#cateText {
+	
+		position: absolute;
+		margin-top: 160px;
+	}
+	
+	#cateResult1 {
+		position: absolute;
+		margin-top: 160px;
+		margin-left: 100px;
+	}
+	
+	#cateResult2 {
+		position: absolute;
+		margin-top: 105px;
+		margin-left: 230px;
+	}
