@@ -12,12 +12,12 @@ public class CommunityVO {
 	private String c_content;
 	private int c_hit;
 	private Date c_date;
-	private String user_id;
+	private String member_id;
 	public CommunityVO() {
 		super();
 	}
 	public CommunityVO(int c_index, int c_seq, int c_parent, int c_depth, int c_order, String c_title, String c_content,
-			int c_hit, Date c_date, String user_id) {
+			int c_hit, Date c_date, String member_id) {
 		super();
 		this.c_index = c_index;
 		this.c_seq = c_seq;
@@ -28,7 +28,7 @@ public class CommunityVO {
 		this.c_content = c_content;
 		this.c_hit = c_hit;
 		this.c_date = c_date;
-		this.user_id = user_id;
+		this.member_id = member_id;
 	}
 	public int getC_index() {
 		return c_index;
@@ -84,17 +84,17 @@ public class CommunityVO {
 	public void setC_date(Date c_date) {
 		this.c_date = c_date;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getmember_id() {
+		return member_id;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setmember_id(String member_id) {
+		this.member_id = member_id;
 	}
 	@Override
 	public String toString() {
 		return "CommunityVO [c_index=" + c_index + ", c_seq=" + c_seq + ", c_parent=" + c_parent + ", c_depth="
 				+ c_depth + ", c_order=" + c_order + ", c_title=" + c_title + ", c_content=" + c_content + ", c_hit="
-				+ c_hit + ", c_date=" + c_date + ", user_id=" + user_id + "]";
+				+ c_hit + ", c_date=" + c_date + ", member_id=" + member_id + "]";
 	}
 	
 	

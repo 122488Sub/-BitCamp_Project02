@@ -21,8 +21,12 @@ public class CommunityController extends HttpServlet {
 		String path="";
 		Command comm = null;
 		System.out.println("type : " + type);
+		
+		
 		switch(type != null ? type : "list") {
+		
 		case "list" : comm = new CommunityPageCommand(); break;
+		
 		}
 		
 		path+=comm.exec(request, response);

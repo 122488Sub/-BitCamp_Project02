@@ -18,14 +18,21 @@ public class CommunityPageCommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PagingVO pagingVO= CommunityPaging.paging(0);
+		int index = request.getParameter("index") != null ? Integer.parseInt( request.getParameter("index") ) : 1 ;
+		PagingVO pagingVO= CommunityPaging.paging(index);
+		
 		Map<String, Integer> map = new HashMap<>();
+		
 		map.put("BEGIN", pagingVO.getBegin());
 		map.put("END", pagingVO.getEnd());
+		
 		List<CommunityVO> list = new CommunityDAO().selectListPage(map);
+		
 		request.setAttribute("paging", pagingVO);
 		request.setAttribute("list", list);
+		
 		System.out.println(list);
+		
 		return "Community.jsp";
 	}
 
