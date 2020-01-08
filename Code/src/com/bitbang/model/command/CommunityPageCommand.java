@@ -16,6 +16,7 @@ public class CommunityPageCommand implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<CommunityVO> list = new CommunityDAO().selectListPage();
 		request.setAttribute("list", list);
+		System.out.println(list);
 		return "Community.jsp";
 	}
 
