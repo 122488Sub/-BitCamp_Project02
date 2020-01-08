@@ -11,11 +11,47 @@
 <html>
 <head>
 <meta charset=UTF-8>
-<title>선택한 게시판</title>
+<title>선택한 매물</title>
+<link href="css/guestbook.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
-	<h1>안녕</h1>
-	<h3>${FSVo }</h3>
-</body>
+<div id="container">
+	<h2>상세화면</h2>
+	<hr>
+	<p><a href="ForSaleController?type=FsPage">[목록으로 이동]</a></p>
+	<form method="post">
+	<table>
+		<tbody>
+			<tr>
+				<th>제목</th>
+				<td>${FSVo.subject }
+				<th>작성자</th>
+				<td>${FSVo.name }</td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td>${FSVo.address }
+				<th>작성일시</th>
+				<td>${FSVo.regdate }
+			</tr>
+			<tr>
+				<th colspan="4">내용</th>
+			</tr>
+			<tr>
+				<td colspan="4">${FSVo.content }</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4">
+					<input type="button" value="수 정" onclick="update_go(this.form)">
+					<input type="button" value="삭 제 " onclick="delete_go(this.form)">
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	
+	</form>	
+</div>
 </html>

@@ -12,6 +12,7 @@
 <head>
 <meta charset=UTF-8>
 <title>판매 게시판</title>
+<link href="css/guestbook.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -77,7 +78,7 @@
 							<tr>
 								<td><a href="ForSaleController?type=FsOne&idx=${vo.forsale_seq}">${vo.forsale_seq}</a></td>
 								<td>${vo.name }</td>
-								<td><a href="#">${vo.subject }</a></td>
+								<td><a href="ForSaleController?type=FsOne&idx=${vo.forsale_seq}">${vo.subject }</a></td>
 								<td>${vo.regdate }</td>
 							</tr>
 						</c:forEach>
