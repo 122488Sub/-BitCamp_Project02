@@ -19,10 +19,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<c:
-			</tr>
+			<c:forEach items="">
+				
+			</c:forEach>
 		</tbody>
+		<tfoot>
+			
+		</tfoot>
 	</table>
 </body>
 </html>
