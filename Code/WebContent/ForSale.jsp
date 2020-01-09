@@ -18,39 +18,9 @@
 <body>
 <%@ include file="main/navBody.html" %>	
 	<div id="container">
-		<h2>판매글</h2>
-		<hr>
-		<p>
-			<a href="ForSaleController?type=FsSelect">[판매글 쓰기]</a>
-		</p>
-
-		<table>
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>작성자</th>
-					<th>제목</th>
-					<th>작성일시</th>
-				</tr>
-			</thead>
-			<tbody>
-					<c:choose>
-						<%--choose~when대신 if가능 --%>
-						<c:when test="${not empty FSList}">
-							<%--choose~when대신 if가능 --%>
-							<c:forEach var="vo" items="${FSList}">
-							<tr>
-								<td><a href="ForSaleController?type=FsOne&idx=${vo.forsale_seq}">${vo.forsale_seq}</a></td>
-								<td>${vo.name }</td>
-								<td><a href="ForSaleController?type=FsOne&idx=${vo.forsale_seq}">${vo.subject }</a></td>
-								<td>${vo.regdate }</td>
-							</tr>
-						</c:forEach>
-						</c:when>
-					</c:choose>
-
-			</tbody>
-		</table>
+		<jsp:include page="map/kakaoMapMultiForSale.jsp">
+			<jsp:param name="fslist" value="${FSList}"/>
+		</jsp:include>
 	</div>
 </body>
 </html>
