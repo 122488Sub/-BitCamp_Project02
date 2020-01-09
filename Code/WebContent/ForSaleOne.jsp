@@ -1,3 +1,4 @@
+<%@page import="com.bitbang.model.vo.ForSaleOneVO"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="com.bitbang.model.vo.ForSaleVO"%>
 <%@page import="java.util.List"%>
@@ -14,55 +15,68 @@
 <meta charset=UTF-8>
 <title>선택한 매물</title>
 <link href="css/guestbook.css" rel="stylesheet" type="text/css">
-
+<style type="text/css">
+#container table tbody td {
+	text-align: center;
+}
+</style>
+<%@ include file="main/navCssLink.html"%>
 </head>
-<body>
-	<div id="container">
-		<h2>상세화면</h2>
-		<hr>
-		<p>
-			<a href="ForSaleController?type=FsPage">[목록으로 이동]</a>
-		</p>
-		<form method="post">
-			<table>
-				<tbody>
-					<tr>
-						<th>제목</th>
-						<td>${FSVo.subject } </td>
-						<th>작성자</th>
-						<td>${FSVo.name }</td>
-					</tr>
-					<tr>
-						<th>주소</th>
-						<td>${FSVo.address }  </td>
-						<th>작성일시</th>
-						<td>${FSVo.regdate } </td>
-					</tr>
-					<tr>
-						<th colspan="4">내용</th>
-					</tr>
-					<tr>
-						<td colspan="4">${FSVo.content }</td>
-					</tr>
-					<tr>
-						<td colspan="4">
-							<%
-								request.setCharacterEncoding("UTF-8");
-							%>
-							<jsp:include page="map/kakaoMap.jsp">
-								<jsp:param name="address" value="${FSVo.address }"/>
-							</jsp:include>
-						</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="4"><input type="button" value="수 정"
-							onclick="update_go(this.form)"> <input type="button"
-							value="삭 제 " onclick="delete_go(this.form)"></td>
-					</tr>
-				</tfoot>
-				</table>
-		</form>
-	</div>
+<%@ include file="main/navBody.html"%>
+<%
+	System.out.println("도착");
+%>
+<div id="container">
+	<table>
+		<colgroup>
+
+		</colgroup>
+		<thead>
+			<tr>
+				<th>주소</th>
+				<th>${FSoneVO.room_category }</th>
+				<th>전용면적</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>${FSoneVO.address }<br>${FSoneVO.address_detail }</td>
+				<td>${FSoneVO.monthly_value}</td>
+				<td>${FSoneVO.area}</td>
+			</tr>
+		</tbody>
+	</table>
+	${FSVO }
+	<hr>
+	<table>
+		<colgroup>
+
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>해당층/건물층</td>
+				<td>${FSoneVO.floor}</td>
+				<td>난방종류</td>
+				<td>${FSoneVO.aircon }</td>
+				<td>엘리베이터</td>
+				<td>${FSoneVO.elevator}</td>
+			</tr>
+			<tr>
+				<td>반려동물</td>
+				<td>${FSoneVO.pet}</td>
+				<td>베란다/발코니</td>
+				<td>${FSoneVO.balcony }</td>
+				<td>전세자금대출</td>
+				<td>${FSoneVO.loan }</td>
+			</tr>
+			<tr>
+				<td>입주가능일</td>
+				<td>${FSoneVO.available_date }</td>
+				<td colspan="4"></td>
+			</tr>
+		</tbody>
+	</table>
+	<div>이미지예정</div>
+</div>
+
 </html>

@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bitbang.model.controller.CommunityPaging;
+import com.bitbang.model.controller.Paging;
 import com.bitbang.model.dao.CommunityDAO;
 import com.bitbang.model.vo.CommunityVO;
 import com.bitbang.model.vo.PagingVO;
@@ -19,7 +19,7 @@ public class CommunityPageCommand implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int index = request.getParameter("index") != null ? Integer.parseInt( request.getParameter("index") ) : 1 ;
-		PagingVO pagingVO= CommunityPaging.paging(index);
+		PagingVO pagingVO= Paging.paging(index);
 		
 		Map<String, Integer> map = new HashMap<>();
 		

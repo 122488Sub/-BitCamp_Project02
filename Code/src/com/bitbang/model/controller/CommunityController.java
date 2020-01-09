@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bitbang.model.command.Command;
+import com.bitbang.model.command.CommunityInsertPostCommand;
 import com.bitbang.model.command.CommunityPageCommand;
+import com.bitbang.model.command.CommunityReadPostCommand;
+import com.bitbang.model.command.CommunityWritePostCommand;
 
 @WebServlet("/ControllerCommunity")
 public class CommunityController extends HttpServlet {
@@ -25,8 +28,12 @@ public class CommunityController extends HttpServlet {
 		
 		switch(type != null ? type : "list") {
 		
-		case "list" : comm = new CommunityPageCommand(); break;
+		case "writepost" : comm = new CommunityWritePostCommand(); break;
+		case "readpost" : comm = new CommunityReadPostCommand(); break;
 		
+		case "insertpost" : comm = new CommunityInsertPostCommand();
+		default : 
+		case "list" : comm = new CommunityPageCommand(); break;
 		}
 		
 		path+=comm.exec(request, response);
