@@ -4,10 +4,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<link href="css/forsale.map.css" rel="stylesheet" type="text/css">
 <div id="map" style="width:100%;height:350px;"></div>
-
-   
    <!-- ★ 키입력 뒷편 &libraries=services 필수입력 --> 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=023641db8947696e319921e818d4fe2b&libraries=services"></script> 
 <script>
@@ -15,7 +13,7 @@
 //카카오맵 지도 생성
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	mapOption = { 
-		center: new kakao.maps.LatLng(37.501642990504884, 127.02633688785652), // 지도의 중심좌표
+		center: new kakao.maps.LatLng(37.50192426050855, 127.02562676562276), // 지도의 중심좌표
 	    level: 4 // 지도의 확대 레벨
 	};
 
@@ -49,10 +47,51 @@ $.ajax("ForSaleAjax",{
 					    
 					});
 					
-					//클릭이벤트 추가입니다
+					// 커스텀 오버레이에 표시할 컨텐츠 입니다
+					// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+					// 별도의 이벤트 메소드를 제공하지 않습니다 
+					var content = '<div class="wrap">' + 
+						            '    <div class="info">' + 
+						            '        <div class="title">' + 
+						           					 Fsvo.subject + 
+						            '        </div>' + 
+						            '        <div class="body">' + 
+						            '            <div class="img">' +
+						            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+						            '           </div>' + 
+						            '            <div class="desc">' + 
+						            '                <div class="ellipsis">'+Fsvo.address+'</div>' +  
+						            '                <div class="jibun ellipsis">' + Fsvo.content + '</div>' + 
+						            '                <div><a href="#" target="_blank" class="link">자세히보기</a></div>' + 
+						            '            </div>' + 
+						            '        </div>' + 
+						            '    </div>' +    
+						            '</div>';
+
+					// 마커 위에 커스텀오버레이를 표시합니다
+					// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+					var overlay = new kakao.maps.CustomOverlay({
+						content: content,
+					    map: map,
+					    position: marker.getPosition()       
+					});
+					overlay.setMap(null);
+					
+					// 마커 클릭이벤트 추가입니다
 					kakao.maps.event.addListener(marker, 'click', function() {
 						map.setCenter(markerPosition); //클릭한위치에다 포커스
-						
+						overlay.setMap(map); 
+					});
+					
+					// 지도 클릭 이벤트를 등록한다 (좌클릭 : click, 우클릭 : rightclick, 더블클릭 : dblclick)
+					kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+						overlay.setMap(null);
+						console.log('지도에서 클릭한 위치의 좌표는 ' + mouseEvent.latLng.toString() + ' 입니다.');
+					});	
+
+					// 지도 드래깅 이벤트를 등록한다 (드래그 시작 : dragstart, 드래그 종료 : dragend)
+					kakao.maps.event.addListener(map, 'drag', function () {
+						overlay.setMap(null);
 					});
 					// 마커가 지도 위에 표시되도록 설정합니다
 					marker.setMap(map);
@@ -72,7 +111,8 @@ $.ajax("ForSaleAjax",{
 	}
 });
 
-			
+
+		
 //지도에 마커 표시
 function setMarkers(map) {
  for(var i=0; i<markers.length; i++) {
