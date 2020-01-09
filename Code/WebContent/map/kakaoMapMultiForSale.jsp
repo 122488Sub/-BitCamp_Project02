@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link href="css/forsale.map.css" rel="stylesheet" type="text/css">
-<div id="map" style="width:100%;height:350px;"></div>
+<div id="map" style="width:100%;height:500px;"></div>
    <!-- ★ 키입력 뒷편 &libraries=services 필수입력 --> 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=023641db8947696e319921e818d4fe2b&libraries=services"></script> 
 <script>
@@ -61,8 +61,8 @@ $.ajax("ForSaleAjax",{
 						            '           </div>' + 
 						            '            <div class="desc">' + 
 						            '                <div class="ellipsis">'+Fsvo.address+'</div>' +  
-						            '                <div class="jibun ellipsis">' + Fsvo.content + '</div>' + 
-						            '                <div><a href="#" target="_blank" class="link">자세히보기</a></div>' + 
+						            '                <div class="jibun ellipsis">' + Fsvo.detail.split(';')[1] + '</div>' + 
+						            '                <div><a href="ForSaleController?type=FsOne&idx='+Fsvo.forsale_seq +'" target="_blank" class="link">자세히보기</a></div>' + 
 						            '            </div>' + 
 						            '        </div>' + 
 						            '    </div>' +    
@@ -83,12 +83,7 @@ $.ajax("ForSaleAjax",{
 						overlay.setMap(map); 
 					});
 					
-					// 지도 클릭 이벤트를 등록한다 (좌클릭 : click, 우클릭 : rightclick, 더블클릭 : dblclick)
-					kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
-						overlay.setMap(null);
-						console.log('지도에서 클릭한 위치의 좌표는 ' + mouseEvent.latLng.toString() + ' 입니다.');
-					});	
-
+					
 					// 지도 드래깅 이벤트를 등록한다 (드래그 시작 : dragstart, 드래그 종료 : dragend)
 					kakao.maps.event.addListener(map, 'drag', function () {
 						overlay.setMap(null);

@@ -31,15 +31,13 @@ public class ForSaleAjaxController extends HttpServlet {
 			result += "{";
 			result += "\"forsale_seq\" : \""+ vo.getForsale_seq() +"\"," + 
 					  "\"forsale_idx\" : \""+ vo.getForsale_idx()+"\"," + 
-					  "\"member_id\" : \""+ vo.getMember_id()+"\"," + 
-					  "\"name\" : \""+vo.getName()+"\"," + 
+					  "\"rea_idx\" : \""+ vo.getRea_idx()+"\"," + 
 					  "\"subject\" : \"" + vo.getSubject()+"\","+
 					  "\"address\" : \""+vo.getAddress()+"\"," +
-					  "\"content\" : \""+vo.getContent()+"\"," +
+					  "\"detail\" : \""+vo.getDetail()+"\"," +
 					  "\"filename\" : \""+vo.getFilename()+"\"," +
 					  "\"file_ori_name\" : \""+vo.getFile_ori_name()+"\"," +
-					  "\"regdate\" : \""+vo.getRegdate()+"\"," +
-					  "\"hit\" : \""+vo.getHit()+"\"" ;
+					  "\"regdate\" : \""+vo.getRegdate()+"\"";
 			result += "},";
 		}
 		result = result.substring(0,result.length()-1);
