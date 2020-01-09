@@ -6,15 +6,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset=UTF-8>
 <title>판매 게시판</title>
 <link href="css/guestbook.css" rel="stylesheet" type="text/css">
-
+<%@ include file="navCssLink.html" %>
 </head>
 <body>
+<%@ include file="navBody.html" %>	
 	<%--
     	PagingVO p = new PagingVO();
 		// 1. 전체 게시물의 수를 구한다.
