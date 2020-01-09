@@ -6,7 +6,7 @@ import java.util.Map;
 import com.bitbang.model.dao.CommunityDAO;
 import com.bitbang.model.vo.PagingVO;
 
-public class CommunityPaging {
+public class Paging {
 	public static PagingVO paging (int block) {
 		PagingVO pagingVO = new PagingVO();
 		pagingVO.setTotalRecord(new CommunityDAO().selectTotclCount());

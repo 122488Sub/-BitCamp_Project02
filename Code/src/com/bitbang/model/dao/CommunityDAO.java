@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.bitbang.model.controller.CommunityPaging;
+import com.bitbang.model.controller.Paging;
 import com.bitbang.model.vo.CommunityVO;
 import com.bitbang.model.vo.PagingVO;
 import com.bitbang.mybatis.DBService;
