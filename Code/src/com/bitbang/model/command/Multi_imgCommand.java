@@ -53,11 +53,11 @@ public class Multi_imgCommand implements Command {
 							e.printStackTrace();
 						} 
 		            }else{
-		                String name = item.getFieldName();
-		                String fileName = item.getName(); //파일이름
-		                String contentType = item.getContentType();
-		                boolean isInMemory = item.isInMemory();
-		                long sizeInBytes = item.getSize(); //파일 사이즈
+		                String name = item.getFieldName(); //필드이름
+		                String fileName = item.getName();  //파일이름
+		                //String contentType = item.getContentType();
+		                //boolean isInMemory = item.isInMemory();
+		                //long sizeInBytes = item.getSize(); //파일 사이즈
 		                
 		                System.out.println("파일 이름 :" + fileName);
 		                System.out.println("필드 이름 :" + name);
@@ -66,11 +66,11 @@ public class Multi_imgCommand implements Command {
 		                imgName = "cool_" + fileName;
 		                System.out.println("저장 이름 :" + imgName);
 		                //웹서비스에서 사용되는 저장 경로
-		                String uploadUri = "main/resale/resaleImg";;
+		                //String uploadUri = "C:\\MyStudy\\BITBANG\\-BitCamp_Project02\\Code\\WebContent\\main\\resale\\resale_img";;
 		                
 		                // 물리적인 경로
-		                String dir = request.getSession().getServletContext().getRealPath(uploadUri);
-		                System.out.println(uploadUri+"의 물리적 경로 : "+ dir);
+		                String dir = "C:\\MyStudy\\BITBANG\\-BitCamp_Project02\\Code\\WebContent\\main\\resale\\resale_img";
+		                System.out.println(dir+"의 물리적 경로 : "+ dir);
 		                
 		                // 데이터 저장 File(위치, 파일명)
 		                // 만들어놓은 웹컨텐트 /file/photo/___ <이곳에 저장하기 위해 경로를 지정한것(물리적으로)
