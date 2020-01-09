@@ -47,10 +47,12 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<td colspan="4"><input type="button" value="수 정"
-							onclick="update_go(this.form)"> <input type="button"
-							value="삭 제 " onclick="delete_go(this.form)"></td>
+						<td colspan="4">
+						<input type="button" value="수 정" onclick="update_go(this.form)"> 
+						<input type="button" value="삭 제 " onclick="delete_go(this.form)">
+						<input type="button" value="답 글" onclick="location.href='ControllerCommunity?type=writepost'"></td>
 					</tr>
+					
 				</tfoot>
 				</table>
 		</form>
