@@ -7,12 +7,15 @@
 		SELECT * FROM (SELECT ROWNUM R_NUM, B.* FROM ((SELECT * FROM COMMUNITY 
 		ORDER BY C_PARENT DESC, C_DEPTH ASC)) B) WHERE R_NUM BETWEEN #{BEGIN} AND #{END}
 	</select>
+	<select id="SslectCommunityPostOne" resultType="com.bitbang.model.vo.CommunityVO" parameterType="String">
+		SELECT * FROM COMMUNITY WHERE C_SEQ = #{seq}
+	</select>
 	<select id="SelectCommunityAllCount" resultType="Int">
 		SELECT COUNT(*) FROM COMMUNITY
 	</select>
 	<insert id="InsertCommunityPost" parameterType="com.bitbang.model.vo.CommunityVO">
 		INSERT INTO COMMUNITY(C_SEQ, C_PARENT, C_TITLE, C_CONTENT, MEMBER_ID)
-		VALUES(C_SEQ_SEQ.NEXTVAL, C_PARENT_SEQ.NEXTVAL, #{C_TITLE}, #{C_CONTENT}, #{MEMBER_ID});
+		VALUES(C_SEQ_SEQ.NEXTVAL, C_PARENT_SEQ.NEXTVAL, #{c_title}, #{c_content}, #{member_id})
 	</insert>
 </mapper>
 
