@@ -8,7 +8,7 @@
 		ORDER BY C_PARENT DESC, C_DEPTH ASC)) B) WHERE R_NUM BETWEEN #{BEGIN} AND #{END}
 	</select>
 	<select id="SslectCommunityPostOne" resultType="com.bitbang.model.vo.CommunityVO" parameterType="String">
-		SELECT * FROM COMMUNITY WHERE C_SEQ = #{seq};
+		SELECT * FROM COMMUNITY WHERE C_SEQ = #{seq}
 	</select>
 	<select id="SelectCommunityAllCount" resultType="Int">
 		SELECT COUNT(*) FROM COMMUNITY

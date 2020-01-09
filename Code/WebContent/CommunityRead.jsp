@@ -28,31 +28,21 @@
 				<tbody>
 					<tr>
 						<th>제목</th>
-						<td>${FSVo.subject } </td>
+						<td>${vo.c_title } </td>
 						<th>작성자</th>
-						<td>${FSVo.name }</td>
+						<td>${vo.member_id }</td>
 					</tr>
 					<tr>
-						<th>주소</th>
-						<td>${FSVo.address }  </td>
+						<th>조회수</th>
+						<td>${vo.c_hit }  </td>
 						<th>작성일시</th>
-						<td>${FSVo.regdate } </td>
+						<td>${vo.c_date } </td>
 					</tr>
 					<tr>
 						<th colspan="4">내용</th>
 					</tr>
 					<tr>
-						<td colspan="4">${FSVo.content }</td>
-					</tr>
-					<tr>
-						<td colspan="4">
-							<%
-								request.setCharacterEncoding("UTF-8");
-							%>
-							<jsp:include page="map/kakaoMap.jsp">
-								<jsp:param name="address" value="${FSVo.address }"/>
-							</jsp:include>
-						</td>
+						<td colspan="4">${vo.c_content }</td>
 					</tr>
 				</tbody>
 				<tfoot>
