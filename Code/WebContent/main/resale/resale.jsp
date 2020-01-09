@@ -4,32 +4,71 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/post.css"/>
+<link rel="stylesheet" href="../../css/post.css"/>
+<style>
+	.imgs_wrap{
+		width: 600px;
+		margin-top: 50px;
+	}
+	.imgs_wrap img{
+		max-width: 200px;
+	}
+</style>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	$(function(){
-		$(".cate1").bind("click", function(){
+		$(".cate1").bind("click", function(){ // cate1클래스 클릭하면 해당 태그 텍스트 파싱
 			var text = $(this).text();
-			console.log("text : " + text);
-			$("#cateResult1").html(text + " > ");
-			$('#hiddenCate1').val(text);
+			$("#cateResult1").html(text + " > "); //해당 아이디에 파싱 텍스트 추가 
+			$('#hiddenCate1').val(text); //input태그에 텍스트 값 저장
 
 		});
 		
-		$(".cate2").bind("click", function(){
+		$(".cate2").bind("click", function(){ // cate2클래스 클릭하면 해당 태그 텍스트 파싱
 			var text = $(this).text();
-			console.log("text : " + text);
-			$("#cateResult2").html(text);
-			$('#hiddenCate2').val(text);
+			$("#cateResult2").html(text); //해당 아이디에 파싱 텍스트 추가 
+			$('#hiddenCate2').val(text); //input태그에 텍스트 값 저장
 		});
 	});
+	
+	//------------------다중 이미지 미리보기 제공
+	
+	var sel_files = [];
+	$(function (){
+		$("#input_imgs").on("change", handleImgsFilesSelect);
+	});
+	
+	function handleImgsFilesSelect(e) {
+		var files = e.target.files;
+		var fileArr = Array.prototype.slice.call(files);
+		
+		fileArr.forEach(function(f){
+			if(!f.type.match("image.*")) {
+				alert("확장자는 이미지 확장자만 가능합니다. ");
+				return;
+			}
+			
+			sel_files.push(f);
+			
+			var reader = new FileReader()
+			reader.onload = function(e) {
+				var img_html = "<img src=\""+ e.target.result + "\" />";
+				$(".imgs_wrap").append(img_html);
+			}
+			reader.readAsDataURL(f);
+		});
+	}
 </script>
+<%@ include file="../navCssLink.html" %>
 </head>
-<body>
 
+<body>
+<%@ include file="../navBody.html" %>   
 	<div id="content">
-		<form action="ResaleController/type=upload">
+		<form action="../../ResaleController?type=write2" method="post" enctype="multipart/form-data">
 			<h2>기본 정보</h2>
 			<hr>
 			<div id="imgBox">
@@ -37,7 +76,9 @@
 				<div id="defaultImg">
 				 <img src="images/default-placeholder2.png"  width="200px" height="200px">
 				</div>
-				<input type="file" name="filename">
+				<input type="file" id="input_imgs" name="filename" multiple/>
+				<div class="imgs_wrap">
+				</div>
 			</div><!-- imgBox End -->
 			<hr>
 			<label>제목 : </label>
@@ -120,7 +161,7 @@
 			</ul>
 			</div><!-- cateBox2 End -->
 			<p id="cateText">카테고리 > </p>
-			<p id="cateResult1"> > </p>
+			<p id="cateResult1"></p>
 			<p> > </p>
 			<p id="cateResult2"></p>
 			</div><!-- cateMain End -->

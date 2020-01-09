@@ -14,9 +14,9 @@ public class forsaleDAO implements DAO{
 		
 		SqlSession ss = DBService.getFactory().openSession(true);
 		List<ForSaleVO> list = ss.selectList("FSList");
-		for(ForSaleVO vo : list) {
-			System.out.println(vo);
-		}
+		//for(ForSaleVO vo : list) {
+		//	System.out.println(vo);
+		//}
 		ss.close();
 		return list;
 	}

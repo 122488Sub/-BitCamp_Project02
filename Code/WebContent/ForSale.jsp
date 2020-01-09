@@ -12,15 +12,10 @@
 <head>
 <meta charset=UTF-8>
 <title>판매 게시판</title>
-<link href="css/guestbook.css" rel="stylesheet" type="text/css">
+<!-- <link href="css/guestbook.css" rel="stylesheet" type="text/css"> -->
 <%@ include file="main/navCssLink.html" %>
 </head>
-<body>
-<%@ include file="main/navBody.html" %>	
-	<div id="container">
-		<jsp:include page="map/kakaoMapMultiForSale.jsp">
-			<jsp:param name="fslist" value="${FSList}"/>
-		</jsp:include>
-	</div>
+	<%@ include file="main/navBody.html" %>	
+	<%@ include file="map/kakaoMapMultiForSale.jsp" %>
 </body>
 </html>
