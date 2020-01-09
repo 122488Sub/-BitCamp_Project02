@@ -39,7 +39,7 @@ for (let i = 0; i < address.length; i++) {
 		   positions.push({title: "gg", latlng: new kakao.maps.LatLng(result[0].y,result[0].x)});
 		   x+= parseFloat(result[0].y);
 		   y+= parseFloat(result[0].x);
-		   console.log((x/2)+":::"+(y/2));
+		
 		   // onsole.log(address[i]+ ":" +result[0].y + "/" + result[0].x);
 		   //console.log(i + " : "+ positions[i].latlng);
 		   
