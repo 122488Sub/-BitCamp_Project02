@@ -36,52 +36,57 @@ public class Multi_imgCommand implements Command {
 	    
 	    List<FileItem> items;
 		try {
+			
 			items = upload.parseRequest(request);
 			Iterator<FileItem> iter = items.iterator();
 		    
 		    while(iter.hasNext()){
 		        FileItem item = iter.next();
 		        
-		        // 파일인지 여부 확인 : isFormFile() -> type=file 이외의 폼 데이터 인지 확인
-		            if (item.isFormField()) { // 텍스트 입력인 경우
-		                String name = item.getFieldName(); //태그 name
-		                String value;
-						try {
-							value = item.getString("utf-8");
-							System.out.println("일반 폼 필드 :" + name+ "-" + value);
-						} catch (UnsupportedEncodingException e) {
-							e.printStackTrace();
-						} 
-		            }else{
-		                String name = item.getFieldName(); //필드이름
-		                String fileName = item.getName();  //파일이름
-		                //String contentType = item.getContentType();
-		                //boolean isInMemory = item.isInMemory();
-		                //long sizeInBytes = item.getSize(); //파일 사이즈
-		                
-		                System.out.println("파일 이름 :" + fileName);
-		                System.out.println("필드 이름 :" + name);
-		                
-		                // 저장하고자 하는 파일의 이름
-		                imgName = "cool_" + fileName;
-		                System.out.println("저장 이름 :" + imgName);
-		                //웹서비스에서 사용되는 저장 경로
-		                //String uploadUri = "C:\\MyStudy\\BITBANG\\-BitCamp_Project02\\Code\\WebContent\\main\\resale\\resale_img";;
-		                
-		                // 물리적인 경로
-		                String dir = "C:\\MyStudy\\BITBANG\\-BitCamp_Project02\\Code\\WebContent\\main\\resale\\resale_img";
-		                System.out.println(dir+"의 물리적 경로 : "+ dir);
-		                
-		                // 데이터 저장 File(위치, 파일명)
-		                // 만들어놓은 웹컨텐트 /file/photo/___ <이곳에 저장하기 위해 경로를 지정한것(물리적으로)
-		                try {
-							item.write(new File(dir, imgName));
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-		                
-		            }
-		        }//while End
+	        	// 파일인지 여부 확인 : isFormFile() -> type=file 이외의 폼 데이터 인지 확인
+	            if (item.isFormField()) { // 텍스트 입력인 경우
+	            	// name : input name
+	                String name = item.getFieldName(); 
+	                String value;
+					try {
+						// 파일이 아니면 form 태그에서 전달 된 모든 데이터  저장
+						// value : input value값
+						value = item.getString("utf-8");
+						System.out.println("일반 폼 필드 :" + name+ "-" + value);
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					} 
+	            }else{
+	                String name = item.getFieldName(); //필드이름
+	                String originFileName = item.getName();  //원본 파일 명
+	                //String contentType = item.getContentType();
+	                //boolean isInMemory = item.isInMemory();
+	                //long sizeInBytes = item.getSize(); //파일 사이즈
+	                
+	                System.out.println("파일 이름 :" + originFileName);
+	                System.out.println("필드 이름 :" + name);
+	                
+	                // 저장하고자 하는 파일의 이름
+	                imgName = "resale_" + originFileName;
+	                System.out.println("저장 이름 :" + imgName);
+	                
+	                //웹서비스에서 사용되는 저장 경로
+	                //String uploadUri = "C:\\MyStudy\\BITBANG\\-BitCamp_Project02\\Code\\WebContent\\main\\resale\\resale_img";;
+	                
+	                // 물리적인 경로 - 각각 지정
+	                String dir = "C:\\MyStudy\\BITBANG\\-BitCamp_Project02\\Code\\WebContent\\main\\resale\\resale_img";
+	                System.out.println(dir+"의 물리적 경로 : "+ dir);
+	                
+	                // 데이터 저장 File(위치, 파일명)
+	                // 만들어놓은 웹컨텐트 /file/photo/___ <이곳에 저장하기 위해 경로를 지정한것(물리적으로)
+	                try {
+						item.write(new File(dir, imgName));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+	                
+	            }
+		    }//while End
 		} catch (FileUploadException e1) {
 			e1.printStackTrace();
 		}
