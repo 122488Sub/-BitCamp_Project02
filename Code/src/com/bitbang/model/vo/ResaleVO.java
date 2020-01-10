@@ -6,11 +6,11 @@ public class ResaleVO {
 	private Date reg_date;
 	private String id, pwd, name, subject, address, category, category_child, 
 				   filename, file_ori_name, ip, hash_tag, content;
-	private int rs_idx,	rs_seq, member_idx, hit;
+	private int rs_idx,	rs_seq, member_idx, hit, price;
 	public ResaleVO() {}
 	public ResaleVO(Date reg_date, String content,String id, String pwd, String name, String subject, String address, String category,
 			String category_child, String filename, String file_ori_name, String ip, String hash_tag, int rs_idx,
-			int rs_seq, int member_idx, int hit) {
+			int rs_seq, int member_idx, int hit, int price) {
 		super();
 		this.reg_date = reg_date;
 		this.id = id;
@@ -29,6 +29,7 @@ public class ResaleVO {
 		this.member_idx = member_idx;
 		this.hit = hit;
 		this.content = content;
+		this.price = price;
 	}
 	
 	
@@ -136,6 +137,12 @@ public class ResaleVO {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 }

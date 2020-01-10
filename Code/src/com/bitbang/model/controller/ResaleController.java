@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bitbang.model.command.Command;
 import com.bitbang.model.command.Multi_imgCommand;
+import com.bitbang.model.command.ResaleMainCommand;
 import com.bitbang.model.command.ResaleWriteCommand;
 
 
@@ -27,8 +28,8 @@ public class ResaleController extends HttpServlet {
 		Command comm = null;
 		
 		switch(type) {
+		case "resale": comm = new ResaleMainCommand(); break;
 		case "write": comm = new ResaleWriteCommand(); break;
-		case "write2": comm = new Multi_imgCommand(); break;
 				
 		}
 

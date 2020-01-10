@@ -17,8 +17,9 @@ Multi_imgCommand 사용법
 	
 3. 각자의 컨트롤러에서 각자 만든 Multi_imgCommand에 1번에서 만든 form을 전달 받게 한다.
     ex) type : write > ResaleWriteCommand.java
-    
-4. Multi_imgCommand에 있는 value는 텍스트 값들을 리턴하고 
+4. 각자가 파일을 저장할 물리적 경로를 dir에 저장한다 
+
+5. Multi_imgCommand에 있는 value는 텍스트 값들을 리턴하고 
    imgName은 저장 파일 명이고, originFileName은 원본파일 명을 리턴 한다.
 
 =========================================================================

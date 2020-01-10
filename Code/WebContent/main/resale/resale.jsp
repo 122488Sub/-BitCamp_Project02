@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/post.css"/>
+<link rel="stylesheet" href="./css/post.css"/>
+
 <style>
 	.imgs_wrap{
 		width: 600px;
@@ -68,7 +69,7 @@
 <body>
 <%@ include file="../navBody.html" %>   
 	<div id="content">
-		<form action="../../ResaleController?type=write2" method="post" enctype="multipart/form-data">
+		<form action="./ResaleController?type=write" method="post" enctype="multipart/form-data">
 			<h2>기본 정보</h2>
 			<hr>
 			<div id="imgBox">
@@ -85,7 +86,7 @@
 			<input type="text" name="subject" placeholder="제목을 입력하세요.">
 			<hr>
 			<div id="cateMain">
-			<label id="cateLabel">설명 : &nbsp;</label>
+			<label id="cateLabel">카테고리 : &nbsp;</label>
 			<div id="cateBox1" class="cateBox">
 			<ul>
 				<li>
@@ -167,18 +168,14 @@
 			</div><!-- cateMain End -->
 			<hr>
 			<div id="addrBox">
-			<span>
-			<button>주소 검색</button>
-			<button>지하철 검색</button>
-			</span>
-			</div>
-			<br>
-			<label>거래지역 : &nbsp;</label>
-			<div class="pac-card" id="pac-card">
-		      <div id="pac-container">
-		        <input id="pac-input" type="text"
-		            placeholder="주소를 입력하세요">
-		      </div>
+				<br>
+				<label>거래지역 : &nbsp;</label>
+				<div class="pac-card" id="pac-card">
+			      <div id="pac-container">
+			        <input id="pac-input" type="text" name="address"
+			            placeholder="주소를 입력하세요">
+			      </div>
+			    </div>
 		    </div>
 			<div id="map"></div>
 			<hr>
@@ -198,7 +195,7 @@
 		</form>
 	</div>
 	
-	<script type="text/javascript" src="map/googleJS.js" ></script> 
+	<script type="text/javascript" src="./map/googleJS.js" ></script> 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW24W9sP9njddFNugiBUaJ-AzVfpQb_MY&libraries=places&callback=initMap"
         async defer></script>
 	
