@@ -3,7 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bang5">
-	
+	<!-- 중고게시판 작성 텍스트 insert -->
+	<insert id="writeVO" parameterType="rsVO">
+		INSERT INTO RESALE_BOARD 
+		  VALUES(5, RS_SEQ.NEXTVAL, 1, 'rexypark', '1234', 'im_rex', #{subject}, #{address}, #{category}, 
+		         #{category_child}, #{content}, #{ip}, SYSDATE, #{hash_tag}, #{hit}, #{price})
+	</insert>
+	<!-- 중고게시판 작성 이미지 파일명 insert -->
+	<insert id="writeImg" parameterType="Map">
+		INSERT INTO RESALE_IMG 
+		 VALUES(RS_SEQ.CURRVAL,#{saveFile},#{originFile})
+	</insert>
 </mapper>
 
 

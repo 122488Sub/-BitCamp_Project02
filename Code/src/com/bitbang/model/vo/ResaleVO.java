@@ -4,9 +4,10 @@ import java.sql.Date;
 
 public class ResaleVO { 
 	private Date reg_date;
+	private int rs_idx = 5;
 	private String id, pwd, name, subject, address, category, category_child, 
 				   filename, file_ori_name, ip, hash_tag, content;
-	private int rs_idx,	rs_seq, member_idx, hit, price;
+	private int rs_seq, member_idx, hit, price;
 	public ResaleVO() {}
 	public ResaleVO(Date reg_date, String content,String id, String pwd, String name, String subject, String address, String category,
 			String category_child, String filename, String file_ori_name, String ip, String hash_tag, int rs_idx,

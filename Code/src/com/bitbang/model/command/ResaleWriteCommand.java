@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.bitbang.model.dao.resaleDAO;
 import com.bitbang.model.vo.ResaleVO;
 
 public class ResaleWriteCommand implements Command {
@@ -95,10 +96,11 @@ public class ResaleWriteCommand implements Command {
 		} catch (FileUploadException e1) {
 			e1.printStackTrace();
 		}
-	    
-	    
-	 
+
 	    }
+	rsVO.setIp(request.getRemoteAddr());
+	resaleDAO.writeVO(rsVO);
+	resaleDAO.writeImg(originFileList, saveFileList);
 	
 	System.out.println();
 	System.out.println("rsVO : " + rsVO.toString());
@@ -109,8 +111,11 @@ public class ResaleWriteCommand implements Command {
 	for(String save : saveFileList) {
 		System.out.println("save : " + save);
 	}
-	//System.out.println("originFileList : " + originFileList);
-	//System.out.println("saveFileList : " + saveFileList);
+	
+	request.setAttribute("rsVO", rsVO);
+	request.setAttribute("originFileList", originFileList);
+	request.setAttribute("saveFileList", saveFileList);
+	
 	return "main/resale/multi_imgs.jsp";
 	}//exec End
 }
