@@ -12,8 +12,26 @@
 	<!-- 중고게시판 작성 이미지 파일명 insert -->
 	<insert id="writeImg" parameterType="Map">
 		INSERT INTO RESALE_IMG 
-		 VALUES(RS_SEQ.CURRVAL,#{saveFile},#{originFile})
+		 VALUES(RS_SEQ.CURRVAL,#{saveFile}, #{originFile})
 	</insert>
+	<select id="totalCount" resultType="int">
+		SELECT COUNT(*) FROM RESALE_BOARD
+	</select>
+	
+	<select id="getList" parameterType="map" resultType="rsVO">
+		SELECT *
+		FROM (
+		        SELECT RS_SEQ R_NUM, RESALE.*
+		        FROM (SELECT *
+		                FROM RESALE_BOARD
+		               ORDER BY RS_SEQ DESC) RESALE       
+		    )
+	  WHERE RS_SEQ BETWEEN #{begin} AND #{end}
+	</select>
+	<!-- <select id="detail" parameterType="String" resultType="rsVO">
+		SELECT * FROM MAC_BANG WHERE RS_SEQ = #{rs_seq}
+	</select> -->
+	
 </mapper>
 
 
