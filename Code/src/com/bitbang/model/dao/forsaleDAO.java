@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.bitbang.model.vo.ForSaleVO;
+import com.bitbang.model.vo.RealEstateAgentsVO;
 import com.bitbang.mybatis.DBService;
 
 public class forsaleDAO implements DAO{
@@ -30,6 +31,13 @@ public class forsaleDAO implements DAO{
 		ss.close();
 		return vo;
 	}
+	public RealEstateAgentsVO selectOneREA(int rea_idx) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		RealEstateAgentsVO vo= ss.selectOne("REAOne",rea_idx);
+		ss.close();
+		return vo;
+	}
+	
 	
 	@Override
 	public int selectTotclCount() {
@@ -47,4 +55,6 @@ public class forsaleDAO implements DAO{
 
 		return result;
 	}
+
+	
 }

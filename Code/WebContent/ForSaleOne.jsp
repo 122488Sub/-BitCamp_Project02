@@ -16,9 +16,6 @@
 <title>선택한 매물</title>
 <link href="css/guestbook.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-#container table tbody td {
-	text-align: center;
-}
 </style>
 <%@ include file="main/navCssLink.html"%>
 </head>
@@ -26,6 +23,63 @@
 <%
 	System.out.println("도착");
 %>
+<style>
+#container table tbody td {
+	text-align: center;
+}
+
+#reaInfo {
+	font-size: 0.7em; width : 512px;
+	margin: auto;
+	width: 512px;
+}
+
+#reaInfo table {
+	width: 140px;
+	margin: auto 0px auto 360px;
+	border: 0px solid black;
+	border-collapse: collapse;
+}
+
+
+#reaInfo th {
+	border: 0px solid black;
+	text-align: right;
+}
+
+#reaInfo td {
+	text-align: left;
+	padding: 0px 10px;
+	border: 0px solid black;
+}
+</style>
+<div id="reaInfo">
+	<table>
+		<colgroup>
+
+		</colgroup>
+
+		<thead>
+			<tr>
+				<th>중개사</th>
+				<td>${REAVO.rea_name}</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>회사</th>
+				<td>${REAVO.rea_company }</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>연락처</th>
+				<td>${REAVO.rea_phone }</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+<br>
 <div id="container">
 	<table>
 		<colgroup>

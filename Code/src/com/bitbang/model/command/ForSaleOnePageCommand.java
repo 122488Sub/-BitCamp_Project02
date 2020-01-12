@@ -9,24 +9,29 @@ import javax.servlet.http.HttpServletResponse;
 import com.bitbang.model.dao.forsaleDAO;
 import com.bitbang.model.vo.ForSaleOneVO;
 import com.bitbang.model.vo.ForSaleVO;
+import com.bitbang.model.vo.RealEstateAgentsVO;
 
 public class ForSaleOnePageCommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//List 반환 DAO
-		ForSaleVO vo = new forsaleDAO().selectOnePage(request.getParameter("idx"));
+		ForSaleVO fsvo = new forsaleDAO().selectOnePage(request.getParameter("idx"));
 		
 		
-		String []details=vo.getDetail().split(";");
+		String []details=fsvo.getDetail().split(";");
 		
 		ForSaleOneVO fsoneVO=new ForSaleOneVO(details);
+		RealEstateAgentsVO reaVO= new forsaleDAO().selectOneREA(fsvo.getRea_idx());
 		
-		request.setAttribute("FSVo", vo);
+		
+		request.setAttribute("FSVo", fsvo);
 		request.setAttribute("FSoneVO", fsoneVO);
+		request.setAttribute("REAVO", reaVO);
 		
-		System.out.println(vo);
+		System.out.println(fsvo);
 		System.out.println(fsoneVO);
+		System.out.println(reaVO);
 		
 		return "ForSaleOne.jsp";
 	}
