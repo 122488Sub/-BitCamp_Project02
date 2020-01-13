@@ -17,12 +17,12 @@ public class ForSaleOneVO {
 	입주가능일		available_date
 	내용			content
 	이미지		imgscr
-	 
 	 */
 	String address,address_detail,
 		room_category,monthly_value,floor,area,aircon,
 		elevator, pet,balcony,loan,
-		available_date,content,imgscr;
+		available_date,content;
+	String [] imgscr= new String[5];
 	public ForSaleOneVO() {
 	
 	}
@@ -40,7 +40,6 @@ public class ForSaleOneVO {
 		this.loan = details[10];
 		this.available_date = details[11];
 		this.content = details[12];
-		this.imgscr = details[13];
 	}
 	
 	public String getAddress() {
@@ -117,13 +116,20 @@ public class ForSaleOneVO {
 	}
 	
 	
-	public String getImgscr() {
+	public String [] getImgscr() {
 		return imgscr;
 	}
-	public void setImgscr(String imgscr) {
+	public void setImgscr(String [] imgscr) {
 		this.imgscr = imgscr;
 	}
-	
+	public void setImgscr(int seq) {
+		int index=seq%5;
+		this.imgscr[0]="images/forsale/big0"+index+".PNG";
+		
+		for (int i=1 ; i<=4;i++) {
+			this.imgscr[i]="images/forsale/small0"+index+"_"+i+".PNG";
+		}
+	}
 	
 	
 	public String getAircon() {
@@ -146,6 +152,6 @@ public class ForSaleOneVO {
 		return address +";"+ address_detail + ";"
 				+ room_category + ";" + monthly_value + ";" + floor + ";" + area+";"+aircon
 				+ ";" + elevator + ";" + pet + ", balcony=" + balcony + ", loan=" + loan
-				+ ";" + available_date + ";" + content+";"+imgscr;
+				+ ";" + available_date + ";" + content+";";
 	}
 }

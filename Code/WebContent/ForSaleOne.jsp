@@ -118,11 +118,13 @@
 	<div class="imageView">
 		<div class="imgBox">
 			<div class="big-smallView">
-				<div class="bigView">이미지예정</div>
-				<div class="smallView">이미지예정</div>
-				<div class="smallView">이미지예정</div>
-				<div class="smallView">이미지예정</div>
-				<div class="smallView">이미지예정</div>
+				<%-- <div class="bigView"> <img alt="aa" src="${FSoneVO.imgscr[0]}"></div>--%>
+				<div class="bigView" style="background-image: url(${FSoneVO.imgscr[0]});"> </div>
+				<div class="smallView"style="background: url(${FSoneVO.imgscr[1]}) center center / cover no-repeat;"></div>
+				<div class="smallView"style="background: url(${FSoneVO.imgscr[2]}) center center / cover no-repeat;"></div>
+				<div class="smallView"style="background: url(${FSoneVO.imgscr[3]}) center center / cover no-repeat;"></div>
+				<div class="smallView"style="background: url(${FSoneVO.imgscr[4]}) center center / cover no-repeat;"></div>
+				
 			</div>
 		</div>
 	</div>
@@ -184,5 +186,6 @@
 	<div>이미지예정</div>
 </div>
 	 --%>
+
 
 </html>

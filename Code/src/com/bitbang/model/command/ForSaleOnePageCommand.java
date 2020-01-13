@@ -22,6 +22,9 @@ public class ForSaleOnePageCommand implements Command {
 		String []details=fsvo.getDetail().split(";");
 		
 		ForSaleOneVO fsoneVO=new ForSaleOneVO(details);
+		
+		fsoneVO.setImgscr(fsvo.getForsale_seq());
+		
 		RealEstateAgentsVO reaVO= new forsaleDAO().selectOneREA(fsvo.getRea_idx());
 		
 		

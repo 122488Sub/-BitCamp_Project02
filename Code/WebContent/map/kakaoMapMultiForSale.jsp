@@ -4,7 +4,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link href="css/forsale.map.css" rel="stylesheet" type="text/css">
+
 <style>
 
 #map{
@@ -15,18 +17,25 @@
 <div id="map" ></div>
 
    <!-- ★ 키입력 뒷편 &libraries=services 필수입력 --> 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=023641db8947696e319921e818d4fe2b&libraries=services"></script> 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=023641db8947696e319921e818d4fe2b&libraries=services,clusterer,drawing"></script> 
 <script>
 
 //카카오맵 지도 생성
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	mapOption = { 
 		center: new kakao.maps.LatLng(37.50192426050855, 127.02562676562276), // 지도의 중심좌표
-	    level: 4 // 지도의 확대 레벨
+	    level: 7 // 지도의 확대 레벨
 	};
 
 //지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+var clusterer = new kakao.maps.MarkerClusterer({
+    map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+    averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+    minLevel: 7, // 클러스터 할 최소 지도 레벨
+    disableClickZoom: true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
+});
 
 //주소를 좌표로 바꾸기 위한 geocoder 생성
 var geocoder = new kakao.maps.services.Geocoder();
@@ -52,9 +61,11 @@ $.ajax("ForSaleAjax",{
 					// 마커를 생성합니다
 					var marker = new kakao.maps.Marker({
 					    position: markerPosition
-					    
 					});
-					
+					var m={
+						marker: marker,
+					    seq: Fsvo.forsale_seq
+					};
 					// 커스텀 오버레이에 표시할 컨텐츠 입니다
 					// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
 					// 별도의 이벤트 메소드를 제공하지 않습니다 
@@ -96,16 +107,38 @@ $.ajax("ForSaleAjax",{
 					kakao.maps.event.addListener(map, 'drag', function () {
 						overlay.setMap(null);
 					});
+					/*
 					// 마커가 지도 위에 표시되도록 설정합니다
 					marker.setMap(map);
-												
+											
 					// 생성된 마커를 배열에 추가
 					markers.push(marker);
+					*/
 					
+					//기존 마커에서 클러스트 형태로 변경
+					clusterer.addMarker(marker);
 				} 
 			});
 		})
-	},
+		//클러스트 확대 이벤트
+		kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
+			console.log("변경전: " +map.getLevel());
+	        // 현재 지도 레벨에서 1레벨 확대한 레벨
+	        
+	        var level = map.getLevel()-3;
+	        if(level<=4){
+	        	level=4;
+	        }
+	        // 지도를 클릭된 클러스터의 마커의 위치를 기준으로 확대합니다
+	        map.setLevel(level, {anchor: cluster.getCenter()});
+	        console.log("변경후: " +map.getLevel());
+	    });
+		kakao.maps.event.addListener(map, 'bounds_changed', function() { 
+			
+			
+		});
+	}
+	,
 	error : function(jqXHR, textStatus, errorThrown){
 		alert("Ajax 처리 실패 : \n"
 			+ "jqXHR.readyState : " + jqXHR.readyState +"\n"
