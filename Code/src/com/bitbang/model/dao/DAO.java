@@ -1,5 +1,6 @@
 package com.bitbang.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -90,6 +91,16 @@ public class DAO {
 		return result;
 	}
 	
+	//동적검색
+	public static List<sub_divisionVO> getSearch(String idx, String keyword) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		Map<String, String> map = new HashMap<>();
+		map.put("idx", idx);
+		map.put("keyword", keyword);
+		List<sub_divisionVO> list = ss.selectList("search", map);
+		ss.close();
+		return list;
+	}
 }
 
 

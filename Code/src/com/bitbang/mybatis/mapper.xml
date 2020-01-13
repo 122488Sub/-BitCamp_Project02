@@ -85,6 +85,26 @@
 		   	   A_IMAGES = #{a_images}
 		 WHERE IDX = #{idx} 
 	</update>
+	
+	<!-- 동적검색으로 분양정보 조회 -->
+	<select id="search" parameterType="map" resultType="com.bitbang.model.vo.sub_divisionVO">
+		SELECT *
+		  FROM SUB_DIVISION
+		  <choose>
+		  	<when test="idx == 0">
+		  		WHERE A_LOCATION = #{keyword}
+		  	</when>
+		  	<when test="idx == 1">
+		  		WHERE A_TYPE = #{keyword}
+		  	</when>
+		  	<when test="idx == 2">
+		  		WHERE STEP = #{keyword}
+		  	</when>
+		  	<when test="idx == 3">
+		  		WHERE SUPPLY_TYPE = #{keyword}
+		  	</when>
+		  </choose>
+	</select>
 		
 </mapper>
 

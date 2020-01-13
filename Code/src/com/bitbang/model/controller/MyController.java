@@ -14,6 +14,7 @@ import com.bitbang.model.command.Command;
 import com.bitbang.model.command.DeleteCommand;
 import com.bitbang.model.command.DeleteOkCommand;
 import com.bitbang.model.command.OnelistCommand;
+import com.bitbang.model.command.SearchCommand;
 import com.bitbang.model.command.UpdateCommand;
 import com.bitbang.model.command.UpdateOkCommand;
 import com.bitbang.model.command.WriteCommand;
@@ -26,6 +27,7 @@ public class MyController extends HttpServlet {
     
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//요청에 대한 처리
 		String type = request.getParameter("type");
 		Command comm = null;
 		String path = null;
@@ -75,6 +77,12 @@ public class MyController extends HttpServlet {
 		}
 		if (type.toString().equals("update_ok")) {
 			comm = new UpdateOkCommand();
+			path = comm.exec(request, response);
+		}
+		
+		//검색
+		if ("search".equals(type)) {
+			comm = new SearchCommand();
 			path = comm.exec(request, response);
 		}
 		

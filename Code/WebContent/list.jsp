@@ -10,65 +10,31 @@
 <head>
 <meta charset="UTF-8">
 <title>전체목록</title>
+<script>
+	function search_go(frm) {
+		frm.action = "MyController?type=search";
+		frm.submit();
+	}
+</script>
 <link href="css/price.css" rel="stylesheet" type="text/css"></link>
 </head>
 <body>
 	<div id="container">
 		<h2 class="review_h2">분양정보</h2>
 		<div class="selectbox_div">
-			<div class="selectbox">
-				<lable for="ex_select" class="ex_select_tit">전국</lable>
-				<select id="ex_select">
-					<option>서울특별시</option>
-					<option>부산광역시</option>
-					<option>대구광역시</option>
-					<option>인천광역시</option>
-					<option>광주광역시</option>
-					<option>대전광역시</option>
-					<option>울산광역시</option>
-					<option>세종특별자치시</option>
-					<option>경기도</option>
-					<option>강원도</option>
-					<option>충청북도</option>
-					<option>충청남도</option>
-					<option>전라북도</option>
-					<option>전라남도</option>
-					<option>경상북도</option>
-					<option>경상남도</option>
-					<option>제주특별자치시</option>
+			<form method="post">
+				<select id="ex_select" name="idx">
+					<option value="0">위치/단지명</option>
+					<option value="1">건물유형</option>
+					<option value="2">분양단계</option>
+					<option value="3">공급유형</option>
 				</select>
-			</div>
-			<div class="selectbox">
-				<lable for="ex_select" class="ex_select_tit">건물유형</lable>
-				<select id="ex_select">
-					<option>전체</option>
-					<option>아파트</option>
-					<option>오피스텔</option>
-					<option>도시형생활주택</option>
-				</select>
-			</div>
-			<div class="selectbox">
-				<lable for="ex_select" class="ex_select_tit">분양단계</lable>
-				<select id="ex_select">
-					<option>전체</option>
-					<option>분양예정</option>
-					<option>분양중</option>
-					<option>입주모집</option>
-				</select>
-			</div>
-			<div class="selectbox">
-			<lable for="ex_select" class="ex_select_tit">공급유형</lable>
-			<select id="ex_select">
-				<option>전체</option>
-				<option>공공분양</option>
-				<option>민간분양</option>
-				<option>재건축</option>
-				<option>재개발</option>
-				<option>공공임대</option>
-				<option>민간임대</option>
-			</select>
+			
+				<input type="text" name="keyword">
+				<input type="button" value="검색" onclick="search_go(this.form)">
+			</form>
 		</div>
-		</div>
+		
 		<p class="review_tit">분양목록</p>
 		<p class="review_write"><a class="review_write_a" href="MyController?type=write">[ 분양목록 작성 ]</a></p>
 		<table class="review_table">
@@ -109,7 +75,11 @@
 						<td class="review_step_content">${vo.price }</td>
 						<td class="review_step_content">${vo.households }</td>
 						<td class="review_step_content">${vo.building_area }</td>
-						<td class="review_step_content">${vo.a_image }</td>
+						<td class="review_step_content">
+							<c:forEach var="vo" items="${attr_list }">
+								<img src="images/${vo.a_image }">
+							</c:forEach>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>
