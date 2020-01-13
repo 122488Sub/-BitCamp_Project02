@@ -27,31 +27,8 @@
 #container table tbody td {
 	text-align: center;
 }
+	
 
-#reaInfo {
-	font-size: 0.7em; width : 512px;
-	margin: auto;
-	width: 512px;
-}
-
-#reaInfo table {
-	width: 140px;
-	margin: auto 0px auto 360px;
-	border: 0px solid black;
-	border-collapse: collapse;
-}
-
-
-#reaInfo th {
-	border: 0px solid black;
-	text-align: right;
-}
-
-#reaInfo td {
-	text-align: left;
-	padding: 0px 10px;
-	border: 0px solid black;
-}
 </style>
 <div id="reaInfo">
 	<table>
