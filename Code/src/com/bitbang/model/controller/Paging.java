@@ -1,13 +1,13 @@
 package com.bitbang.model.controller;
 
-import com.bitbang.model.dao.CommunityDAO;
+
+import com.bitbang.model.dao.DAO;
 import com.bitbang.model.vo.PagingVO;
 
 public class Paging {
 	public static PagingVO paging (int block) {
 		PagingVO pagingVO = new PagingVO();
-		pagingVO.setTotalRecord(new CommunityDAO().selectTotclCount());
-		System.out.println("pagingVO.setTotalRecord : " + pagingVO.getTotalRecord());
+		pagingVO.setTotalRecord(new DAO().selectTotalCount());
 		pagingVO.setTotalPage();
 		
 		
