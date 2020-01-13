@@ -14,49 +14,123 @@
 <head>
 <meta charset=UTF-8>
 <title>선택한 매물</title>
-<link href="css/guestbook.css" rel="stylesheet" type="text/css">
+
 <style type="text/css">
 </style>
+<link href="css/forsaleOne.css" rel="stylesheet" type="text/css">
 <%@ include file="main/navCssLink.html"%>
 </head>
 <%@ include file="main/navBody.html"%>
 <%
 	System.out.println("도착");
 %>
-<style>
-#container table tbody td {
-	text-align: center;
-}
+
+<div id="container">
+
+
+	<div class="headInfo">
+		<div style="width:80%;float: left;">
+			<table class="roomInfo">
+				<colgroup>
+					<col width="50%">
+					<col width="25%">
+					<col width="25%">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>주소</th>
+						<th class="roomInfoValue">${FSoneVO.room_category }</th>
+						<th>전용면적</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="roomInfoValue">${FSoneVO.address }<br>${FSoneVO.address_detail }</td>
+						<td class="roomInfoValue">${FSoneVO.monthly_value}</td>
+						<td class="roomInfoValue">${FSoneVO.area}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="width:20%; float: right;">
+			<table class="reaInfo">
+				<colgroup>
+
+				</colgroup>
+
+				<thead>
+					<tr>
+						<th>중개사</th>
+						<td>${REAVO.rea_name}</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>회사</th>
+						<td>${REAVO.rea_company }</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>연락처</th>
+						<td>${REAVO.rea_phone }</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
 	
+	<div class="space"></div>
+	<div class="detail">
+		<ul class="ul_detail">
 
-</style>
-<div id="reaInfo">
-	<table>
-		<colgroup>
-
-		</colgroup>
-
-		<thead>
-			<tr>
-				<th>중개사</th>
-				<td>${REAVO.rea_name}</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th>회사</th>
-				<td>${REAVO.rea_company }</td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<th>연락처</th>
-				<td>${REAVO.rea_phone }</td>
-			</tr>
-		</tfoot>
-	</table>
+			<li class="li_detail">
+				<p class="p_detail">해당층/건물층</p>
+				<div class="div_detail">${FSoneVO.floor}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">난방종류</p>
+				<div class="div_detail">${FSoneVO.aircon}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">엘리베이터</p>
+				<div class="div_detail">${FSoneVO.elevator}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">반려동물</p>
+				<div class="div_detail">${FSoneVO.pet}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">베란다/발코니</p>
+				<div class="div_detail">${FSoneVO.balcony}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">전세자금대출</p>
+				<div class="div_detail">${FSoneVO.loan}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">입주가능일</p>
+				<div class="div_detail">${FSoneVO.available_date}</div>
+			</li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="imageView">
+		<div class="imgBox">
+			<div class="big-smallView">
+				<div class="bigView">이미지예정</div>
+				<div class="smallView">이미지예정</div>
+				<div class="smallView">이미지예정</div>
+				<div class="smallView">이미지예정</div>
+				<div class="smallView">이미지예정</div>
+			</div>
+		</div>
+	</div>
+	<div class="fsContent">${FSoneVO.content }</div>
 </div>
 <br>
+
+<%--
 <div id="container">
 	<table>
 		<colgroup>
@@ -109,5 +183,6 @@
 	</table>
 	<div>이미지예정</div>
 </div>
+	 --%>
 
 </html>

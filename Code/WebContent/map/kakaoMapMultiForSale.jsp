@@ -5,7 +5,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link href="css/forsale.map.css" rel="stylesheet" type="text/css">
-<div id="map" style="width:100%;height:500px;"></div>
+<style>
+
+#map{
+	height: 500px;
+	width: 100%;
+}
+</style>
+<div id="map" ></div>
+
    <!-- ★ 키입력 뒷편 &libraries=services 필수입력 --> 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=023641db8947696e319921e818d4fe2b&libraries=services"></script> 
 <script>
@@ -62,7 +70,7 @@ $.ajax("ForSaleAjax",{
 						            '            <div class="desc">' + 
 						            '                <div class="ellipsis">'+Fsvo.address+'</div>' +  
 						            '                <div class="jibun ellipsis">' + Fsvo.detail.split(';')[1] + '</div>' + 
-						            '                <div><a href="ForSaleController?type=FsOne&idx='+Fsvo.forsale_seq +'" target="_blank" class="link">자세히보기</a></div>' + 
+						            '                <div><a href="ForSaleController?type=FsOne&idx='+Fsvo.forsale_seq +'" target="_parent" class="link">자세히보기</a></div>' + 
 						            '            </div>' + 
 						            '        </div>' + 
 						            '    </div>' +    

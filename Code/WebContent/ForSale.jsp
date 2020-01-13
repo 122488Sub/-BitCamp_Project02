@@ -15,6 +15,7 @@
 <!-- <link href="css/guestbook.css" rel="stylesheet" type="text/css"> -->
 <%@ include file="main/navCssLink.html" %>
 </head>
+	
 	<%@ include file="main/navBody.html" %>	
 	<%@ include file="map/kakaoMapMultiForSale.jsp" %>
 </body>
