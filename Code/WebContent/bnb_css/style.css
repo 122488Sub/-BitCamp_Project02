@@ -103,7 +103,7 @@
 .roomlist .roomlist_tit h3 {margin: 35px 0 30px 0; font-weight: 600; font-size : 22px; line-height : 26px;}
 .roomlist .a { width: 756px; margin-left: 0;}
 
-.roomlist .roomlist_items{ margin-top : -8px ; width : 45%; height: 1505px; position: relative; float : left;}
+.roomlist .roomlist_items{ margin-top : -8px ; width : 45%; height: 1255px; position: relative; float : left;}
 .roomlist .roomlist_items .roomlist_each {width:100% height: 250px; cursor: pointer;}
 
 /* 슬라이드 */
@@ -124,6 +124,7 @@
 .room_simpleinfo .sroom_tot{clear : both; float :right;}
 
 .roomlist .b { clear : both; margin : 0; }
+
 
 .roomlist_items .pagingbox {display: table; height: 100px; width: 100%; font-size: 16px; font-weight: 600;}
 .roomlist_items .pagingbox .paging {position: relative; display: table-cell;  vertical-align : middle; text-align: center; margin : 0 auto;}
@@ -159,8 +160,9 @@
 .roompic_box .roompic4 {background : url(../img/headerpic2.jpg) no-repeat center center; background-size: cover; width: 25%; height: 295px; float:left;}
 .roompic_box .roompic5 {background : url(../img/headerpic3.jpg) no-repeat center center; background-size: cover; width: 25%; height: 295px; float:left;}
 
-#roomdetail { position: relative; }
-.room_box {display: block; width: 58.33%; padding-right: 8px; background: pink;}
+#roomdetail {position : relative; display: block;}
+.room_sticky{position: absolute;}
+.room_box {display: inline-block; width: 58.33%; padding-right: 8px; background: pink; position: relative;}
 .room_box .room_dtit { margin-top: 20px; position: relative; display: block;}
 .room_box .room_dtit .droom_name{ float: left;}
 .room_box .room_dtit .droom_name h1{font-size: 32px; font-weight: 800; line-height: 1.125em; padding : 6px 0;}
@@ -231,3 +233,35 @@
 .room_box .dnotice_infobox .dreserve_cancel {display: block; margin-top: 20px;}
 .room_box .dnotice_infobox .dreserve_cancel .dreserv_canceltit { font-size: 16px; font-weight: 600; line-height: 1.375; }
 .room_box .dnotice_infobox .dreserve_cancel .dreserv_cancelcont { font-size: 16px; font-weight: 400; line-height: 1.375; padding: 5px 0;  }
+
+
+#roomdetail .calculationbox{position : sticky; display: inline-block; border : 1px solid #e4e4e4; width : 35%; margin : 28px; top : 50px; z-index: 9; }
+.calculationbox .cal_box {margin : 16px 24px;  }
+.calculationbox .cal_box .cal_header {display: block; width: 100%;}
+.calculationbox .cal_box .cal_header .cal_headertit {line-height: 10px; font-size: 12px; font-weight: 600; color : rgb(72, 72, 72); }
+.calculationbox .cal_box .cal_header .cal_headertit span {font-size: 22px; font-weight: 800; line-height: 1.44em; }
+.calculationbox .cal_box .cal_header .cal_point {cursor : ponter; user-select : auto; font-size: 12px;font-weight: 600;line-height: 1.33em; margin : 5px 0 16px 0; color : rgb(72, 72, 72); }
+.calculationbox .cal_box .cal_header .cal_point span {font-size: 12px; font-weight: 400; line-height: 1.33em; color : rgb(118, 118, 118); }
+
+.calculationbox .cal_box .cal_date {margin-top : 16px; margin-bottom : 8px;}
+.calculationbox .cal_box .cal_date .cdate_tit {font-size: 12px;font-weight: 600; line-height: 1.33em; color : rgb(72, 72, 72); }
+.calculationbox .cal_box .cal_date .cdate_inputbox {border : 1px solid #e4e4e4;  text-align: center; position: relative; font-size: 16px; padding : 8px; line-height: 24px; font-weight: normal; color : rgb(72, 72, 72);}
+.calculationbox .cal_box .cal_date .cdate_inputbox .checkin {float:left; border-style: none;}
+.calculationbox .cal_box .cal_date .cdate_inputbox span {float:left;}
+.calculationbox .cal_box .cal_date .cdate_inputbox .checkout {float:left; border-style: none; }
+
+.calculationbox .cal_box .cal_personNum {clear : both; color : rgb(72, 72, 72); margin : 5px 0 16px 0;}
+.calculationbox .cal_box .cal_personNum .cpersonNum {font-size: 12px; font-weight: 600; line-height: 1.33em; }
+.calculationbox .cal_box .cal_personNum .cpersonNumbox { }
+.calculationbox .cal_box .cal_personNum .cpersonNumbox select {padding : 8px; width : 100%; border : 1px solid #e4e4e4;}
+
+.calculationbox .cal_box .cal_price { font-size: 14px; font-weight: 400; line-height: 1.285em; color : rgb(72, 72, 72); width : 100%;}
+.calculationbox .cal_box .cal_price .cprice_cal {margin-bottom : 13px;}
+.calculationbox .cal_box .cal_price .cp_totalname {font-weight: 600; float: left;}
+.calculationbox .cal_box .cal_price .cprice_result {display: inline-block; float: right;}
+
+.calculationbox .cal_box .cal_button { clear : both; margin : 36px 0 16px 0; text-align: center; width : 100%;}
+.calculationbox .cal_box .cal_button .cal_buttonaction {font-size: 14px; font-weight: 600; color : white;  background: 	#F54B4B; width : 100%; border-radius: 5px; padding : 8px;}
+.calculationbox .cal_box .cal_content {font-size: 12px;font-weight: 600; line-height: 1.33em; color : rgb(72, 72, 72); margin : 5px; padding : 3px 15px; text-align: center;}
+
+#footer {position: relative; display: block; }

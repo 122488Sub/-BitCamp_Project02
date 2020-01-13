@@ -1,36 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-    <title>숙소 상세 페이지</title>
-    <meta name="author" content="jh">
-    <meta name="description" content="This page is for the detailed room informatin">
-    <meta name="keywords" content="airbnb, share house, zigbang, seoul, city, room">
-    
-    <!-- css -->
-    <link rel="stylesheet" href="bnb_css/reset.css">
-    <link rel="stylesheet" href="bnb_css/style.css">
-    <link rel="stylesheet" href="bnb_css/swiper.css">
-    
-    <!-- 웹 폰트 -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+<meta charset="UTF-8">
+<title>숙소 상세 페이지</title>
+<meta name="author" content="jh">
+<meta name="description"
+	content="This page is for the detailed room informatin">
+<meta name="keywords"
+	content="airbnb, share house, zigbang, seoul, city, room">
+
+<!-- css -->
+<link rel="stylesheet" href="bnb_css/reset.css">
+<link rel="stylesheet" href="bnb_css/style.css">
+<link rel="stylesheet" href="bnb_css/swiper.css">
+
+<!-- 웹 폰트 -->
+<link
+	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean"
+	rel="stylesheet">
 </head>
 <body>
 	<header id="header">
 		<nav id="mNav">
-            <h2 class="ir_so">Searching the share house</h2>
-            <a href="#" class="ham"><span></span></a>
-        </nav>
-        <div class="search2">
-            <div class="container2">
-                <h2 class="ir_so">숙소 검색2</h2>
-                <div class="searchline">
-                    <input type="text" name="search2">
-                </div>
-            </div>
-        </div> 
+			<h2 class="ir_so">Searching the share house</h2>
+			<a href="#" class="ham"><span></span></a>
+		</nav>
+		<div class="search2">
+			<div class="container2">
+				<h2 class="ir_so">숙소 검색2</h2>
+				<div class="searchline">
+					<input type="text" name="search2">
+				</div>
+			</div>
+		</div>
 	</header>
 	<!-- //header -->
 
@@ -51,61 +56,67 @@
 				<div class="room_box">
 					<div class="room_dtit">
 						<div class="droom_name">
-							<h1>Studio Palais_Royal_Opera</h1>
-							<p>파리</p>
+							<h1>${rinfo.r_name }</h1>
+							<p>${rinfo.address }</p>
 						</div>
 						<div class="droom_host">
 							<div class="dhost_pic"></div>
-							<div class="dhost_name">Son na-eun</div>
+							<div class="dhost_name">${rinfo.h_name }</div>
 						</div>
 						<div class="clearfix"></div>
 					</div>
 					<hr>
 					<div class="room_sinfo">
-					    <nav id="mNav">
-                            <h2 class="ir_so">explaining the room information in detail</h2>
-                            <a href="#" class="ham"><span></span></a>
-                        </nav>
-						<div class="info_rtype"><strong>아파트의 개인실</strong></div>
-						<div class="info_rpersoncnt">인원 2명</div>
-						<div class="info_rcnt">침실 1개</div>
-						<div class="info_rbedcnt">침대 1개</div>
-						<div class="info_rdesc">Hello, we are 3 flatmates, Adrien, Raul and Nicole living in a flat South of Paris. <br> 
-						One private room in a flat in the city of Kremlin-Bicetre touching the 13th district of Paris. Quiet and close from paris, we are leaving in this flat for 8 years, area is calm and safe, and the view is amazing and the whole paris with sunset on the Eiffel tower!
+						<nav id="mNav">
+							<h2 class="ir_so">explaining the room information in detail</h2>
+							<a href="#" class="ham"><span></span></a>
+						</nav>
+						<div class="info_rtype">
+							<strong>${rinfo.room_type }</strong>
 						</div>
+						<div class="info_rpersoncnt">인원 ${rinfo.person_cn }명</div>
+						<div class="info_rcnt">침실 ${rinfo.room_cn }개</div>
+						<div class="info_rbedcnt">침대 ${rinfo.bed_cn }개</div>
+						<div class="info_rdesc">${rinfo.r_info }</div>
 					</div>
 					<hr>
 					<div class="facility_box">
-					    <div class="dfacility">
-                            <div class="facil_name"><strong>편의시설</strong></div>
-					        <div class="facil_list">세탁기</div>
-					        <div class="facil_list">냉장고</div>
-					        <div class="facil_list">에어컨</div>
-					        <div class="facil_list">wifi</div>
-					    </div>
+						<div class="dfacility">
+							<div class="facil_name">
+								<strong>편의시설</strong>
+							</div>
+							<div class="facil_list">세탁기</div>
+							<div class="facil_list">냉장고</div>
+							<div class="facil_list">에어컨</div>
+							<div class="facil_list">wifi</div>
+						</div>
 					</div>
 					<hr>
 					<div class="dreservation_box">
-					    <div class="dreserv_info">
-					        <div class="dreserv_tit"><strong>예약 가능 여부</strong></div>
-					    </div>
-					    <div class="dreserv_date">
-					        예약날짜 구역
-					    </div>
-					    <div class="dreserv_deldate">
-					        <span>
-					            <button><strong>날짜 지우기</strong></button>
-					        </span>
-					    </div>
+						<div class="dreserv_info">
+							<div class="dreserv_tit">
+								<strong>예약 가능 여부</strong>
+							</div>
+						</div>
+						<div class="dreserv_date">예약날짜 구역</div>
+						<div class="dreserv_deldate">
+							<span>
+								<button>
+									<strong>날짜 지우기</strong>
+								</button>
+							</span>
+						</div>
 					</div>
 					<hr>
 					<div class="dtag_box">
 						<div class="dtag_main">
 							<div class="dtag_tit">
-								<h2><strong>후기</strong></h2>
+								<h2>
+									<strong>후기</strong>
+								</h2>
 							</div>
 							<div class="dtag_totalpoint">
-								별 <strong>4.04</strong>
+								별 <strong>${rinfo.total_eq}</strong>
 							</div>
 							<div class="dtag_count">
 								<strong>134</strong> 후기
@@ -116,27 +127,27 @@
 								<div class="dlist_boxitems">
 									<div class="boxitem">
 										<div class="boxitem_name">시설</div>
-										<div class="boxitem_point">4.4</div>
+										<div class="boxitem_point">${rinfo.facility_eq}</div>
 									</div>
 									<div class="boxitem">
 										<div class="boxitem_name">호스트</div>
-										<div class="boxitem_point">4.8</div>
+										<div class="boxitem_point">${rinfo.host_eq}</div>
 									</div>
 									<div class="boxitem">
 										<div class="boxitem_name">청결도</div>
-										<div class="boxitem_point">4.0</div>										
+										<div class="boxitem_point">${rinfo.clean_eq}</div>
 									</div>
 									<div class="boxitem">
 										<div class="boxitem_name">의사소통</div>
-										<div class="boxitem_point">4.6</div>										
+										<div class="boxitem_point">${rinfo.communication_eq}</div>
 									</div>
 									<div class="boxitem">
 										<div class="boxitem_name">위치</div>
-										<div class="boxitem_point">4.8</div>										
+										<div class="boxitem_point">${rinfo.location_eq}</div>
 									</div>
 									<div class="boxitem">
 										<div class="boxitem_name">정확성</div>
-										<div class="boxitem_point">4.5</div>										
+										<div class="boxitem_point">${rinfo.accuracy_eq}</div>
 									</div>
 								</div>
 							</div>
@@ -146,56 +157,118 @@
 								<div class="dguest_taginfo">
 									<div class="dguest_tagpic"></div>
 									<div class="dguest_name_date">
-										<strong>혜리</strong><br>
-										2019년 12월
+										<strong>혜리</strong><br> 2019년 12월
 									</div>
 								</div>
-								<div class="dguest_tagcont">
-									Hello, I am hea-li. we were so friendly. you were willing to help me whenever i need help. The room was so luxury and clean. Sometimes i think it will be so nice if i can live in your house's room forever. I definitely would visit your house for meeting you again. Thank you na-eun.
+								<div class="dguest_tagcont">Hello, I am hea-li. we were so
+									friendly. you were willing to help me whenever i need help. The
+									room was so luxury and clean. Sometimes i think it will be so
+									nice if i can live in your house's room forever. I definitely
+									would visit your house for meeting you again. Thank you na-eun.
 								</div>
 							</div>
 							<div class="dhost_replybox">
 								<div class="dhost_replypic"></div>
 								<div class="dhost_replycont">
-									<strong>Son na-eun 님의 답변 : </strong><br>
-									My lovely hea-li!!. I have been missing you so much by you leaving here...I really hope you to visit in here again and wish you safe travels as well. We promised if i come to your city, I also stay in your house! I will visit in there in three months. Don't forget me!
-									<br><br>
-									<span>2019년 12월</span>
+									<strong>${rinfo.h_name } 님의 답변 : </strong><br> My lovely
+									hea-li!!. I have been missing you so much by you leaving
+									here...I really hope you to visit in here again and wish you
+									safe travels as well. We promised if i come to your city, I
+									also stay in your house! I will visit in there in three months.
+									Don't forget me! <br> <br> <span>2019년 12월</span>
 								</div>
 							</div>
 							<hr>
 							<div class="dpaging_area">페이징 처리 부분</div>
 						</div>
 					</div>
-					<div class="dhost_infobox">
-						호스트 정보 표시
-					</div>
+					<div class="dhost_infobox">호스트 정보 표시</div>
 					<hr>
-					<div class="dlocation_infobox">
-						숙소 위치 표시
-					</div>
+					<div class="dlocation_infobox">숙소 위치 표시</div>
 					<hr>
 					<div class="dnotice_infobox">
 						<div class="dnotice_headerbox">
-							<h2><strong>유의 사항</strong></h2>
+							<h2>
+								<strong>유의 사항</strong>
+							</h2>
 						</div>
 						<div class="dnotice_contentbox">
-							<span>체크인 : </span> 14:00 - 00:00<br>
-							<span>체크아웃 : </span> 10:00
+							<span>체크인 : </span> ${rinfo.checkin_time }<br> <span>체크아웃
+								: </span> ${rinfo.checkout_time }
 						</div>
 						<div class="dreserve_cancel">
-							<div class="dreserv_canceltit">
-								예약 취소
+							<div class="dreserv_canceltit">예약 취소</div>
+							<div class="dreserv_cancelcont">체크인 30일 전까지 예약을 취소하면 모든
+								수수료를 포함한 요금 전액이 환불됩니다.</div>
+						</div>
+					</div>
+				</div>
+				<div class="calculationbox">
+					<div class="cal_box">
+						<div class="cal_header">
+							<div class="cal_headertit">
+								<span>&#8361; 50000 </span> &#47; 박
 							</div>
-							<div class="dreserv_cancelcont">
-								체크인 30일 전까지 예약을 취소하면 모든 수수료를 포함한 요금 전액이 환불됩니다.
+							<div class="cal_point">
+								별 4.71 <span>후기 &#40;189개&#41;</span>
 							</div>
 						</div>
+						<hr>
+						<form action="" method="post">
+							<div class="cal_date">
+								<div class="cdate_tit">날짜</div>
+								<div class="cdate_inputbox">
+									<div class="checkin">
+										<input type="text" name="checkin" placeholder="   년 / 월 / 일"
+											readonly style="border: 0px"; >
+									</div>
+									<span>&#187;</span>
+									<div class="chekcout">
+										<input type="text" name="checkout" placeholder="   년 / 월 / 일"
+											readonly style="border: 0px"; >
+									</div>
+								</div>
+							</div>
+							<div class="cal_personNum">
+								<div class="cpersonNum">인원</div>
+								<div class="cpersonNumbox">
+									<select name="person_select" class="cpersonselect">
+										<option value="게스트 1명">게스트 1명</option>
+										<option value="게스트 2명">게스트 2명</option>
+										<option value="게스트 3명">게스트 3명</option>
+										<option value="게스트 4명">게스트 4명</option>
+										<option value="게스트 5명">게스트 5명</option>
+									</select>
+
+								</div>
+							</div>
+							<div class="cal_price">
+								<div class="cprice_cal">&#8361; 50000 X 10 박</div>
+								<hr>
+								<div class="cp_totalname">합계</div>
+								<div class="cprice_result">&#8361; 565658</div>
+							</div>
+							<div class="cal_buttonbox">
+								<div class="cal_button">
+									<button type="button" class="cal_buttonaction">
+										<span>예약하기</span>
+									</button>
+								</div>
+							</div>
+							<div class="cal_content">예약 확정 전에는 요금이 청구되지 않습니다.</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+	</section>
+	<!-- //section -->
+	<footer>
+		<div id="footer">푸터영역입니다.</div>
+	</footer>
+	</div>
+	</div>
+
 	</section>
 </body>
 </html>

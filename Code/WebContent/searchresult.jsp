@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-:<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -49,7 +49,8 @@
 			<div class="select_info">
 				<div class="select_date">
 					<button type="button" aria-pressed="true">
-						<span aria-label="1월 14일 - 1월 23일">${checkin} - ${checkout } </span>
+						<span aria-label="1월 14일 - 1월 23일">${checkin} - ${checkout }
+						</span>
 					</button>
 				</div>
 				<div class="select_personNum">
@@ -71,27 +72,27 @@
 				</div>
 				<hr class="a" color="#EBEBEB">
 				<div class="roomlist_items">
-					<div class="roomlist_each"
-						onclick="location.href='detailroom_view.do';">
-						<div class="room_slider">
-							<div class="swiper-container">
-								<div class="swiper-wrapper">
-									<!-- Slides -->
-									<div class="swiper-slide li1"></div>
-									<div class="swiper-slide li2"></div>
-									<div class="swiper-slide li3"></div>
-									<div class="swiper-slide li4"></div>
-									<div class="swiper-slide li5"></div>
-								</div>
-							</div>
-						</div>
 
-						<c:if test="${not empty rlist }">
-							<c:forEach var="rvo" items="${rlist }">
+					<c:if test="${not empty rlist }">
+						<c:forEach var="rvo" items="${rlist }">
+							<div class="roomlist_each"	onclick="location.href='detailroom_view.do?room_serial=${rvo.room_serial}'">
+								<div class="room_slider">
+									<div class="swiper-container">
+										<div class="swiper-wrapper">
+											<!-- Slides -->
+											<div class="swiper-slide li1"></div>
+											<div class="swiper-slide li2"></div>
+											<div class="swiper-slide li3"></div>
+											<div class="swiper-slide li4"></div>
+											<div class="swiper-slide li5"></div>
+										</div>
+									</div>
+								</div>
 								<div class="room_simpleinfo">
 									<div class="sroom_type">${rvo.room_type }</div>
 									<div class="sroom_point">
-										<img src="img/redstar.jpg" alt="eq_star"> ${ rvo.total_eq }( 5 )
+										<img src="img/redstar.jpg" alt="eq_star"> ${ rvo.total_eq }(
+										5 )
 									</div>
 									<div class="sroom_tit">${rvo.r_name }</div>
 									<div class="sroom_option">편의시설 리스트</div>
@@ -101,15 +102,18 @@
 									<div class="sroom_tot clearfix">총 요금 : &#8361; 556,070</div>
 								</div>
 								<hr class="b" color="#EBEBEB">
-							</c:forEach>
-						</c:if>
-						<c:if test="${empty rlist }">
+							</div>
+						</c:forEach>
+					</c:if>
+					<c:if test="${empty rlist }">
 							검색 결과에 맞는 숙소가 없습니다.
 						</c:if>
-					</div>
+
 				</div>
+
+
 				<div class="pagingbox">
-				<div class="ir_so">paging</div>
+					<div class="ir_so">paging</div>
 					<div class="paging">
 						<c:choose>
 							<c:when test="${bnb_pvo.beginPage < bnb_pvo.pagePerBlock }">
@@ -117,11 +121,13 @@
 							</c:when>
 							<c:otherwise>
 								<div class="sprev">
-									<a href="searchresult.do?cPage=${bnb_pvo.beginPage - bnb_pvo.pagePerBlock }">이전으로</a>
+									<a
+										href="searchresult.do?cPage=${bnb_pvo.beginPage - bnb_pvo.pagePerBlock }">이전으로</a>
 								</div>
 							</c:otherwise>
 						</c:choose>
-						<c:forEach var="k" begin="${bnb_pvo.beginPage }" end="${bnb_pvo.endPage }" step="1">
+						<c:forEach var="k" begin="${bnb_pvo.beginPage }"
+							end="${bnb_pvo.endPage }" step="1">
 							<c:if test="${k==bnb_pvo.nowPage }">
 								<div class="now">${k }</div>
 							</c:if>
@@ -135,14 +141,15 @@
 							</c:when>
 							<c:otherwise>
 								<div class="snext">
-									<a href="searchresult.do?cPage=${bnb_pvo.beginPage + bnb_pvo.pagePerBlock }">다음으로</a>
+									<a
+										href="searchresult.do?cPage=${bnb_pvo.beginPage + bnb_pvo.pagePerBlock }">다음으로</a>
 								</div>
 							</c:otherwise>
 						</c:choose>
 					</div>
 				</div>
-				
-				
+
+
 				<div class="ir_so">숙소 리스트 위치</div>
 				<div id="mapbox"></div>
 			</div>
@@ -156,22 +163,23 @@
 	<!-- 자바스크립트 라이브러리 -->
 	<script src="bnb_js/swiper.min.js"></script>
 	<script>
-        var mySwiper = new Swiper ('.swiper-container', {
-            autoplay : {
-                delay : 5000
-            }
-        });
-    </script>
+		var mySwiper = new Swiper('.swiper-container', {
+			autoplay : {
+				delay : 5000
+			}
+		});
+	</script>
 	<script>
-        var mapContainer = document.getElementById('mapbox'), // 지도를 표시할 div 
-            mapOption = { 
-                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                level: 3 // 지도의 확대 레벨
-            };
+		var mapContainer = document.getElementById('mapbox'), // 지도를 표시할 div 
+		mapOption = {
+			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			level : 3
+		// 지도의 확대 레벨
+		};
 
-        // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-        var map = new kakao.maps.Map(mapContainer, mapOption); 
-    </script>
+		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+	</script>
 
 </body>
 </html>

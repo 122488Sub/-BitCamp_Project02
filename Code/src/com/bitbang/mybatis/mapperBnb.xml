@@ -20,6 +20,12 @@
 		SELECT * FROM BNB_ROOM_INFO WHERE ADDRESS LIKE '%'||#{city_search}||'%' ORDER BY TOTAL_EQ DESC
 	</select>
 	 -->
+	 
+	 <select id = "rone" parameterType="String" resultType="com.bitbang.model.vo.BNB_ROOM_INFOVO">
+	 	SELECT * FROM BNB_ROOM_INFO, BNB_HOST_INFO WHERE BNB_ROOM_INFO.ROOM_SERIAL = BNB_HOST_INFO.H_NUM AND ROOM_SERIAL = #{rSerial}
+	 </select>
+	 
+	 
 </mapper>
 
 

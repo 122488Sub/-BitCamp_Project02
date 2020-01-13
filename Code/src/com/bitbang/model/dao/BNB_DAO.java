@@ -10,10 +10,10 @@ import com.bitbang.mybatis.DBService;
 
 public class BNB_DAO {
 
-	// 거시글의 전체 건수 조회(검색어 기준)
+	// 게시글의 전체 건수 조회(검색어 기준)
 	public static int getTotalCount(String city_search) {
 		SqlSession ss = DBService.getFactory().openSession(true);
-		int totalCount = ss.selectOne("totalCount", city_search);
+		int totalCount = ss.selectOne("bang3.totalCount", city_search);
 		ss.close();
 		return totalCount;
 	}
@@ -27,7 +27,12 @@ public class BNB_DAO {
 		return roomlist;
 	}
 	
-	
+	public static BNB_ROOM_INFOVO getOneList(String rSerial) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		BNB_ROOM_INFOVO rvoinfo = ss.selectOne("rone", rSerial);
+		ss.close();
+		return rvoinfo;
+	}
 	
 	
 	
