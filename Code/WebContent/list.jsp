@@ -17,7 +17,10 @@
 	}
 </script>
 <link href="css/price.css" rel="stylesheet" type="text/css"></link>
+<%@ include file="main/navCssLink.html" %>
 </head>
+	
+	<%@ include file="main/navBody.html" %>	
 <body>
 	<div id="container">
 		<h2 class="review_h2">분양정보</h2>
