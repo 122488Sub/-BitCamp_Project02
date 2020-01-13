@@ -5,6 +5,8 @@
 <configuration>
 <typeAliases>
 	<typeAlias type="com.bitbang.model.vo.ResaleVO" alias="rsVO"/>
+	<typeAlias type="com.bitbang.model.vo.ResaleCommVO" alias="rsCommVO"/>
+	<typeAlias type="com.bitbang.model.vo.ResaleImgVO" alias="rsImgVO"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">

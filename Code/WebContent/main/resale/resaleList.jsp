@@ -84,7 +84,7 @@
 				</tr>
 			</c:when>
 			<c:otherwise>
-				<c:forEach var="vo" items="${list }">
+				<c:forEach var="vo" items="${list}">
 				<tbody>
 					<tr>
 						<td>${vo.rs_seq}</td>
@@ -107,53 +107,38 @@
 				<ol class="paging">
 				<%--이전으로에 대한 사용여부 처리--%>
 				<c:choose>
-					<%--사용불가(disable) : 첫번째 블록인 경우--%>
-					<c:when test="${pvo.beginPage == 1}">
+					<c:when test="${pvo.beginPage < pvo.pagePerBlock}">
 						<li class="disable">이전으로</li>
 					</c:when>
 					<c:otherwise>
-						<li>
-												<!-- 이전으로 클릭 할 시 현재 블록의 시작 페이지에서 1을 뺀 값 -->
-						<a href="list.jsp?cPage=${pvo.beginPage - 1}">이전으로</a>
-						</li>
-					</c:otherwise>
+						<li><a 
+						href="ResaleController?type=list&cPage=${pvo.beginPage - pvo.pagePerBlock}">이전으로</a></li>>
+				  	</c:otherwise>
 				</c:choose>
+				<c:forEach var="k" begin="${pvo.beginPage }" end="${pvo.endPage}" step="1">
+					<c:if test="${k == pvo.nowPage}">
+						<li class="now">${k}</li>
+					</c:if>
+					<c:if test="${k != pvo.nowPage}">
+						<li><a href="ResaleController?type=list&cPag
+						e=${k}">${k }</a></li>
+					</c:if>
+				</c:forEach>
 				
-				
-					<c:forEach var="k" begin="${pvo.beginPage}" end="${pvo.endPage}">
-						<c:choose>
-							<c:when test="${k == pvo.nowPage}">
-								<li class="now">${k }</li>
-							</c:when>
-							<c:otherwise>
-								<li>
-									<a href="list.jsp?cPage=${k}">${k}</a>
-								</li>	
-							</c:otherwise>
-						
-						</c:choose>
-					</c:forEach>
-					
-					<%--다음으로에 대한 사용여부 처리--%>
-					<c:choose>
-					<%--사용불가(disable) : 첫번째 블록인 경우--%>
+				<c:choose>
 					<c:when test="${pvo.endPage >= pvo.totalPage}">
 						<li class="disable">다음으로</li>
 					</c:when>
 					<c:otherwise>
-						<li>
-												<!-- 다음으로 클릭 할 시 현재 블록의 시작 페이지에서 1을 더한 값 -->
-						<a href="list.jsp?cPage=${pvo.endPage + 1}">다음으로</a>
-						</li>
-					</c:otherwise>
+						<li><a href="ResaleController?type=list&cPage=${pvo.beginPage + pvo.pagePerBlock}">다음으로</a></li>
+				  	</c:otherwise>
 				</c:choose>
 				</ol>
 				</td>
 				<td>
-					<input type="button" value="글쓰기" onclick="javascript:location.href='write.jsp'">
+					<input type="button" value="글쓰기" onclick="javascript:location.href='ResaleController?type=newPost'">
 				</td>
 			</tr>
-			
 			</tfoot>		
 			
 		</table>

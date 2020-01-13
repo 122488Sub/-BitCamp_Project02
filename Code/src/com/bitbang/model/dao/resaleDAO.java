@@ -6,10 +6,74 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bitbang.model.vo.ResaleCommVO;
+import com.bitbang.model.vo.ResaleImgVO;
 import com.bitbang.model.vo.ResaleVO;
 import com.bitbang.mybatis.DBService;
 
 public class resaleDAO {
+	
+	//--------------------------------select-----------------------------------------
+	// 게시글 번호 입력시 해당 번호 상세페이지 정보 select 
+	public static ResaleVO selectDetail(String rs_seq) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		
+		ResaleVO rsVO = ss.selectOne("detail", rs_seq);
+		
+		ss.close();
+		return rsVO;
+	}
+	//게시판에 있는 모든 정보 select
+	public static List<ResaleVO> selectList(Map<String, Integer> map) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		
+		List<ResaleVO> list = ss.selectList("resaleList", map);
+		System.out.println("list.size() : " + list.size());
+		ss.close();
+		return list;
+	}
+	//게시판에 있는 모든 정보 select
+	public static int resaleTotal() {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		
+		int total = ss.selectOne("totalResale");
+		System.out.println("total : " + total);
+		ss.close();
+		return total;
+	}
+	// 해당 시퀀스 번호의 게시글 정보를 select
+	public static ResaleVO resaleDetailOne(int rs_seq) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		
+		ResaleVO rsVO = ss.selectOne("detailOne", rs_seq);
+		
+		ss.close();
+		return rsVO;
+	}
+	// 해당 시퀀스 번호의 댓글 정보를 selelct
+	public static List<ResaleCommVO> resaleCommList(int rs_seq) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+
+		List<ResaleCommVO> commVO = ss.selectList("resaleCommList", rs_seq);
+
+		ss.close();
+		return commVO;
+	}
+	public static List<ResaleImgVO> resaleImgList(int rs_seq) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+
+		List<ResaleImgVO> imgList = ss.selectList("imgList", rs_seq);
+
+		ss.close();
+		return imgList;
+	}
+
+	
+	//--------------------------------select End-----------------------------------------
+	
+	
+	
+	//--------------------------------insert---------------------------------------------
 	//텍스트 파일 insert
 	public static int writeVO(ResaleVO rsVO) {
 		SqlSession ss = DBService.getFactory().openSession(true);
@@ -36,31 +100,31 @@ public class resaleDAO {
 		ss.close();
 		return insertImg;
 	}
-	// 게시글 번호 입력시 해당 번호 상세페이지 정보 select 
-	public static ResaleVO selectDetail(String rs_seq) {
+	
+	public static void insertComm(ResaleCommVO commVO) {
 		SqlSession ss = DBService.getFactory().openSession(true);
-		
-		ResaleVO rsVO = ss.selectOne("detail", rs_seq);
-		
+		int insertVO = ss.insert("insertComm", commVO);
 		ss.close();
-		return rsVO;
+		
 	}
-	//게시판에 있는 모든 정보 select
-	public static List<ResaleVO> selectList(Map<String, Integer> map) {
+	
+	//--------------------------------insert End-----------------------------------------
+	
+	
+	
+	//--------------------------------update---------------------------------------------
+	public static void resaleHIT(int rs_seq) {
+		
 		SqlSession ss = DBService.getFactory().openSession(true);
-		
-		List<ResaleVO> list = ss.selectList("getList", map);
-		
+		ss.update("resaleHit", rs_seq);
 		ss.close();
-		return list;
 	}
-	//게시판에 있는 모든 정보 select
-	public static int getTotalCount() {
+	public static void resaleUpdateLev(Map<String, Integer> map) {
+		
 		SqlSession ss = DBService.getFactory().openSession(true);
-		
-		int total = ss.selectOne("totalCount");
-		
+		ss.update("resaleUpdateLev", map);
 		ss.close();
-		return total;
 	}
+	
+	//--------------------------------update End-----------------------------------------
 }

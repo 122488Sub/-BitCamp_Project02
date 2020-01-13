@@ -145,5 +145,13 @@ public class ResaleVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	@Override
+	public String toString() {
+		return "ResaleVO [reg_date=" + reg_date + ", rs_idx=" + rs_idx + ", id=" + id + ", pwd=" + pwd + ", name="
+				+ name + ", subject=" + subject + ", address=" + address + ", category=" + category
+				+ ", category_child=" + category_child + ", filename=" + filename + ", file_ori_name=" + file_ori_name
+				+ ", ip=" + ip + ", hash_tag=" + hash_tag + ", content=" + content + ", rs_seq=" + rs_seq
+				+ ", member_idx=" + member_idx + ", hit=" + hit + ", price=" + price + "]";
+	}
 	
 }

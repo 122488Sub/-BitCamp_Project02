@@ -68,7 +68,7 @@
 <body>
 <%@ include file="../navBody.html" %>   
 	<div id="content">
-		<form action="../../ResaleController?type=write" method="post" enctype="multipart/form-data">
+		<form action="./ResaleController?type=write" method="post" enctype="multipart/form-data">
 			<h2>기본 정보</h2>
 			<hr>
 			<div id="imgBox">
