@@ -11,9 +11,9 @@ import com.bitbang.model.vo.CommunityVO;
 import com.bitbang.model.vo.PagingVO;
 import com.bitbang.mybatis.DBService;
 
-public class CommunityDAO implements DAO {
+public class CommunityDAO  {
 
-	@Override
+	
 	public List<CommunityVO> selectListPage() {
 
 //		SqlSession ss = DBService.getFactory().openSession();
@@ -30,10 +30,6 @@ public class CommunityDAO implements DAO {
 		return list;
 	}
 
-	@Override
-	public Object selectOnePage() {
-		return null;
-	}
 	
 	public CommunityVO selectOnePage(String seq) {
 		SqlSession ss = DBService.getFactory().openSession();
@@ -42,7 +38,7 @@ public class CommunityDAO implements DAO {
 		return vo;
 	}
 
-	@Override
+	
 	public int selectTotclCount() {
 		SqlSession ss = DBService.getFactory().openSession();
 		int count = ss.selectOne("SelectCommunityAllCount");
@@ -50,7 +46,7 @@ public class CommunityDAO implements DAO {
 		return count;
 	}
 
-	@Override
+	
 	public int insertData() {
 		// TODO Auto-generated method stub
 		return 0;
