@@ -6,11 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ResaleMainCommand implements Command{
+public class ResaleDetailCommand implements Command{
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		return "main/resale/resale.jsp";
+		return "main/resale/detail.jsp";
 	}
 }

@@ -104,18 +104,25 @@
 	
 	.commUp {
 		margin-top: 5px;
-		border-top: 1px solid black;
+		
 	}
 	.commDown {
 		margin-bottom: 5px;
 		border-bottom: 1px solid black;
 	}
+	
+	#commTable {
+		border-top: 1px solid black;
+	}
 </style>
 <link rel="stylesheet" href="../../css/slide.css"/>
 <script type="text/javascript" src="../../js/slide.js" ></script>
      
+<%@ include file="../navCssLink.html" %>
 </head>
+
 <body>
+<%@ include file="../navBody.html" %>  
 
 	<div id="detailBox">
 		<div id="cate">
@@ -128,7 +135,7 @@
 				<tr>
 					<td rowspan="6" id="imgBox">
 					    <div class="slider">
-					      <ul class="panel">
+					     <ul class="panel">
 					        <li><img src="resale_img/img2.png"></li>
 					        <li><img src="resale_img/img3.png"></li>
 					        <li><img src="resale_img/img4.png"></li>
@@ -187,13 +194,17 @@
 			<br>
 			<br>
 			<div id="commentList"></div>
-			<table>
+			<table id="commTable">
 				<tr>
-				<td class="commUp">rexy</td>
+				<td class="commUp" style="padding-bottom: 10px">rexy</td>
+				
 				<td class="commUp" style="text-align: right;">2020.1.11</td>
 				</tr>
 				<tr>
-				<td class="commDown" colspan="2">ㅎㅇㅎㅇ</td>
+				<td colspan="2" style="padding-top: 10px">ㅎㅇㅎㅇ</td>
+				</tr>
+				<tr>
+				<td colspan="2" class="commDown" >버튼1</td>
 				</tr>
 			</table>
 			
