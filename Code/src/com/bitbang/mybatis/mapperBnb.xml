@@ -4,6 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bang3">
 	
+	<select id = "totalCount" resultType = "int" parameterType="String">
+		SELECT COUNT(*) FROM BNB_ROOM_INFO WHERE ADDRESS LIKE '%'||#{city_search}||'%'
+	</select>
+	
+	<select id = "roomlist" resultType="com.bitbang.model.vo.BNB_ROOM_INFOVO" parameterType="Map">
+		SELECT * FROM 
+		(SELECT ROWNUM R_NUM, R_LIST.* FROM
+		(SELECT * FROM BNB_ROOM_INFO ORDER BY TOTAL_EQ DESC)R_LIST
+		) WHERE R_NUM BETWEEN #{begin} AND #{end}
+		
+	</select>
+	<!-- 
+	<select id = "roomlist" resultType="com.bitbang.model.vo.BNB_ROOM_INFOVO" parameterType="String">
+		SELECT * FROM BNB_ROOM_INFO WHERE ADDRESS LIKE '%'||#{city_search}||'%' ORDER BY TOTAL_EQ DESC
+	</select>
+	 -->
 </mapper>
 
 

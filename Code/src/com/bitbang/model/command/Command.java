@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface Command {
-	public String exec(HttpServletRequest request,
+	
+	public String exec(HttpServletRequest request, 
 						HttpServletResponse response) 
-					throws ServletException, IOException;
+						throws ServletException, IOException;
 }
