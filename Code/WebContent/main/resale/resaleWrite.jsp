@@ -4,32 +4,71 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/post.css"/>
+<link rel="stylesheet" href="./css/post.css"/>
+
+<style>
+	.imgs_wrap{
+		width: 600px;
+		margin-top: 50px;
+	}
+	.imgs_wrap img{
+		max-width: 200px;
+	}
+</style>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	$(function(){
-		$(".cate1").bind("click", function(){
+		$(".cate1").bind("click", function(){ // cate1클래스 클릭하면 해당 태그 텍스트 파싱
 			var text = $(this).text();
-			console.log("text : " + text);
-			$("#cateResult1").html(text + " > ");
-			$('#hiddenCate1').val(text);
-
+			$("#cateResult1").html(text + " > "); //해당 아이디에 파싱 텍스트 추가 
+			$('#hiddenCate1').val(text); //input태그에 텍스트 값 저장
 		});
-		
-		$(".cate2").bind("click", function(){
+
+		$(".cate2").bind("click", function(){ // cate2클래스 클릭하면 해당 태그 텍스트 파싱
 			var text = $(this).text();
-			console.log("text : " + text);
-			$("#cateResult2").html(text);
-			$('#hiddenCate2').val(text);
+			$("#cateResult2").html(text); //해당 아이디에 파싱 텍스트 추가 
+			$('#hiddenCate2').val(text); //input태그에 텍스트 값 저장
 		});
 	});
+	
+	//------------------다중 이미지 미리보기 제공
+	
+	var sel_files = [];
+	$(function (){
+		$("#input_imgs").on("change", handleImgsFilesSelect);
+	});
+	
+	function handleImgsFilesSelect(e) {
+		var files = e.target.files;
+		var fileArr = Array.prototype.slice.call(files);
+		
+		fileArr.forEach(function(f){
+			if(!f.type.match("image.*")) {
+				alert("확장자는 이미지 확장자만 가능합니다. ");
+				return;
+			}
+			
+			sel_files.push(f);
+			
+			var reader = new FileReader()
+			reader.onload = function(e) {
+				var img_html = "<img src=\""+ e.target.result + "\" />";
+				$(".imgs_wrap").append(img_html);
+			}
+			reader.readAsDataURL(f);
+		});
+	}
 </script>
+<%@ include file="../navCssLink.html" %>
 </head>
-<body>
 
+<body>
+<%@ include file="../navBody.html" %>   
 	<div id="content">
-		<form action="ResaleController/type=upload">
+		<form action="./ResaleController?type=write" method="post" enctype="multipart/form-data">
 			<h2>기본 정보</h2>
 			<hr>
 			<div id="imgBox">
@@ -37,14 +76,16 @@
 				<div id="defaultImg">
 				 <img src="images/default-placeholder2.png"  width="200px" height="200px">
 				</div>
-				<input type="file" name="filename">
+				<input type="file" id="input_imgs" name="filename" multiple/>
+				<div class="imgs_wrap">
+				</div>
 			</div><!-- imgBox End -->
 			<hr>
 			<label>제목 : </label>
 			<input type="text" name="subject" placeholder="제목을 입력하세요.">
 			<hr>
 			<div id="cateMain">
-			<label id="cateLabel">설명 : &nbsp;</label>
+			<label id="cateLabel">카테고리 : &nbsp;</label>
 			<div id="cateBox1" class="cateBox">
 			<ul>
 				<li>
@@ -120,21 +161,22 @@
 			</ul>
 			</div><!-- cateBox2 End -->
 			<p id="cateText">카테고리 > </p>
-			<p id="cateResult1"> > </p>
+			<p id="cateResult1"></p>
 			<p> > </p>
 			<p id="cateResult2"></p>
 			</div><!-- cateMain End -->
 			<hr>
 			<div id="addrBox">
-			<span>
-			<button>주소 검색</button>
-			<button>지하철 검색</button>
-			</span>
-			
-			</div>
-			<br>
-			<label>거래지역 : &nbsp;</label>
-			<input type="text" name="address" placeholder="주소를 입력하세요">
+				<br>
+				<label>거래지역 : &nbsp;</label>
+				<div class="pac-card" id="pac-card">
+			      <div id="pac-container">
+			        <input id="pac-input" type="text" name="address"
+			            placeholder="주소를 입력하세요">
+			      </div>
+			    </div>
+		    </div>
+			<div id="map"></div>
 			<hr>
 			<label>가격 : &nbsp;</label>
 			<input type="text" name="price" placeholder="숫자만 입력하세요">
@@ -151,5 +193,10 @@
 			<input type="submit" value="등록하기">
 		</form>
 	</div>
+	
+	<script type="text/javascript" src="./map/googleJS.js" ></script> 
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW24W9sP9njddFNugiBUaJ-AzVfpQb_MY&libraries=places&callback=initMap"
+        async defer></script>
+	
 </body>
 </html>

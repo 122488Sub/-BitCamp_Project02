@@ -6,20 +6,20 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.bitbang.model.controller.CommunityPaging;
+import com.bitbang.model.controller.Paging;
 import com.bitbang.model.vo.CommunityVO;
 import com.bitbang.model.vo.PagingVO;
 import com.bitbang.mybatis.DBService;
 
-public class CommunityDAO implements DAO {
+public class CommunityDAO  {
 
-	@Override
+	
 	public List<CommunityVO> selectListPage() {
 
 //		SqlSession ss = DBService.getFactory().openSession();
 //		List<CommunityVO> list = ss.selectList("SelectCommunityPostList");
 //		ss.close();
-		
+
 		return null;
 	}
 
@@ -29,13 +29,16 @@ public class CommunityDAO implements DAO {
 		ss.close();
 		return list;
 	}
-	@Override
-	public Object selectOnePage() {
-		// TODO Auto-generated method stub
-		return null;
+
+	
+	public CommunityVO selectOnePage(String seq) {
+		SqlSession ss = DBService.getFactory().openSession();
+		CommunityVO vo = ss.selectOne("SslectCommunityPostOne", seq);
+		ss.close();
+		return vo;
 	}
 
-	@Override
+	
 	public int selectTotclCount() {
 		SqlSession ss = DBService.getFactory().openSession();
 		int count = ss.selectOne("SelectCommunityAllCount");
@@ -43,10 +46,18 @@ public class CommunityDAO implements DAO {
 		return count;
 	}
 
-	@Override
+	
 	public int insertData() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public int insertData(CommunityVO vo) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		System.out.println("vo : " + vo.toString());
+		int count = ss.insert("InsertCommunityPost", vo);
+		ss.close();
+		return count;
 	}
 
 }

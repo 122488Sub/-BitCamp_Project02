@@ -1,3 +1,4 @@
+<%@page import="com.bitbang.model.vo.ForSaleOneVO"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="com.bitbang.model.vo.ForSaleVO"%>
 <%@page import="java.util.List"%>
@@ -13,56 +14,178 @@
 <head>
 <meta charset=UTF-8>
 <title>선택한 매물</title>
-<link href="css/guestbook.css" rel="stylesheet" type="text/css">
 
+<style type="text/css">
+</style>
+<link href="css/forsaleOne.css" rel="stylesheet" type="text/css">
+<%@ include file="main/navCssLink.html"%>
 </head>
-<body>
-	<div id="container">
-		<h2>상세화면</h2>
-		<hr>
-		<p>
-			<a href="ForSaleController?type=FsPage">[목록으로 이동]</a>
-		</p>
-		<form method="post">
-			<table>
-				<tbody>
-					<tr>
-						<th>제목</th>
-						<td>${FSVo.subject } </td>
-						<th>작성자</th>
-						<td>${FSVo.name }</td>
-					</tr>
+<%@ include file="main/navBody.html"%>
+<%
+	System.out.println("도착");
+%>
+
+<div id="container">
+
+
+	<div class="headInfo">
+		<div style="width:80%;float: left;">
+			<table class="roomInfo">
+				<colgroup>
+					<col width="50%">
+					<col width="25%">
+					<col width="25%">
+				</colgroup>
+				<thead>
 					<tr>
 						<th>주소</th>
-						<td>${FSVo.address }  </td>
-						<th>작성일시</th>
-						<td>${FSVo.regdate } </td>
+						<th class="roomInfoValue">${FSoneVO.room_category }</th>
+						<th>전용면적</th>
 					</tr>
+				</thead>
+				<tbody>
 					<tr>
-						<th colspan="4">내용</th>
+						<td class="roomInfoValue">${FSoneVO.address }<br>${FSoneVO.address_detail }</td>
+						<td class="roomInfoValue">${FSoneVO.monthly_value}</td>
+						<td class="roomInfoValue">${FSoneVO.area}</td>
 					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="width:20%; float: right;">
+			<table class="reaInfo">
+				<colgroup>
+
+				</colgroup>
+
+				<thead>
 					<tr>
-						<td colspan="4">${FSVo.content }</td>
+						<th>중개사</th>
+						<td>${REAVO.rea_name}</td>
 					</tr>
+				</thead>
+				<tbody>
 					<tr>
-						<td colspan="4">
-							<%
-								request.setCharacterEncoding("UTF-8");
-							%>
-							<jsp:include page="map/kakaoMap.jsp">
-								<jsp:param name="address" value="${FSVo.address }"/>
-							</jsp:include>
-						</td>
+						<th>회사</th>
+						<td>${REAVO.rea_company }</td>
 					</tr>
 				</tbody>
 				<tfoot>
 					<tr>
-						<td colspan="4"><input type="button" value="수 정"
-							onclick="update_go(this.form)"> <input type="button"
-							value="삭 제 " onclick="delete_go(this.form)"></td>
+						<th>연락처</th>
+						<td>${REAVO.rea_phone }</td>
 					</tr>
 				</tfoot>
-				</table>
-		</form>
+			</table>
+		</div>
 	</div>
+	
+	<div class="space"></div>
+	<div class="detail">
+		<ul class="ul_detail">
+
+			<li class="li_detail">
+				<p class="p_detail">해당층/건물층</p>
+				<div class="div_detail">${FSoneVO.floor}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">난방종류</p>
+				<div class="div_detail">${FSoneVO.aircon}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">엘리베이터</p>
+				<div class="div_detail">${FSoneVO.elevator}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">반려동물</p>
+				<div class="div_detail">${FSoneVO.pet}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">베란다/발코니</p>
+				<div class="div_detail">${FSoneVO.balcony}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">전세자금대출</p>
+				<div class="div_detail">${FSoneVO.loan}</div>
+			</li>
+			<li class="li_detail">
+				<p class="p_detail">입주가능일</p>
+				<div class="div_detail">${FSoneVO.available_date}</div>
+			</li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="imageView">
+		<div class="imgBox">
+			<div class="big-smallView">
+				<%-- <div class="bigView"> <img alt="aa" src="${FSoneVO.imgscr[0]}"></div>--%>
+				<div class="bigView" style="background-image: url(${FSoneVO.imgscr[0]});"> </div>
+				<div class="smallView"style="background: url(${FSoneVO.imgscr[1]}) center center / cover no-repeat;"></div>
+				<div class="smallView"style="background: url(${FSoneVO.imgscr[2]}) center center / cover no-repeat;"></div>
+				<div class="smallView"style="background: url(${FSoneVO.imgscr[3]}) center center / cover no-repeat;"></div>
+				<div class="smallView"style="background: url(${FSoneVO.imgscr[4]}) center center / cover no-repeat;"></div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="fsContent">${FSoneVO.content }</div>
+</div>
+<br>
+
+<%--
+<div id="container">
+	<table>
+		<colgroup>
+
+		</colgroup>
+		<thead>
+			<tr>
+				<th>주소</th>
+				<th>${FSoneVO.room_category }</th>
+				<th>전용면적</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>${FSoneVO.address }<br>${FSoneVO.address_detail }</td>
+				<td>${FSoneVO.monthly_value}</td>
+				<td>${FSoneVO.area}</td>
+			</tr>
+		</tbody>
+	</table>
+	${FSVO }
+	<hr>
+	<table>
+		<colgroup>
+
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>해당층/건물층</td>
+				<td>${FSoneVO.floor}</td>
+				<td>난방종류</td>
+				<td>${FSoneVO.aircon }</td>
+				<td>엘리베이터</td>
+				<td>${FSoneVO.elevator}</td>
+			</tr>
+			<tr>
+				<td>반려동물</td>
+				<td>${FSoneVO.pet}</td>
+				<td>베란다/발코니</td>
+				<td>${FSoneVO.balcony }</td>
+				<td>전세자금대출</td>
+				<td>${FSoneVO.loan }</td>
+			</tr>
+			<tr>
+				<td>입주가능일</td>
+				<td>${FSoneVO.available_date }</td>
+				<td colspan="4"></td>
+			</tr>
+		</tbody>
+	</table>
+	<div>이미지예정</div>
+</div>
+	 --%>
+
+
 </html>

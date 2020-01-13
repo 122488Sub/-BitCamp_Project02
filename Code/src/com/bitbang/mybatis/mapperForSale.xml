@@ -26,6 +26,15 @@
 		WHERE
 			FORSALE_SEQ = #{seq}
 	</select>
+	
+	<select id="REAOne" parameterType="int" resultType="com.bitbang.model.vo.RealEstateAgentsVO">
+		SELECT 
+			*
+		FROM 
+			REAL_ESTATE_AGENTS 
+		WHERE 
+			REA_IDX = #{rea_idx}
+	</select>
 </mapper>
 
 

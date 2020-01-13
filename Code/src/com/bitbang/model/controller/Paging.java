@@ -1,16 +1,13 @@
 package com.bitbang.model.controller;
 
-import java.util.HashMap;
-import java.util.Map;
 
-import com.bitbang.model.dao.CommunityDAO;
+import com.bitbang.model.dao.DAO;
 import com.bitbang.model.vo.PagingVO;
 
-public class CommunityPaging {
+public class Paging {
 	public static PagingVO paging (int block) {
 		PagingVO pagingVO = new PagingVO();
-		pagingVO.setTotalRecord(new CommunityDAO().selectTotclCount());
-		System.out.println("pagingVO.setTotalRecord : " + pagingVO.getTotalRecord());
+		pagingVO.setTotalRecord(new DAO().selectTotalCount());
 		pagingVO.setTotalPage();
 		
 		
@@ -26,7 +23,6 @@ public class CommunityPaging {
 		
 		if(pagingVO.getEndPage() > pagingVO.getTotalPage()) 
 				pagingVO.setEndPage(pagingVO.getTotalPage());
-		Map<String, Integer> map = new HashMap<>();
 		
 
 		
