@@ -31,7 +31,7 @@ public class SearchResultCommand implements Command{
 		
 		BNB_PAGEVO  bnb_pvo = new BNB_PAGEVO();
 		
-		// 1. 총 게시물의 수(검색어 기준)
+		// 1. 총 게시물의 수
 		bnb_pvo.setTotalRecord(BNB_DAO.getTotalCount(city_search));
 		
 		System.out.println("1"+ bnb_pvo);
@@ -54,7 +54,7 @@ public class SearchResultCommand implements Command{
 		bnb_pvo.setEnd((bnb_pvo.getBegin() -1 ) + bnb_pvo.getNumPerPage());
 		
 		// 4. 현재 페이지를 이용한 블록의 시작번호화 끝번호
-		bnb_pvo.setBeginPage((int) (((bnb_pvo.getNowPage() - 1) / bnb_pvo.getPagePerBlock()) * bnb_pvo.getPagePerBlock() + 1));
+		bnb_pvo.setBeginPage((int)(((bnb_pvo.getNowPage() - 1) / bnb_pvo.getPagePerBlock()) * bnb_pvo.getPagePerBlock() + 1));
 		bnb_pvo.setEndPage(bnb_pvo.getBeginPage() + bnb_pvo.getPagePerBlock() - 1);
 		
 		// 주의 사항 : endPage가 totalPage 보다 클 수 있으므로 endPage를 totalPage에 맞춰줌
@@ -78,6 +78,8 @@ public class SearchResultCommand implements Command{
 		request.setAttribute("checkin", checkin);
 		request.setAttribute("checkout", checkout);
 		request.setAttribute("pNum", personNum);
+		request.setAttribute("bnb_pvo", bnb_pvo);		
+		request.setAttribute("cPage", cPage);
 		
 		return "searchresult.jsp";
 	}

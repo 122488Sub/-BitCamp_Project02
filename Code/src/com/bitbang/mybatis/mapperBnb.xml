@@ -11,7 +11,7 @@
 	<select id = "roomlist" resultType="com.bitbang.model.vo.BNB_ROOM_INFOVO" parameterType="Map">
 		SELECT * FROM 
 		(SELECT ROWNUM R_NUM, R_LIST.* FROM
-		(SELECT * FROM BNB_ROOM_INFO ORDER BY TOTAL_EQ DESC)R_LIST
+		(SELECT * FROM BNB_ROOM_INFO  ORDER BY TOTAL_EQ DESC)R_LIST
 		) WHERE R_NUM BETWEEN #{begin} AND #{end}
 		
 	</select>
