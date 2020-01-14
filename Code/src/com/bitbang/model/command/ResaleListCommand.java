@@ -58,10 +58,10 @@ public class ResaleListCommand implements Command{
 		//4. 이미지 파일 저장
 		
 		//
-		List<ResaleImgVO> imgList = resaleDAO.resaleImgList(map);	
+		//List<ResaleImgVO> imgList = resaleDAO.resaleBoardImg(map);	
 		
 		//EL, JSTL 사용을 위한 속성 등록
-		request.setAttribute("imgList", imgList);
+		//request.setAttribute("imgList", imgList);
 		request.setAttribute("pvo", p);
 		request.setAttribute("list", list);
 		

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,18 +19,49 @@
 		display: inline-block;
 		width: 1130px;
 		height: 1500px;
-		border: 1px solid black;
+
 	}
+	#listBox {
+		width: 1130px;
+		height: 1200px;
+
+	}
+	#pagingBox {
+	
+		margin-left: auto;
+		margin-right: auto;
+		width: 1130px;
+		height: 200px;
+
+		float: left;
+	}
+	#olPaging {
+		margin-left: auto;
+		margin-right: auto;
+		width: 400px;
+		height: 100px;
+		text-align:center;
+	}
+	ol {
+		margin-left: auto;
+		margin-right: auto;
+		
+		padding:0;
+		width: 230px;
+		height: 80px;
+	}
+	
 	#onePostBox {
 		width: 230px;
 		height: 370px;
 		border: 1px solid black;
-		display: inline-block;
 		float: left;
 		margin-right: 25px;
 		margin-left: 25px;
 		margin-bottom: 25px;
+		color: black;
 	}
+	
 	#imgBox {
 		margin: 0;
 		padding: 0;
@@ -111,47 +143,141 @@
 		width: 230px;
 		height: 230px;
 	}
+	
+	
+	.paging li {
+		list-style: none;
+		float: left;
+		margin-right: 8px;
+
+	}
+	.paging li a {
+
+		text-decoration: none;
+		display: inline-block;
+		padding: 3px 7px;
+		border: 1px solid lightgray;
+		font-weight: bold;
+		color: black;
+		border-radius: 5px;
+	}
+	.paging .disable {
+		border: 1px solid Gray;
+		padding: 3px 7px;
+		color: silver;
+	}
+	.paging .now {
+		border: 1px solid lightgray;
+		border-radius: 5px;
+		padding: 3px 7px;
+		background-color: Gray;
+		color: white;
+	}
+	.paging li a:hover {
+		background-color: Gray;
+		color: white;
+	}
+	#pointer {
+		border: 0px;
+	}
+		
 </style>
 </head>
 <body>
 	<h1>게시글 목록</h1>
 	<div id="img_content">
-	<div id="write">
-		<input type="button" value="글쓰기" onclick="javascript:location.href='ResaleController?type=newPost'">
-	</div>
-		<c:forEach var="vo" items="${list}">
-	<a href="ResaleController?type=detail&rs_seq=${vo.rs_seq}&cPage=${pvo.getNowPage()}">
-		<div id="onePostBox">
-			<div id="imgBox">
-				<c:choose>
-			    <c:when test="${empty imgList }">
-			    	<img id="imgFileList" src="./images/default-placeholder.jpg">
-			    </c:when>
-			    <c:otherwise>
-			    <c:forEach items="${imgList }" var="img">
-			    	<img id="imgFileList" src="/BITBANG/resale_img/${img[0].rs_file_name}">
-			    	</c:forEach>
-			    </c:otherwise>
-			    </c:choose>
-				
+		<div id="listBox">
+			<div id="write">
+				<input type="button" value="글쓰기" onclick="javascript:location.href='ResaleController?type=newPost'">
 			</div>
-			<br>
-			<div id="infoBox">
-				<div id="listSubject">${vo.subject}</div>
-				<div id="infoChildBox">
-				<table border id="infoTable">
-					<tr>
-						<td id="priceBox"><span id="listPrice">${vo.price}</span>&nbsp;<span id="won">원</span></td>
-						<td id="listDate">${vo.reg_date}</td>
-					</tr>
+			<c:forEach var="vo" items="${list}">
+			  <a href="ResaleController?type=detail&rs_seq=${vo.rs_seq}&cPage=${pvo.getNowPage()}">
+				<div id="onePostBox">
+					<div id="imgBox">
+						<c:choose>
+					    <c:when test="${empty imgList }">
+					    	<img id="imgFileList" src="./images/default-placeholder.jpg">
+					    </c:when>
+					    <c:otherwise>
+					    <c:forEach items="${imgList }" var="img">
+					    	<img id="imgFileList" src="/BITBANG/resale_img/${img[0].rs_file_name}">
+					    	</c:forEach>
+					    </c:otherwise>
+					    </c:choose>
+						
+					</div>
+					<br>
+					<div id="infoBox">
+						<div id="listSubject">${vo.subject}</div>
+						<div id="infoChildBox">
+						<table border id="infoTable">
+							<tr>
+								<td id="priceBox"><span id="listPrice">${vo.price}</span>&nbsp;<span id="won">원</span></td>
+								<td id="listDate">${vo.reg_date}</td>
+							</tr>
+						</table>
+						</div>
+					</div>
+			  		  
+						<div id="addrBox">&nbsp;<img src ="img/pin.png" width="15px" height="15px">
+						<c:set var="addr" value="${fn:split(vo.address,' ')}" />
+						  <c:forEach var="addrs" items="${addr}" varStatus="g">
 					
-				</table>
+					   	   <c:if test="${g.count == 1}">${addrs}</c:if>
+					       <c:if test="${g.count == 2}">&nbsp;${addrs}</c:if>
+						 </c:forEach> 
+						</div>
+					  
 				</div>
-			</div>
-			<div id="addrBox">&nbsp;<img src ="img/pin.png" width="15px" height="15px"></div>
+		      </a>
+			</c:forEach>
 		</div>
-		</a>
-		</c:forEach>
+		<div id="pagingBox">
+			<div id="olPaging">
+			<ol class="paging">
+				<%--이전으로에 대한 사용여부 처리--%>
+				<c:choose>
+					<%--사용불가(disable) : 첫번째 블록인 경우--%>
+					<c:when test="${pvo.beginPage == 1}">
+						<li id="pointer" class="disable">&lt;</li>
+					</c:when>
+					<c:otherwise>
+						<li id="pointer">
+												<!-- 이전으로 클릭 할 시 현재 블록의 시작 페이지에서 1을 뺀 값 -->
+						<a href="ResaleController?type=list&cPage=${pvo.beginPage - 1}" id="pointer">&lt;</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+					<c:forEach var="k" begin="${pvo.beginPage}" end="${pvo.endPage}">
+						<c:choose>
+							<c:when test="${k == pvo.nowPage}">
+								<li class="now">${k }</li>
+							</c:when>
+							<c:otherwise>
+								<li>
+									<a href="ResaleController?type=list&cPage=${k}">${k}</a>
+								</li>	
+							</c:otherwise>
+						
+						</c:choose>
+					</c:forEach>
+					
+					<%--다음으로에 대한 사용여부 처리--%>
+					<c:choose>
+					<%--사용불가(disable) : 첫번째 블록인 경우--%>
+					<c:when test="${pvo.endPage >= pvo.totalPage}">
+						<li id="pointer" class="disable">&gt;</li>
+					</c:when>
+					<c:otherwise>
+						<li id="pointer">
+												<!-- 다음으로 클릭 할 시 현재 블록의 시작 페이지에서 1을 더한 값 -->
+						<a href="ResaleController?type=list&cPage=${pvo.endPage + 1}" id="pointer">&gt;</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+				</ol>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

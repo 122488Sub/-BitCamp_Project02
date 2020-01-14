@@ -68,6 +68,15 @@ public class resaleDAO {
 		ss.close();
 		return imgList;
 	}
+	
+	public static List<ResaleImgVO> resaleBoardImg(Map<String, Integer> map) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+
+		List<ResaleImgVO> imgList = ss.selectList("resaleBoardImg", map);
+
+		ss.close();
+		return imgList;
+	}
 
 	
 	//--------------------------------select End-----------------------------------------
