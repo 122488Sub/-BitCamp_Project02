@@ -35,8 +35,8 @@ public class ForSaleAjaxController extends HttpServlet {
 					  "\"subject\" : \"" + vo.getSubject()+"\","+
 					  "\"address\" : \""+vo.getAddress()+"\"," +
 					  "\"detail\" : \""+vo.getDetail()+"\"," +
-					  "\"filename\" : \""+vo.getFilename()+"\"," +
-					  "\"file_ori_name\" : \""+vo.getFile_ori_name()+"\"," +
+					  "\"pos_x\" : \""+vo.getPos_x()+"\"," +
+					  "\"pos_y\" : \""+vo.getPos_y()+"\"," +
 					  "\"regdate\" : \""+vo.getRegdate()+"\"";
 			result += "},";
 		}
