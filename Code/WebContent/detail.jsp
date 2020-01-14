@@ -87,7 +87,7 @@
                 </table>
             </form>
             <div>
-                <p class="detail_img">${sub_divisionVO.getA_images() }</p>
+                <p class="detail_img"><img width="1190px" height="auto" src="images/${sub_divisionVO.getA_images() }"></p>
             </div>
 		</div>
         <div>
