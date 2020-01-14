@@ -75,22 +75,16 @@
 
 					<c:if test="${not empty rlist }">
 						<c:forEach var="rvo" items="${rlist }">
-							<div class="roomlist_each"
-								onclick="location.href='detailroom_view.do?room_serial=${rvo.room_serial}'">
+							<div class="roomlist_each"	onclick="location.href='detailroom_view.do?room_serial=${rvo.room_serial}'">
 								<div class="room_slider">
 									<div class="swiper-container">
 										<div class="swiper-wrapper">
 											<!-- Slides -->
-											<div class="swiper-slide li1"
-												style="background: url(${rvo.r_pic1 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
-											<div class="swiper-slide li2"
-												style="background: url(${rvo.r_pic2 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
-											<div class="swiper-slide li3"
-												style="background: url(${rvo.r_pic3 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
-											<div class="swiper-slide li4"
-												style="background: url(${rvo.r_pic4 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
-											<div class="swiper-slide li5"
-												style="background: url(${rvo.r_pic5 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
+											<div class="swiper-slide li1"></div>
+											<div class="swiper-slide li2"></div>
+											<div class="swiper-slide li3"></div>
+											<div class="swiper-slide li4"></div>
+											<div class="swiper-slide li5"></div>
 										</div>
 									</div>
 								</div>
@@ -115,45 +109,47 @@
 							검색 결과에 맞는 숙소가 없습니다.
 						</c:if>
 
-
-					<div class="pagingbox">
-						<div class="ir_so">paging</div>
-						<ol class="paging">
-							<c:choose>
-								<c:when test="${bnb_pvo.beginPage < bnb_pvo.pagePerBlock }">
-									<li class="disable">이전으로</li>
-								</c:when>
-								<c:otherwise>
-									<li><a
-										href="searchresult.do?cPage=${bnb_pvo.beginPage - bnb_pvo.pagePerBlock }&city_search=${cSearch }">이전으로</a>
-									</li>
-								</c:otherwise>
-							</c:choose>
-							<c:forEach var="k" begin="${bnb_pvo.beginPage }"
-								end="${bnb_pvo.endPage }" step="1">
-								<c:if test="${k==bnb_pvo.nowPage }">
-									<li class="now">${k }</li>
-								</c:if>
-								<c:if test="${k != bnb_pvo.nowPage }">
-									<li><a href="searchresult.do?cPage=${k }&city_search=${cSearch }">${k }</a></li>
-								</c:if>
-							</c:forEach>
-							<c:choose>
-								<c:when test="${bnb_pvo.endPage >= bnb_pvo.totalPage}">
-									<li class="disable">다음으로</li>
-								</c:when>
-								<c:otherwise>
-									<li><a
-										href="searchresult.do?cPage=${bnb_pvo.beginPage + bnb_pvo.pagePerBlock}&city_search=${cSearch }">다음으로</a>
-									</li>
-								</c:otherwise>
-							</c:choose>
-						</ol>
-					</div>
-
-
-
 				</div>
+
+
+				<div class="pagingbox">
+					<div class="ir_so">paging</div>
+					<div class="paging">
+						<c:choose>
+							<c:when test="${bnb_pvo.beginPage < bnb_pvo.pagePerBlock }">
+								<div class="disable">이전으로</div>
+							</c:when>
+							<c:otherwise>
+								<div class="sprev">
+									<a
+										href="searchresult.do?cPage=${bnb_pvo.beginPage - bnb_pvo.pagePerBlock }">이전으로</a>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						<c:forEach var="k" begin="${bnb_pvo.beginPage }"
+							end="${bnb_pvo.endPage }" step="1">
+							<c:if test="${k==bnb_pvo.nowPage }">
+								<div class="now">${k }</div>
+							</c:if>
+							<c:if test="${k != bnb_pvo.nowPage }">
+								<a href="searchresult.do?cPage=${k }">${k }</a>
+							</c:if>
+						</c:forEach>
+						<c:choose>
+							<c:when test="${bnb_pvo.endPage >= bnb_pvo.totalPage}">
+								<div class="disable">다음으로</div>
+							</c:when>
+							<c:otherwise>
+								<div class="snext">
+									<a
+										href="searchresult.do?cPage=${bnb_pvo.beginPage + bnb_pvo.pagePerBlock }">다음으로</a>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
+
+
 				<div class="ir_so">숙소 리스트 위치</div>
 				<div id="mapbox"></div>
 			</div>

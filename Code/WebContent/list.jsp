@@ -20,13 +20,13 @@
 <%@ include file="main/navCssLink.html" %>
 </head>
 	
-	<%@ include file="main/navBody.html" %>	
+<%@ include file="main/navBody.html" %>	
 <body>
 	<div id="container">
 		<h2 class="review_h2">분양정보</h2>
 		<div class="selectbox_div">
 			<form method="post">
-				<select id="ex_select" name="idx">
+				<select id="ex_select" name="idx" class="selectbox">
 					<option value="0">위치/단지명</option>
 					<option value="1">건물유형</option>
 					<option value="2">분양단계</option>
@@ -34,7 +34,7 @@
 				</select>
 			
 				<input type="text" name="keyword">
-				<input type="button" value="검색" onclick="search_go(this.form)">
+				<input class=select_search type="button" value="검색" onclick="search_go(this.form)">
 			</form>
 		</div>
 		
@@ -79,9 +79,7 @@
 						<td class="review_step_content">${vo.households }</td>
 						<td class="review_step_content">${vo.building_area }</td>
 						<td class="review_step_content">
-							<c:forEach var="vo" items="${attr_list }">
-								<img src="images/${vo.a_image }">
-							</c:forEach>
+							<img width="250px" height="150px" src="images/${vo.a_image }">
 						</td>
 					</tr>
 				</c:forEach>

@@ -96,8 +96,8 @@
 }
 /* 드롭박스 스타일 */
 .selectbox_div{
-	width: 1140px;
-    height: 40px;
+	width: 1178px;
+    height: 75px;
     padding: 18px 20px;
     margin-bottom: 40px;
     background-color: rgb(245, 246, 248);
@@ -107,6 +107,7 @@
 	display: inline-block;
 	position: relative;
 	width: 200px;
+	height: 40px;
 	border: 1px solid #d6d6d6;
 	background-color: white;
 	z-index: 1;
