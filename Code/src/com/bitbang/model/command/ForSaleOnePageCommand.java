@@ -31,7 +31,8 @@ public class ForSaleOnePageCommand implements Command {
 		request.setAttribute("FSVo", fsvo);
 		request.setAttribute("FSoneVO", fsoneVO);
 		request.setAttribute("REAVO", reaVO);
-		
+		request.setAttribute("FSonePosX", request.getParameter("x"));
+		request.setAttribute("FSonePosY", request.getParameter("y"));
 		System.out.println(fsvo);
 		System.out.println(fsoneVO);
 		System.out.println(reaVO);

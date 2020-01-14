@@ -84,7 +84,7 @@ $.ajax("ForSaleAjax",{
 						            '            <div class="desc">' + 
 						            '                <div class="ellipsis">'+Fsvo.address+'</div>' +  
 						            '                <div class="jibun ellipsis">' + Fsvo.detail.split(';')[1] + '</div>' + 
-						            '                <div><a href="ForSaleController?type=FsOne&idx='+Fsvo.forsale_seq +'" target="_parent" class="link">자세히보기</a></div>' + 
+						            '                <div><a href="ForSaleController?type=FsOne&idx='+Fsvo.forsale_seq +'&x='+coords.Ha+'&y='+coords.Ga+'" target="_parent" class="link">자세히보기</a></div>' + 
 						            '            </div>' + 
 						            '        </div>' + 
 						            '    </div>' +    
@@ -128,8 +128,10 @@ $.ajax("ForSaleAjax",{
 			console.log("변경전: " +map.getLevel());
 	        // 현재 지도 레벨에서 1레벨 확대한 레벨
 	        
-	        var level = map.getLevel()-2;
-	        
+	        var level = map.getLevel()-1;
+	        if(level<=2){
+	        	level=4;
+	        }
 	        // 지도를 클릭된 클러스터의 마커의 위치를 기준으로 확대합니다
 	        map.setLevel(level, {anchor: cluster.getCenter()});
 	        console.log("변경후: " +map.getLevel());

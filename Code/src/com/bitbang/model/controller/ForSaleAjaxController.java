@@ -42,7 +42,7 @@ public class ForSaleAjaxController extends HttpServlet {
 		}
 		result = result.substring(0,result.length()-1);
 		result+="]}";
-		System.out.println(result);
+			System.out.println(result);
 		out.print(result);
 	}
 

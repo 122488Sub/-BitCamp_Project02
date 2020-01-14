@@ -129,8 +129,20 @@
 		</div>
 	</div>
 	<div class="fsContent">${FSoneVO.content }</div>
+	
+	<div class="fsOneMap">
+		<jsp:include page="map/kakaoMapOneForSale.jsp" >
+			<jsp:param value="${FSonePosX }" name="x"/>
+			<jsp:param value="${FSonePosY }" name="y"/>
+		</jsp:include>
+
+	</div>
+	
+	
 </div>
 <br>
+
+
 
 <%--
 <div id="container">
