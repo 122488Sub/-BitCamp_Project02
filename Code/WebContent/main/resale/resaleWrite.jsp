@@ -17,7 +17,25 @@
 		max-width: 200px;
 	}
 </style>
+<script type="text/javascript">
+function sendData(){
+	var firstForm = document.forms[0];
+	console.log("firstForm : " + firstForm);
+	console.log("firstForm.elements.length : " + firstForm.elements.length);
+	for (var i=0; i < firstForm.elements.length; i++) {
+		if(firstForm.elements[i].value.trim() == "") {
+			if( i== 0 || ((i >= 2) && (i <= 23)) ) continue; //파일속성 제외
+			console.log("firstForm.elements[i].outerText : " + firstForm.elements[i].outerText);
+			console.log("firstForm.elements[i] : " + i);
+			alert(firstForm.elements[i].title + "을 입력하세요");
+			firstForm.elements[i].focus();
+			return;
+		}
+	}
+	firstForm.submit();
+}
 
+</script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	$(function(){
@@ -76,13 +94,13 @@
 				<div id="defaultImg">
 				 <img src="images/default-placeholder2.png"  width="200px" height="200px">
 				</div>
-				<input type="file" id="input_imgs" name="filename" multiple/>
+				<input type="file" id="input_imgs" name="filename" multiple title="사진"/>
 				<div class="imgs_wrap">
 				</div>
 			</div><!-- imgBox End -->
 			<hr>
 			<label>제목 : </label>
-			<input type="text" name="subject" placeholder="제목을 입력하세요.">
+			<input type="text" name="subject" placeholder="제목을 입력하세요." title="제목">
 			<hr>
 			<div id="cateMain">
 			<label id="cateLabel">카테고리 : &nbsp;</label>
@@ -172,25 +190,25 @@
 				<div class="pac-card" id="pac-card">
 			      <div id="pac-container">
 			        <input id="pac-input" type="text" name="address"
-			            placeholder="주소를 입력하세요">
+			            placeholder="주소를 입력하세요" title="주소">
 			      </div>
 			    </div>
 		    </div>
 			<div id="map"></div>
 			<hr>
 			<label>가격 : &nbsp;</label>
-			<input type="text" name="price" placeholder="숫자만 입력하세요">
+			<input type="text" name="price" placeholder="숫자만 입력하세요" title="가격">
 			<label>&nbsp; 원</label>
 			<hr>
 			<label>설명 : &nbsp;</label>
-			<input type="text" id="contentBox" name="content" placeholder="제품에 대한 설명을 입력하세요.">
+			<input type="text" id="contentBox" name="content" placeholder="제품에 대한 설명을 입력하세요." title="설명">
 			<hr>
 			<label>해시태그 : &nbsp;</label>
-			<input type="text" name="hashtags" placeholder="최대 5개 입력 가능합니다.">
+			<input type="text" name="hashtags" placeholder="최대 5개 입력 가능합니다." title="해시태그">
 			<hr>
-			<input type="hidden" id="hiddenCate1" name="cate1">
-			<input type="hidden" id="hiddenCate2" name="cate2"> 
-			<input type="submit" value="등록하기">
+			<input type="hidden" id="hiddenCate1" name="cate1" title="카테고리">
+			<input type="hidden" id="hiddenCate2" name="cate2" title="하위 카테고리"> 
+			<input type="button" value="등록하기" onclick="sendData()">
 		</form>
 	</div>
 	
