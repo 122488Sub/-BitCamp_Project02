@@ -23,6 +23,7 @@ public class resaleDAO {
 		ss.close();
 		return rsVO;
 	}
+	
 	//게시판에 있는 모든 정보 select
 	public static List<ResaleVO> selectList(Map<String, Integer> map) {
 		SqlSession ss = DBService.getFactory().openSession(true);

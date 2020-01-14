@@ -39,13 +39,12 @@
 						     	<li><img id="imgFile" src="./images/default-placeholder.jpg"></li>
 						     </c:when>
 						     <c:otherwise>
-							     <c:forEach items="${imgList}" var="img">
-							        <li><img id="imgFile" src="main/resale/resale_img/${img.rs_file_name}"></li>
+							     <c:forEach items="${imgList}" var="img" >
+							        <img id="imgFile" src="/BITBANG/resale_img/${img.rs_file_name}">
 							     </c:forEach>
 						     </c:otherwise>
 					     </c:choose>
-					      </ul>
-					      
+					      </ul>					      
 					      <ul class="btn">
 					        <li class="on"></li>
 					         <c:choose>
