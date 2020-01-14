@@ -5,9 +5,12 @@
 .detail, .fsContent, .headInfo {
 	width: 1000px;
 	position: relative;
-	margin: 0px auto;
+	margin: 0px auto 30px auto;
 }
-
+.imageView {
+	width: 100%;
+	margin: 0px auto 30px auto;
+}
 
 #container div {
 	display: block;
@@ -87,9 +90,7 @@
 	vertical-align: middle;
 }
 
-.imageView {
-	width: 100%;
-}
+
 
 .imgBox {
 	width: 1000px;
@@ -182,14 +183,16 @@
 	padding: 0px 10px;
 }
 
-.space {
-	width: 1000px;
-	height: 80px;
-	position: relative;
-	margin: 0px auto;
-}
+
 .fsContent{
 	font-size: 1.2em;
 }
 
-
+.categoryMapInfo{
+	width: 1000px;
+	position: relative;
+	margin: 0px auto ;
+	font-size: 1.8em;
+	font-weight: bold;
+	text-align: center;
+}

@@ -175,8 +175,7 @@
 	margin-top: 0;
 }
 </style>
-<br>
-<br>
+
 <div class="map_wrap">
 	<div id="map"
 		style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
@@ -214,7 +213,7 @@
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
 		center : new kakao.maps.LatLng(<%=x%>,<%=y%>), // 지도의 중심좌표
-		level : 4	// 지도의 확대 레벨
+		level : 3	// 지도의 확대 레벨
 	};
 
 	// 지도를 생성합니다    
@@ -315,6 +314,7 @@
 			// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
 			(function(marker, place) {
 				kakao.maps.event.addListener(marker, 'click', function() {
+					
 					displayPlaceInfo(place);
 				});
 			})(marker, places[i]);
@@ -324,7 +324,7 @@
 	// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 	function addMarker(position, order) {
 		var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-		imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
+		imageSize = new kakao.maps.Size(40, 28), // 마커 이미지의 크기
 		imgOptions = {
 			spriteSize : new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
 			spriteOrigin : new kakao.maps.Point(46, (order * 36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
@@ -373,6 +373,7 @@
 		contentNode.innerHTML = content;
 		placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
 		placeOverlay.setMap(map);
+		
 	}
 
 	// 각 카테고리에 클릭 이벤트를 등록합니다

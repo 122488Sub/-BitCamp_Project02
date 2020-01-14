@@ -11,9 +11,13 @@
 <style>
 
 #map{
-	height: 900px;
+	position: absolute;
+ 	top: 0;
+  	bottom: 0;
+	height: 100%;
 	width: 80%;
-	margin: auto;
+	left:50%; 
+	transform:translateX(-50%);
 }
 </style>
 <div id="map" ></div>
@@ -84,7 +88,8 @@ $.ajax("ForSaleAjax",{
 						            '            <div class="desc">' + 
 						            '                <div class="ellipsis">'+Fsvo.address+'</div>' +  
 						            '                <div class="jibun ellipsis">' + Fsvo.detail.split(';')[1] + '</div>' + 
-						            '                <div><a href="ForSaleController?type=FsOne&idx='+Fsvo.forsale_seq +'&x='+coords.Ha+'&y='+coords.Ga+'" target="_parent" class="link">자세히보기</a></div>' + 
+						            //'                <div><a href="ForSaleController?type=FsOne&idx='+Fsvo.forsale_seq +'&x='+coords.Ha+'&y='+coords.Ga+'" target="_parent" class="link">자세히보기</a></div>' + 
+					         		'                <div><a href="javascript:moveFSonePage('+Fsvo.forsale_seq +','+coords.Ha+','+coords.Ga+')" target="_parent" class="link">자세히보기</a></div>' +
 						            '            </div>' + 
 						            '        </div>' + 
 						            '    </div>' +    
@@ -156,11 +161,28 @@ function setMarkers(map) {
  }            
 }
 
-</script>
-<body>
+function moveFSonePage(seq,x,y){
+	var form = document.createElement("form");
+	var parm = new Array();
+    var input = new Array();
 
-	<div style="width: 1000px;">
-		<!-- <input type="text" id="test" value="" style="width: 1000px;">  -->
-		<div id="test"></div>
-	</div>
-</body>
+    form.action = "ForSaleController";
+    form.method = "post";
+
+    parm.push( ['type', "FsOne"] );
+    parm.push( ['idx', seq] );
+    parm.push( ['x', x] );
+    parm.push( ['y', y] );
+
+
+    for (var i = 0; i < parm.length; i++) {
+        input[i] = document.createElement("input");
+        input[i].setAttribute("type", "hidden");
+        input[i].setAttribute('name', parm[i][0]);
+        input[i].setAttribute("value", parm[i][1]);
+        form.appendChild(input[i]);
+    }
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>
