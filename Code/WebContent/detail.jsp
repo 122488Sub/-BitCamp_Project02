@@ -16,6 +16,7 @@
 		frm.submit();
 	}
 </script>
+<%request.setCharacterEncoding("UTF-8");%>
 </head>
 
 
@@ -93,9 +94,16 @@
         <div>
             <h2 class="review_h2 matTitle">위치 및 주변 시설</h2>   
             <p class="detail_map_txt">${sub_divisionVO.getA_location() }</p>
-            <div class="detail_map"></div>
+            <div class="detail_map">
+            	<jsp:include page="map/kakaoAddressFacilities.jsp">
+					<jsp:param value="경기도 파주시" name="address"/>
+				</jsp:include>
+            </div>
+            
+
+			
         </div>
 	</div>
-
+	
 </body>
 </html>

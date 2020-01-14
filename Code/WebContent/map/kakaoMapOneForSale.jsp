@@ -203,6 +203,7 @@
 <%double x = Double.parseDouble(request.getParameter("x"));%>
 	
 <%double y = Double.parseDouble(request.getParameter("y"));%>
+<%System.out.println(x+":::"+y);%>
 	//마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 	var placeOverlay = new kakao.maps.CustomOverlay({
 		zIndex : 1
