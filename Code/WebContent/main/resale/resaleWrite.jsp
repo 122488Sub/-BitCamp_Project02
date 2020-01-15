@@ -74,6 +74,7 @@ function sendData(){
 			var reader = new FileReader()
 			reader.onload = function(e) {
 				var img_html = "<img src=\""+ e.target.result + "\" />";
+				console.log("img_html :" + img_html);
 				$(".imgs_wrap").append(img_html);
 			}
 			reader.readAsDataURL(f);
