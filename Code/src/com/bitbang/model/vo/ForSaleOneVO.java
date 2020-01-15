@@ -123,7 +123,7 @@ public class ForSaleOneVO {
 		this.imgscr = imgscr;
 	}
 	public void setImgscr(int seq) {
-		int index=seq%5;
+		int index=seq%6;
 		this.imgscr[0]="images/forsale/big0"+index+".PNG";
 		
 		for (int i=1 ; i<=4;i++) {
