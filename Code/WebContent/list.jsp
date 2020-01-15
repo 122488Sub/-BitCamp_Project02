@@ -34,7 +34,7 @@
 				</select>
 			
 				<input type="text" name="keyword">
-				<input class=select_search type="button" value="검색" onclick="search_go(this.form)">
+				<input class=select_search type="submit" value="검색" onclick="search_go(this.form)">
 			</form>
 		</div>
 		
