@@ -97,10 +97,10 @@
 					<c:choose>
 						<%-- 사용불가(disable) : 첫번째 블록인 경우 --%>
 						<c:when test="${paging.beginPage == 1}">
-							<a class="disable"><</a>
-						</c:when>
+							<a class="disable">[◀]</a>
+						</c:when>			
 						<c:otherwise>
-							<a href="MyController?type=list&index=${paging.beginPage - 1 }"><</a>
+							<a href="MyController?type=list&index=${paging.beginPage - 1 }">[◀]</a>
 						</c:otherwise>
 					</c:choose>
 					
@@ -120,10 +120,10 @@
 					<c:choose>
 						<%-- 사용불가(disable) : endPage가 전체페이지 수 보다 크거나 같으면 --%>
 						<c:when test="${paging.endPage >= paging.totalPage }">
-							<a class="disable">></a>
+							<a class="disable">[▶]</a>
 						</c:when>
 						<c:otherwise>
-							<a href="MyController?type=list&index=${paging.endPage + 1 }">></a>
+							<a href="MyController?type=list&index=${paging.endPage + 1 }">[▶]</a>
 						</c:otherwise>
 					</c:choose>
 				</c:if>
