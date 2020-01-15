@@ -30,16 +30,7 @@ public class ResaleController extends HttpServlet {
 		
 		String type = request.getParameter("type");
 		String path = "";
-		Command comm = null;
-		
-		switch(type) {
-			case "write_ok": comm = new ResaleListCommand(); break;
-			default: break;
-		}
-		if(comm != null) {
-			path = comm.exec(request, response);
-			response.sendRedirect(path);
-		}else {
+		Command comm = null;    
 		
 		switch(type) {
 			case "write": comm = new ResaleWriteCommand(); break;
@@ -54,9 +45,8 @@ public class ResaleController extends HttpServlet {
 
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
-		}
+		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");

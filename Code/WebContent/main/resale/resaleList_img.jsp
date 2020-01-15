@@ -47,7 +47,7 @@
 		margin-right: auto;
 		
 		padding:0;
-		width: 230px;
+		width: 240px;
 		height: 80px;
 	}
 	
@@ -190,9 +190,9 @@
 			<div id="write">
 				<input type="button" value="글쓰기" onclick="javascript:location.href='ResaleController?type=newPost'">
 			</div>
-			<c:forEach var="vo" items="${list}" varStatus="voCnt">
-				
-			  <a href="ResaleController?type=detail&rs_seq=${vo.rs_seq}&cPage=${pvo.getNowPage()}">
+			
+			<c:forEach var="vo" begin="0" end="${list.size()-2}" step="1" varStatus="voCnt">
+			  <a href="ResaleController?type=detail&rs_seq=${list.get(voCnt.index).rs_seq}&cPage=${pvo.getNowPage()}">
 				<div id="onePostBox">
 					<div id="imgBox">
 						<c:choose>
@@ -200,26 +200,26 @@
 					    	<img id="imgFileList" src="./images/default-placeholder.jpg">
 					    </c:when>
 					    <c:otherwise>
-							<img id="imgFileList" src="./images/resale/${vo.file_name}">
+							<img id="imgFileList" src="./images/resale/${list.get(voCnt.index).file_name}">
 					    	<!-- <img id="imgFileList" src="images/resale/${imgList.get(voCnt.index).rs_file_name}">-->	
 					    </c:otherwise>
 					    </c:choose>
 					</div>
 					<br>
 					<div id="infoBox">
-						<div id="listSubject">${vo.subject}</div>
+						<div id="listSubject">${list.get(voCnt.index).subject}</div>
 						<div id="infoChildBox">
 						<table border id="infoTable">
 							<tr>
-								<td id="priceBox"><span id="listPrice">${vo.price}</span>&nbsp;<span id="won">원</span></td>
-								<td id="listDate">${vo.reg_date}</td>
+								<td id="priceBox"><span id="listPrice">${list.get(voCnt.index).price }</span>&nbsp;<span id="won">원</span></td>
+								<td id="listDate">${list.get(voCnt.index).reg_date }</td>
 							</tr>
 						</table>
 						</div>
 					</div>
 			  		  
 						<div id="addrBox">&nbsp;<img src ="img/pin.png" width="15px" height="15px">
-						<c:set var="addr" value="${fn:split(vo.address,' ')}" />
+						<c:set var="addr" value="${fn:split(list.get(voCnt.index).address,' ')}" />
 						  <c:forEach var="addrs" items="${addr}" varStatus="g">
 					
 					   	   <c:if test="${g.count == 1}">${addrs}</c:if>

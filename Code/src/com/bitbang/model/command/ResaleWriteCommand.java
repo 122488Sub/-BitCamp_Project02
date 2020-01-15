@@ -110,6 +110,6 @@ public class ResaleWriteCommand implements Command {
 	resaleDAO.writeVO(rsVO);
 	resaleDAO.writeImg(originFileList, saveFileList);
 	
-	return "ResaleController?type=write_ok";
+	return "RS_Redirect?type=write_ok";
 	}//exec End
 }
