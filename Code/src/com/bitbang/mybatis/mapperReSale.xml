@@ -3,7 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bang5">
-	
 <!-- ===============================select=============================== -->	
 	<select id="totalResale" resultType="int">
 		SELECT COUNT(*) FROM RESALE_BOARD
@@ -13,7 +12,6 @@
 		SELECT * FROM RESALE_BOARD
 		WHERE RS_SEQ = #{rs_seq}
 	</select>
-	
 	
 	<select id="resaleList" parameterType="map" resultType="rsVO">
 		SELECT *
@@ -25,16 +23,18 @@
 		    )
 	  WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
-	
+
 	<select id="resaleBoardImg" parameterType="map" resultType="rsImgVO">
 		SELECT *
-		FROM (
-		       SELECT ROWNUM R_NUM, RESALE.*
-		        FROM (SELECT *
-		                FROM RESALE_IMG
-		               ORDER BY RS_SEQ DESC) RESALE      
-		    )
-	  WHERE R_NUM BETWEEN #{begin} AND #{end}
+ 		 FROM ( SELECT ROWNUM R_NUM, IMG.*
+                FROM(SELECT *
+           			 FROM RESALE_IMG 
+            		 WHERE ROWID IN (SELECT MAX(ROWID) 
+                            		 FROM RESALE_IMG 
+                            		  GROUP BY RS_SEQ)
+                           				 ORDER BY RS_SEQ DESC) IMG
+                             		)
+ 		WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
 	
 	<!-- 해당 게시글에 있는 모든 댓글 가져오기 -->
@@ -70,7 +70,7 @@
 	<insert id="writeVO" parameterType="rsVO">
 		INSERT INTO RESALE_BOARD 
 		  VALUES(5, RS_SEQ.NEXTVAL, 1, 'rexypark', '1234', 'im_rex', #{subject}, #{address}, #{category}, 
-		         #{category_child}, #{content}, #{ip}, SYSDATE, #{hash_tag}, #{hit}, #{price})
+		         #{category_child}, #{content}, #{ip}, SYSDATE, #{hash_tag}, #{hit}, #{price}, #{file_name}, #{file_ori_name})
 	</insert>
 	
 	<!-- 중고게시판 작성 이미지 파일명 insert -->

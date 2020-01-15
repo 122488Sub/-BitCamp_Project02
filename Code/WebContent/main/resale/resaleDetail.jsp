@@ -24,7 +24,7 @@
 
 	<div id="detailBox">
 		<div id="cate">
-		<p>카테고리 : 카테1&nbsp;&gt;&nbsp;카테2</p>
+		<p style="font-weight: bold">카테고리 &nbsp;: &nbsp;${rsVO.category}&nbsp;&gt;&nbsp;${rsVO.category_child}</p>
 		<br>
 		<hr>
 		<br>
@@ -40,7 +40,7 @@
 						     </c:when>
 						     <c:otherwise>
 							     <c:forEach items="${imgList}" var="img" >
-							        <img id="imgFile" src="/BITBANG/resale_img/${img.rs_file_name}">
+							        <img id="imgFile" src="./images/resale/${img.rs_file_name}">
 							     </c:forEach>
 						     </c:otherwise>
 					     </c:choose>

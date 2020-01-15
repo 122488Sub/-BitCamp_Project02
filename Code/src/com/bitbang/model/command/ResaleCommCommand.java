@@ -33,7 +33,7 @@ public class ResaleCommCommand implements Command{
 		resaleDAO.insertComm(commVO);
 
 		
-		return "ResaleController?type=detail&rs_seq="+rs_seq+"&cPage="+cPage;
+		return "RS_Redirect?type=comm_ok&rs_seq="+rs_seq+"&cPage="+cPage;
 
 	}
 }

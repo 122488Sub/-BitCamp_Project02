@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bitbang.common.commonUtil;
 import com.bitbang.model.dao.forsaleDAO;
 import com.bitbang.model.vo.ForSaleVO;
 
@@ -17,6 +18,13 @@ public class ForSalePageCommand implements Command {
 		//List 반환 DAO
 		List<ForSaleVO> list = new forsaleDAO().selectListPage();
 		request.setAttribute("FSList", list);
+		
+		if(!commonUtil.fs_Bool) {
+			commonUtil.fs_x=37.50192426050855;
+			commonUtil.fs_y=127.02562676562276;
+			commonUtil.fs_level=10;
+		}
+		
 		return "ForSale.jsp";
 		//return null;
 	}

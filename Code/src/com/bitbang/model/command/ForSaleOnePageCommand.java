@@ -26,16 +26,19 @@ public class ForSaleOnePageCommand implements Command {
 		fsoneVO.setImgscr(fsvo.getForsale_seq());
 		
 		RealEstateAgentsVO reaVO= new forsaleDAO().selectOneREA(fsvo.getRea_idx());
-		
-		
+		System.out.println("---");
+		for(String str: fsoneVO.getImgscr()) {
+			System.out.println(str);
+		}
+		System.out.println("---");
 		request.setAttribute("FSVo", fsvo);
 		request.setAttribute("FSoneVO", fsoneVO);
 		request.setAttribute("REAVO", reaVO);
-		request.setAttribute("FSonePosX", request.getParameter("x"));
-		request.setAttribute("FSonePosY", request.getParameter("y"));
+	
 		System.out.println(fsvo);
 		System.out.println(fsoneVO);
 		System.out.println(reaVO);
+	
 		
 		return "ForSaleOne.jsp";
 	}

@@ -83,7 +83,7 @@ public class ResaleWriteCommand implements Command {
 	                //웹서비스에서 사용되는 저장 경로
 	                //String uploadUri = "C:\\MyStudy\\BITBANG\\-BitCamp_Project02\\Code\\WebContent\\main\\resale\\resale_img";;
 
-	                String dir = "c:/bitbang_img/resale_img";
+	                String dir = "C:/MyStudy/BITBANG/-BitCamp_Project02/Code/WebContent/images/resale";
 	                System.out.println(dir+"의 물리적 경로 : "+ dir);
 	                
 	                originFileList.add(originFileName);
@@ -102,23 +102,14 @@ public class ResaleWriteCommand implements Command {
 
 	    }
 	rsVO.setIp(request.getRemoteAddr());
+	String file_name = saveFileList.get(0);
+	String file_ori_name = saveFileList.get(0);
+	
+	rsVO.setFile_name(file_name);
+	rsVO.setFile_ori_name(file_ori_name);
 	resaleDAO.writeVO(rsVO);
 	resaleDAO.writeImg(originFileList, saveFileList);
 	
-	System.out.println();
-	System.out.println("rsVO : " + rsVO.toString());
-	System.out.println();
-	for(String ori : originFileList) {
-		System.out.println("ori : " + ori);
-	}
-	for(String save : saveFileList) {
-		System.out.println("save : " + save);
-	}
-	
-	request.setAttribute("rsVO", rsVO);
-	request.setAttribute("originFileList", originFileList);
-	request.setAttribute("saveFileList", saveFileList);
-	
-	return "ResaleController?type=list";
+	return "RS_Redirect?type=write_ok";
 	}//exec End
 }

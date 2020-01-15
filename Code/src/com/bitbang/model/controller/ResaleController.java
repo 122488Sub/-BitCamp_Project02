@@ -15,6 +15,7 @@ import com.bitbang.model.command.ResaleListCommand;
 import com.bitbang.model.command.ResaleNewPostCommand;
 import com.bitbang.model.command.ResaleReCommCommand;
 import com.bitbang.model.command.ResaleWriteCommand;
+import com.bitbang.model.command.ResalelistPageCommand;
 
 
 
@@ -29,23 +30,23 @@ public class ResaleController extends HttpServlet {
 		
 		String type = request.getParameter("type");
 		String path = "";
-		Command comm = null;
+		Command comm = null;    
 		
 		switch(type) {
-		case "write": comm = new ResaleWriteCommand(); break;
-		case "list": comm = new ResaleListCommand(); break;
-		case "detail": comm = new ResaleDetailCommand(); break;
-		case "comm": comm = new ResaleCommCommand(); break;
-		case "reComm": comm = new ResaleReCommCommand(); break;
-		case "newPost": comm = new ResaleNewPostCommand(); break;
-		
-				
+			case "write": comm = new ResaleWriteCommand(); break;
+			case "list": comm = new ResaleListCommand(); break;
+			case "listPage": comm = new ResalelistPageCommand(); break;
+			case "detail": comm = new ResaleDetailCommand(); break;
+			case "comm": comm = new ResaleCommCommand(); break;
+			case "reComm": comm = new ResaleReCommCommand(); break;
+			case "newPost": comm = new ResaleNewPostCommand(); break;
+			default : break;
 		}
 
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
+		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");

@@ -1,3 +1,4 @@
+<%@page import="com.bitbang.common.commonUtil"%>
 <%@page import="com.bitbang.model.dao.forsaleDAO"%>
 <%@page import="com.bitbang.model.vo.ForSaleVO"%>
 <%@page import="java.util.List"%>
@@ -200,10 +201,10 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=023641db8947696e319921e818d4fe2b&libraries=services,clusterer,drawing"></script>
 <script>
 	
-<%double x = Double.parseDouble(request.getParameter("x"));%>
+<%//double x = Double.parseDouble(request.getParameter("x"));%>
 	
-<%double y = Double.parseDouble(request.getParameter("y"));%>
-<%System.out.println(x+":::"+y);%>
+<%//double y = Double.parseDouble(request.getParameter("y"));%>
+<%//System.out.println(x+":::"+y);%>
 	//마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 	var placeOverlay = new kakao.maps.CustomOverlay({
 		zIndex : 1
@@ -213,7 +214,7 @@
 
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
-		center : new kakao.maps.LatLng(<%=x%>,<%=y%>), // 지도의 중심좌표
+		center : new kakao.maps.LatLng(<%=commonUtil.fs_x%>,<%=commonUtil.fs_y%>), // 지도의 중심좌표
 		level : 3	// 지도의 확대 레벨
 	};
 
@@ -222,7 +223,7 @@
 
 	//지도에 표시할 원을 생성합니다
 	var circle = new kakao.maps.Circle({
-		center : new kakao.maps.LatLng(<%=x%>,<%=y%>), // 원의 중심좌표 입니다 
+		center : new kakao.maps.LatLng(<%=commonUtil.fs_x%>,<%=commonUtil.fs_y%>), // 원의 중심좌표 입니다 
 		radius : 20, // 미터 단위의 원의 반지름입니다 
 		strokeWeight : 1, // 선의 두께입니다 
 		strokeColor : '#FF0000', // 선의 색깔입니다

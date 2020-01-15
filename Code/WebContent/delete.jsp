@@ -9,7 +9,7 @@
 <body>
 
 <div id="container">
-	<h2>방명록 : 삭제화면</h2>
+	<h2>분양목록 : 삭제화면</h2>
 	<hr>
 	<p><a href="MyController?type=list">[목록으로 이동]</a></p>
 	

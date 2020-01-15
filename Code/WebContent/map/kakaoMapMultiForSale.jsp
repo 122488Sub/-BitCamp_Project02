@@ -1,3 +1,4 @@
+<%@page import="com.bitbang.common.commonUtil"%>
 <%@page import="com.bitbang.model.dao.forsaleDAO"%>
 <%@page import="com.bitbang.model.vo.ForSaleVO"%>
 <%@page import="java.util.List"%>
@@ -29,13 +30,16 @@
 //카카오맵 지도 생성
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	mapOption = { 
-		center: new kakao.maps.LatLng(37.50192426050855, 127.02562676562276), // 지도의 중심좌표
-	    level: 10 // 지도의 확대 레벨
+		//center: new kakao.maps.LatLng(37.50192426050855, 127.02562676562276), // 지도의 중심좌표
+	    //level: 10 // 지도의 확대 레벨
+	    center: new kakao.maps.LatLng(<%=commonUtil.fs_x%>, <%=commonUtil.fs_y%>), // 지도의 중심좌표
+	    level: <%=commonUtil.fs_level%> // 지도의 확대 레벨
 	};
 
 //지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption); 
-
+console.log(map.getLevel());
+console.log(map.getCenter());
 var clusterer = new kakao.maps.MarkerClusterer({
     map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
     averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
@@ -171,9 +175,11 @@ function moveFSonePage(seq,x,y){
 
     parm.push( ['type', "FsOne"] );
     parm.push( ['idx', seq] );
+    
     parm.push( ['x', x] );
     parm.push( ['y', y] );
-
+    parm.push( ['lev', map.getLevel()] );
+	parm.push( ['b','T']);
 
     for (var i = 0; i < parm.length; i++) {
         input[i] = document.createElement("input");
@@ -183,6 +189,7 @@ function moveFSonePage(seq,x,y){
         form.appendChild(input[i]);
     }
     document.body.appendChild(form);
+    
     form.submit();
 }
 </script>

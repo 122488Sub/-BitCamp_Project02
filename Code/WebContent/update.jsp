@@ -11,6 +11,7 @@
 		frm.submit();
 	}
 </script>
+<link href="css/price.css" rel="stylesheet" type="text/css"></link>
 </head>
 <body>
 <div id="container">

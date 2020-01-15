@@ -41,7 +41,7 @@ public class UpdateOkCommand implements Command {
 			vo.setPrice(price);
 			vo.setHouseholds(households);
 			vo.setBuilding_area(building_area);
-			vo.setA_image(construction);
+			vo.setConstruction(construction);
 			vo.setDeveloper(developer);
 			vo.setMonopoly(monopoly);
 			vo.setA_restrict(a_restrict);
