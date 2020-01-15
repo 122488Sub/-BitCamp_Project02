@@ -17,6 +17,17 @@ public class ForSalePageCommand implements Command {
 		//List 반환 DAO
 		List<ForSaleVO> list = new forsaleDAO().selectListPage();
 		request.setAttribute("FSList", list);
+		
+		if(request.getAttribute("x").equals("list")) {
+			request.setAttribute("x", "37.50192426050855" );
+			request.setAttribute("y", "127.02562676562276");
+			request.setAttribute("lev", "10");
+			System.out.println("??");
+		}else {
+			request.setAttribute("x", request.getAttribute("x") );
+			request.setAttribute("y", request.getAttribute("y"));
+			request.setAttribute("lev", request.getAttribute("lev"));
+		}
 		return "ForSale.jsp";
 		//return null;
 	}

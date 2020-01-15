@@ -25,17 +25,37 @@
    <!-- ★ 키입력 뒷편 &libraries=services 필수입력 --> 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=023641db8947696e319921e818d4fe2b&libraries=services,clusterer,drawing"></script> 
 <script>
+<%
+System.out.println("tq");
 
+String tmp= "";
+
+tmp= (String)request.getAttribute("x");
+double px=Double.parseDouble(tmp);
+System.out.println("x: "+px);
+
+tmp= (String)request.getAttribute("y");
+double py=Double.parseDouble(tmp);
+System.out.println("y: "+py);
+
+tmp= (String)request.getAttribute("lev");
+int plev=Integer.parseInt(tmp);
+System.out.println("l: "+tmp);
+
+%>
 //카카오맵 지도 생성
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	mapOption = { 
-		center: new kakao.maps.LatLng(37.50192426050855, 127.02562676562276), // 지도의 중심좌표
-	    level: 10 // 지도의 확대 레벨
+		//center: new kakao.maps.LatLng(37.50192426050855, 127.02562676562276), // 지도의 중심좌표
+	    //level: 10 // 지도의 확대 레벨
+	    center: new kakao.maps.LatLng(<%=px%>, <%=py%>), // 지도의 중심좌표
+	    level: <%=plev%> // 지도의 확대 레벨
 	};
 
 //지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption); 
-
+console.log(map.getLevel());
+console.log(map.getCenter());
 var clusterer = new kakao.maps.MarkerClusterer({
     map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
     averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
@@ -173,6 +193,7 @@ function moveFSonePage(seq,x,y){
     parm.push( ['idx', seq] );
     parm.push( ['x', x] );
     parm.push( ['y', y] );
+    parm.push( ['lev', map.getLevel()] );
 
 
     for (var i = 0; i < parm.length; i++) {

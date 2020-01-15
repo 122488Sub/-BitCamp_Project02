@@ -33,9 +33,13 @@ public class ForSaleOnePageCommand implements Command {
 		request.setAttribute("REAVO", reaVO);
 		request.setAttribute("FSonePosX", request.getParameter("x"));
 		request.setAttribute("FSonePosY", request.getParameter("y"));
+		request.setAttribute("FSoneLevel", request.getParameter("lev"));
 		System.out.println(fsvo);
 		System.out.println(fsoneVO);
 		System.out.println(reaVO);
+		System.out.println("x: "+request.getParameter("x"));
+		System.out.println("y: "+request.getParameter("y"));
+		System.out.println("lev: "+request.getParameter("lev"));
 		
 		return "ForSaleOne.jsp";
 	}

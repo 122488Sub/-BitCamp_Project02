@@ -19,6 +19,16 @@ public class ForSaleController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type = request.getParameter("type");
 		System.out.println(type);
+		if(request.getParameter("x").equals("list")) {
+			System.out.println("llliisstt");
+			request.setAttribute("x","list");
+		}else {
+			System.out.println("돌아간다ㅏ"+request.getAttribute("x")+"::"+request.getAttribute("y")+"::"+request.getAttribute("lev"));
+			
+			request.setAttribute("x",request.getParameter("x"));
+			request.setAttribute("y",request.getParameter("y"));
+			request.setAttribute("lev",request.getParameter("lev"));
+		}
 		
 		//String path="jsp/forsale/";
 		String path="";

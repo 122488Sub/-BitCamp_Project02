@@ -14,9 +14,42 @@
 <head>
 <meta charset=UTF-8>
 <title>선택한 매물</title>
+<script type="text/javascript">
+	function update_go() {
+		console.log(">");
+	}
+	
+	function moveFSMultiPage(){
+		var form = document.createElement("form");
+		var parm = new Array();
+	    var input = new Array();
 
+	    form.action = "ForSaleController";
+	    form.method = "post";
+	    console.log(<%=request.getAttribute("FSonePosX")%>);
+	    console.log(<%=request.getAttribute("FSonePosY")%>);
+	    console.log(<%=request.getAttribute("FSoneLevel")%>);
+	    parm.push( ['type', "FsPage"] );
+	    parm.push( ['x', <%=request.getAttribute("FSonePosX")%>] );
+	    parm.push( ['y', <%=request.getAttribute("FSonePosY")%>] );
+	    parm.push( ['lev',<%=request.getAttribute("FSoneLevel")%>] );
+	  
+
+	    for (var i = 0; i < parm.length; i++) {
+	        input[i] = document.createElement("input");
+	        input[i].setAttribute("type", "hidden");
+	        input[i].setAttribute('name', parm[i][0]);
+	        input[i].setAttribute("value", parm[i][1]);
+	        form.appendChild(input[i]);
+	    }
+	    document.body.appendChild(form);
+	    form.submit();
+	}
+</script>
 <style type="text/css">
+
 </style>
+<link href="css/forsaleBtn.css" rel="stylesheet" type="text/css">
 <link href="css/forsaleOne.css" rel="stylesheet" type="text/css">
 <%@ include file="main/navCssLink.html"%>
 </head>
@@ -29,7 +62,7 @@
 
 
 	<div class="headInfo">
-		<div style="width:80%;float: left;">
+		<div style="width:70%;float: left;">
 			<table class="roomInfo">
 				<colgroup>
 					<col width="50%">
@@ -52,31 +85,9 @@
 				</tbody>
 			</table>
 		</div>
-		<div style="width:20%; float: right;">
-			<table class="reaInfo">
-				<colgroup>
-
-				</colgroup>
-
-				<thead>
-					<tr>
-						<th>중개사</th>
-						<td>${REAVO.rea_name}</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th>회사</th>
-						<td>${REAVO.rea_company }</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<th>연락처</th>
-						<td>${REAVO.rea_phone }</td>
-					</tr>
-				</tfoot>
-			</table>
+		<div style="width:30%; float: right; display: inline-block;">
+			<button class="snip1535" onclick="moveFSMultiPage()">수 정</button>
+			<button class="snip1535" onclick="delete_go()">삭 제</button>
 		</div>
 	</div>
 	
