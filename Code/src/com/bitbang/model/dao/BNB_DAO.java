@@ -22,7 +22,7 @@ public class BNB_DAO {
 	public static List<BNB_ROOM_INFOVO> getList(Map<String, Integer> map) {
 		SqlSession ss = DBService.getFactory().openSession(true);
 		List<BNB_ROOM_INFOVO> roomlist = ss.selectList("roomlist", map);
-		System.out.println(roomlist);
+		System.out.println("룸리스트 : " + roomlist);
 		ss.close();
 		return roomlist;
 	}

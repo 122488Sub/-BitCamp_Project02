@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bitbang.model.dao.resaleDAO;
-
+import com.bitbang.model.vo.ResaleImgVO;
 import com.bitbang.model.vo.ResalePageVO;
 import com.bitbang.model.vo.ResaleVO;
 
@@ -55,7 +55,13 @@ public class ResaleListCommand implements Command{
 		
 		
 		List<ResaleVO> list = resaleDAO.selectList(map);
+		//4. 이미지 파일 저장
 		
+		//
+		//List<ResaleImgVO> imgList = resaleDAO.resaleBoardImg(map);	
+		
+		//EL, JSTL 사용을 위한 속성 등록
+		//request.setAttribute("imgList", imgList);
 		request.setAttribute("pvo", p);
 		request.setAttribute("list", list);
 		
@@ -64,6 +70,6 @@ public class ResaleListCommand implements Command{
 		}
 
 		
-		return "main/resale/resaleList.jsp";
+		return "main/resale/resaleList_img.jsp";
 	}
 }

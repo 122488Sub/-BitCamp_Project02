@@ -103,16 +103,11 @@
 .roomlist .roomlist_tit h3 {margin: 35px 0 30px 0; font-weight: 600; font-size : 22px; line-height : 26px;}
 .roomlist .a { width: 756px; margin-left: 0;}
 
-.roomlist .roomlist_items{ margin-top : -8px ; width : 45%; height: 1255px; position: relative; float : left;}
+.roomlist .roomlist_items{ margin-top : -8px ; width : 45%; height: 1355px; position: relative; float : left;}
 .roomlist .roomlist_items .roomlist_each {width:100% height: 250px; cursor: pointer;}
 
 /* 슬라이드 */
 .room_slider {width: 300px; height: 200px; padding: 25px 15px 25px 0; float: left;}
-.room_slider .li1 {background : url(../img/header7.jpg) no-repeat center center; background-size: cover; border-radius: 5px;}
-.room_slider .li2 {background : url(../img/header8.jpg) no-repeat center center; background-size: cover; border-radius: 5px;}
-.room_slider .li3 {background : url(../img/headerpic1.jpg) no-repeat center center; background-size: cover; border-radius: 5px;}
-.room_slider .li4 {background : url(../img/headerpic2.jpg) no-repeat center center; background-size: cover; border-radius: 5px;}
-.room_slider .li5 {background : url(../img/headerpic3.jpg) no-repeat center center; background-size: cover; border-radius: 5px;}
 
 
 .room_simpleinfo {float: left; padding: 25px 0 25px 15px; position : relative; width: 426px; font-size : 16px;}
@@ -126,17 +121,26 @@
 .roomlist .b { clear : both; margin : 0; }
 
 
-.roomlist_items .pagingbox {display: table; height: 100px; width: 100%; font-size: 16px; font-weight: 600;}
-.roomlist_items .pagingbox .paging {position: relative; display: table-cell;  vertical-align : middle; text-align: center; margin : 0 auto;}
-.roomlist_items .pagingbox .paging .sprev{display: inline-block; vertical-align : middle;}
-.roomlist_items .pagingbox .paging .now{display: inline-block; vertical-align : middle; margin : 0 15px;}
-.roomlist_items .pagingbox .paging .snext{display: inline-block; vertical-align : middle;}
-
-.disable {
+.roomlist_items .pagingbox {position: relative;  width: 100%; font-size: 16px; font-weight: 600; display : block; text-align : center; }
+.roomlist_items .pagingbox ol.paging {padding :25px; display : block; }
+.roomlist_items .pagingbox ol.paging li{display : inline-block; margin-right: 8px;}
+.roomlist_items .pagingbox ol.paging li a {
+	display: block;
 	padding: 3px 7px;
-	border: 1px solid silver;
-	color: silver;
+	border: 1px solid #00B3DC;
+	color: #2f313e;
+	font-weight: bold;
+	text-decoration: none;
 }
+.roomlist_items .pagingbox ol.paging li a:hover {
+	background: #00B3DC;
+	color: white;
+	font-weight: bold;
+}
+.disable{padding: 3px 7px;
+	border: 1px solid silver;
+	color: silver;}
+
 
 .now {
 	padding: 3px 7px;
@@ -144,6 +148,7 @@
 	background: #ff4aa5;
 	color: white;
 	font-weight: bold;
+	
 }
 
 

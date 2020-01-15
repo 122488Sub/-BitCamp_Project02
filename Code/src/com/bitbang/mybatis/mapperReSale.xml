@@ -26,6 +26,17 @@
 	  WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
 	
+	<select id="resaleBoardImg" parameterType="map" resultType="rsImgVO">
+		SELECT *
+		FROM (
+		       SELECT ROWNUM R_NUM, RESALE.*
+		        FROM (SELECT *
+		                FROM RESALE_IMG
+		               ORDER BY RS_SEQ DESC) RESALE      
+		    )
+	  WHERE R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+	
 	<!-- 해당 게시글에 있는 모든 댓글 가져오기 -->
 	<select id="resaleCommList" parameterType="int" resultType="rsCommVO">
 		SELECT *

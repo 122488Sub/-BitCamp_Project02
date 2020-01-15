@@ -3,11 +3,13 @@ package com.bitbang.model.vo;
 public class ForSaleVO {
 	int forsale_seq, forsale_idx = 1, rea_idx;
 
-	String  subject, address, detail, filename, file_ori_name, regdate;
+	String  subject, address, detail;
+	double pos_x, pos_y;
+	String regdate;
 	public ForSaleVO() {
 	}
 	public ForSaleVO(int forsale_seq, int forsale_idx, int rea_idx, String subject, 
-			String address, String detail,String filename, String file_ori_name, String regdate) 	{
+			String address, String detail,double pos_x, double pos_y, String regdate) 	{
 		super();
 		this.forsale_seq = forsale_seq;
 		this.forsale_idx = forsale_idx;
@@ -15,8 +17,8 @@ public class ForSaleVO {
 		this.subject = subject;
 		this.address = address;
 		this.detail = detail;
-		this.filename = filename;
-		this.file_ori_name = file_ori_name;
+		this.pos_x = pos_x;
+		this.pos_y = pos_y;
 		this.regdate = regdate;
 	}
 	public int getForsale_seq() {
@@ -55,17 +57,17 @@ public class ForSaleVO {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	public String getFilename() {
-		return filename;
+	public double getPos_x() {
+		return pos_x;
 	}
-	public void setFilename(String filename) {
-		this.filename = filename;
+	public void setPos_x(double pos_x) {
+		this.pos_x = pos_x;
 	}
-	public String getFile_ori_name() {
-		return file_ori_name;
+	public double getPos_y() {
+		return pos_y;
 	}
-	public void setFile_ori_name(String file_ori_name) {
-		this.file_ori_name = file_ori_name;
+	public void setPos_y(double pos_y) {
+		this.pos_y = pos_y;
 	}
 	public String getRegdate() {
 		return regdate;
@@ -76,8 +78,8 @@ public class ForSaleVO {
 	@Override
 	public String toString() {
 		return "ForSaleVO [forsale_seq=" + forsale_seq + ", forsale_idx=" + forsale_idx + ", rea_idx=" + rea_idx
-				+ ", subject=" + subject + ", address=" + address + ", detail=" + detail + ", filename=" + filename
-				+ ", file_ori_name=" + file_ori_name + ", regdate=" + regdate + "]";
+				+ ", subject=" + subject + ", address=" + address + ", detail=" + detail + ", pos_x=" + pos_x
+				+ ", pos_y=" + pos_y + ", regdate=" + regdate + "]";
 	}
 
 	

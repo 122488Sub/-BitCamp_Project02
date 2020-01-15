@@ -3,6 +3,7 @@ package com.bitbang.model.vo;
 import java.util.Date;
 
 public class BNB_ROOM_INFOVO {
+	private int r_num; //ROWNUM 정보 저장
 	private int bnb_idx, room_serial;
 	private String r_name, r_info, checkin_time, checkout_time;
 	private String r_price, discount_price;
@@ -18,6 +19,14 @@ public class BNB_ROOM_INFOVO {
 	private String h_name, h_phone;
 	private Date h_joindate;
 	private String h_intro;
+	
+	
+	public int getR_num() {
+		return r_num;
+	}
+	public void setR_num(int r_num) {
+		this.r_num = r_num;
+	}
 	public int getBnb_idx() {
 		return bnb_idx;
 	}

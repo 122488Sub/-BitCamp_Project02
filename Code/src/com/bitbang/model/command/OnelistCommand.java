@@ -16,10 +16,10 @@ public class OnelistCommand implements Command {
 		String idx = (String)request.getSession().getAttribute("idx");
 		sub_divisionVO vo = new sub_divisionVO();
 		vo = DAO.selectGuestbook(idx);
-		if (request.getSession().getAttribute("sub_divisionVO") == null
-			|| request.getSession().getAttribute("sub_divisionVO").equals("")) {
+		//if (request.getSession().getAttribute("sub_divisionVO") == null
+		//	|| request.getSession().getAttribute("sub_divisionVO").equals("")) {
 			request.getSession().setAttribute("sub_divisionVO", vo);
-		}
+	//	}
 		return "detail.jsp";
 	}
 

@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+body {
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	#img_content {
+		display: inline-block;
+		width: 1130px;
+		height: 1500px;
+		border: 1px solid black;
+	}
+	#onePostBox {
+		width: 230px;
+		height: 370px;
+		border: 1px solid black;
+		display: inline-block;
+		float: left;
+		margin-right: 25px;
+		margin-left: 25px;
+		margin-bottom: 25px;
+	}
+	#imgBox {
+		margin: 0;
+		padding: 0;
+		width: 230px;
+		height: 230px;
+		border: 1px solid black;
+	}
+	#infoBox {
+		margin: 0;
+		padding: 0;
+		width: 230px;
+		height: 80px;
+		border: 1px solid black;
+	}
+	#infoChildBox {
+		margin-top: 20px;
+		padding: 0;
+		width: 230px;
+		height: 40px;
+		display: inline;
+	}
+	#infoTable {
+		width: 230px;
+		height: 50px;
+	}
+	#addrBox{
+		margin-top: 4px;
+		padding: 0;
+		width: 230px;
+		height: 30px;
+		border: 1px solid black;
+		text-align: left;
+			
+	}
+	#listSubject{
+		width: 230px;
+		height: 30px;
+		font-size: 15px;
+		font-weight: bold;
+		font-family: 'Noto Sans KR', sans-serif;
+		text-align: left;
+		padding:0 5px; 
+		overflow:hidden; 
+		text-overflow:ellipsis; white-space:nowrap;
+
+	}
+	#priceBox {
+		text-align: left;
+	}
+	#listPrice{
+		display: inline;
+		font-size: 25px;
+		font-weight: bold;
+		font-family: 'Noto Sans KR', sans-serif;
+		text-align: left;
+	}
+	#listDate{
+		font-size: 13px;
+		font-weight: bold;
+		font-family: 'Noto Sans KR', sans-serif;
+		text-align: right;
+	}
+	#won{
+		font-size: 15px;
+		font-weight: bold;
+		text-align: left;
+	}
+	
+	#write { 
+		text-align: right;
+
+	}
+	#write > input {
+				width: 100px;
+			height:50px;
+	}

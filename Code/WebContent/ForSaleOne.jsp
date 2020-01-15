@@ -80,7 +80,7 @@
 		</div>
 	</div>
 	
-	<div class="space"></div>
+<!-- 	<div class="space"></div> -->
 	<div class="detail">
 		<ul class="ul_detail">
 
@@ -129,8 +129,25 @@
 		</div>
 	</div>
 	<div class="fsContent">${FSoneVO.content }</div>
+	<div class="categoryMapInfo">주변시설정보</div>
+	<div class="fsOneMap">
+		<jsp:include page="map/kakaoMapOneForSale.jsp" >
+			<jsp:param value="${FSonePosX }" name="x"/>
+			<jsp:param value="${FSonePosY }" name="y"/>
+		</jsp:include>
+
+	</div>
+	
+	
+	
+	
 </div>
 <br>
+<br>
+<br>
+<br>
+<br>
+
 
 <%--
 <div id="container">

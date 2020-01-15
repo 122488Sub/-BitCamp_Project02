@@ -2,6 +2,7 @@
 <%@page import="com.bitbang.model.vo.ForSaleVO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -10,8 +11,13 @@
 <style>
 
 #map{
-	height: 500px;
-	width: 100%;
+	position: absolute;
+ 	top: 0;
+  	bottom: 0;
+	height: 100%;
+	width: 80%;
+	left:50%; 
+	transform:translateX(-50%);
 }
 </style>
 <div id="map" ></div>
@@ -24,7 +30,7 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	mapOption = { 
 		center: new kakao.maps.LatLng(37.50192426050855, 127.02562676562276), // 지도의 중심좌표
-	    level: 7 // 지도의 확대 레벨
+	    level: 10 // 지도의 확대 레벨
 	};
 
 //지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
@@ -33,8 +39,8 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var clusterer = new kakao.maps.MarkerClusterer({
     map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
     averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-    minLevel: 7, // 클러스터 할 최소 지도 레벨
-    disableClickZoom: true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
+    minLevel: 5 // 클러스터 할 최소 지도 레벨
+   // disableClickZoom: true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 });
 
 //주소를 좌표로 바꾸기 위한 geocoder 생성
@@ -69,6 +75,7 @@ $.ajax("ForSaleAjax",{
 					// 커스텀 오버레이에 표시할 컨텐츠 입니다
 					// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
 					// 별도의 이벤트 메소드를 제공하지 않습니다 
+					var imgNum= Fsvo.forsale_seq%6;
 					var content = '<div class="wrap">' + 
 						            '    <div class="info">' + 
 						            '        <div class="title">' + 
@@ -76,12 +83,13 @@ $.ajax("ForSaleAjax",{
 						            '        </div>' + 
 						            '        <div class="body">' + 
 						            '            <div class="img">' +
-						            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+						            '                <img src="images/forsale/big0'+imgNum +'.PNG" width="73" height="70">' +
 						            '           </div>' + 
 						            '            <div class="desc">' + 
 						            '                <div class="ellipsis">'+Fsvo.address+'</div>' +  
 						            '                <div class="jibun ellipsis">' + Fsvo.detail.split(';')[1] + '</div>' + 
-						            '                <div><a href="ForSaleController?type=FsOne&idx='+Fsvo.forsale_seq +'" target="_parent" class="link">자세히보기</a></div>' + 
+						            //'                <div><a href="ForSaleController?type=FsOne&idx='+Fsvo.forsale_seq +'&x='+coords.Ha+'&y='+coords.Ga+'" target="_parent" class="link">자세히보기</a></div>' + 
+					         		'                <div><a href="javascript:moveFSonePage('+Fsvo.forsale_seq +','+coords.Ha+','+coords.Ga+')" target="_parent" class="link">자세히보기</a></div>' +
 						            '            </div>' + 
 						            '        </div>' + 
 						            '    </div>' +    
@@ -125,18 +133,15 @@ $.ajax("ForSaleAjax",{
 			console.log("변경전: " +map.getLevel());
 	        // 현재 지도 레벨에서 1레벨 확대한 레벨
 	        
-	        var level = map.getLevel()-3;
-	        if(level<=4){
+	        var level = map.getLevel()-1;
+	        if(level<=2){
 	        	level=4;
 	        }
 	        // 지도를 클릭된 클러스터의 마커의 위치를 기준으로 확대합니다
 	        map.setLevel(level, {anchor: cluster.getCenter()});
 	        console.log("변경후: " +map.getLevel());
 	    });
-		kakao.maps.event.addListener(map, 'bounds_changed', function() { 
-			
-			
-		});
+		
 	}
 	,
 	error : function(jqXHR, textStatus, errorThrown){
@@ -156,4 +161,28 @@ function setMarkers(map) {
  }            
 }
 
+function moveFSonePage(seq,x,y){
+	var form = document.createElement("form");
+	var parm = new Array();
+    var input = new Array();
+
+    form.action = "ForSaleController";
+    form.method = "post";
+
+    parm.push( ['type', "FsOne"] );
+    parm.push( ['idx', seq] );
+    parm.push( ['x', x] );
+    parm.push( ['y', y] );
+
+
+    for (var i = 0; i < parm.length; i++) {
+        input[i] = document.createElement("input");
+        input[i].setAttribute("type", "hidden");
+        input[i].setAttribute('name', parm[i][0]);
+        input[i].setAttribute("value", parm[i][1]);
+        form.appendChild(input[i]);
+    }
+    document.body.appendChild(form);
+    form.submit();
+}
 </script>

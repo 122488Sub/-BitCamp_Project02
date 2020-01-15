@@ -41,11 +41,11 @@ public class MyController extends HttpServlet {
 		
 		//세부사항
 		if (type.toString().equals("onelist")) {
-			if (request.getSession().getAttribute("idx") == null 
-				|| ((String)request.getSession().getAttribute("idx")).trim().equals("")) {
+			//if (request.getSession().getAttribute("idx") == null 
+			//	|| ((String)request.getSession().getAttribute("idx")).trim().equals("")) {
 				String idx = request.getParameter("idx"); 
 				request.getSession().setAttribute("idx", idx);
-			}
+			//}
 			comm = new OnelistCommand();
 			path = comm.exec(request, response);
 		}

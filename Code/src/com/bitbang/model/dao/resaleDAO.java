@@ -23,6 +23,7 @@ public class resaleDAO {
 		ss.close();
 		return rsVO;
 	}
+	
 	//게시판에 있는 모든 정보 select
 	public static List<ResaleVO> selectList(Map<String, Integer> map) {
 		SqlSession ss = DBService.getFactory().openSession(true);
@@ -63,6 +64,15 @@ public class resaleDAO {
 		SqlSession ss = DBService.getFactory().openSession(true);
 
 		List<ResaleImgVO> imgList = ss.selectList("imgList", rs_seq);
+
+		ss.close();
+		return imgList;
+	}
+	
+	public static List<ResaleImgVO> resaleBoardImg(Map<String, Integer> map) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+
+		List<ResaleImgVO> imgList = ss.selectList("resaleBoardImg", map);
 
 		ss.close();
 		return imgList;
