@@ -6,11 +6,12 @@ public class ResaleVO {
 	private Date reg_date;
 	private int rs_idx = 5;
 	private String id, pwd, name, subject, address, category, category_child, 
-				   filename, file_ori_name, ip, hash_tag, content;
+				   ip, hash_tag, content, file_name, file_ori_name;
 	private int rs_seq, member_idx, hit, price;
 	public ResaleVO() {}
 	public ResaleVO(Date reg_date, String content,String id, String pwd, String name, String subject, String address, String category,
-			String category_child, String filename, String file_ori_name, String ip, String hash_tag, int rs_idx,
+			String category_child, String ip, String hash_tag, String file_name, String file_ori_name
+			, int rs_idx,
 			int rs_seq, int member_idx, int hit, int price) {
 		super();
 		this.reg_date = reg_date;
@@ -21,8 +22,6 @@ public class ResaleVO {
 		this.address = address;
 		this.category = category;
 		this.category_child = category_child;
-		this.filename = filename;
-		this.file_ori_name = file_ori_name;
 		this.ip = ip;
 		this.hash_tag = hash_tag;
 		this.rs_idx = rs_idx;
@@ -31,6 +30,8 @@ public class ResaleVO {
 		this.hit = hit;
 		this.content = content;
 		this.price = price;
+		this.file_name = file_name;
+		this.file_ori_name = file_ori_name;
 	}
 	
 	
@@ -91,18 +92,6 @@ public class ResaleVO {
 	public void setCategory_child(String category_child) {
 		this.category_child = category_child;
 	}
-	public String getFilename() {
-		return filename;
-	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
-	public String getFile_ori_name() {
-		return file_ori_name;
-	}
-	public void setFile_ori_name(String file_ori_name) {
-		this.file_ori_name = file_ori_name;
-	}
 	public String getIp() {
 		return ip;
 	}
@@ -145,11 +134,23 @@ public class ResaleVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public String getFile_name() {
+		return file_name;
+	}
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
+	public String getFile_ori_name() {
+		return file_ori_name;
+	}
+	public void setFile_ori_name(String file_ori_name) {
+		this.file_ori_name = file_ori_name;
+	}
 	@Override
 	public String toString() {
 		return "ResaleVO [reg_date=" + reg_date + ", rs_idx=" + rs_idx + ", id=" + id + ", pwd=" + pwd + ", name="
 				+ name + ", subject=" + subject + ", address=" + address + ", category=" + category
-				+ ", category_child=" + category_child + ", filename=" + filename + ", file_ori_name=" + file_ori_name
+				+ ", category_child=" + category_child + ", filename=" + file_name + ", file_ori_name=" + file_ori_name
 				+ ", ip=" + ip + ", hash_tag=" + hash_tag + ", content=" + content + ", rs_seq=" + rs_seq
 				+ ", member_idx=" + member_idx + ", hit=" + hit + ", price=" + price + "]";
 	}

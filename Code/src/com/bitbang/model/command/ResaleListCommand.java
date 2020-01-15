@@ -56,20 +56,22 @@ public class ResaleListCommand implements Command{
 		
 		List<ResaleVO> list = resaleDAO.selectList(map);
 		//4. 이미지 파일 저장
-		
-		//
-		//List<ResaleImgVO> imgList = resaleDAO.resaleBoardImg(map);	
+
+		List<ResaleImgVO> imgList = resaleDAO.resaleBoardImg(map);	
 		
 		//EL, JSTL 사용을 위한 속성 등록
-		//request.setAttribute("imgList", imgList);
+		request.setAttribute("imgList", imgList);
 		request.setAttribute("pvo", p);
 		request.setAttribute("list", list);
 		
+		for(ResaleImgVO vo : imgList) {
+			System.out.println(vo.toString());
+		}
 		for(ResaleVO vo : list) {
 			System.out.println(vo.toString());
 		}
 
 		
-		return "main/resale/resaleList_img.jsp";
+		return "ResaleController?type=listPage";
 	}
 }

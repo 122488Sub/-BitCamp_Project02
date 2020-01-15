@@ -190,7 +190,8 @@
 			<div id="write">
 				<input type="button" value="글쓰기" onclick="javascript:location.href='ResaleController?type=newPost'">
 			</div>
-			<c:forEach var="vo" items="${list}">
+			<c:forEach var="vo" items="${list}" varStatus="voCnt">
+				
 			  <a href="ResaleController?type=detail&rs_seq=${vo.rs_seq}&cPage=${pvo.getNowPage()}">
 				<div id="onePostBox">
 					<div id="imgBox">
@@ -199,12 +200,10 @@
 					    	<img id="imgFileList" src="./images/default-placeholder.jpg">
 					    </c:when>
 					    <c:otherwise>
-					    <c:forEach items="${imgList }" var="img">
-					    	<img id="imgFileList" src="/BITBANG/resale_img/${img[0].rs_file_name}">
-					    	</c:forEach>
+							<img id="imgFileList" src="./images/resale/${vo.file_name}">
+					    	<!-- <img id="imgFileList" src="images/resale/${imgList.get(voCnt.index).rs_file_name}">-->	
 					    </c:otherwise>
 					    </c:choose>
-						
 					</div>
 					<br>
 					<div id="infoBox">

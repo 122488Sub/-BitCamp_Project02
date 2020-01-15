@@ -15,6 +15,7 @@ import com.bitbang.model.command.ResaleListCommand;
 import com.bitbang.model.command.ResaleNewPostCommand;
 import com.bitbang.model.command.ResaleReCommCommand;
 import com.bitbang.model.command.ResaleWriteCommand;
+import com.bitbang.model.command.ResalelistPageCommand;
 
 
 
@@ -32,18 +33,28 @@ public class ResaleController extends HttpServlet {
 		Command comm = null;
 		
 		switch(type) {
-		case "write": comm = new ResaleWriteCommand(); break;
-		case "list": comm = new ResaleListCommand(); break;
-		case "detail": comm = new ResaleDetailCommand(); break;
-		case "comm": comm = new ResaleCommCommand(); break;
-		case "reComm": comm = new ResaleReCommCommand(); break;
-		case "newPost": comm = new ResaleNewPostCommand(); break;
+			case "write_ok": comm = new ResaleListCommand(); break;
+			default: break;
+		}
+		if(comm != null) {
+			path = comm.exec(request, response);
+			response.sendRedirect(path);
+		}else {
 		
-				
+		switch(type) {
+			case "write": comm = new ResaleWriteCommand(); break;
+			case "list": comm = new ResaleListCommand(); break;
+			case "listPage": comm = new ResalelistPageCommand(); break;
+			case "detail": comm = new ResaleDetailCommand(); break;
+			case "comm": comm = new ResaleCommCommand(); break;
+			case "reComm": comm = new ResaleReCommCommand(); break;
+			case "newPost": comm = new ResaleNewPostCommand(); break;
+			default : break;
 		}
 
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
+		}
 	}
 
 
