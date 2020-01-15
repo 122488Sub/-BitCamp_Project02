@@ -26,15 +26,8 @@
 
 	    form.action = "ForSaleController";
 	    form.method = "post";
-	    console.log(<%=request.getAttribute("FSonePosX")%>);
-	    console.log(<%=request.getAttribute("FSonePosY")%>);
-	    console.log(<%=request.getAttribute("FSoneLevel")%>);
 	    parm.push( ['type', "FsPage"] );
-	    parm.push( ['x', <%=request.getAttribute("FSonePosX")%>] );
-	    parm.push( ['y', <%=request.getAttribute("FSonePosY")%>] );
-	    parm.push( ['lev',<%=request.getAttribute("FSoneLevel")%>] );
-	  
-
+	    
 	    for (var i = 0; i < parm.length; i++) {
 	        input[i] = document.createElement("input");
 	        input[i].setAttribute("type", "hidden");
@@ -86,7 +79,8 @@
 			</table>
 		</div>
 		<div style="width:30%; float: right; display: inline-block;">
-			<button class="snip1535" onclick="moveFSMultiPage()">수 정</button>
+			<button class="snip1535" onclick="moveFSMultiPage()">목 록</button>
+			<button class="snip1535" onclick="update_go()">수 정</button>
 			<button class="snip1535" onclick="delete_go()">삭 제</button>
 		</div>
 	</div>
@@ -142,6 +136,8 @@
 	<div class="fsContent">${FSoneVO.content }</div>
 	<div class="categoryMapInfo">주변시설정보</div>
 	<div class="fsOneMap">
+	
+	
 		<jsp:include page="map/kakaoMapOneForSale.jsp" >
 			<jsp:param value="${FSonePosX }" name="x"/>
 			<jsp:param value="${FSonePosY }" name="y"/>

@@ -5,8 +5,10 @@
 
 .detail, .fsContent, .headInfo {
 	width: 1000px;
+	
 	margin: 0px auto 30px auto;
 }
+
 .imageView {
 	width: 100%;
 	margin: 0px auto 30px auto;

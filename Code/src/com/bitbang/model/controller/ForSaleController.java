@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bitbang.common.commonUtil;
 import com.bitbang.model.command.Command;
 import com.bitbang.model.command.ForSaleOnePageCommand;
 import com.bitbang.model.command.ForSalePageCommand;
@@ -19,24 +20,21 @@ public class ForSaleController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type = request.getParameter("type");
 		System.out.println(type);
-		if(request.getParameter("x").equals("list")) {
-			System.out.println("llliisstt");
-			request.setAttribute("x","list");
-		}else {
-			System.out.println("돌아간다ㅏ"+request.getAttribute("x")+"::"+request.getAttribute("y")+"::"+request.getAttribute("lev"));
-			
-			request.setAttribute("x",request.getParameter("x"));
-			request.setAttribute("y",request.getParameter("y"));
-			request.setAttribute("lev",request.getParameter("lev"));
-		}
 		
-		//String path="jsp/forsale/";
 		String path="";
 		Command comm=null;
 		
 		switch(type) {
-		case "FsPage":		comm = new ForSalePageCommand(); break;
-		case "FsOne":		comm = new ForSaleOnePageCommand(); break;
+		case "FsPageRe":
+			commonUtil.fs_Bool=false;
+		case "FsPage":	
+			comm = new ForSalePageCommand(); break;
+		case "FsOne":	
+			commonUtil.fs_Bool=true;
+			commonUtil.fs_x=Double.parseDouble(request.getParameter("x"));
+			commonUtil.fs_y=Double.parseDouble(request.getParameter("y"));
+			commonUtil.fs_level=Integer.parseInt(request.getParameter("lev"));
+			comm = new ForSaleOnePageCommand(); break;
 		}
 		
 		path=comm.exec(request, response);

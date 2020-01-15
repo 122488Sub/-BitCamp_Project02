@@ -1,3 +1,4 @@
+<%@page import="com.bitbang.common.commonUtil"%>
 <%@page import="com.bitbang.model.dao.forsaleDAO"%>
 <%@page import="com.bitbang.model.vo.ForSaleVO"%>
 <%@page import="java.util.List"%>
@@ -25,31 +26,14 @@
    <!-- ★ 키입력 뒷편 &libraries=services 필수입력 --> 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=023641db8947696e319921e818d4fe2b&libraries=services,clusterer,drawing"></script> 
 <script>
-<%
-System.out.println("tq");
 
-String tmp= "";
-
-tmp= (String)request.getAttribute("x");
-double px=Double.parseDouble(tmp);
-System.out.println("x: "+px);
-
-tmp= (String)request.getAttribute("y");
-double py=Double.parseDouble(tmp);
-System.out.println("y: "+py);
-
-tmp= (String)request.getAttribute("lev");
-int plev=Integer.parseInt(tmp);
-System.out.println("l: "+tmp);
-
-%>
 //카카오맵 지도 생성
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	mapOption = { 
 		//center: new kakao.maps.LatLng(37.50192426050855, 127.02562676562276), // 지도의 중심좌표
 	    //level: 10 // 지도의 확대 레벨
-	    center: new kakao.maps.LatLng(<%=px%>, <%=py%>), // 지도의 중심좌표
-	    level: <%=plev%> // 지도의 확대 레벨
+	    center: new kakao.maps.LatLng(<%=commonUtil.fs_x%>, <%=commonUtil.fs_y%>), // 지도의 중심좌표
+	    level: <%=commonUtil.fs_level%> // 지도의 확대 레벨
 	};
 
 //지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
@@ -191,10 +175,11 @@ function moveFSonePage(seq,x,y){
 
     parm.push( ['type', "FsOne"] );
     parm.push( ['idx', seq] );
+    
     parm.push( ['x', x] );
     parm.push( ['y', y] );
     parm.push( ['lev', map.getLevel()] );
-
+	parm.push( ['b','T']);
 
     for (var i = 0; i < parm.length; i++) {
         input[i] = document.createElement("input");
@@ -204,6 +189,7 @@ function moveFSonePage(seq,x,y){
         form.appendChild(input[i]);
     }
     document.body.appendChild(form);
+    
     form.submit();
 }
 </script>
