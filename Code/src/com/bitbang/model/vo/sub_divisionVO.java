@@ -4,7 +4,7 @@ public class sub_divisionVO {
 	private String idx, step, a_type, supply_type, a_location, 
     			   price, households, building_area, construction, developer,
     			   monopoly, a_restrict, price_up, a_period, annoucement,
-    			   moving_in, a_image, a_images;
+    			   moving_in, a_image, a_images, a_map;
 	
 	//기본생성자, 전체데이터 입력생성자
 	public sub_divisionVO() {}
@@ -12,7 +12,7 @@ public class sub_divisionVO {
 	public sub_divisionVO(String idx, String step, String a_type, String supply_type, String a_location, String price,
 			String households, String building_area, String construction, String developer, String monopoly,
 			String a_restrict, String price_up, String a_period, String annoucement, String moving_in, String a_image,
-			String a_images) {
+			String a_images, String a_map) {
 		super();
 		this.idx = idx;
 		this.step = step;
@@ -32,6 +32,7 @@ public class sub_divisionVO {
 		this.moving_in = moving_in;
 		this.a_image = a_image;
 		this.a_images = a_images;
+		this.a_map = a_map;
 	}
 
 	public String getIdx() {
@@ -178,6 +179,14 @@ public class sub_divisionVO {
 		this.a_images = a_images;
 	}
 
+	public String getA_map() {
+		return a_map;
+	}
+
+	public void setA_map(String a_map) {
+		this.a_map = a_map;
+	}
+
 	@Override
 	public String toString() {
 		return "sub_divisionVO [idx=" + idx + ", step=" + step + ", a_type=" + a_type + ", supply_type=" + supply_type
@@ -185,13 +194,8 @@ public class sub_divisionVO {
 				+ building_area + ", construction=" + construction + ", developer=" + developer + ", monopoly="
 				+ monopoly + ", a_restrict=" + a_restrict + ", price_up=" + price_up + ", a_period=" + a_period
 				+ ", annoucement=" + annoucement + ", moving_in=" + moving_in + ", a_image=" + a_image + ", a_images="
-				+ a_images + "]";
-	}
-
-	
-	
-		
-		
+				+ a_images + ", a_map=" + a_map + "]";
+	}	
 }
 	
 

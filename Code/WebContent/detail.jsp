@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/price.css" rel="stylesheet" type="text/css"></link>
+
+
 <script>
 	function update_go(frm){
 		frm.action = "MyController?type=update";
@@ -17,9 +19,10 @@
 	}
 </script>
 <%request.setCharacterEncoding("UTF-8");%>
+
 </head>
-
-
+<%@ include file="main/navCssLink.html" %>
+<%@ include file="main/navBody.html" %>	
 
 <body>
 		<div id="container">
@@ -96,7 +99,7 @@
             <p class="detail_map_txt">${sub_divisionVO.getA_location() }</p>
             <div class="detail_map">
             	<jsp:include page="map/kakaoAddressFacilities.jsp">
-					<jsp:param value="경기도 파주시" name="address"/>
+					<jsp:param value="${sub_divisionVO.getA_map() }" name="address"/>
 				</jsp:include>
             </div>
             

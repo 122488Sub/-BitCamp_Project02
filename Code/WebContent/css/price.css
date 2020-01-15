@@ -165,7 +165,7 @@
 .detail_img{
     margin:0 auto;
 }
-.btn{
+.btn_box .btn{
     width: 116px;
     height: 42px;
     display: inline-block;
@@ -179,6 +179,7 @@
     border-color: rgb(221, 221, 221);
     border-image: initial;
     cursor: pointer;
+    margin-bottom : 10px;
 }
 .btn_list{
     float: left; 
