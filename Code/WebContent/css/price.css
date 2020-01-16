@@ -20,6 +20,15 @@
     float:left;
     margin: 0px 0px 10px 0px;
 }
+.review_tit > span{
+	line-height: 22px;
+    font-size: 15px;
+    color: rgb(102, 102, 102);
+}
+.review_tit > span > b{
+	font-weight: 400;
+    color: rgb(50, 108, 249);
+}
 .review_write{
 	float:right;
 	margin: 15px 0px 0px 0px;

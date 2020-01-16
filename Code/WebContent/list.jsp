@@ -39,7 +39,15 @@
 			</form>
 		</div>
 		
-		<p class="review_tit">분양목록</p>
+		<p class="review_tit">
+		분양목록
+		<span>
+		총
+		<b>${paging.totalRecord}</b>
+		건
+		</span>
+		</p>
+		
 		<p class="review_write"><a class="review_write_a" href="MyController?type=write">[ 분양목록 작성 ]</a></p>
 		<table class="review_table">
 		<colgroup>
