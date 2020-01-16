@@ -34,7 +34,8 @@
 				</select>
 			
 				<input type="text" name="keyword">
-				<input class=select_search type="submit" value="검색" onclick="search_go(this.form)">
+				<input class=select_search type="image" src="images/icon.png" 
+						width="20px" height="20px" onclick="search_go(this.form)">
 			</form>
 		</div>
 		
