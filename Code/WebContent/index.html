@@ -18,10 +18,25 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="css/aos.css">
-`
+
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
-
+	<style>
+		#logBox {
+		width: 1300px;
+		height: 50px;
+		text-align: right;
+		}
+		#logUl {
+		
+		list-style: none;
+		margin-right: 0;
+		font-size: 15px;
+		}
+		li a {
+			color: black;
+		}
+	</style>
   </head>
 	<!-- 여기부터 -->
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -46,7 +61,7 @@
               <nav class="site-navigation text-right ml-auto " role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                   <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                  <li><a href="javascript:moveFSPage()" class="nav-link">ForSale</a></li>
+                  <li><a href="ForSaleController?type=FsPage&x=list" class="nav-link">ForSale</a></li>
                   <li><a href="ControllerCommunity" class="nav-link">Community</a></li>
                 </ul>
               </nav>
@@ -71,7 +86,12 @@
             </div>
           </div>
         </div>
-
+		<div id="logBox">
+			<ul id="logUl">
+				<li id="login"><a href="LoginController?type=login_go">login</a></li>
+				<li id="signin"><a href="LoginController?type=signup_go">Sign in</a></li>
+			</ul>
+		</div>
       </header>
     <div class="owl-carousel-wrapper">
 

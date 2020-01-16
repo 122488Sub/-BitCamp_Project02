@@ -1,0 +1,129 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Page Title</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="initial-scale=1.0">
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <link href="${pageContext.request.contextPath}/main/signup/join_css/pc.css" type="text/css" rel="stylesheet">
+      <script>
+      	
+      		function idDoubleCheck() {
+      			var id = $('#regForm [name="email"]').val()
+      			if(id == "") {
+      				alert("중복확인 에러 : 아이디를 입력하세요");
+      				return;
+      			}
+      			console.log("id : " + id);
+      			location.href ="/BITBANG/LoginController?type=idCheck&id="+id;
+      		}
+      		
+      		function uploadId(idIs, ok){
+      			
+      			if(idIs == false && ok == '0') {
+      				alert("사용가능한 아이디입니다.");
+      				session.invalidate();
+      				return;
+      			
+      			} else if (idIs == true && ok == '1'){
+      				alert("사용중인 아이디입니다. \n 다시 아이디를 입력해주세요");
+      				session.invalidate();
+
+      				//document.email.value = id;
+      			}else if (idIs == false && ok == '2'){
+      				session.invalidate();
+					
+      				//document.email.value = id;
+      			}
+      			
+      			console.log("idIs : " + idIs);
+      			console.log("idIs : " + check_id);
+      		}
+      		
+      		function signInClick() {
+   				var firstForm = document.forms[0];
+   				console.log("firstForm : " + firstForm);
+   				console.log("firstForm.elements.length : " + firstForm.elements.length);
+   				for (var i=0; i < firstForm.elements.length; i++) {
+   					if(firstForm.elements[i].value.trim() == "") {
+   						console.log("firstForm.elements[i].outerText : " + firstForm.elements[i].outerText);
+   						console.log("firstForm.elements[i] : " + i);
+   						alert(firstForm.elements[i].title + "을 입력하세요");
+   						firstForm.elements[i].focus();
+   						return;
+   					}
+   				}
+   				/*
+   				정규식 처리
+   				var email = $('#regForm [name="email"]').val();
+   				var name = $('#regForm [name="name"]').val();
+   				var phone = $('#regForm [name="phone"]').val();
+   				var password = $('#regForm [name="password"]').val();
+   				*/
+   				
+   				firstForm.submit();
+   			}
+      		
+      	// 새로고침 금지
+      		function noRefresh()
+      		{
+      		    if (event.keyCode == 116) 
+      		    {
+      		        alert("새로고침을 할 수 없습니다.");
+      		        event.keyCode = 2;
+      		        return false;
+      		    } 
+      		    else if(event.ctrlKey && (event.keyCode == 78 || event.keyCode == 82)) 
+      		    {
+      		        return false;
+      		    }
+      		}
+      		document.onkeydown = noRefresh;
+      </script>
+   </head>
+       <body onload ="uploadId(${isId}, ${ok})">
+       		 <form action="LoginController?type=signup" method="post" id="regForm">    
+             <div id="in_wrap">
+              <div id="text_box">
+                 <div id="emailBox">
+                  <p>email</p>
+                  <c:choose>
+                  	<c:when test="${isId} == 'false' && ${ok} == '0'">
+                  		<input type="text" class="name" name="email" id="email" value="${check_id}" placeholder="Email">
+                  	</c:when>
+                  	<c:otherwise>
+                  		<input type="text" class="name" name="email" id="email" placeholder="Email">
+                  	</c:otherwise>
+                  </c:choose>
+                  	   <input type="text" class="name" name="email" id="email" value="${check_id}" placeholder="Email"> 
+                       <input type="button" class="name" value="중복체크" id="idCheck" onclick="idDoubleCheck()">
+                   </div>
+                   <br>
+                   <div id="nameBox">
+                       <p>name</p>
+                       <input type="text" class="name" id="name" name="name" placeholder="Your name" title="name">
+                   </div>
+                   <div id="phoneBox">
+                       <p>phone</p>
+                       <input type="text" class="name" name="phone" placeholder="phone" title="phone">
+                   </div>
+                   <div id="passwordBox">
+                       <p>password</p>
+                       <input type="text" class="name" name="password" placeholder="password" title="password">
+                       <input type="text" class="name" placeholder="password conform" title="password conform">
+                   </div>
+                   <span id="login"><a href="LoginController?type=login_go">or Log in?</a></span>
+              </div>
+            </div>
+               <input type="button" id="signinButton" onclick="signInClick()" value="Sign In" class="next_btn">
+            </form> 
+            <div id="imgBox">
+                <img id="signin_img" src="${pageContext.request.contextPath}/main/signup/join_css/signIn_img.jpg">
+                
+            </div>
+       </body>
+</html>

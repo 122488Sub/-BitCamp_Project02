@@ -11,7 +11,7 @@
 <div id="container">
 	<h2>분양목록 : 삭제화면</h2>
 	<hr>
-	<p><a href="MyController?type=list">[목록으로 이동]</a></p>
+	<p><a href="MyController?type=list" class="review_write_a">[목록으로 이동]</a></p>
 	
 	<form action="MyController?type=delete_ok" method="post">
 	<table>

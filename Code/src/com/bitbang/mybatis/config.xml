@@ -7,6 +7,8 @@
 	<typeAlias type="com.bitbang.model.vo.ResaleVO" alias="rsVO"/>
 	<typeAlias type="com.bitbang.model.vo.ResaleCommVO" alias="rsCommVO"/>
 	<typeAlias type="com.bitbang.model.vo.ResaleImgVO" alias="rsImgVO"/>
+	<typeAlias type="com.bitbang.model.vo.MemberVO" alias="mVO"/>
+
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -27,6 +29,7 @@
     <mapper resource="com/bitbang/mybatis/mapperForSale.xml"/>
     <mapper resource="com/bitbang/mybatis/mapperReSale.xml"/>
     <mapper resource="com/bitbang/mybatis/mapperReview.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperLogin.xml"/>
     <mapper resource="com/bitbang/mybatis/mapper.xml"/>
   </mappers>
 </configuration>
