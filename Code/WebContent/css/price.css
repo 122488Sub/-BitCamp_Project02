@@ -9,6 +9,7 @@
     text-align: center;
     color: rgb(34, 34, 34);
     font-weight: normal;
+    font-family: sans-serif !important;
 }
 .review_tit{
 	height: 36px;
@@ -249,4 +250,12 @@
     height:400px;
     border: 1px solid rgb(235, 235, 235);
     margin:0 auto;
+}
+/* write부분 */
+.review_input{
+    padding: 5px;
+    margin: 0 0 0 20px;
+    border: 1px solid gainsboro;
+    width: 300px;
+    border-radius: 5px;
 }
