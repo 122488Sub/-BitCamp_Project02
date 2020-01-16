@@ -26,6 +26,24 @@ public class ForSaleOneVO {
 	public ForSaleOneVO() {
 	
 	}
+	public ForSaleOneVO(String address, String address_detail, String room_category, String monthly_value, String floor,
+			String area, String aircon, String elevator, String pet, String balcony, String loan, String available_date,
+			String content) {
+		super();
+		this.address = address;
+		this.address_detail = address_detail;
+		this.room_category = room_category;
+		this.monthly_value = monthly_value;
+		this.floor = floor;
+		this.area = area;
+		this.aircon = aircon;
+		this.elevator = elevator;
+		this.pet = pet;
+		this.balcony = balcony;
+		this.loan = loan;
+		this.available_date = available_date;
+		this.content = content;
+	}
 	public ForSaleOneVO(String []details) {
 		this.address = details[0];
 		this.address_detail = details[1];
@@ -148,10 +166,10 @@ public class ForSaleOneVO {
 				+ ", aircon=" + aircon + ", elevator=" + elevator + ", pet=" + pet + ", balcony=" + balcony + ", loan="
 				+ loan + ", available_date=" + available_date + ", content=" + content + ", imgscr=" + imgscr + "]";
 	}
-	public String setOne() {
+	public String getAll() {
 		return address +";"+ address_detail + ";"
 				+ room_category + ";" + monthly_value + ";" + floor + ";" + area+";"+aircon
-				+ ";" + elevator + ";" + pet + ", balcony=" + balcony + ", loan=" + loan
+				+ ";" + elevator + ";" + pet + ";" + balcony + ";" + loan
 				+ ";" + available_date + ";" + content+";";
 	}
 }

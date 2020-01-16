@@ -31,10 +31,12 @@ public class ForSaleOnePageCommand implements Command {
 			System.out.println(str);
 		}
 		System.out.println("---");
-		request.setAttribute("FSVo", fsvo);
-		request.setAttribute("FSoneVO", fsoneVO);
+		
+		request.getSession().setAttribute("FSVo", fsvo);
+		request.getSession().setAttribute("FSoneVO", fsoneVO);
 		request.setAttribute("REAVO", reaVO);
-	
+		request.getSession().setAttribute("seq", request.getParameter("idx"));
+		
 		System.out.println(fsvo);
 		System.out.println(fsoneVO);
 		System.out.println(reaVO);
