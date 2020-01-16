@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bitbang.model.command.BNB_HroomregistCommand;
+import com.bitbang.model.command.BNB_hostjoinCommand;
 import com.bitbang.model.command.Command;
 import com.bitbang.model.command.Detailroom_viewCommand;
 import com.bitbang.model.command.SearchResultCommand;
@@ -43,6 +45,10 @@ public class BnbFrontController extends HttpServlet {
 			command = new SearchResultCommand();
 		} else if(comm.equals("/detailroom_view.do")) {
 			command = new Detailroom_viewCommand();
+		} else if(comm.equals("/bnb_hostjoin.do")) {
+			command = new BNB_hostjoinCommand();
+		} else if(comm.equals("/hroomregist.do")) {
+			command = new BNB_HroomregistCommand();
 		}
 		
 		String path = command.exec(request, response);

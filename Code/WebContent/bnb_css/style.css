@@ -98,7 +98,7 @@
 .select_personNum span {line-height: 18px; font-size: 14px; font-weight: 400; }
 
 #roomresult{position : relative;}
-.roomlist{overflow-anchor : none; }
+.roomlist{overflow-anchor : none; position : relative; }
 .roomlist .roomlist_tit {}
 .roomlist .roomlist_tit h3 {margin: 35px 0 30px 0; font-weight: 600; font-size : 22px; line-height : 26px;}
 .roomlist .a { width: 756px; margin-left: 0;}
@@ -119,7 +119,6 @@
 .room_simpleinfo .sroom_tot{clear : both; float :right;}
 
 .roomlist .b { clear : both; margin : 0; }
-
 
 .roomlist_items .pagingbox {position: relative;  width: 100%; font-size: 16px; font-weight: 600; display : block; text-align : center; }
 .roomlist_items .pagingbox ol.paging {padding :25px; display : block; }
@@ -153,7 +152,7 @@
 
 
 /* 리스트 위치 맵 */
-#mapbox {height: 841px; width : 53.5%;  float : right; margin-top : -100px;}
+#mapbox {position : fixed; height: 841px; width : 47.5%;  float : right; margin-top : -100px; right:120px;}
 
 
 /* ******************************* detailroom_view ************************************************* */

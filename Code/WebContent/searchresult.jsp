@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,7 +20,7 @@
 
 <!-- kakao map -->
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=429fc0ee66eceb779b718468942bf109"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=429fc0ee66eceb779b718468942bf109&libraries=services,clusterer,drawing"></script>
 
 <!-- 웹 폰트 -->
 <link
@@ -75,16 +76,22 @@
 
 					<c:if test="${not empty rlist }">
 						<c:forEach var="rvo" items="${rlist }">
-							<div class="roomlist_each"	onclick="location.href='detailroom_view.do?room_serial=${rvo.room_serial}'">
+							<div class="roomlist_each"
+								onclick="location.href='detailroom_view.do?room_serial=${rvo.room_serial}'">
 								<div class="room_slider">
 									<div class="swiper-container">
 										<div class="swiper-wrapper">
 											<!-- Slides -->
-											<div class="swiper-slide li1"></div>
-											<div class="swiper-slide li2"></div>
-											<div class="swiper-slide li3"></div>
-											<div class="swiper-slide li4"></div>
-											<div class="swiper-slide li5"></div>
+											<div class="swiper-slide li1"
+												style="background: url(${rvo.r_pic1 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
+											<div class="swiper-slide li2"
+												style="background: url(${rvo.r_pic2 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
+											<div class="swiper-slide li3"
+												style="background: url(${rvo.r_pic3 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
+											<div class="swiper-slide li4"
+												style="background: url(${rvo.r_pic4 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
+											<div class="swiper-slide li5"
+												style="background: url(${rvo.r_pic5 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
 										</div>
 									</div>
 								</div>
@@ -95,7 +102,13 @@
 										5 )
 									</div>
 									<div class="sroom_tit">${rvo.r_name }</div>
-									<div class="sroom_option">편의시설 리스트</div>
+									<%--<div class="sroom_option">편의시설 리스트  </div> --%>
+									<div class="sroom_option">
+									<c:forEach items="${fn:split( rvo.facility, '.') }" var="item">
+											${ item}&nbsp;
+									
+									</c:forEach>
+								  </div>
 									<div class="sroom_price clearfix">
 										<em>&#8361; ${rvo.r_price } / 1박</em>
 									</div>
@@ -109,47 +122,45 @@
 							검색 결과에 맞는 숙소가 없습니다.
 						</c:if>
 
-				</div>
 
-
-				<div class="pagingbox">
-					<div class="ir_so">paging</div>
-					<div class="paging">
-						<c:choose>
-							<c:when test="${bnb_pvo.beginPage < bnb_pvo.pagePerBlock }">
-								<div class="disable">이전으로</div>
-							</c:when>
-							<c:otherwise>
-								<div class="sprev">
-									<a
-										href="searchresult.do?cPage=${bnb_pvo.beginPage - bnb_pvo.pagePerBlock }">이전으로</a>
-								</div>
-							</c:otherwise>
-						</c:choose>
-						<c:forEach var="k" begin="${bnb_pvo.beginPage }"
-							end="${bnb_pvo.endPage }" step="1">
-							<c:if test="${k==bnb_pvo.nowPage }">
-								<div class="now">${k }</div>
-							</c:if>
-							<c:if test="${k != bnb_pvo.nowPage }">
-								<a href="searchresult.do?cPage=${k }">${k }</a>
-							</c:if>
-						</c:forEach>
-						<c:choose>
-							<c:when test="${bnb_pvo.endPage >= bnb_pvo.totalPage}">
-								<div class="disable">다음으로</div>
-							</c:when>
-							<c:otherwise>
-								<div class="snext">
-									<a
-										href="searchresult.do?cPage=${bnb_pvo.beginPage + bnb_pvo.pagePerBlock }">다음으로</a>
-								</div>
-							</c:otherwise>
-						</c:choose>
+					<div class="pagingbox">
+						<div class="ir_so">paging</div>
+						<ol class="paging">
+							<c:choose>
+								<c:when test="${bnb_pvo.beginPage < bnb_pvo.pagePerBlock }">
+									<li class="disable">이전으로</li>
+								</c:when>
+								<c:otherwise>
+									<li><a
+										href="searchresult.do?cPage=${bnb_pvo.beginPage - bnb_pvo.pagePerBlock }&city_search=${cSearch }&checkin=${checkin}&checkout=${checkout }&personNum=${pNum }">이전으로</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							<c:forEach var="k" begin="${bnb_pvo.beginPage }"
+								end="${bnb_pvo.endPage }" step="1">
+								<c:if test="${k==bnb_pvo.nowPage }">
+									<li class="now">${k }</li>
+								</c:if>
+								<c:if test="${k != bnb_pvo.nowPage }">
+									<li><a href="searchresult.do?cPage=${k }&city_search=${cSearch }&checkin=${checkin}&checkout=${checkout }&personNum=${pNum }">${k }</a></li>
+								</c:if>
+							</c:forEach>
+							<c:choose>
+								<c:when test="${bnb_pvo.endPage >= bnb_pvo.totalPage}">
+									<li class="disable">다음으로</li>
+								</c:when>
+								<c:otherwise>
+									<li><a
+										href="searchresult.do?cPage=${bnb_pvo.beginPage + bnb_pvo.pagePerBlock}&city_search=${cSearch }&checkin=${checkin}&checkout=${checkout }&personNum=${pNum }">다음으로</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+						</ol>
 					</div>
+
+
+
 				</div>
-
-
 				<div class="ir_so">숙소 리스트 위치</div>
 				<div id="mapbox"></div>
 			</div>
@@ -157,7 +168,6 @@
 		</div>
 	</section>
 	<!-- //roomresult -->
-
 
 
 	<!-- 자바스크립트 라이브러리 -->
@@ -172,13 +182,68 @@
 	<script>
 		var mapContainer = document.getElementById('mapbox'), // 지도를 표시할 div 
 		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표 - 나중에 검색한 것의 가장 위에 있는 것의 좌표가 넣어지도록 변경
 			level : 3
 		// 지도의 확대 레벨
 		};
 
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 		var map = new kakao.maps.Map(mapContainer, mapOption);
+		
+		function getInfo() {
+			var center = map.getCenter(); // 지도의 현재 중심좌표를 얻어옴
+			var bounds = map.getBounds(); // 지도의 현재 영역을 얻어옴
+			var swLatLng = bounds.getSouthWest(); //영역의 남서쪽 좌표를 얻어옴
+			var neLatLng = bounds.getNorthEast(); //영역의 북동쪽 좌표를 얻어옴
+			var boundsStr = bounds.toString(); // 영역정보를 문자열로 얻어옴
+			
+			var message = '지도 중심좌표는 위도 ' + center.getLat() + ', <br>';
+		    message += '경도 ' + center.getLng() + ' 이고 <br>';
+		    message += '지도의 남서쪽 좌표는 ' + swLatLng.getLat() + ', ' + swLatLng.getLng() + ' 이고 <br>';
+		    message += '북동쪽 좌표는 ' + neLatLng.getLat() + ', ' + neLatLng.getLng() + ' 입니다';
+		    
+		    console.log(message);
+		   
+		}
+		//지도가 이동, 확대, 축소로 중심 좌표가 변경시 지도의 중심좌표를 호출
+		kakao.maps.event.addListener(map, 'center_changed', function() {
+			 // 지도의  레벨을 얻어옵니다
+		    var level = map.getLevel();
+
+		    // 지도의 중심좌표를 얻어옵니다 
+		    var latlng = map.getCenter(); 
+
+		    var message = '<p>지도 레벨은 ' + level + ' 이고</p>';
+		    message += '<p>중심 좌표는 위도 ' + latlng.getLat() + ', 경도 ' + latlng.getLng() + '입니다</p>';
+		    console.log(message);
+		    var resultDiv = document.getElementById('result');
+		    
+		    //resultDiv.innerHTML = message;
+			 
+			   
+		});
+
+		var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667);  //마커가 표시될 위치
+		
+		// 마커 생성
+		var marker = new kakao.maps.Marker({
+   			 position: markerPosition
+		});
+		
+		marker.setMap(map); //마커가 지도 위체 표시되도록 설정
+		
+		var iwContent ='<div style="padding:5px;">&#8361; 32,100 <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> </div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+	    
+
+		//인포 윈도우를 생성
+		var infowindow = new kakao.maps.InfoWindow({
+			position : iwPosition,
+			content : iwContent
+		});
+	    
+	    infowindow.open(map);
+		
 	</script>
 
 </body>
