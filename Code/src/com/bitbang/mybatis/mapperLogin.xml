@@ -11,13 +11,13 @@
 	</select>
 	
 	<!-- insert -->
-	
+	<!-- 
 	<insert id="insertMVO" parameterType="">
 		INSERT INTO
 		 VALUES ()
 		
 	</insert>
-	
+	 -->
 </mapper>
 
 
