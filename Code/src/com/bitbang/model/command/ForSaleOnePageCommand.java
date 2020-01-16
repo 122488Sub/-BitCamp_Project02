@@ -40,7 +40,7 @@ public class ForSaleOnePageCommand implements Command {
 		System.out.println(reaVO);
 	
 		
-		return "ForSaleOne.jsp";
+		return "main/forsale/ForSaleOne.jsp";
 	}
 
 }
