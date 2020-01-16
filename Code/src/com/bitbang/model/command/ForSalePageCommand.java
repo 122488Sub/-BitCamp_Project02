@@ -25,7 +25,7 @@ public class ForSalePageCommand implements Command {
 			commonUtil.fs_level=10;
 		}
 		
-		return "ForSale.jsp";
+		return "main/forsale/ForSale.jsp";
 		//return null;
 	}
 
