@@ -37,14 +37,23 @@
 	border-collapse:collapse;
 	border-top: 1px solid rgb(34, 34, 34);
 }
-.review_step{
+.review_Astep{
 	height: 52px;
     line-height: 52px;
-    background-color: rgb(248, 248, 248);
+    background-color: rgb(248, 0, 0);
     font-size: 14px;
     font-weight: 400;
     text-align: center;
-    color: rgb(102, 102, 102);
+    color: rgb(255, 255, 255);
+}
+.review_Bstep{
+	height: 52px;
+    line-height: 52px;
+    background-color: rgb(18, 58, 123);
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: rgb(255, 255, 255);
 }
 .review_step_txt{
 	height: 52px;
@@ -230,7 +239,6 @@
     font-size: 13px;
     text-align: center;
     line-height: 24px;
-    background-color: rgb(194, 36, 36);
     border-radius: 2px;
     margin: 0px;
 }
