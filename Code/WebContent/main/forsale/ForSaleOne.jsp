@@ -44,9 +44,10 @@
 </style>
 <link href="css/forsaleBtn.css" rel="stylesheet" type="text/css">
 <link href="css/forsaleOne.css" rel="stylesheet" type="text/css">
-<%@ include file="../navCssLink.html"%>
+<%@ include file="/main/navCssLink.html"%>
 </head>
-<%@ include file="../navBody.html"%>
+<%@ include file="/main/navBody.html" %>	
+<%--<%@ include file="fsNavBody.jsp" %>--%>
 <%
 	System.out.println("도착");
 %>
@@ -137,7 +138,7 @@
 	<div class="categoryMapInfo">주변시설정보</div>
 	<div class="fsOneMap">
 	
-	<%@ include file= "../../map/kakaoMapOneForSale.jsp" %>
+	<%@ include file= "/map/kakaoMapOneForSale.jsp" %>
 	
 	<%-- 
 		<jsp:include page="../../map/kakaoMapOneForSale.jsp" >
