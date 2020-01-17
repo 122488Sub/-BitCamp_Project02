@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>입력화면</title>
 <link href="css/price.css" rel="stylesheet" type="text/css"></link>
+<%@ include file="main/navCssLink.html" %>
+<%@ include file="main/navBody.html" %>	
 </head>
 <body>
 	<div id="container">
