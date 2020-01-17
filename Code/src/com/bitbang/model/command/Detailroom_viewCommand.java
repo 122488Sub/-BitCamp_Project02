@@ -14,14 +14,22 @@ public class Detailroom_viewCommand implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("상세페이지로 이동");
+		
 		
 		String rSerial = request.getParameter("room_serial");
+		String checkin = request.getParameter("checkin");
+		String checkout = request.getParameter("checkout");
+		
+		
+		System.out.println(checkin);
 		
 		System.out.println("rSerial : " + rSerial);
 		BNB_ROOM_INFOVO rinfo = BNB_DAO.getOneList(rSerial);
 		request.setAttribute("rinfo", rinfo);
 	
+		request.setAttribute("checkin", checkin);
+		request.setAttribute("checkout", checkout);
+		
 		
 		return "detailroom_view.jsp";
 	}

@@ -11,7 +11,7 @@
 <%@ include file="main/navBody.html" %>	
 </head>
 <body>
-	<h2>검색결과</h2>
+	<h2 class="review_h2">검색결과</h2>
 	<table class="review_table">
 		<colgroup>
 			<col width="10%"></col>
@@ -39,14 +39,23 @@
 			<c:if test="${not (empty list) }">
 				<c:forEach var="vo" items="${list }">
 					<tr class="review_step_contentBox">
-						<td class="review_step_content"><p class="step">${vo.step}</p></td>
+						<td class="review_step_content">
+							<c:if test="${vo.step eq '분양중'}">
+								<p class="review_Astep detail_step">${vo.step }</p>
+							</c:if>
+							<c:if test="${vo.step eq '분양예정'}">
+								<p class="review_Bstep detail_step">${vo.step }</p>
+							</c:if>
+						</td>
 						<td class="review_step_content">${vo.a_type }</td>
 						<td class="review_step_content">${vo.supply_type }</td>
 						<td class="review_step_content">${vo.a_location }</td>
 						<td class="review_step_content">${vo.price }</td>
 						<td class="review_step_content">${vo.households }</td>
 						<td class="review_step_content">${vo.building_area }</td>
-						<td class="review_step_content">${vo.a_image }</td>
+						<td class="review_step_content">
+							<img width="250px" height="150px" src="images/${vo.a_image }">
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

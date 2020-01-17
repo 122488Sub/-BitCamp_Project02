@@ -19,6 +19,11 @@
 <link rel="stylesheet" href="bnb_css/style.css">
 <link rel="stylesheet" href="bnb_css/swiper.css">
 
+<!-- kakao map -->
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=429fc0ee66eceb779b718468942bf109&libraries=services,clusterer,drawing"></script>
+
+
 <!-- 웹 폰트 -->
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean"
@@ -185,7 +190,10 @@
 					</div>
 					<div class="dhost_infobox">호스트 정보 표시</div>
 					<hr>
-					<div class="dlocation_infobox">숙소 위치 표시</div>
+					<div class="dlocation_infobox">
+						<div id="staticMap" style="width:100%;height:350px;"></div>
+						<div class="mapinfo">정확한 위치 정보는 예약이 확정된 후 알려드립니다.</div>
+					</div>
 					<hr>
 					<div class="dnotice_infobox">
 						<div class="dnotice_headerbox">
@@ -208,7 +216,7 @@
 					<div class="cal_box">
 						<div class="cal_header">
 							<div class="cal_headertit">
-								<span>&#8361; 50000 </span> &#47; 박
+								<span>&#8361; ${rinfo.r_price } </span> &#47; 박
 							</div>
 							<div class="cal_point">
 								별 4.71 <span>후기 &#40;189개&#41;</span>
@@ -221,12 +229,12 @@
 								<div class="cdate_inputbox">
 									<div class="checkin">
 										<input type="text" name="checkin" placeholder="   년 / 월 / 일"
-											readonly style="border: 0px"; >
+											readonly style="border: 0px"; >${checkin }
 									</div>
 									<span>&#187;</span>
 									<div class="chekcout">
 										<input type="text" name="checkout" placeholder="   년 / 월 / 일"
-											readonly style="border: 0px"; >
+											readonly style="border: 0px"; >${checkout }
 									</div>
 								</div>
 							</div>
@@ -267,9 +275,17 @@
 	<footer>
 		<div id="footer">푸터영역입니다.</div>
 	</footer>
-	</div>
-	</div>
 
-	</section>
+	<script>
+var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+    staticMapOption = { 
+        center: new kakao.maps.LatLng(${rinfo.centerpoint}), // 이미지 지도의 중심좌표
+        level: 5 // 이미지 지도의 확대 레벨
+    };
+
+// 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
+var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+</script>
+
 </body>
 </html>

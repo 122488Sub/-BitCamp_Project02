@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>삭제화면</title>
+<%@ include file="main/navCssLink.html" %>
+<%@ include file="main/navBody.html" %>
 </head>
 <body>
 

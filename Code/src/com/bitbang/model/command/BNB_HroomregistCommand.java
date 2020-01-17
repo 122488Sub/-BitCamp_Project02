@@ -66,7 +66,12 @@ public class BNB_HroomregistCommand implements Command{
 		
 		rvo.setCity_name(mr.getParameter("city_name"));
 		rvo.setAddress(mr.getParameter("address"));
-		rvo.setCenterpoint(mr.getParameter("centerpoint"));
+		
+		String center = mr.getParameter("centerpoint");
+		String centerpoint = center.substring(1, center.length()-1);
+		System.out.println("centerpoint"+centerpoint);
+		rvo.setCenterpoint(centerpoint);
+		
 	
 		/*
 		
