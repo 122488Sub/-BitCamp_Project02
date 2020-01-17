@@ -15,7 +15,14 @@
 <!-- <link href="css/guestbook.css" rel="stylesheet" type="text/css"> -->
 <%@ include file="/main/navCssLink.html"%>
 </head>
-<%@ include file="/main/navBody.html" %>
+<c:choose>
+	<c:when test="${not empty sessionScope.id}">
+		<%@ include file="/main/navLogOutBody.html" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="/main/navBody.html" %>
+	</c:otherwise>
+</c:choose>
 	<%@ include file="/map/kakaoMapMultiForSale.jsp" %>
 	
 </body>

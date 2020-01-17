@@ -44,7 +44,7 @@ public class ResaleDetailCommand implements Command{
 		request.setAttribute("imgList", imgList);
 		request.setAttribute("rsVO", rsVO);
 		request.setAttribute("cPage", cPage); // 작업중 페이지로 이동 시 사용 해당 페이지를 가진 리스트 페이지를 호출
-		request.setAttribute("c_list", c_list);
+		request.setAttribute("c_list", c_list); //바꿈
 		
 		return "main/resale/resaleDetail.jsp";
 	}
