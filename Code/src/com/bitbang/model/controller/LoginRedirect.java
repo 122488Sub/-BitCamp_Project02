@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bitbang.model.command.Command;
 import com.bitbang.model.command.IdCheckedCommand;
+import com.bitbang.model.command.IndexCommand;
+import com.bitbang.model.command.LogoutCommand;
 import com.bitbang.model.command.ResaleCommOKCommand;
 import com.bitbang.model.command.ResaleWriteOKCommand;
 
@@ -26,7 +28,10 @@ public class LoginRedirect extends HttpServlet {
 		Command comm = null;
 		switch(type) {
         	
+			case "logout": comm = new LogoutCommand(); break;
+			case "index": comm = new IndexCommand(); break;
 	        case "idChecked": comm = new IdCheckedCommand();  break;
+	        
 	        default: break;
 		}
 		

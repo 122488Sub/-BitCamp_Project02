@@ -39,6 +39,7 @@ public class LoginController extends HttpServlet {
 		
 		switch(type) {
 			case "login": comm = new LoginCommand(); break;
+			case "login_fail": comm = new LoginCommand(); break;
 			case "login_go": comm = new LoginGoCommand(); break;
 			case "signup": comm = new SignupCommand(); break;
 			case "signup_go": comm = new SignupGoCommand(); break;

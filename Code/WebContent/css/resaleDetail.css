@@ -2,16 +2,27 @@
 
 body {
 		margin: 0 auto;
-		text-align: center;
+		
 	}
 
 	#detailBox {
+		position: absolute;
+		left: 12%;
+		right: 88%;
 		display: inline-block;
 		width: 1000px;
 		height: 1500px;
+		 
 	}
 	#cate {
+		border-bottom: 1px solid lightgray;
 		text-align: left;
+	}
+	#cateText {
+		font-weight: bold; 
+		font-size: 11px;
+		margin-bottom: 0;
+		
 	}
 	#infoTable {
 		width: 1000px;
