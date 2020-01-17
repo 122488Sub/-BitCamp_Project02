@@ -15,9 +15,24 @@
 <meta charset=UTF-8>
 <title>선택한 매물</title>
 <script type="text/javascript">
+
 	function update_go() {
-		console.log(">");
+		
+		var form = document.createElement("form");
+		var parm = new Array();
+	    var input = document.createElement("input");
+	    input.setAttribute("type", "hidden");
+        input.setAttribute('name', 'type');
+        input.setAttribute("value", 'FsOneUpdate');
+        
+	    form.action = "ForSaleController";
+	    form.method = "post";
+	 	form.appendChild(input);
+	    
+	    document.body.appendChild(form);
+	    form.submit();
 	}
+	
 	
 	function moveFSMultiPage(){
 		var form = document.createElement("form");
@@ -44,9 +59,10 @@
 </style>
 <link href="css/forsaleBtn.css" rel="stylesheet" type="text/css">
 <link href="css/forsaleOne.css" rel="stylesheet" type="text/css">
-<%@ include file="main/navCssLink.html"%>
+<%@ include file="/main/navCssLink.html"%>
 </head>
-<%@ include file="main/navBody.html"%>
+<%@ include file="/main/navBody.html" %>	
+<%--<%@ include file="fsNavBody.jsp" %>--%>
 <%
 	System.out.println("도착");
 %>
@@ -54,7 +70,7 @@
 <div id="container">
 
 
-	<div class="headInfo">
+	<div class="headInfo" style="height: 92px;">
 		<div style="width:70%;float: left;">
 			<table class="roomInfo">
 				<colgroup>
@@ -72,16 +88,16 @@
 				<tbody>
 					<tr>
 						<td class="roomInfoValue">${FSoneVO.address }<br>${FSoneVO.address_detail }</td>
-						<td class="roomInfoValue">${FSoneVO.monthly_value}</td>
-						<td class="roomInfoValue">${FSoneVO.area}</td>
+						<td class="roomInfoValue">${FSoneVO.monthly_value} 만</td>
+						<td class="roomInfoValue">${FSoneVO.area} 평</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div style="width:30%; float: right; display: inline-block;">
-			<button class="snip1535" onclick="moveFSMultiPage()">목 록</button>
-			<button class="snip1535" onclick="update_go()">수 정</button>
-			<button class="snip1535" onclick="delete_go()">삭 제</button>
+			<button class="snip1535" onclick="moveFSMultiPage()">목&nbsp;&nbsp;록</button>
+			<button class="snip1535" onclick="update_go()">수&nbsp;&nbsp;정</button>
+			<!--  <button class="snip1535" onclick="delete_go()">삭 제</button>-->
 		</div>
 	</div>
 	
@@ -124,7 +140,7 @@
 		<div class="imgBox">
 			<div class="big-smallView">
 				<%-- <div class="bigView"> <img alt="aa" src="${FSoneVO.imgscr[0]}"></div>--%>
-				<div class="bigView" style="background-image: url(${FSoneVO.imgscr[0]});"> </div>
+				<div class="bigView" style="background: url(${FSoneVO.imgscr[0]}) center center / cover no-repeat;"> </div>
 				<div class="smallView"style="background: url(${FSoneVO.imgscr[1]}) center center / cover no-repeat;"></div>
 				<div class="smallView"style="background: url(${FSoneVO.imgscr[2]}) center center / cover no-repeat;"></div>
 				<div class="smallView"style="background: url(${FSoneVO.imgscr[3]}) center center / cover no-repeat;"></div>
@@ -137,12 +153,14 @@
 	<div class="categoryMapInfo">주변시설정보</div>
 	<div class="fsOneMap">
 	
+	<%@ include file= "/map/kakaoMapOneForSale.jsp" %>
 	
-		<jsp:include page="map/kakaoMapOneForSale.jsp" >
+	<%-- 
+		<jsp:include page="../../map/kakaoMapOneForSale.jsp" >
 			<jsp:param value="${FSonePosX }" name="x"/>
 			<jsp:param value="${FSonePosY }" name="y"/>
 		</jsp:include>
-
+--%>
 	</div>
 	
 	

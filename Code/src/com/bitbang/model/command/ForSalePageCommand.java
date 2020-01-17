@@ -15,18 +15,12 @@ public class ForSalePageCommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//List 반환 DAO
-		List<ForSaleVO> list = new forsaleDAO().selectListPage();
-		request.setAttribute("FSList", list);
-		
 		if(!commonUtil.fs_Bool) {
 			commonUtil.fs_x=37.50192426050855;
 			commonUtil.fs_y=127.02562676562276;
 			commonUtil.fs_level=10;
 		}
-		
-		return "ForSale.jsp";
-		//return null;
+		return "main/forsale/ForSale.jsp";
 	}
 
 }

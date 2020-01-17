@@ -7,20 +7,19 @@ public class BNB_ROOM_INFOVO {
 	private int bnb_idx, room_serial;
 	private String r_name, r_info, checkin_time, checkout_time;
 	private String r_price, discount_price;
-	private int res_num;
 	private double total_eq; 
 	private int facility_eq, host_eq, clean_eq, communication_eq, location_eq, accuracy_eq;
 	private String r_pic1, r_pic2, r_pic3, r_pic4, r_pic5;
 	private int bed_cn;
 	private String room_type, address;
 	private int room_cn, person_cn;
+	private String facility, city_name, centerpoint;
 	
+	private String id;
 	private int h_num;
 	private String h_name, h_phone;
 	private Date h_joindate;
 	private String h_intro;
-	
-	
 	public int getR_num() {
 		return r_num;
 	}
@@ -75,18 +74,10 @@ public class BNB_ROOM_INFOVO {
 	public void setDiscount_price(String discount_price) {
 		this.discount_price = discount_price;
 	}
-	public int getRes_num() {
-		return res_num;
-	}
-	public void setRes_num(int res_num) {
-		this.res_num = res_num;
-	}
 	public double getTotal_eq() {
-		
 		return total_eq;
 	}
 	public void setTotal_eq(double total_eq) {
-		
 		this.total_eq = total_eq;
 	}
 	public int getFacility_eq() {
@@ -185,6 +176,30 @@ public class BNB_ROOM_INFOVO {
 	public void setPerson_cn(int person_cn) {
 		this.person_cn = person_cn;
 	}
+	public String getFacility() {
+		return facility;
+	}
+	public void setFacility(String facility) {
+		this.facility = facility;
+	}
+	public String getCity_name() {
+		return city_name;
+	}
+	public void setCity_name(String city_name) {
+		this.city_name = city_name;
+	}
+	public String getCenterpoint() {
+		return centerpoint;
+	}
+	public void setCenterpoint(String centerpoint) {
+		this.centerpoint = centerpoint;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getH_num() {
 		return h_num;
 	}
@@ -217,16 +232,20 @@ public class BNB_ROOM_INFOVO {
 	}
 	@Override
 	public String toString() {
-		return "BNB_ROOM_INFOVO [bnb_idx=" + bnb_idx + ", room_serial=" + room_serial + ", r_name=" + r_name
-				+ ", r_info=" + r_info + ", checkin_time=" + checkin_time + ", checkout_time=" + checkout_time
-				+ ", r_price=" + r_price + ", discount_price=" + discount_price + ", res_num=" + res_num + ", total_eq="
-				+ total_eq + ", facility_eq=" + facility_eq + ", host_eq=" + host_eq + ", clean_eq=" + clean_eq
+		return "BNB_ROOM_INFOVO [r_num=" + r_num + ", bnb_idx=" + bnb_idx + ", room_serial=" + room_serial + ", r_name="
+				+ r_name + ", r_info=" + r_info + ", checkin_time=" + checkin_time + ", checkout_time=" + checkout_time
+				+ ", r_price=" + r_price + ", discount_price=" + discount_price + ", total_eq=" + total_eq
+				+ ", facility_eq=" + facility_eq + ", host_eq=" + host_eq + ", clean_eq=" + clean_eq
 				+ ", communication_eq=" + communication_eq + ", location_eq=" + location_eq + ", accuracy_eq="
 				+ accuracy_eq + ", r_pic1=" + r_pic1 + ", r_pic2=" + r_pic2 + ", r_pic3=" + r_pic3 + ", r_pic4="
 				+ r_pic4 + ", r_pic5=" + r_pic5 + ", bed_cn=" + bed_cn + ", room_type=" + room_type + ", address="
-				+ address + ", room_cn=" + room_cn + ", person_cn=" + person_cn + ", h_num=" + h_num + ", h_name="
-				+ h_name + ", h_phone=" + h_phone + ", h_joindate=" + h_joindate + ", h_intro=" + h_intro + "]";
+				+ address + ", room_cn=" + room_cn + ", person_cn=" + person_cn + ", facility=" + facility
+				+ ", city_name=" + city_name + ", centerpoint=" + centerpoint + ", id=" + id + ", h_num=" + h_num
+				+ ", h_name=" + h_name + ", h_phone=" + h_phone + ", h_joindate=" + h_joindate + ", h_intro=" + h_intro
+				+ "]";
 	}
+	
+	
 	
 	
 }

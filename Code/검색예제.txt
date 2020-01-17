@@ -1,0 +1,145 @@
+[검색 jsp 부분] <-- 본인이 화면에 출력하고 싶은 내용
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>검색결과</title>
+	<link href="css/price.css" rel="stylesheet" type="text/css"></link>
+<%@ include file="main/navCssLink.html" %>
+<%@ include file="main/navBody.html" %>	
+</head>
+<body>
+	<h2 class="review_h2">검색결과</h2>
+	<table class="review_table">
+		<thead>
+			<tr class="review_step">
+				<th class="review_step_txt">분양단계</th>
+				<th class="review_step_txt">건물유형</th>
+				<th class="review_step_txt">공급유형</th>
+				<th class="review_step_txt">위치/단지명</th>
+				<th class="review_step_txt">분양가</th>
+				<th class="review_step_txt">세대수</th>
+				<th class="review_step_txt">전용면적</th>
+				<th class="review_step_txt">예상 이미지</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:if test="${not (empty list) }">
+				<c:forEach var="vo" items="${list }">
+					<tr class="review_step_contentBox">
+						<td class="review_step_content">
+							<c:if test="${vo.step eq '분양중'}">
+								<p class="review_Astep detail_step">${vo.step }</p>
+							</c:if>
+							<c:if test="${vo.step eq '분양예정'}">
+								<p class="review_Bstep detail_step">${vo.step }</p>
+							</c:if>
+						</td>
+						<td class="review_step_content">${vo.a_type }</td>
+						<td class="review_step_content">${vo.supply_type }</td>
+						<td class="review_step_content">${vo.a_location }</td>
+						<td class="review_step_content">${vo.price }</td>
+						<td class="review_step_content">${vo.households }</td>
+						<td class="review_step_content">${vo.building_area }</td>
+						<td class="review_step_content">${vo.a_image }</td>
+					</tr>
+				</c:forEach>
+			</c:if>
+			<c:if test="${empty list }">
+				<tr>
+					<td colspan='4'>데이터가 없습니다.</td>
+				</tr>
+			</c:if>
+		</tbody>
+	</table>
+	<p><a href="MyController?type=list">[목록으로 이동]</a></p>
+</body>
+</html>
+
+[검색부분 DAO]
+public static List<sub_divisionVO> getSearch(String idx, String keyword) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		Map<String, String> map = new HashMap<>();
+		map.put("idx", idx);
+		map.put("keyword", keyword);
+		List<sub_divisionVO> list = ss.selectList("search", map);
+		ss.close();
+		return list;
+	}
+
+[검색부분 command]
+package com.bitbang.model.command;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.bitbang.model.dao.DAO;
+import com.bitbang.model.vo.sub_divisionVO;
+
+public class SearchCommand implements Command {
+
+	@Override
+	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String idx = request.getParameter("idx");
+		String keyword = request.getParameter("keyword");
+		
+		//단순 페이지 전환인지, DB데이터 조회처리를 해야 하는지 결정
+		if (keyword == null || keyword.equals("")) {
+			//request.getRequestDispatcher("search.jsp").forward(request, response);
+			return "list.jsp";
+		} else {//DB 데이터 조회 처리 후 결과페이지 이동
+			//DB데이터 조회처리(idx, keyword사용)
+			List<sub_divisionVO> list = DAO.getSearch(idx, keyword);
+			
+			//동적검색 형태 확인
+			String title = "";
+			switch (idx) {
+				case "0" : title = "위치/단지명"; break;
+				case "1" : title = "건물유형"; break;
+				case "2" : title = "분양단계"; break;
+				case "3" : title = "공급유형"; break;
+			}
+			
+			//조회 데이터 응답 페이지로 전달
+			request.setAttribute("list", list);
+			request.setAttribute("title", title);
+			
+			return "searchList.jsp";
+		}
+	}
+}
+
+[검색부분 controller]
+//검색
+		if ("search".equals(type)) {
+			comm = new SearchCommand();
+			path = comm.exec(request, response);
+		}	
+
+[검색 mapper 부분]
+<!-- 동적검색으로 분양정보 조회 -->
+	<select id="search" parameterType="map" resultType="com.bitbang.model.vo.sub_divisionVO">
+		SELECT *
+		  FROM SUB_DIVISION
+		  <choose>
+		  	<when test="idx == 0">
+		  		WHERE A_LOCATION = #{keyword}
+		  	</when>
+		  	<when test="idx == 1">
+		  		WHERE A_TYPE = #{keyword}
+		  	</when>
+		  	<when test="idx == 2">
+		  		WHERE STEP = #{keyword}
+		  	</when>
+		  	<when test="idx == 3">
+		  		WHERE SUPPLY_TYPE = #{keyword}
+		  	</when>
+		  </choose>
+	</select>

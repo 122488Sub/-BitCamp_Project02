@@ -34,11 +34,20 @@
 				</select>
 			
 				<input type="text" name="keyword">
-				<input class=select_search type="submit" value="검색" onclick="search_go(this.form)">
+				<input class=select_search type="image" src="images/icon.png" 
+						width="20px" height="20px" onclick="search_go(this.form)">
 			</form>
 		</div>
 		
-		<p class="review_tit">분양목록</p>
+		<p class="review_tit">
+		분양목록
+		<span>
+		총
+		<b>${paging.totalRecord}</b>
+		건
+		</span>
+		</p>
+		
 		<p class="review_write"><a class="review_write_a" href="MyController?type=write">[ 분양목록 작성 ]</a></p>
 		<table class="review_table">
 		<colgroup>
@@ -67,7 +76,14 @@
 			<c:if test="${not (empty attr_list) }">
 				<c:forEach var="vo" items="${attr_list }">
 					<tr class="review_step_contentBox">
-						<td class="review_step_content"><p class="step">${vo.step}</p></td>
+						<td class="review_step_content">
+							<c:if test="${vo.step eq '분양중'}">
+								<p class="review_Astep detail_step">${vo.step }</p>
+							</c:if>
+							<c:if test="${vo.step eq '분양예정'}">
+								<p class="review_Bstep detail_step">${vo.step }</p>
+							</c:if>
+						</td>
 						<td class="review_step_content">${vo.a_type }</td>
 						<td class="review_step_content">${vo.supply_type }</td>
 						<td class="review_step_content">

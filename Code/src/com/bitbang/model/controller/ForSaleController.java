@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.bitbang.common.commonUtil;
 import com.bitbang.model.command.Command;
 import com.bitbang.model.command.ForSaleOnePageCommand;
+import com.bitbang.model.command.ForSaleOneUpdateCommand;
+import com.bitbang.model.command.ForSaleOneUpdateOkCommand;
 import com.bitbang.model.command.ForSalePageCommand;
 
 @WebServlet("/ForSaleController")
@@ -28,13 +30,24 @@ public class ForSaleController extends HttpServlet {
 		case "FsPageRe":
 			commonUtil.fs_Bool=false;
 		case "FsPage":	
-			comm = new ForSalePageCommand(); break;
+			comm = new ForSalePageCommand(); 
+			break;
 		case "FsOne":	
 			commonUtil.fs_Bool=true;
 			commonUtil.fs_x=Double.parseDouble(request.getParameter("x"));
 			commonUtil.fs_y=Double.parseDouble(request.getParameter("y"));
 			commonUtil.fs_level=Integer.parseInt(request.getParameter("lev"));
-			comm = new ForSaleOnePageCommand(); break;
+			//comm = new ForSaleOnePageCommand();
+			//break;
+		case "FsOneRe":	
+			comm = new ForSaleOnePageCommand();
+			break;
+		case "FsOneUpdate":
+			comm = new ForSaleOneUpdateCommand();
+			break;
+		case "FsOneUpdateOk":
+			comm = new ForSaleOneUpdateOkCommand();
+			break;
 		}
 		
 		path=comm.exec(request, response);

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="bang1">
+<mapper namespace="ForSale">
 	<select id="FSList" resultType="com.bitbang.model.vo.ForSaleVO">
 		SELECT 
 			*
@@ -35,6 +35,13 @@
 		WHERE 
 			REA_IDX = #{rea_idx}
 	</select>
+	
+	<update id="FSUpdate" parameterType="map">
+		UPDATE FORSALE_BOARD
+		   SET SUBJECT = #{subject},
+		   	   DETAIL = #{detail}
+		 WHERE FORSALE_SEQ = #{seq} 
+	</update>
 </mapper>
 
 

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -57,7 +59,7 @@
 					<div class="room_dtit">
 						<div class="droom_name">
 							<h1>${rinfo.r_name }</h1>
-							<p>${rinfo.address }</p>
+							<p>${rinfo.city_name }</p>
 						</div>
 						<div class="droom_host">
 							<div class="dhost_pic"></div>
@@ -85,10 +87,9 @@
 							<div class="facil_name">
 								<strong>편의시설</strong>
 							</div>
-							<div class="facil_list">세탁기</div>
-							<div class="facil_list">냉장고</div>
-							<div class="facil_list">에어컨</div>
-							<div class="facil_list">wifi</div>
+							<c:forEach items="${fn:split(rinfo.facility,'.' )}" var="item">
+								<div class="facil_list">${ item}</div>
+							</c:forEach>
 						</div>
 					</div>
 					<hr>
