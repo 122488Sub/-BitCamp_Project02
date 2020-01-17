@@ -180,7 +180,14 @@
 		});
 	</script>
 	<script>
-	
+	/*
+	<%-- List<BNB_ROOM_INFOVO> brilist=(List<BNB_ROOM_INFOVO>) request.getAttribute("rlist"); 
+	for(BNB_ROOM_INFOVO brivo : brilist){
+		System.out.println(brivo.getCenterpoint().replaceAll("[\\(\\)]", ""));
+		
+	}
+--%>
+
 		var mapContainer = document.getElementById('mapbox'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(37.50285151852989, 127.02899162663137), // 지도의 중심좌표 - 나중에 검색한 것의 가장 위에 있는 것의 좌표가 넣어지도록 변경
