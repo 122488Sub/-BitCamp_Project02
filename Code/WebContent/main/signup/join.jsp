@@ -18,6 +18,11 @@
       				alert("중복확인 에러 : 아이디를 입력하세요");
       				return;
       			}
+      			var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+   				if(!regExp.test(id)){
+   					alert("잘못된 아이디입니다!\n아이디는 이메일의 양식으로 입력하세요")
+   					return;
+   				}
       			console.log("id : " + id);
       			location.href ="LoginController?type=idCheck&id="+id;
       		}
@@ -56,13 +61,32 @@
    						return;
    					}
    				}
-   				/*
-   				정규식 처리
-   				var email = $('#regForm [name="email"]').val();
+   				var id = $('#regForm [name="email"]').val();
    				var name = $('#regForm [name="name"]').val();
    				var phone = $('#regForm [name="phone"]').val();
    				var password = $('#regForm [name="password"]').val();
-   				*/
+   				var password_conform= $('#regForm [name="password_conform"]').val();
+   				
+   				
+   				// 아이디(이메일) 체크 정규식
+   				var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+   				if(!regExp.test(id)){
+   					
+   					alert(id+"잘못된 아이디입니다!\n아이디는 이메일의 양식으로 입력하세요")
+   					return;
+   				}
+   				
+   				regExp = /^01([0|1|6|7|8|9]?)?([0-9]{8})$/;
+				if( !regExp.test(phone)){
+   					
+   					alert("숫자만 입력해주세요.\nex 01012345678");
+   					return;
+   				}
+   				
+				if(phone.length!=11){
+					alert("자릿수를 지켜주세요.\nex) 01012345678");
+					return;
+   				}
    				
    				firstForm.submit();
    			}
@@ -116,7 +140,7 @@
                    <div id="passwordBox">
                        <p>password</p>
                        <input type="text" class="name" name="password" placeholder="password" title="password">
-                       <input type="text" class="name" placeholder="password conform" title="password conform">
+                       <input type="text" class="name" name="password_conform" placeholder="password conform" title="password conform">
                    </div>
                    <span id="login"><a href="LoginController?type=login_go">or Log in?</a></span>
               </div>
