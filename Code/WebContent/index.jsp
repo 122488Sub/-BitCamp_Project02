@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,62 +39,17 @@
 			color: black;
 		}
 	</style>
-  </head>
-	<!-- 여기부터 -->
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-    <div class="site-wrap" id="home-section">
-      <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-          </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-      </div>
-
-
-
-      <header class="site-navbar site-navbar-target bg-white" role="banner">
-
-        <div class="container">
-          <div class="row align-items-center position-relative">
-
-            <div class="col-lg-4">
-              <nav class="site-navigation text-right ml-auto " role="navigation">
-                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                  <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                  <li><a href="javascript:moveFSPage()" class="nav-link">ForSale</a></li>
-                  <li><a href="ControllerCommunity" class="nav-link">Community</a></li>
-                </ul>
-              </nav>
-            </div>
-            <div class="col-lg-4 text-center">
-              <div class="site-logo">
-                <a href="index.html">BITBANG</a>
-              </div>
-
-
-              <div class="ml-auto toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-white"><span class="icon-menu h3 text-primary"></span></a></div>
-            </div>
-            <div class="col-lg-4">
-              <nav class="site-navigation text-left mr-auto " role="navigation">
-                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                  <li><a href="aptindex.jsp" class="nav-link">AptSale</a></li>
-                  <li><a href="bnb_main.html" class="nav-link">BnB</a></li>
-				  <!-- 해당 링크에 자기 파일로 해주세용 -->
-                  <li><a href="ResaleController?type=list" class="nav-link">Resale</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-		<div id="logBox">
-			<ul id="logUl">
-				<li id="login"><a href="LoginController?type=login_go">login</a></li>
-				<li id="signin"><a href="LoginController?type=signup_go">Sign Up</a></li>
-			</ul>
-		</div>
-      </header>
+  <%@ include file="/main/navCssLink.html" %>
+</head>
+<body>
+<c:choose>
+	<c:when test="${not empty sessionScope.id}">
+		<%@ include file="/main/navLogOutBody.html" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="/main/navBody.html" %>
+	</c:otherwise>
+</c:choose>
     <div class="owl-carousel-wrapper">
 
       

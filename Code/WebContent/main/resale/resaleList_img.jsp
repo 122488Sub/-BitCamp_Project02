@@ -13,12 +13,16 @@
 	body {
 		margin: 0 auto;
 		text-align: center;
+		
 	}
-
+	
 	#img_content {
+		
 		display: inline-block;
 		width: 1130px;
 		height: 1500px;
+		margin-right: auto;
+		margin-left: 370px;
 
 	}
 	#listBox {
@@ -54,7 +58,6 @@
 	#onePostBox {
 		width: 230px;
 		height: 370px;
-		border: 1px solid black;
 		float: left;
 		margin-right: 25px;
 		margin-left: 25px;
@@ -130,7 +133,8 @@
 		text-align: left;
 	}
 	#write { 
-		text-align: right;
+		padding-right: 10px;
+		
 
 	}
 	#write > input {
@@ -180,15 +184,28 @@
 	#pointer {
 		border: 0px;
 	}
+	#writeBtn {
 		
+		margin-left: 995px;
+		margin-bottom: 20px;
+	}
 </style>
+<%@ include file="/main/navCssLink.html" %>
 </head>
 <body>
-	<h1>게시글 목록</h1>
+<c:choose>
+	<c:when test="${not empty sessionScope.id}">
+		<%@ include file="/main/navLogOutBody.html" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="/main/navBody.html" %>
+	</c:otherwise>
+</c:choose>
+	<h3 style="text-align: center">인테리어 중고 장터</h3>
 	<div id="img_content">
 		<div id="listBox">
 			<div id="write">
-				<input type="button" value="글쓰기" onclick="javascript:location.href='ResaleController?type=newPost'">
+				<input type="button" id="writeBtn" value="글쓰기" onclick="javascript:location.href='ResaleController?type=newPost'">
 			</div>
 			
 			<c:forEach var="vo" begin="0" end="${list.size()-2}" step="1" varStatus="voCnt">
@@ -209,7 +226,7 @@
 					<div id="infoBox">
 						<div id="listSubject">${list.get(voCnt.index).subject}</div>
 						<div id="infoChildBox">
-						<table border id="infoTable">
+						<table id="infoTable">
 							<tr>
 								<td id="priceBox"><span id="listPrice">${list.get(voCnt.index).price }</span>&nbsp;<span id="won">원</span></td>
 								<td id="listDate">${list.get(voCnt.index).reg_date }</td>

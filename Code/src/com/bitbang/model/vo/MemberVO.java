@@ -10,7 +10,7 @@ public class MemberVO {
 	public MemberVO() {}
 
 
-	public MemberVO(String name, String id, String pwd, String phone, String email, int member_idx, Date regdate) {
+	public MemberVO(int member_idx, String name, String id , String pwd, String phone, String email, Date regdate) {
 		super();
 		this.name = name;
 		this.id = id;

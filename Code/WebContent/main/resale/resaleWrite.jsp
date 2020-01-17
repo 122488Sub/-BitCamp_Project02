@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,9 +86,16 @@ function sendData(){
 </head>
 
 <body>
-<%@ include file="../navBody.html" %>   
+<c:choose>
+	<c:when test="${not empty sessionScope.id}">
+		<%@ include file="../navLogOutBody.html" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="../navBody.html" %>
+	</c:otherwise>
+</c:choose>
 	<div id="content">
-		<form action="./ResaleController?type=write" method="post" enctype="multipart/form-data">
+		<form action="/BITBANG/ResaleController?type=write" method="post" enctype="multipart/form-data">
 			<h2>기본 정보</h2>
 			<hr>
 			<div id="imgBox">

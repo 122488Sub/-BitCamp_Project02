@@ -26,22 +26,21 @@
       			
       			if(idIs == false && ok == '0') {
       				alert("사용가능한 아이디입니다.");
-      				session.invalidate();
+      				
       				return;
       			
-      			} else if (idIs == true && ok == '1'){
+      			} else if (idIs == true && ok == '2'){
       				alert("사용중인 아이디입니다. \n 다시 아이디를 입력해주세요");
       				session.invalidate();
 
       				//document.email.value = id;
-      			}else if (idIs == false && ok == '2'){
+      			}else if (idIs == false && ok == '1'){
       				session.invalidate();
 					
       				//document.email.value = id;
       			}
       			
-      			console.log("idIs : " + idIs);
-      			console.log("idIs : " + check_id);
+      			
       		}
       		
       		function signInClick() {
@@ -86,20 +85,23 @@
       </script>
    </head>
        <body onload ="uploadId(${isId}, ${ok})">
+       		
        		 <form action="LoginController?type=signup" method="post" id="regForm">    
              <div id="in_wrap">
+             <div id="signupLogo">
+       			<a href="LoginRedirect?type=index"><img src="${pageContext.request.contextPath}/main/signup/join_css/logo.jpg"></a>
+       		</div>
               <div id="text_box">
                  <div id="emailBox">
                   <p>email</p>
-                  <c:choose>
-                  	<c:when test="${isId} == 'false' && ${ok} == '0'">
-                  		<input type="text" class="name" name="email" id="email" value="${check_id}" placeholder="Email">
-                  	</c:when>
-                  	<c:otherwise>
-                  		<input type="text" class="name" name="email" id="email" placeholder="Email">
-                  	</c:otherwise>
-                  </c:choose>
-                  	   <input type="text" class="name" name="email" id="email" value="${check_id}" placeholder="Email"> 
+                   <c:choose>
+	               	<c:when test="${ok eq '0'}">
+	               		<input type="text" class="name" name="email" id="email" value="${check_id}" placeholder="Email">
+	               	</c:when>
+	               	<c:otherwise>
+	               		<input type="text" class="name" name="email" id="email" placeholder="Email">
+	               	</c:otherwise>
+	               </c:choose>	
                        <input type="button" class="name" value="중복체크" id="idCheck" onclick="idDoubleCheck()">
                    </div>
                    <br>
@@ -123,7 +125,6 @@
             </form> 
             <div id="imgBox">
                 <img id="signin_img" src="${pageContext.request.contextPath}/main/signup/join_css/signIn_img.jpg">
-                
             </div>
        </body>
 </html>
