@@ -19,7 +19,7 @@
       				return;
       			}
       			console.log("id : " + id);
-      			location.href ="/BITBANG/LoginController?type=idCheck&id="+id;
+      			location.href ="LoginController?type=idCheck&id="+id;
       		}
       		
       		function uploadId(idIs, ok){
