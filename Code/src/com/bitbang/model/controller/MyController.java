@@ -34,7 +34,7 @@ public class MyController extends HttpServlet {
 		
 		//전체 리스트
 		if (type.toString().equals("list")) {
-			request.getSession().invalidate();
+			//request.getSession().invalidate();
 			comm = new AllListCommand();
 			path =comm.exec(request, response);
 		}
