@@ -10,6 +10,6 @@ public class LogoutCommand implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().invalidate();
-		return "index.html";
+		return "index.jsp";
 	}
 }
