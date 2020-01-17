@@ -184,8 +184,11 @@
 						<td colspan="2" align="right" style="padding-right: 45px">
 							<button class="snip1535" value="수 정" style="margin-right: 20px" onclick="save_go(this.form)">수 정</button>
 							<button type="reset" class="snip1535" style="margin-right: 20px" value="">복 구</button>
-							<button class="snip1535" value="취 소" style="margin-right: 20px"onclick="javascript:window.history.back()">이 전</button>
-							<a href="javascript:window.history.back()">이 전</a>
+							<a href="javascript:window.history.back()">
+								<button class="snip1535" value="취 소" style="margin-right: 20px">이 전</button>
+							</a>
+							
+							
 							
 							
 							<input type="hidden" name="seq" value="${FSVo.forsale_seq }">
