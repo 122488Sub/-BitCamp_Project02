@@ -11,7 +11,7 @@
 <%@ include file="main/navBody.html" %>	
 </head>
 <body>
-	<h2>검색결과</h2>
+	<h2 class="review_h2">검색결과</h2>
 	<table class="review_table">
 		<colgroup>
 			<col width="10%"></col>
@@ -53,7 +53,9 @@
 						<td class="review_step_content">${vo.price }</td>
 						<td class="review_step_content">${vo.households }</td>
 						<td class="review_step_content">${vo.building_area }</td>
-						<td class="review_step_content">${vo.a_image }</td>
+						<td class="review_step_content">
+							<img width="250px" height="150px" src="images/${vo.a_image }">
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>
