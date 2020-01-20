@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    #main_board {
+        width: 550px;        
+        height: 220px;   
+         padding:0;
+    }
+    
+    #boardTable {
+        
+        width:550px;
+        height:220px;
+         padding:0;
+    }
+    .up1 {
+        text-align: center;
+        width: 242px;
+        height: 100px;
+        padding:0;
+    }
+    .imgs_up{
+        padding:0;
+        margin:0;
+        width: 90px;
+        height: 90px;
+        margin-top: 20px;
+        
+    }
+    .imgs_down{
+        
+        padding:0;
+        margin:0;
+        width: 70px;
+        height: 70px;
+        margin-top: 20px;
+        
+    }
+    .down {
+        text-align: center;
+        width: 160px;
+        height: 50px;
+         padding:0;
+    }
+   #main_content {
+        width: 480px;
+        height: 315px;
+    }
+   
+
+    .tbl, .tbl ul { display: table; margin: 0; padding: 0; list-style-type: none; border-collapse: collapse; }
+
+    .tbl > li           { display: table-row; }
+
+    .tbl > li > ul      { margin-top: -1px; }
+
+    .tbl > li > ul > li { display: table-cell; border: 4px solid #3E64FF; }
+    
+    .tbl > li > ul > li#last {
+       border-width: 0px 4px 4px 4px;
+    } 
+</style>
+<body>
+	<div id="main_content">
+    <ul class="tbl">
+        <li>
+            <ul>
+                <li class="up1">   
+                <img src="imgs/house.png" class="imgs_up">
+                    <br>
+                    <br>
+                    집 구하러 가기
+                 </li>
+                <li class="up1"><img src="imgs/apart.png" class="imgs_up">
+                <br>
+                <br>
+                    분양 하러 가기</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li id="last" class="down"><img src="imgs/bitBnb.png" class="imgs_down">
+                <br>
+                <br>
+                    숙박 구하러 가기</li>
+
+                <li id="last"  class="down"><img src="imgs/Board.png" class="imgs_down">
+                <br>
+                <br>
+                    자유 게시판</li>
+
+                <li id="last"  class="down"><img src="imgs/selling.png" class="imgs_down">
+                <br>
+                <br>
+                    인테리어 중고 장터</li>
+
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -30,6 +30,15 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/main/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/main/login/css/main.css">
 <!--===============================================================================================-->
+<style>
+#signupLogo{
+	
+	width: 100px;
+	
+	margin-left:170px;;
+	margin-bottom: 100px;
+}
+</style>
 </head>
 <body style="background-color: #666666;">
 	
@@ -37,6 +46,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="LoginController?type=login" method="post">
+					
 					<span class="login100-form-title p-b-43">
 						Login to continue
 					</span>
@@ -78,6 +88,10 @@
 							<i class="fa fa-twitter" aria-hidden="true"></i>
 						</a>
 					</div>
+					
+					<div id="signupLogo">
+       					<a href="LoginRedirect?type=index"><img src="${pageContext.request.contextPath}/main/login/images/homeLogo.png" width="100px"></a>
+       				</div>
 				</form>
 
 				<div class="login100-more" style="background-image: url('${pageContext.request.contextPath}/main/login/images/bg-01.jpg');">

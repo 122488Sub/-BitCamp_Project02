@@ -17,12 +17,18 @@
 	}
 </script>
 <link href="css/price.css" rel="stylesheet" type="text/css"></link>
-<%@ include file="main/navCssLink.html" %>
+  <%@ include file="/main/navCssLink.html" %>
 </head>
-	
-<%@ include file="main/navBody.html" %>	
 <body>
-	<div id="container">
+<c:choose>
+	<c:when test="${not empty sessionScope.id}">
+		<%@ include file="/main/navLogOutBody.html" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="/main/navBody.html" %>
+	</c:otherwise>
+</c:choose>
+<div id="container">
 		<h2 class="review_h2">분양정보</h2>
 		<div class="selectbox_div">
 			<form method="post">

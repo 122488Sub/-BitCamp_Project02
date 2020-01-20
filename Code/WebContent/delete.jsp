@@ -1,13 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>삭제화면</title>
 <%@ include file="main/navCssLink.html" %>
-<%@ include file="main/navBody.html" %>
+
 </head>
+
+<c:choose>
+	<c:when test="${not empty sessionScope.id}">
+		<%@ include file="/main/navLogOutBody.html" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="/main/navBody.html" %>
+	</c:otherwise>
+</c:choose>
+
 <body>
 
 <div id="container">

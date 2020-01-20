@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bitbang.model.command.BNB_HroomregistCommand;
+import com.bitbang.model.command.BNB_Reserv_confirmCommand;
+import com.bitbang.model.command.BNB_Reserv_resultCommand;
 import com.bitbang.model.command.BNB_hostjoinCommand;
 import com.bitbang.model.command.Command;
 import com.bitbang.model.command.Detailroom_viewCommand;
@@ -20,7 +22,6 @@ public class BnbFrontController extends HttpServlet {
 
     public BnbFrontController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,6 +50,10 @@ public class BnbFrontController extends HttpServlet {
 			command = new BNB_hostjoinCommand();
 		} else if(comm.equals("/hroomregist.do")) {
 			command = new BNB_HroomregistCommand();
+		} else if(comm.equals("/reserv_confirm.do")) {
+			command = new BNB_Reserv_confirmCommand();
+		} else if(comm.equals("/BNB_reserv_result.do")) {
+			command = new BNB_Reserv_resultCommand();
 		}
 		
 		String path = command.exec(request, response);

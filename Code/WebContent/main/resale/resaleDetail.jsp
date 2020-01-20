@@ -16,15 +16,26 @@
 		
 	//}
 </script>
-<%@ include file="../navCssLink.html" %>
+<%@ include file="/main/navCssLink.html" %>
 </head>
-
 <body>
-<%@ include file="../navBody.html" %>  
-
+<c:choose>
+	<c:when test="${not empty sessionScope.id}">
+		<%@ include file="/main/navLogOutBody.html" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="/main/navBody.html" %>
+	</c:otherwise>
+</c:choose>
 	<div id="detailBox">
 		<div id="cate">
 		<p style="font-weight: bold">카테고리 &nbsp;: &nbsp;${rsVO.category}&nbsp;&gt;&nbsp;${rsVO.category_child}</p>
+		<div id="detailBtn">
+				<c:if test="${not empty sessionScope.id}">
+					<input type="button" id="editBtn" value="수정" onclick="javascript:location.href='ResaleController?type=postEdit&rs_seq=${rsVO.rs_seq}&postId=${rsVO.id}'">
+					<input type="button" id="deleteBtn" value="삭제" onclick="javascript:location.href='ResaleController?type=delete&postId=${rsVO.id}'">
+				</c:if>
+		</div>
 		<br>
 		<hr>
 		<br>
@@ -40,7 +51,7 @@
 						     </c:when>
 						     <c:otherwise>
 							     <c:forEach items="${imgList}" var="img" >
-							        <img id="imgFile" src="./images/resale/${img.rs_file_name}">
+							        <img id="imgFile" src="${pageContext.request.contextPath}/images/resale/${img.rs_file_name}">
 							     </c:forEach>
 						     </c:otherwise>
 					     </c:choose>

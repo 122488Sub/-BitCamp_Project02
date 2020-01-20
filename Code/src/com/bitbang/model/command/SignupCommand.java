@@ -26,11 +26,14 @@ public class SignupCommand implements Command {
 		mVO.setId(email);
 		mVO.setPhone(phone);
 		mVO.setPwd(password);
-		
-		LoginDAO.insertMVO(mVO);
-		
+		mVO.setName(name);
 		
 		
-		return "index.html";
+		int insert = LoginDAO.insertMVO(mVO);
+		
+		//if(insert == 1) {}
+			
+	
+		return "LoginController?type=login_go";
 	}
 }

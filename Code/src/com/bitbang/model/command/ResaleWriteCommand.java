@@ -17,6 +17,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.bitbang.model.dao.resaleDAO;
+import com.bitbang.model.vo.MemberVO;
 import com.bitbang.model.vo.ResaleVO;
 
 public class ResaleWriteCommand implements Command {
@@ -101,6 +102,14 @@ public class ResaleWriteCommand implements Command {
 		}
 
 	    }
+	String session_id = (String)request.getSession().getAttribute("id");
+	
+	MemberVO mVO = resaleDAO.getMvo(session_id);
+	
+	rsVO.setId(mVO.getId());
+	rsVO.setPwd(mVO.getPwd());
+	rsVO.setName(mVO.getName());
+
 	rsVO.setIp(request.getRemoteAddr());
 	String file_name = saveFileList.get(0);
 	String file_ori_name = saveFileList.get(0);
@@ -110,6 +119,6 @@ public class ResaleWriteCommand implements Command {
 	resaleDAO.writeVO(rsVO);
 	resaleDAO.writeImg(originFileList, saveFileList);
 	
-	return "RS_Redirect?type=write_ok";
+	return "RS_Redirect?type=list_go";
 	}//exec End
 }

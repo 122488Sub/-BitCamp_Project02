@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +14,18 @@
 </script>
 <link href="css/price.css" rel="stylesheet" type="text/css"></link>
 <%@ include file="main/navCssLink.html" %>
-<%@ include file="main/navBody.html" %>
+
 </head>
+
+<c:choose>
+	<c:when test="${not empty sessionScope.id}">
+		<%@ include file="/main/navLogOutBody.html" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="/main/navBody.html" %>
+	</c:otherwise>
+</c:choose>
+
 <body>
 <div id="container">
 		<h2 class="review_h2">분양목록:수정화면</h2>
@@ -100,16 +111,6 @@
 						<th class="review_step">입주예정일</th>
 						<td><input type="text" name="moving_in"
 									 value="${sub_divisionVO.getMoving_in() }" class="review_input"></td>
-					</tr>
-					<tr>
-						<th class="review_step">리스트사진이미지</th>
-						<td><input type="text" name="a_image"
-									 value="${sub_divisionVO.getA_image() }" class="review_input"></td>
-					</tr>
-					<tr>
-						<th class="review_step">디테일에사진이미지들</th>
-						<td><input type="text" name="a_images"
-									 value="${sub_divisionVO.getA_images() }" class="review_input"></td>
 					</tr>
 				</tbody>
 				<tfoot>

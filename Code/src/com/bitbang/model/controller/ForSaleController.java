@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bitbang.common.commonUtil;
 import com.bitbang.model.command.Command;
+import com.bitbang.model.command.ForSaleInputCommand;
+import com.bitbang.model.command.ForSaleInsertCommand;
 import com.bitbang.model.command.ForSaleOnePageCommand;
 import com.bitbang.model.command.ForSaleOneUpdateCommand;
 import com.bitbang.model.command.ForSaleOneUpdateOkCommand;
@@ -25,8 +27,15 @@ public class ForSaleController extends HttpServlet {
 		
 		String path="";
 		Command comm=null;
-		
+		boolean bool=false;
 		switch(type) {
+		case "FsInput":
+			comm = new ForSaleInputCommand(); 
+			break;
+		case "FsInsert":
+			comm = new ForSaleInsertCommand();
+			bool=true;
+			break;
 		case "FsPageRe":
 			commonUtil.fs_Bool=false;
 		case "FsPage":	
@@ -52,7 +61,11 @@ public class ForSaleController extends HttpServlet {
 		
 		path=comm.exec(request, response);
 		System.out.println(path);
-		request.getRequestDispatcher(path).forward(request, response);
+		if(bool) {
+			response.sendRedirect(path);
+		}else {
+			request.getRequestDispatcher(path).forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

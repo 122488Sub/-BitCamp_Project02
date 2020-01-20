@@ -27,8 +27,8 @@ public class BNB_HroomregistCommand implements Command{
 		
 		
 		
-		//파일을 저장할 위치 지정(upload)
-		String path = "C:\\MyStudy\\60_web\\bnb_backup\\WebContent\\bnbupload";
+		//파일을 저장할 위치 지정(bnbupload)
+				String path = "D:\\jsp&servlet\\jsp_practice\\-BitCamp_Project02\\-BitCamp_Project02\\Code\\WebContent\\bnbupload";
 		
 		//MultipartRequest 객체 생성
 		MultipartRequest mr = new MultipartRequest(
@@ -66,7 +66,12 @@ public class BNB_HroomregistCommand implements Command{
 		
 		rvo.setCity_name(mr.getParameter("city_name"));
 		rvo.setAddress(mr.getParameter("address"));
-		rvo.setCenterpoint(mr.getParameter("centerpoint"));
+		
+		String center = mr.getParameter("centerpoint");
+		String centerpoint = center.substring(1, center.length()-1);
+		System.out.println("centerpoint"+centerpoint);
+		rvo.setCenterpoint(centerpoint);
+		
 	
 		/*
 		
@@ -90,7 +95,7 @@ public class BNB_HroomregistCommand implements Command{
 		System.out.println("rvo저장해줘");
 		BNB_DAO.getRoomInsert(rvo);
 		
-		return "bnb_main.html";
+		return "bnb_main.jsp";
 	}
 
 }

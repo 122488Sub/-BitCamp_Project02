@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bitbang.model.command.Command;
 import com.bitbang.model.command.ResaleCommOKCommand;
+import com.bitbang.model.command.ResaleListCommand;
 import com.bitbang.model.command.ResaleWriteOKCommand;
+import com.bitbang.model.command.ResalelistPageCommand;
+
 
 
 
@@ -29,7 +32,7 @@ public class RS_Redirect extends HttpServlet {
 		Command comm = null;
 		switch(type) {
         
-	        case "write_ok": comm = new ResaleWriteOKCommand();  break;
+	        case "list_go": comm = new ResaleWriteOKCommand();  break;
 	        case "comm_ok": comm = new ResaleCommOKCommand();  break;
 	        default: break;
 		}

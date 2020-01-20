@@ -50,7 +50,7 @@
 			<div class="select_info">
 				<div class="select_date">
 					<button type="button" aria-pressed="true">
-						<span aria-label="1월 14일 - 1월 23일">${checkin} - ${checkout }
+						<span aria-label="1월 14일 - 1월 23일">${checkin}&nbsp;&nbsp;-&nbsp;&nbsp;${checkout }
 						</span>
 					</button>
 				</div>
@@ -77,7 +77,7 @@
 					<c:if test="${not empty rlist }">
 						<c:forEach var="rvo" items="${rlist }">
 							<div class="roomlist_each"
-								onclick="location.href='detailroom_view.do?room_serial=${rvo.room_serial}'">
+								onclick="location.href='detailroom_view.do?room_serial=${rvo.room_serial}&checkin=${checkin}&checkout=${checkout }&personNum=${pNum } '">
 								<div class="room_slider">
 									<div class="swiper-container">
 										<div class="swiper-wrapper">
@@ -109,11 +109,24 @@
 									
 									</c:forEach>
 								  </div>
-									<div class="sroom_price clearfix">
-										<em>&#8361; ${rvo.r_price } / 1박</em>
-									</div>
-									<div class="sroom_tot clearfix">총 요금 : &#8361; 556,070</div>
+								  
+								  <c:choose>
+								  		<c:when test="${diffdate >= 7 }">
+											<div class="sroom_price clearfix">
+												<del style="color : red;">&#8361;  ${rvo.r_price } </del>&nbsp;<em>  &#8361; ${rvo.discount_price } / 1박</em>
+											</div>
+											<div class="sroom_tot clearfix">총 요금 : &#8361; ${diffdate  * rvo.discount_price} </div>
+										</c:when>
+										<c:otherwise>
+											<div class="sroom_price clearfix">
+												<em>&#8361; ${rvo.r_price } / 1박</em>
+											</div>
+											<div class="sroom_tot clearfix">총 요금 : &#8361; ${diffdate  *  rvo.r_price} </div>
+										</c:otherwise>
+									</c:choose> 
 								</div>
+								
+								
 								<hr class="b" color="#EBEBEB">
 							</div>
 						</c:forEach>
@@ -180,15 +193,25 @@
 		});
 	</script>
 	<script>
+	
+	<%-- List<BNB_ROOM_INFOVO> brilist=(List<BNB_ROOM_INFOVO>) request.getAttribute("rlist"); 
+	for(BNB_ROOM_INFOVO brivo : brilist){
+		System.out.println(brivo.getCenterpoint().replaceAll("[\\(\\)]", ""));
+		
+	}
+--%>
+
 		var mapContainer = document.getElementById('mapbox'), // 지도를 표시할 div 
 		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표 - 나중에 검색한 것의 가장 위에 있는 것의 좌표가 넣어지도록 변경
-			level : 3
+			center : new kakao.maps.LatLng(${ctp}), // 지도의 중심좌표 - 나중에 검색한 것의 가장 위에 있는 것의 좌표가 넣어지도록 변경
+			level : 4
 		// 지도의 확대 레벨
 		};
 
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 		var map = new kakao.maps.Map(mapContainer, mapOption);
+		
+		
 		
 		function getInfo() {
 			var center = map.getCenter(); // 지도의 현재 중심좌표를 얻어옴
@@ -232,9 +255,18 @@
 		
 		marker.setMap(map); //마커가 지도 위체 표시되도록 설정
 		
-		var iwContent ='<div style="padding:5px;">&#8361; 32,100 <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> </div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-	    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
-	    
+		<c:forEach var="center" items="${rlist}" step="1">
+		<c:choose>
+			<c:when test="${diffdate >= 7 }">
+				var iwContent ='<div style="padding:5px;" > <a href="detailroom_view.do?room_serial=${center.room_serial}" style="color:black; " target="_blank"> &#8361; ${center.discount_price }</a> </div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			    iwPosition = new kakao.maps.LatLng(${center.centerpoint}); //인포윈도우 표시 위치입니다
+		    </c:when>
+			<c:otherwise>
+				var iwContent ='<div style="padding:5px;" > <a href="detailroom_view.do?room_serial=${center.room_serial}" style="color:black; " target="_blank"> &#8361; ${center.r_price}</a> </div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			    iwPosition = new kakao.maps.LatLng(${center.centerpoint}); //인포윈도우 표시 위치입니다
+			</c:otherwise>
+		</c:choose> 
+	
 
 		//인포 윈도우를 생성
 		var infowindow = new kakao.maps.InfoWindow({
@@ -243,7 +275,7 @@
 		});
 	    
 	    infowindow.open(map);
-		
+	    </c:forEach>
 	</script>
 
 </body>

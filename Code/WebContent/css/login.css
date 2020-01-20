@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+	#logBox {
+				width: 95%;
+				height: 50px;
+				text-align: right;
+			}
+	#logUl {		
+		list-style: none;
+		margin-right: 0;
+		font-size: 15px;
+	}
+	li a {
+		color: black;
+	}

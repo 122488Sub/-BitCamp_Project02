@@ -29,6 +29,7 @@ public class BNB_hostjoinCommand implements Command{
 		
 		
 		request.setAttribute("h_num", h_num);
+		
 		request.setAttribute("id", id);
 		return "hroomregist.jsp";
 	}

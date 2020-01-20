@@ -22,7 +22,7 @@
             <div class="col-lg-4">
               <nav class="site-navigation text-right ml-auto " role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                  <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                  <li class="active"><a href="index.jsp" class="nav-link">Home</a></li>
                   <li><a href="javascript:moveFSPage()" class="nav-link">ForSale</a></li>
                   <li><a href="ControllerCommunity" class="nav-link">Community</a></li>
                 </ul>
@@ -30,7 +30,7 @@
             </div>
             <div class="col-lg-4 text-center">
               <div class="site-logo">
-                <a href="index.html">BITBANG</a>
+                <a href="index.jsp">BITBANG</a>
               </div>
 
 
@@ -40,7 +40,7 @@
               <nav class="site-navigation text-left mr-auto " role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                   <li><a href="aptindex.jsp" class="nav-link">AptSale</a></li>
-                  <li><a href="bnb_main.html" class="nav-link">BnB</a></li>
+                  <li><a href="bnb_main.jsp" class="nav-link">BnB</a></li>
 				  <!-- 해당 링크에 자기 파일로 해주세용 -->
                   <li><a href="ResaleController?type=list" class="nav-link">Resale</a></li>
                 </ul>
@@ -48,7 +48,12 @@
             </div>
           </div>
         </div>
-
+		<div id="logBox">
+			<ul id="logUl">
+				<li id="login"><a href="LoginController?type=login_go">login</a></li>
+				<li id="signin"><a href="LoginController?type=signup_go">Sign Up</a></li>
+			</ul>
+		</div>
       </header>
 	</div>
 	 <script src="js/jquery-3.3.1.min.js"></script>

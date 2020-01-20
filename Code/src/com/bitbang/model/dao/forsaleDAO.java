@@ -33,13 +33,6 @@ public class forsaleDAO {
 		return vo;
 	}
 
-	public RealEstateAgentsVO selectOneREA(int rea_idx) {
-		SqlSession ss = DBService.getFactory().openSession(true);
-		RealEstateAgentsVO vo = ss.selectOne("REAOne", rea_idx);
-		ss.close();
-		return vo;
-	}
-
 	public int selectTotclCount() {
 		SqlSession ss = DBService.getFactory().openSession(true);
 		int count = ss.selectOne("");
@@ -47,14 +40,21 @@ public class forsaleDAO {
 		return count;
 	}
 
-	public int insertData() {
+	static public int insertData(ForSaleVO vo) {
 		SqlSession ss = DBService.getFactory().openSession(true);
-		int result = ss.selectOne("");
+		int result = ss.insert("FSInsert", vo);
 		ss.close();
 
 		return result;
 	}
+	static public int selectCurrentSeq() {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int result = ss.selectOne("FSSeclectCurrentSeq");
+		ss.close();
 
+		return result;
+	}
+	
 	public static int updateData(Map<String, String> map) {
 
 		SqlSession ss = DBService.getFactory().openSession();

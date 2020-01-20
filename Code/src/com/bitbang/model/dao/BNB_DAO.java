@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bitbang.model.vo.BNB_BookingVO;
 import com.bitbang.model.vo.BNB_PAGEVO;
 import com.bitbang.model.vo.BNB_ROOM_INFOVO;
+import com.bitbang.model.vo.BNB_TAGVO;
+import com.bitbang.model.vo.MemberVO;
 import com.bitbang.mybatis.DBService;
 
 public class BNB_DAO {
@@ -58,4 +61,46 @@ public class BNB_DAO {
 		return getRoomInsert;
 	}
 	
+	public static String getCenterpoint(String city_search ) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		String centerpoint = ss.selectOne("mostpoint", city_search);
+		ss.close();
+		return centerpoint;
+	}
+	
+	public static int getBookingInset(BNB_BookingVO bbvo) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int getBookingInset = ss.insert("booking_insert", bbvo);
+		ss.close();
+		return getBookingInset;
+		
+	}
+	
+	public static MemberVO getIdInfo(String id) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		MemberVO mvo = ss.selectOne("id_info", id);
+		ss.close();
+		return mvo;
+	}
+	
+	public static BNB_BookingVO getBooking_Info(String guest_Id) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		BNB_BookingVO bbinfo = ss.selectOne("booking_info", guest_Id);
+		ss.close();
+		return bbinfo;
+	}
+	
+	public static int getTagCount(String room_num) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int tagCount = ss.selectOne("tag_count", room_num);
+		ss.close();
+		return tagCount;
+	}
+	
+	public static List<BNB_TAGVO> getTagList(String rSerial ) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		List<BNB_TAGVO> roomlist = ss.selectList("tag_list", rSerial);
+		ss.close();
+		return roomlist; 
+	}
 }
