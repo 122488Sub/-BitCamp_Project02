@@ -3,7 +3,7 @@
 
 div#content {
 		position: absolute;
-		left: 20%;
+		left: 25%;
 		right: 80%;
 		width: 800px;
 		height: 600px;
@@ -20,8 +20,17 @@ div#content {
 		width: 100px;
 		height: 150px;
 	}
+	#pac-input {
+		float:left;
+	}
+	#addrBox {
+		
+	}
 	
-	
+	#btn {
+		margin-left:700px;
+		margin-bottom: 100px;
+	}
 	#cateBox1 {
 		float: left; 
 				 }

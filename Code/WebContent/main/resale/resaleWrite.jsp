@@ -95,9 +95,10 @@ function sendData(){
 	</c:otherwise>
 </c:choose>
 	<div id="content">
+	<h2>기본 정보</h2>
+	<hr color="#3e64ff;">
 		<form action="${pageContext.request.contextPath}/ResaleController?type=write" method="post" enctype="multipart/form-data">
-			<h2>기본 정보</h2>
-			<hr>
+			
 			<div id="imgBox">
 				<label>사진 : </label>
 				<div id="defaultImg">
@@ -107,10 +108,10 @@ function sendData(){
 				<div class="imgs_wrap">
 				</div>
 			</div><!-- imgBox End -->
-			<hr>
+			<hr color="#3e64ff;">
 			<label>제목 : </label>
 			<input type="text" name="subject" placeholder="제목을 입력하세요." title="제목">
-			<hr>
+			<hr color="#3e64ff;">
 			<div id="cateMain">
 			<label id="cateLabel">카테고리 : &nbsp;</label>
 			<div id="cateBox1" class="cateBox">
@@ -192,10 +193,10 @@ function sendData(){
 			<p> > </p>
 			<p id="cateResult2"></p>
 			</div><!-- cateMain End -->
-			<hr>
+			<hr color="#3e64ff;">
 			<div id="addrBox">
-				<br>
-				<label>거래지역 : &nbsp;</label>
+				
+				<label style="float:left">거래지역 : &nbsp;</label>
 				<div class="pac-card" id="pac-card">
 			      <div id="pac-container">
 			        <input id="pac-input" type="text" name="address"
@@ -204,20 +205,21 @@ function sendData(){
 			    </div>
 		    </div>
 			<div id="map"></div>
-			<hr>
+			<br>
+			<hr color="#3e64ff;">
 			<label>가격 : &nbsp;</label>
 			<input type="text" name="price" placeholder="숫자만 입력하세요" title="가격">
 			<label>&nbsp; 원</label>
-			<hr>
+			<hr color="#3e64ff;">
 			<label>설명 : &nbsp;</label>
 			<input type="text" id="contentBox" name="content" placeholder="제품에 대한 설명을 입력하세요." title="설명">
-			<hr>
+			<hr color="#3e64ff;">
 			<label>해시태그 : &nbsp;</label>
 			<input type="text" name="hashtags" placeholder="최대 5개 입력 가능합니다." title="해시태그">
-			<hr>
+			<hr color="#3e64ff;">
 			<input type="hidden" id="hiddenCate1" name="cate1" title="카테고리">
 			<input type="hidden" id="hiddenCate2" name="cate2" title="하위 카테고리"> 
-			<input type="button" value="등록하기" onclick="sendData()">
+			<input type="button" value="등록하기" id="btn" onclick="sendData()">
 		</form>
 	</div>
 	

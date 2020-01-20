@@ -95,7 +95,7 @@ function editData(){
 	</c:otherwise>
 </c:choose>
 	<div id="content">
-		<form action="${pageContext.request.contextPath}/ResaleController?type=edit" method="post" enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath}/ResaleController?type=edit&rs_seq=${rsVO.rs_seq}" method="post" enctype="multipart/form-data">
 			<h2>기본 정보</h2>
 			<hr>
 			<div id="imgBox">

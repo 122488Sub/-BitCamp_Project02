@@ -104,13 +104,17 @@ public class ResaleUpdateCommand implements Command {
 
 	    }
 	String session_id = (String)request.getSession().getAttribute("id");
+	int rs_seq = Integer.parseInt(request.getParameter("rs_seq"));
+	
 	
 	MemberVO mVO = resaleDAO.getMvo(session_id);
 	
+	rsVO.setRs_seq(rs_seq);
 	rsVO.setId(mVO.getId());
 	rsVO.setPwd(mVO.getPwd());
 	rsVO.setName(mVO.getName());
 	rsVO.setIp(request.getRemoteAddr());
+	
 	/*
 	String file_name = saveFileList.get(0);
 	String file_ori_name = saveFileList.get(0);
