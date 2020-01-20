@@ -153,11 +153,11 @@
 /* ******************************* detailroom_view ************************************************* */
 #pic_area{position : relative; }
 .roompic_box{display: block; height: 590px;}
-.roompic_box .roompic1 {background : url(../img/header7.jpg) no-repeat center center; background-size: cover; width: 50%; height: 590px; float:left;}
-.roompic_box .roompic2 {background : url(../img/header8.jpg) no-repeat center center; background-size: cover; width: 25%; height: 295px; float:left;}
-.roompic_box .roompic3 {background : url(../img/headerpic1.jpg) no-repeat center center; background-size: cover; width: 25%; height: 295px; float:left; }
-.roompic_box .roompic4 {background : url(../img/headerpic2.jpg) no-repeat center center; background-size: cover; width: 25%; height: 295px; float:left;}
-.roompic_box .roompic5 {background : url(../img/headerpic3.jpg) no-repeat center center; background-size: cover; width: 25%; height: 295px; float:left;}
+.roompic_box .roompic1 { no-repeat center center; background-size: cover; width: 50%; height: 590px; float:left;}
+.roompic_box .roompic2 { no-repeat center center; background-size: cover; width: 25%; height: 295px; float:left;}
+.roompic_box .roompic3 { no-repeat center center; background-size: cover; width: 25%; height: 295px; float:left; }
+.roompic_box .roompic4 { no-repeat center center; background-size: cover; width: 25%; height: 295px; float:left;}
+.roompic_box .roompic5 { no-repeat center center; background-size: cover; width: 25%; height: 295px; float:left;}
 
 #roomdetail {position : relative; display: block;}
 .room_sticky{position: absolute;}
@@ -166,8 +166,8 @@
 .room_box .room_dtit .droom_name{ float: left;}
 .room_box .room_dtit .droom_name h1{font-size: 32px; font-weight: 800; line-height: 1.125em; padding : 6px 0; font-family:'Noto Sans KR'; font-family:'Noto Sans KR'; color : rgb(72, 72, 72);}
 .room_box .room_dtit .droom_name p{ font-size: 16px; font-weight: 400; line-height: 1.375em; padding : 6px 0; font-family:'Noto Sans KR';}
-.room_box .room_dtit .droom_host{float: right;}
-.room_box .room_dtit .droom_host .dhost_pic{background : url(../img/roompic/hostpic1.jpg) no-repeat center center; background-size: cover; width:60px; height: 60px; border-radius: 50%;  margin : 10px;}
+.room_box .room_dtit .droom_host{float: right; text-align : center;}
+.room_box .room_dtit .droom_host .dhost_pic{  background-size: cover; width:60px; height: 60px; border-radius: 50%;  margin : 10px;}
 .room_box .room_dtit .droom_host .dhost_name{ display: block; font-size: 14px; font-weight: 400; line-height: 1.285em; }
 
 .room_box .room_sinfo { display: block; font-size: 16px; font-weight: 400;line-height: 1.37em;}
@@ -186,6 +186,8 @@
 .room_box .dreservation_box {position: relative;}
 .room_box .dreservation_box .dreserv_info {display: block; font-size: 16px; font-weight: 400; line-height: 1.37em; margin : 20px 0 15px 0;}
 .room_box .dreservation_box .dreserv_info .dreserv_tit {display: block; }
+.room_box .dreservation_box .dreserv_info .dreserv_date img {width : 100%; margin : 0 auto;}
+
 .room_box .dreservation_box .dreserv_deldate {display: block; }
 .room_box .dreservation_box .dreserv_deldate button { font-weight: 400; line-height: 1.37em; overflow-wrap: break-word; font-size: 16px; display: block; color: #008489; background-color : rgba(0,0,0,0); margin : 20px 0; }
 
@@ -224,7 +226,17 @@
 
 .room_box .dhost_info
 
-.room_box .dlocation_infobox
+.room_box .dhost_infobox {podition : relative; display : block; font-weight : 600; font-family:'Noto Sans KR'; font-size: 13px; line-height: 1.5;  color : rgb(72, 72, 72);}
+.room_box .dhost_infobox .dhost_header{display :block; margin : 18px 0px;}
+.room_box .dhost_infobox .dhost_header .dhost_join{float:left;}
+.room_box .dhost_infobox .dhost_header .dhost_join .d_host_name{font-size: 24px; font-weight : 800; width :100%; line-height : 1.25em; padding-bottom : 2px; }
+.room_box .dhost_infobox .dhost_header .dhost_join .d_host_join{font-size: 16px; font-weight : 400; width :100%; line-height : 1.375em;}
+.room_box .dhost_infobox .d_host_pic img{float:right; no-repeat center center; background-size: cover; width:64px; height: 64px; border-radius: 50%; }
+.room_box .dhost_infobox .dhost_explain{display : block;}
+.room_box .dhost_infobox .dhost_explain .dhost_explain_cont{font-size: 16px; font-weight : 400; line-height : 1.375em; }
+.room_box .dhost_infobox .dhost_lang{margin : 16px 0;}
+.room_box .dhost_infobox .dhost_lang .dhost_langlist{font-size: 16px; font-weight : 400; line-height : 1.375em;}
+.room_box .dhost_infobox .dhost_lang .dhost_langlist String{font-size: 16px; font-weight : 600; line-height : 1.375em;}
 
 .room_box .dnotice_infobox {position: relative;}
 .room_box .dnotice_infobox .dnotice_headerbox { display : block; margin-top: 40px; margin-bottom: 16px;}
@@ -310,3 +322,45 @@
 .booking_info .booking_payment .payment_info{display : inline-block;float :right;}
 
 .booking_box .bookingmapbox {text-align : center; margin : 0 auto;}
+
+
+/* ***************************host join******************************** */
+.bnb_hostjoinbox {position : relative; display : block; text-align : center; margin :28px auto;  width : 70%; height : 500px; padding : 28px; font-family:'Noto Sans KR'; font-size: 18px; font-weigh : 600; line-height: 1.5;  color : rgb(72, 72, 72);}
+.bnb_hostjoinbox .host_joinheader {}
+.bnb_hostjoinbox .host_joinheader .jhost_tit {font-size : 25px; font-weight : 800;}
+.bnb_hostjoinbox .host_joinheader .jhost_box1{ margin : 15px; position :relative; display : block; padding : 15px; heigh : 50px; }
+
+.bnb_hostjoinbox .host_joinheader .jhost_box1 .jhost_ID_tit{display : inline-block;   float : left; margin-left : 70px;}
+.bnb_hostjoinbox .host_joinheader .jhost_box1 .jhost_ID_cont{display : inline-block;   float : right; margin-right : 30px;}
+.bnb_hostjoinbox .host_joinheader .jhost_box1 .jhost_ID_cont input {border : 1px solid #e4e4e4;}
+
+.bnb_hostjoinbox .host_joinheader .jhost_box2{ margin : 15px; position :relative; display : block; padding : 15px; }
+.bnb_hostjoinbox .host_joinheader .jhost_box2 .jhost_name_tit{display : inline-block;  float : left; margin-left : 70px;}
+.bnb_hostjoinbox .host_joinheader .jhost_box2 .jhost_name_cont{display : inline-block; float : right; margin-right : 30px;}
+.bnb_hostjoinbox .host_joinheader .jhost_box2 .jhost_name_cont input {border : 1px solid #e4e4e4;}
+
+.bnb_hostjoinbox .host_joinheader .jhost_box3{ margin : 15px; position :relative; display : block; padding : 15px; }
+.bnb_hostjoinbox .host_joinheader .jhost_box3 .jhost_phone_tit{display : inline-block;  float : left; margin-left : 70px;}
+.bnb_hostjoinbox .host_joinheader .jhost_box3 .jhost_phone_cont{display : inline-block; float : right; margin-right : 30px;}
+.bnb_hostjoinbox .host_joinheader .jhost_box3 .jhost_phone_cont input {border : 1px solid #e4e4e4;}
+
+.bnb_hostjoinbox .host_joinheader .jhost_box4{ margin : 15px; position :relative; display : block; padding : 15px; }
+.bnb_hostjoinbox .host_joinheader .jhost_box4 .jhost_pic_tit{display : inline-block;  float : left;  margin-left : 70px;  }
+.bnb_hostjoinbox .host_joinheader .jhost_box4 .jhost_pic_cont{display : inline-block; float : right; margin-right : 30px;}
+.bnb_hostjoinbox .host_joinheader .jhost_box4 .jhost_pic_cont input {border : 1px solid #e4e4e4; }
+
+.bnb_hostjoinbox .host_joinheader .jhost_box5{ margin : 15px; position :relative; display : block; padding : 15px; }
+.bnb_hostjoinbox .host_joinheader .jhost_box5 .jhost_intro_tit{display : inline-block; margin : 0 160px 0 -115px; }
+.bnb_hostjoinbox .host_joinheader .jhost_box5 .jhost_intro_cont{display : inline-block; margin : 0 -160px 0 80px;}
+.bnb_hostjoinbox .host_joinheader .jhost_box5 .jhost_intro_cont textarea {border : 1px solid #e4e4e4; color : rgb(72, 72, 72); font-family:'Noto Sans KR'; font-size: 16px; font-weigh : 400;}
+
+.bnb_hostjoinbox .hostregist button{ border-radius:5px; background: #e4e4e4; color :  rgb(72, 72, 72);}
+
+.hostregist{clear:both;}
+
+
+/* ******************************* room register *******************************/
+.room_registbox { position : relative; display : block; text-aligh : center; margin : 0 auto; font-family:'Noto Sans KR'; font-size: 18px; font-weigh : 600; line-height: 1.5;  color : rgb(72, 72, 72);}
+
+.room_registbox  .room_regtit th {text-aligh : center; font-size : 24px; font-weight : 800;}
+

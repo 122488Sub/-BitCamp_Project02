@@ -55,7 +55,7 @@
 								${bk.guest_name }님 예약이 완료 되었습니다.
 							</div>
 							<div class="booking_date">
-								예약 완료 : ${bk.bookingdate }
+								예약 완료 : <fmt:formatDate value="${bk.bookingdate }" pattern="yyyy년 MM월 dd일"/>
 							</div>
 						</div>
 						<hr>

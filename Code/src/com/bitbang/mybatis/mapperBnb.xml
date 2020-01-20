@@ -26,8 +26,8 @@
 	 </select>
 	 
 	 <insert id="hinsert" parameterType="com.bitbang.model.vo.BNB_ROOM_INFOVO">
-	 	INSERT INTO BNB_HOST_INFO (H_NUM, H_NAME, H_PHONE, H_JOINDATE, H_INTRO, ID)
-	 	VALUES (HOST_SEQ.NEXTVAL, #{h_name}, #{h_phone}, SYSDATE, #{h_intro}, #{id})
+	 	INSERT INTO BNB_HOST_INFO (H_NUM, H_NAME, H_PHONE, H_JOINDATE, H_INTRO, ID, H_PIC)
+	 	VALUES (HOST_SEQ.NEXTVAL, #{h_name}, #{h_phone}, SYSDATE, #{h_intro}, #{id}, #{h_pic})
 	 </insert>
 	 
 	 <insert id="rinsert" parameterType="com.bitbang.model.vo.BNB_ROOM_INFOVO">
@@ -67,15 +67,18 @@
 	</select>
 	
 	
-	<!--  작성중
-	<select id="tag_list" resultType="" parameterType="">
-		
+	
+	<select id="tag_list" resultType="com.bitbang.model.vo.BNB_TAGVO" parameterType="String">
+		SELECT * FROM BNB_TAG WHERE ROOM_NUM = #{room_num}
 	</select>
 	
 	<select id="tag_count" resultType="int" parameterType="String">
 		SELECT COUNT(*) FROM BNB_TAG WHERE ROOM_NUM = #{room_num}
 	</select>
-	 -->
+	 
+	 <select id="host_infoone" resultType="com.bitbang.model.vo.BNB_ROOM_INFOVO" parameterType="String">
+	 	SELECT * FROM BNB_HOST_INFO WHERE H_NUM = #{rSerial}
+	 </select>
 	
 	
 </mapper>

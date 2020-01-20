@@ -20,6 +20,8 @@ public class BNB_ROOM_INFOVO {
 	private String h_name, h_phone;
 	private Date h_joindate;
 	private String h_intro;
+	private String h_pic;
+	
 	public int getR_num() {
 		return r_num;
 	}
@@ -230,6 +232,12 @@ public class BNB_ROOM_INFOVO {
 	public void setH_intro(String h_intro) {
 		this.h_intro = h_intro;
 	}
+	public String getH_pic() {
+		return h_pic;
+	}
+	public void setH_pic(String h_pic) {
+		this.h_pic = h_pic;
+	}
 	@Override
 	public String toString() {
 		return "BNB_ROOM_INFOVO [r_num=" + r_num + ", bnb_idx=" + bnb_idx + ", room_serial=" + room_serial + ", r_name="
@@ -242,8 +250,9 @@ public class BNB_ROOM_INFOVO {
 				+ address + ", room_cn=" + room_cn + ", person_cn=" + person_cn + ", facility=" + facility
 				+ ", city_name=" + city_name + ", centerpoint=" + centerpoint + ", id=" + id + ", h_num=" + h_num
 				+ ", h_name=" + h_name + ", h_phone=" + h_phone + ", h_joindate=" + h_joindate + ", h_intro=" + h_intro
-				+ "]";
+				+ ", h_pic=" + h_pic + "]";
 	}
+	
 	
 	
 	

@@ -83,15 +83,15 @@
 										<div class="swiper-wrapper">
 											<!-- Slides -->
 											<div class="swiper-slide li1"
-												style="background: url(${rvo.r_pic1 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
+												style="background: url(bnbupload//${rvo.r_pic1 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
 											<div class="swiper-slide li2"
-												style="background: url(${rvo.r_pic2 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
+												style="background: url(bnbupload//${rvo.r_pic2 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
 											<div class="swiper-slide li3"
-												style="background: url(${rvo.r_pic3 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
+												style="background: url(bnbupload//${rvo.r_pic3 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
 											<div class="swiper-slide li4"
-												style="background: url(${rvo.r_pic4 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
+												style="background: url(bnbupload//${rvo.r_pic4 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
 											<div class="swiper-slide li5"
-												style="background: url(${rvo.r_pic5 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
+												style="background: url(bnbupload//${rvo.r_pic5 })  no-repeat center center; background-size: cover; border-radius: 5px;"></div>
 										</div>
 									</div>
 								</div>

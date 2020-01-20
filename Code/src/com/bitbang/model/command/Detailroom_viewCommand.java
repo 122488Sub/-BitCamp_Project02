@@ -66,6 +66,50 @@ public class Detailroom_viewCommand implements Command {
 		int tag_cn = BNB_DAO.getTagCount(room_num);
 		request.setAttribute("tag_cn", tag_cn);
 		
+		double facility_cn =0;
+		double host_cn = 0;
+		double clean_cn = 0;
+		double communication_cn = 0;
+		double location_cn = 0;
+		double accuracy_cn = 0;
+		
+		
+		
+		for(int i = 0; i < tag_cn; i++) {
+			facility_cn += btvo_list.get(i).getFacility_cn();
+			host_cn += btvo_list.get(i).getHost_cn();
+			clean_cn += btvo_list.get(i).getClean_cn();
+			communication_cn += btvo_list.get(i).getCommunication_cn();
+			location_cn += btvo_list.get(i).getLocation_cn();
+			accuracy_cn += btvo_list.get(i).getAccuracy_cn();
+			
+		}
+		
+		double fc_eq = (Math.round((facility_cn/tag_cn)*100)/100.0);
+		double h_eq = (Math.round((host_cn/tag_cn)*100)/100.0);
+		double cl_eq = (Math.round((clean_cn/tag_cn)*100)/100.0);
+		double cm_eq = (Math.round((communication_cn/tag_cn)*100)/100.0);
+		double lo_eq = (Math.round((location_cn/tag_cn)*100)/100.0);
+		double ac_eq = (Math.round((accuracy_cn/tag_cn)*100)/100.0);
+		double total_cn = (Math.round(((fc_eq+h_eq+cl_eq+cm_eq+lo_eq+ac_eq)/6)*100)/100.0);
+		
+		request.setAttribute("fc_eq",fc_eq);
+		request.setAttribute("h_eq",h_eq);
+		request.setAttribute("cl_eq",cl_eq);
+		request.setAttribute("cm_eq",cm_eq);
+		request.setAttribute("lo_eq",lo_eq);
+		request.setAttribute("ac_eq",ac_eq);
+		request.setAttribute("total_cn", total_cn);
+		
+		
+		BNB_ROOM_INFOVO hinfoOne = BNB_DAO.getHostinfo(rSerial);
+		
+		System.out.println(hinfoOne);
+		
+		request.setAttribute("hinfo", hinfoOne);
+		
+		
+		
 		   }
 	        catch(ParseException e)
 	        {
