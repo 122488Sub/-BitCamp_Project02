@@ -15,7 +15,7 @@ body {
 		 
 	}
 	#cate {
-		border-bottom: 1px solid lightgray;
+
 		text-align: left;
 	}
 	#cateText {
@@ -94,7 +94,6 @@ body {
 		width: 496px;
 		height: 600px;
 	}
-	
 	.userInfo {
 		text-align: left;
 	}

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bitbang.model.vo.MemberVO;
 import com.bitbang.model.vo.ResaleCommVO;
 import com.bitbang.model.vo.ResaleImgVO;
 import com.bitbang.model.vo.ResaleVO;
@@ -60,6 +61,8 @@ public class resaleDAO {
 		ss.close();
 		return commVO;
 	}
+	
+	//이미지 리스트 불러오기
 	public static List<ResaleImgVO> resaleImgList(int rs_seq) {
 		SqlSession ss = DBService.getFactory().openSession(true);
 
@@ -68,7 +71,7 @@ public class resaleDAO {
 		ss.close();
 		return imgList;
 	}
-	
+	//게시판에 해당 인덱스에 맞는 이미지 불러오기
 	public static List<ResaleImgVO> resaleBoardImg(Map<String, Integer> map) {
 		SqlSession ss = DBService.getFactory().openSession(true);
 
@@ -77,8 +80,23 @@ public class resaleDAO {
 		ss.close();
 		return imgList;
 	}
+	//해당 아이디가 가진 멤버 정보 불러오기
+	public static MemberVO getMvo(String session_id) {
+		SqlSession ss = DBService.getFactory().openSession(true);
 
-	
+		MemberVO mvo = ss.selectOne("getMvo", session_id);
+
+		ss.close();
+		return mvo;
+	}
+	public static ResaleVO getPostInfo(int rs_seq) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		
+		ResaleVO rsVO = ss.selectOne("getPostInfo", rs_seq);
+		
+		ss.close();
+		return rsVO;
+	}
 	//--------------------------------select End-----------------------------------------
 	
 	
@@ -135,6 +153,24 @@ public class resaleDAO {
 		ss.update("resaleUpdateLev", map);
 		ss.close();
 	}
+	public static void updateVO(ResaleVO rsVO) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		System.out.println("subject dao : " + rsVO.getSubject());
+		ss.update("updateVO", rsVO);
+		ss.close();
+		
+	}
+
 	
 	//--------------------------------update End-----------------------------------------
+	//--------------------------------delete-----------------------------------------
+	
+	public static void deletePost(String in_userId) {
+		
+		SqlSession ss = DBService.getFactory().openSession(true);
+		ss.delete("in_userId", in_userId);
+		ss.close();
+	}
+	
+	//--------------------------------delete End-----------------------------------------
 }

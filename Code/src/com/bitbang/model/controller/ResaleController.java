@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.bitbang.model.command.Command;
 import com.bitbang.model.command.Multi_imgCommand;
 import com.bitbang.model.command.ResaleCommCommand;
+import com.bitbang.model.command.ResaleDeleteCommand;
 import com.bitbang.model.command.ResaleDetailCommand;
+import com.bitbang.model.command.ResaleEditCommand;
 import com.bitbang.model.command.ResaleListCommand;
 import com.bitbang.model.command.ResaleNewPostCommand;
 import com.bitbang.model.command.ResaleReCommCommand;
+import com.bitbang.model.command.ResaleUpdateCommand;
 import com.bitbang.model.command.ResaleWriteCommand;
 import com.bitbang.model.command.ResalelistPageCommand;
 
@@ -40,6 +43,9 @@ public class ResaleController extends HttpServlet {
 			case "comm": comm = new ResaleCommCommand(); break;
 			case "reComm": comm = new ResaleReCommCommand(); break;
 			case "newPost": comm = new ResaleNewPostCommand(); break;
+			case "delete": comm = new ResaleDeleteCommand(); break;
+			case "edit": comm = new ResaleUpdateCommand(); break;
+			case "postEdit": comm = new ResaleEditCommand(); break;
 			default : break;
 		}
 

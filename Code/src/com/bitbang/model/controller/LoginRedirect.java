@@ -12,7 +12,7 @@ import com.bitbang.model.command.IdCheckedCommand;
 import com.bitbang.model.command.IndexCommand;
 import com.bitbang.model.command.LogoutCommand;
 import com.bitbang.model.command.ResaleCommOKCommand;
-import com.bitbang.model.command.ResaleWriteOKCommand;
+import com.bitbang.model.command.ResaleUpdateCommand;
 
 @WebServlet("/LoginRedirect")
 public class LoginRedirect extends HttpServlet {

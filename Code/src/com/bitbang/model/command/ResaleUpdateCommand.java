@@ -20,7 +20,7 @@ import com.bitbang.model.dao.resaleDAO;
 import com.bitbang.model.vo.MemberVO;
 import com.bitbang.model.vo.ResaleVO;
 
-public class ResaleWriteCommand implements Command {
+public class ResaleUpdateCommand implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		//String rs_seq = request.getParameter("rs_seq");
@@ -54,6 +54,7 @@ public class ResaleWriteCommand implements Command {
 						value = item.getString("utf-8");
 						System.out.println("일반 폼 필드 :" + name+ "-" + value);
 						switch(name) {
+											
 							case("subject"): rsVO.setSubject(value); break;
 							case("cate1"): rsVO.setCategory(value); break;
 							case("cate2"): rsVO.setCategory_child(value); break;
@@ -109,15 +110,18 @@ public class ResaleWriteCommand implements Command {
 	rsVO.setId(mVO.getId());
 	rsVO.setPwd(mVO.getPwd());
 	rsVO.setName(mVO.getName());
-
 	rsVO.setIp(request.getRemoteAddr());
+	/*
 	String file_name = saveFileList.get(0);
 	String file_ori_name = saveFileList.get(0);
-	
 	rsVO.setFile_name(file_name);
 	rsVO.setFile_ori_name(file_ori_name);
-	resaleDAO.writeVO(rsVO);
 	resaleDAO.writeImg(originFileList, saveFileList);
+	*/
+	System.out.println("subject last : " + rsVO.getSubject());
+	
+	resaleDAO.updateVO(rsVO);
+	
 	
 	return "RS_Redirect?type=list_go";
 	}//exec End

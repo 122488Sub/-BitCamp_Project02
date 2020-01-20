@@ -57,6 +57,18 @@
 		  WHERE RS_SEQ = #{rs_seq}
 	</select>
 
+	<select id="getMvo" parameterType="string" resultType="mVO">
+		SELECT *
+		  FROM MEMBERS
+		  WHERE ID = #{id}
+	</select>
+
+	<select id="getPostInfo" parameterType="int" resultType="rsVO">
+		SELECT *
+		  FROM RESALE_BOARD
+		  WHERE RS_SEQ = #{rs_seq}
+	</select>
+
 	<!-- <select id="detail" parameterType="String" resultType="rsVO">
 		SELECT * FROM MAC_BANG WHERE RS_SEQ = #{rs_seq}
 	</select> -->
@@ -69,7 +81,7 @@
 		<!-- 중고게시판 작성 텍스트 insert -->
 	<insert id="writeVO" parameterType="rsVO">
 		INSERT INTO RESALE_BOARD 
-		  VALUES(5, RS_SEQ.NEXTVAL, 1, 'rexypark', '1234', 'im_rex', #{subject}, #{address}, #{category}, 
+		  VALUES(5, RS_SEQ.NEXTVAL,  #{rs_seq}, #{id}, #{pwd}, #{name}, #{subject}, #{address}, #{category}, 
 		         #{category_child}, #{content}, #{ip}, SYSDATE, #{hash_tag}, #{hit}, #{price}, #{file_name}, #{file_ori_name})
 	</insert>
 	
@@ -102,7 +114,32 @@
 		  SET LEV = LEV + 1
 		 WHERE GROUPS = #{groups} AND LEV >= #{lev} 
 	</update>
+	
+	<update id="updateVO" parameterType="rsVO">
+		 UPDATE RESALE_BOARD
+			 SET SUBJECT = #{subject},
+				 ADDRESS = #{address},
+				 CATEGORY = #{category},
+				 CATEGORY_CHILD = #{category_child},
+				 HASH_TAG = #{hash_tag},
+				 CONTENT = #{content},
+				 PRICE = #{price}
+			 WHERE RS_SEQ = #{rs_seq} 
+	</update>
+	
+	
 <!-- ===============================update End=============================== -->	
+
+
+<!-- ===============================delete=================================== -->
+
+	
+	<delete id="in_userId" parameterType="string">
+		DELETE FROM RESALE_BOARD WHERE ID = #{in_userId} CASCADE
+	</delete>
+	
+	
+<!-- ===============================delete End=============================== -->	
 	
 	
 </mapper>
