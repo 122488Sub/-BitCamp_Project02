@@ -38,7 +38,8 @@
 	
 	<update id="FSUpdate" parameterType="map">
 		UPDATE FORSALE_BOARD
-		   SET SUBJECT = #{subject},
+		   SET ADDRESS = #{address},
+		   	   SUBJECT = #{subject},
 		   	   DETAIL = #{detail}
 		 WHERE FORSALE_SEQ = #{seq} 
 	</update>
