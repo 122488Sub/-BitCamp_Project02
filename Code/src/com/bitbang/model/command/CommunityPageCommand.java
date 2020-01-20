@@ -31,8 +31,6 @@ public class CommunityPageCommand implements Command {
 		request.setAttribute("paging", pagingVO);
 		request.setAttribute("list", list);
 		
-		System.out.println(list);
-		
 		return "Community.jsp";
 	}
 

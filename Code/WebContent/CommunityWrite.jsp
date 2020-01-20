@@ -2,60 +2,44 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+<%@ include file="main/navCssLink.html"%>
+</head>
+
+<%@ include file="main/navBody.html"%>
 <meta charset="UTF-8">
 <title>글쓰기</title>
-<style type="text/css">
-tr {
-	    text-align:center;
-	    padding:4px 10px;
-	    background-color: #F6F6F6;
-	}
-	
-th {
-		width:120px;
-	    text-align:center;
-	    padding:4px 10px;
-	    background-color: #B2CCFF;
-	}
-td { text-align: left; }
-</style>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
 <script type="text/javascript">
-	function sendData() {
-		for (var i = 0; i < document.forms[0].elements.length; i++) {
-			if (document.forms[0].elements[i].value == "") {
-				if (i == 3)	continue;
-				alert(document.forms[0].elements[i].name + "를 입력하세요");
-				document.forms[0].elements[i].focus();
-				return;//수행 중단
-			}
-		}
-		document.forms[0].submit();
-	}
+
+	$(document).ready(function() {
+		$('#summernote').summernote({
+			height : 500,
+			focus : true
+		});
+	});
 </script>
 </head>
 <body>
-	
+
 	<form action="ControllerCommunity?type=insertpost" method="post">
-		<table width="700px">
-		<tbody>
-			<tr>
-				<th>제목</th>
-				<td align="left"> <input type="text" name="c_title"></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td align="left"><textarea rows="10" cols="60" name="c_content"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-				<input type="button" value="입력" onclick="sendData()" /> 
-				<input type="reset" value="취소" />
-				</td>
-			</tr>
-            </tbody>
-		</table>
+	<h2>글쓰기</h2>
+	<hr>
+	<span>제목 : </span><input type="text" name="c_title">
+	<hr>
+	<textarea id="summernote" name="c_content"></textarea>
+	<input type="submit" value="입력"/><input type="reset" value="취소" />
 	</form>
 </body>
 </html>
