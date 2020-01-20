@@ -1,0 +1,95 @@
+SELECT CENTERPOINT FROM BNB_ROOM_INFO WHERE CITY_NAME LIKE '%繁带%' ORDER BY TOTAL_EQ;
+
+select  from
+(select CENTERPOINT, R_NAME, rownum as rnum
+from BNB_ROOM_INFO WHERE CITY_NAME LIKE '%繁带%'
+order by TOTAL_EQ ASC)
+where rnum = 1 ;
+
+select  from
+(select CENTERPOINT, TOTAL_EQ, R_NAME, rownum as rnum
+from BNB_ROOM_INFO WHERE CITY_NAME LIKE '%繁带%'
+)order by TOTAL_EQ DESC
+ ;
+ 
+
+SELECT CENTERPOINT FROM
+		(SELECT ROWNUM R_NUM, R_LIST. FROM
+		(SELECT  FROM BNB_ROOM_INFO WHERE
+		CITY_NAME LIKE '%繁带%' ORDER BY TOTAL_EQ DESC)R_LIST
+		)
+		where R_NUM = 1 ;
+        
+SELECT MEMBER_IDX FROM MEMBERS WHERE ID = 'test7';
+
+CREATE TABLE BOOKING (
+    BOOKING_NUM NUMBER PRIMARY KEY,
+    GUEST_NUM NUMBER,
+    GUEST_NAME VARCHAR2(20),
+    HOST_NUM NUMBER,
+    HOST_NAME VARCHAR2(20),
+    HOST_PHONE VARCHAR2(30),
+    ROOM_NUM NUMBER,
+    ROOM_NAME VARCHAR2(50),
+    ROOM_TYPE VARCHAR2(20),
+    ROOM_CITY VARCHAR2(20),
+    ROOM_ADDRESS VARCHAR2(100),
+    ROOM_CENTERPOINT VARCHAR2(100),
+    BOOKINGDATE DATE,
+    BOOKING_CHECKIN VARCHAR2(50),
+    BOOKING_CHECKOUT VARCHAR2(50),
+    BOOKING_PAYMENT VARCHAR2(20)
+);
+
+CREATE SEQUENCE BOOKING_SEQ 
+    START WITH 1
+    INCREMENT BY 1
+    NOMAXVALUE
+    NOCYCLE
+    NOCACHE
+;
+
+ALTER TABLE BOOKING ADD(GUEST_ID VARCHAR2(50));
+ALTER TABLE BOOKING ADD(BOOKING_PAYMENT_DISC VARCHAR2(20));
+commit;
+
+
+
+INSERT INTO BOOKING (BOOKING_NUM NUMBER, GUEST_NUM, GUEST_NAME, HOST_NUM, HOST_NAME, HOST_PHONE, ROOM_NUM, ROOM_NAME, ROOM_TYPE, ROOM_CITY, ROOM_ADDRESS, ROOM_CENTERPOINT, BOOKINGDATE, BOOKING_CHECKIN, BOOKING_CHECKOUT,  BOOKING_PAYMENT, GUEST_ID, BOOKING_PAYMENT_DISC)
+		VALUES (BOOKING_SEQ.NEXTVAL, #{guest_num}, #{guest_name}, #{host_num}, #{host_name}, #{host_phone}, #{room_num}, #{room_name}, #{room_type}, #{room_city}, #{room_address}, #{room_centerpoint}, SYSDATE, #{booking_checkin}, #{booking_checkout}, #{booking_payment}, #{guest_Id}, #{booking_payment_disc})
+	insert
+    
+    DROP TABLE BNB_TAG;
+    
+    
+CREATE TABLE BNB_TAG (
+    TAG_NUM NUMBER PRIMARY KEY,
+    ROOM_NUM VARCHAR2(10),
+    TAG_CONT CLOB,
+    GUEST_NAME VARCHAR2(30),
+    WRITE_DATE DATE,
+    TOTAL_CN NUMBER(3,2),
+    FACILITY_CN NUMBER(3,2),
+    HOST_CN NUMBER(3,2),
+    CLEAN_CN NUMBER(3,2),
+    COMMUNICATION_CN NUMBER(3,2),
+    LOCATION_CN NUMBER(3,2),
+    ACCURACY_CN NUMBER(3,2)
+);
+COMMIT;
+
+CREATE SEQUENCE BNB_TAG_SEQ 
+    START WITH 1
+    INCREMENT BY 1
+    NOMAXVALUE
+    NOCYCLE
+    NOCACHE
+;
+
+ALTER TABLE BNB_TAG ADD(GUEST_PIC VARCHAR2(50));
+
+INSERT INTO BNB_TAG VALUES (BNB_TAG_SEQ.NEXTVAL, '6', 'Hello, I am hea-li. we were so friendly. you were willing to help me whenever i need help. The
+									room was so luxury and clean. Sometimes i think it will be so
+									nice if i can live in your houses room forever. I definitely
+									would visit your house for meeting you again. Thank you na-eun.', 'hea-li', SYSDATE, 5, 5, 5, 5, 5, 5, 5, 'YET');
+COMMIT;

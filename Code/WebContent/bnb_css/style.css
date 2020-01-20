@@ -2,15 +2,18 @@
 
 /* 레이아웃 */
 #mNav {display: none; position: absolute; top: 10px; right: 14px;}
-#header {width: 100%;}
-#banner {position : relative;}
-
+#header {width: 100%; font-family:'Noto Sans KR', AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif; color: #222; font-size: 13px; line-height: 1.5;}
+#banner {position : relative; font-family:'Noto Sans KR', AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif; color: #222; font-size: 13px; line-height: 1.5;}
+#roomdetail {
+	position : relative; font-family:'Noto Sans KR', AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif; color: #222; font-size: 13px; line-height: 1.5;  color : rgb(72, 72, 72);
+	
+}
 /* 가운데 영역 */
-.container {position: relative; width: 1280px; margin: 0 auto; background: rgba(0,0,0,0); }
+.container3 {position: relative; width: 1280px; margin: 0 auto; background: rgba(0,0,0,0); }
 .container2 {position: relative; width: 1680px; margin: 0 auto; background: rgba(0,0,0,0); }
 
 /* 로우 영역 */
-.row {padding: 0 28px;}
+.row {padding: 0 28px; }
 
 /* 배너 */
 .banner_menu {overflow: hidden; position: absolute; left: 0; width: 100%; height: 100px; z-index: 10;}
@@ -31,66 +34,58 @@
 .slider .ss3 {background : url(../img/headerpic1.jpg) no-repeat center center; background-size: cover;}
 
 /* 검색창 */
-#search{position: relative;}
-.searchbox { width : 584px; height : 468px; border-radius: 5px;  padding : 32px; background: #FFFAF0; margin-top: 56px; float :left; }
+#search{position: relative; font-family:'Noto Sans KR'; }
+.searchbox { width : 584px; height : 585px; border-radius: 5px;  padding : 32px; margin-top: 56px; float :left; font-family: 'Noto Sans KR', sans-serif;}
 .search_tit {text-align: center; }
-.search_tit h1 {font-size: 2.3em; font-weight: inherit ; margin : 0; padding :0; line-height: 69px; color : inherit; height: 74px; }
+.search_tit h1 {font-size: 1.8em; font-weight: 600 ; margin : 0; padding :0; line-height: 69px; color : inherit; height: 74px; font-family:'Noto Sans KR'; }
 .search_info .destination {margin-top : 20px; margin-bottom: 20px;  position : relative;}
 .search_info .destination .des_tit { margin-bottom: 8px;}
-.search_info .destination .des_tit span {font-size : 12px; font-weight: 600; }
+.search_info .destination .des_tit span {font-size : 12px; font-weight: 600; font-family:'Noto Sans KR'; }
 .search_info .destination .des_location {padding: 11px 0;  display: block; border : 1px solid #6495ED; border-radius: 5px;}
-.search_info .destination .des_location input {font-size: 18px; line-height: 24px; box-sizing: inherit; overflow: visible; border : none;}
+.search_info .destination .des_location input {font-size: 18px; line-height: 24px; box-sizing: inherit; overflow: visible; border : none; font-family:'Noto Sans KR';}
 
 .searchbox .date {margin-bottom: 20px; position: relative;}
 .date .date_checkin {width: 50%;  float: left; overflow: hidden; }
 .date .date_checkin .checkin_tit {margin-bottom: 8px;}
-.date .date_checkin .checkin_tit span {font-size : 12px; font-weight: 600; line-height: 1.3333em; }
+.date .date_checkin .checkin_tit span {font-size : 12px; font-weight: 600; line-height: 1.3333em; font-family:'Noto Sans KR';}
 .date .date_checkin .checkin_date {position : relative; border-width: 1px 0 1px 1px; padding : 11px 0; border-style: solid none solid solid; border-color: #6495ED; border-radius: 5px 0 0 5px; border-right: none; display: block; width: 100%; }
 .date .date_checkin .checkin_date input {min-height: 46px; font-size: 16px; font-weight: 600;  border : none; size : 50;}
 
 .date .date_checkout {width: 50%;  float: right; }
 .date .date_checkout .checkout_tit {margin-bottom: 8px;}
-.date .date_checkout .checkout_tit span {font-size : 12px; font-weight: 600; line-height: 1.3333em; }
+.date .date_checkout .checkout_tit span {font-size : 12px; font-weight: 600; line-height: 1.3333em; font-family:'Noto Sans KR'; }
 .date .date_checkout .checkout_date {position : relative; border-width: 1px 1px 1px 1px; padding : 11px 0; border-style: solid; border-radius: 0 5px 5px 0; display: block; width: 100%;  border-color: #6495ED;}
 .date .date_checkout .checkout_date input {min-height: 46px; font-size: 16px; font-weight: 600; border : none; size : 50;}
 
 .personNum {margin-bottom: 16px; position: relative;  }
 .personNum .personNum_tit {margin-bottom: 8px; }
-.personNum .personNum_tit .personCheck {font-size: 12px; font-weight: 600; line-height: 1.3333em; }
+.personNum .personNum_tit .personCheck {font-size: 12px; font-weight: 600; line-height: 1.3333em; font-family:'Noto Sans KR'; }
 
 .personNum .select {position : relative; }
 .personNum .select .pSelect {font-size: 16px; font-weight: 400; display: block; height: 48px; border: 1px solid #6495ED;  padding : 8px 11px 11px; width: 100%;}
 .personNum .select .pSelect option {white-space: nowrap}
 
-.search_btn button {border-radius: 5px; font-size : 16px; line-height: 24px; padding: 10px 22px; background : #FF5A5F; color : #fff; width: 100%; margin-top: 9px;}
+.searchbox .search_btn button {border-radius: 5px; font-size : 16px; line-height: 24px; padding: 10px 22px; background : #FF5A5F; color : #fff; width: 100%; margin-top: 9px;}
 
 /* 광고 */
-.adverbox{ display : block; width : 503px; height : 468px; border-radius: 5px;  padding : 32px; background: #FFFAF0; margin-top: 56px; float : right; }
+.adverbox{ display : block; width : 553px; height : 468px; border-radius: 5px;  padding : 32px; background: #FFFAF0; margin: 106px 0 0 60px; float : right; font-family:'Noto Sans KR'; font-size : 12px;}
 .adverbox .adveraction {position: relative; display: block;}
 .adverbox .adveraction .adver_tit {font-size: 3em; font-weight: 800; padding-top : 130px ; position: absolute; left: 50%; transform: translateX(-50%);}
 .adverbox .adveraction .adver_context {font-size: 3em; font-weight: 800; padding-top : 200px; position: absolute; left: 50%; transform: translateX(-50%); 
 	animation-name : textsize;  animation-duration:2s; animation-iteration-count : infinite;}
+	.adverbox .adveraction .adver_context a:hover {color : red;}
 .adverbox .adveraction .adver_mention {font-size: 3em; font-weight: 800;  padding-top : 270px; position: absolute; left: 45%; transform: translateX(-40%);}
-@keyframs textsize {
-	0% {
-			color : black;
-			font-size: 3em; font-weight: 800;
-		} 100% {
-			color : red;
-			font-size: 4em; font-weight: 800;
-		}
 
-}
 
 /* ********************************************** searchresult ***************************************************************************************************** */
 .search2 {width: 100% height : 80px;}
-.search2 .searchline {width : 30%; height : 48px; margin : 16px 0; border : 1px solid #EBEBEB; border-radius: 5px; box-shadow: 0 3px 5px rgba(0,0,0,0.2) }
+.search2 .searchline {width : 30%; height : 48px; margin : 16px 0; border : 1px solid #EBEBEB; border-radius: 5px; box-shadow: 0 3px 5px rgba(0,0,0,0.2);}
 .search2 .searchline input {width : 100%; height : 22px; margin-top : 13px; border : none; font-size : 17px; font-weight : 800;}
 
-#nav {width: 100% height: 48px; border: 1px solid #EBEBEB; display: block; box-sizing: border-box; padding-top: 5px; padding-right: 8px; padding-bottom: 5px;}
+#nav {width: 100%; height: 48px; border: 1px solid #EBEBEB; display: block; box-sizing: border-box; padding-top: 5px; padding-right: 8px; padding-bottom: 5px;}
 .select_info {position: relative; }
 .select_date {display : inline-block; height: 32px; border : 2px solid rgb(34, 34, 34); border-radius: 30px; }
-.select_date button {width : 150px; margin: 7px auto; background: none;}
+.select_date button {width : 200px; margin: 7px auto; background: none;}
 .select_date span {line-height: 18px; font-size: 14px; font-weight: 400; }
 
 .select_personNum {display : inline-block; height: 32px; border : 2px solid rgb(34, 34, 34); border-radius: 30px; margin-left: 10px;}
@@ -115,7 +110,7 @@
 .room_simpleinfo .sroom_point{float: right; }
 .room_simpleinfo .sroom_point img{ float : left; margin : 4px 3px 0 0; width : 17px; height: auto;}
 .room_simpleinfo .sroom_tit {clear:both; margin : 5px auto; font-size : 20px;}
-.room_simpleinfo .sroom_price{margin : 65px 0 3px 0px; float : right;}
+.room_simpleinfo .sroom_price{margin : 42px 0 3px 0px; float : right;}
 .room_simpleinfo .sroom_tot{clear : both; float :right;}
 
 .roomlist .b { clear : both; margin : 0; }
@@ -166,24 +161,25 @@
 
 #roomdetail {position : relative; display: block;}
 .room_sticky{position: absolute;}
-.room_box {display: inline-block; width: 58.33%; padding-right: 8px; background: pink; position: relative;}
+.room_box {display: inline-block; width: 58.33%; padding-right: 8px; position: relative;}
 .room_box .room_dtit { margin-top: 20px; position: relative; display: block;}
 .room_box .room_dtit .droom_name{ float: left;}
-.room_box .room_dtit .droom_name h1{font-size: 32px; font-weight: 800; line-height: 1.125em; padding : 6px 0;}
-.room_box .room_dtit .droom_name p{ font-size: 16px; font-weight: 400; line-height: 1.375em; padding : 6px 0;}
+.room_box .room_dtit .droom_name h1{font-size: 32px; font-weight: 800; line-height: 1.125em; padding : 6px 0; font-family:'Noto Sans KR'; font-family:'Noto Sans KR'; color : rgb(72, 72, 72);}
+.room_box .room_dtit .droom_name p{ font-size: 16px; font-weight: 400; line-height: 1.375em; padding : 6px 0; font-family:'Noto Sans KR';}
 .room_box .room_dtit .droom_host{float: right;}
 .room_box .room_dtit .droom_host .dhost_pic{background : url(../img/roompic/hostpic1.jpg) no-repeat center center; background-size: cover; width:60px; height: 60px; border-radius: 50%;  margin : 10px;}
 .room_box .room_dtit .droom_host .dhost_name{ display: block; font-size: 14px; font-weight: 400; line-height: 1.285em; }
 
 .room_box .room_sinfo { display: block; font-size: 16px; font-weight: 400;line-height: 1.37em;}
-.room_box .room_sinfo .info_rtype{ margin : 10px 20px; }
-.room_box .room_sinfo .info_rpersoncnt { margin : 0 10px 0 20px; display: inline-block;}
+.room_box .room_sinfo .info_rtype{ margin : 10px 0px; }
+.room_box .room_sinfo .info_rtype img {width : 20px; heigh : auto; margin-top : -5px;}
+.room_box .room_sinfo .info_rpersoncnt { margin : 0 10px 0 0px; display: inline-block;}
 .room_box .room_sinfo .info_rcnt {margin : 0 10px 0 0; display : inline-block;}
 .room_box .room_sinfo .info_rbedcnt { margin : 0 10px 0 0; display: inline-block; }
 .room_box .room_sinfo .info_rdesc{margin : 15px 0 25px;  }
 
 .room_box .facility_box{position: relative; font-size: 16px; font-weight: 400;line-height: 1.37em; display: block;}
-.room_box .facility_box .dfacility {margin : 20px 0 14px 0; background: pink; display: relative;}
+.room_box .facility_box .dfacility {margin : 20px 0 14px 0;  display: relative;}
 .room_box .facility_box .dfacility .facil_name{width: 100%; margin : 0 0 20px 0;}
 .room_box .facility_box .dfacility .facil_list{width : 49%; margin : 7px 0; display: inline-block;}
 
@@ -196,14 +192,15 @@
 .room_box .dtag_box{position : relative;}
 .room_box .dtag_box .dtag_main {display: block; margin-top: 20px;}
 .room_box .dtag_box .dtag_main .dtag_tit {margin-bottom: : 8px;}
-.room_box .dtag_box .dtag_main .dtag_tit h2 {font-size: 24px; font-weight: 800; line-height: 1.25em;}
+.room_box .dtag_box .dtag_main .dtag_tit h2 {font-size: 24px; font-weight: 800; line-height: 1.25em; font-family:'Noto Sans KR'; color : rgb(72, 72, 72);}
 .room_box .dtag_box .dtag_main .dtag_totalpoint { display: inline-block; margin: 18px 16px 8px 0; font-size: 18px; font-weight: 800; line-height: 1.444em;}
+.room_box .dtag_box .dtag_main .dtag_totalpoint img {width:20px; heigh : auto; margin-top : -5px;}
 .room_box .dtag_box .dtag_main .dtag_totalpoint:after {content: "" !important; display: inline-block;  width: 1px; height: 16px; background: white; margin-left: 15px; } 
 .room_box .dtag_box .dtag_main .dtag_count {display: inline-block; font-size: 18px; font-weight: 400;}
-.room_box .dtag_box .dtag_main .dtag_count strong {display: inline-block; font-size: 18px; font-weight: 800; line-height: 1.444em;}
+.room_box .dtag_box .dtag_main .dtag_count strong {display: inline-block; font-size: 18px; font-weight: 800; line-height: 1.444em; font-family:'Noto Sans KR'; color : rgb(72, 72, 72);}
 
 .room_box .dtag_box .dtag_list {display: block; position: relative; margin-top: 20px;}
-.room_box .dtag_box .dtag_list .dlist_box {border : 1px solid rgb(255, 255, 255); box-shadow : rgba(0, 0, 0, 0.16); border-radius: 12px; padding : 20px 16px;}
+.room_box .dtag_box .dtag_list .dlist_box {border : 1px solid  #e4e4e4; box-shadow : rgba(0, 0, 0, 0.16); border-radius: 12px; padding : 20px 16px;}
 .room_box .dtag_box .dtag_list .dlist_box .dlist_boxitems {position : relative;}
 .room_box .dtag_box .dtag_list .dlist_box .dlist_boxitems .boxitem {width: 49.5%; display: inline-block; margin : 5px 0; font-size: 14px; font-weight: 400; line-height: 1.28em; position: relative;}
 .room_box .dtag_box .dtag_list .dlist_box .dlist_boxitems .boxitem .boxitem_name {width: 49.5%; display: inline-block;}
@@ -231,28 +228,29 @@
 
 .room_box .dnotice_infobox {position: relative;}
 .room_box .dnotice_infobox .dnotice_headerbox { display : block; margin-top: 40px; margin-bottom: 16px;}
-.room_box .dnotice_infobox .dnotice_headerbox h2{font-weight: 800; font-size: 24px; line-height: 1.25em; margin : 2px 0;}
-.room_box .dnotice_infobox .dnotice_contentbox span {font-size: 16px; font-weight: 600; line-height: 1.375;}
+.room_box .dnotice_infobox .dnotice_headerbox h2{font-weight: 800; font-size: 24px; line-height: 1.25em; margin : 2px 0;  font-family:'Noto Sans KR'; color : rgb(72, 72, 72);}
+.room_box .dnotice_infobox .dnotice_contentbox span {font-size: 16px; font-weight: 600; line-height: 1.375;  font-family:'Noto Sans KR'; color : rgb(72, 72, 72);}
 .room_box .dnotice_infobox .dnotice_contentbox {font-size: 16px; font-weight: 400; line-height: 1.375;  }
 .room_box .dnotice_infobox .dreserve_cancel {display: block; margin-top: 20px;}
 .room_box .dnotice_infobox .dreserve_cancel .dreserv_canceltit { font-size: 16px; font-weight: 600; line-height: 1.375; }
 .room_box .dnotice_infobox .dreserve_cancel .dreserv_cancelcont { font-size: 16px; font-weight: 400; line-height: 1.375; padding: 5px 0;  }
 
 
-#roomdetail .calculationbox{position : sticky; display: inline-block; border : 1px solid #e4e4e4; width : 35%; margin : 28px; top : 50px; z-index: 9; }
+#roomdetail .calculationbox{position : sticky; display: inline-block; border : 1px solid #e4e4e4; width : 36%; height : 430px; margin : 28px; top : 50px; z-index: 9; }
 .calculationbox .cal_box {margin : 16px 24px;  }
 .calculationbox .cal_box .cal_header {display: block; width: 100%;}
 .calculationbox .cal_box .cal_header .cal_headertit {line-height: 10px; font-size: 12px; font-weight: 600; color : rgb(72, 72, 72); }
 .calculationbox .cal_box .cal_header .cal_headertit span {font-size: 22px; font-weight: 800; line-height: 1.44em; }
 .calculationbox .cal_box .cal_header .cal_point {cursor : ponter; user-select : auto; font-size: 12px;font-weight: 600;line-height: 1.33em; margin : 5px 0 16px 0; color : rgb(72, 72, 72); }
+.calculationbox .cal_box .cal_header .cal_point img{width : 12px; heigh:auto; margin-top:-3px;}
 .calculationbox .cal_box .cal_header .cal_point span {font-size: 12px; font-weight: 400; line-height: 1.33em; color : rgb(118, 118, 118); }
 
 .calculationbox .cal_box .cal_date {margin-top : 16px; margin-bottom : 8px;}
 .calculationbox .cal_box .cal_date .cdate_tit {font-size: 12px;font-weight: 600; line-height: 1.33em; color : rgb(72, 72, 72); }
-.calculationbox .cal_box .cal_date .cdate_inputbox {border : 1px solid #e4e4e4;  text-align: center; position: relative; font-size: 16px; padding : 8px; line-height: 24px; font-weight: normal; color : rgb(72, 72, 72);}
+.calculationbox .cal_box .cal_date .cdate_inputbox {border : 1px solid #e4e4e4;  text-align: center; position: relative; font-size: 14px; padding : 8px; line-height: 24px; font-weight: normal; color : rgb(72, 72, 72);}
 .calculationbox .cal_box .cal_date .cdate_inputbox .checkin {float:left; border-style: none;}
-.calculationbox .cal_box .cal_date .cdate_inputbox span {float:left;}
-.calculationbox .cal_box .cal_date .cdate_inputbox .checkout {float:left; border-style: none; }
+.calculationbox .cal_box .cal_date .cdate_inputbox span {float:left; }
+.calculationbox .cal_box .cal_date .cdate_inputbox .checkout {float:left; border-style: none; mrgin-left : 10px;}
 
 .calculationbox .cal_box .cal_personNum {clear : both; color : rgb(72, 72, 72); margin : 5px 0 16px 0;}
 .calculationbox .cal_box .cal_personNum .cpersonNum {font-size: 12px; font-weight: 600; line-height: 1.33em; }
@@ -270,3 +268,45 @@
 
 #footer {position: relative; display: block; }
 
+/* *************************  booking   ************************* */
+
+.booking_box { width : 100%; position : relative; font-family:'Noto Sans KR', AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif; color: #222; font-size: 13px; line-height: 1.5;  color : rgb(72, 72, 72);}
+.booking_box .booking_header { padding :14px;}
+.booking_box .booking_header .booking_tit {font-size : 18px; font-weight : 800; margin-bottom : 5px;}
+.booking_box .booking_header .booking_date {font-size : 14px; font-weight : 400; }
+
+.booking_info {position : relative; display : block;  width : 100%;  padding :14px; font-size : 14px; font-weight : 400;}
+.booking_info .booking_user {display : inline-block;  width : 49%; position : relative;padding :14px;} 
+.booking_info .booking_user .bookinguser_tit{display : inline-block;}
+.booking_info .booking_user .bookinguser_info{display : inline-block;float :right;}
+
+.booking_info .booking_user .bookingroom_tit{display : inline-block;}
+.booking_info .booking_user .bookingroom_name{display : inline-block;float :right;}
+
+.booking_info .booking_user .bookingroom_type{display : inline-block;}
+.booking_info .booking_user .bookingroom_typeinfo{display : inline-block;float :right;}
+
+.booking_info .booking_user .bookingroom_city{display : inline-block;}
+.booking_info .booking_user .bookingroom_cityinfo{display : inline-block;float :right;}
+
+.booking_info .booking_user .bookingroom_addr{display : inline-block;}
+.booking_info .booking_user .bookingroom_addrinfo{display : inline-block;float :right;}
+
+
+.booking_info .booking_payment {display : inline-block; width : 49%; margin-left : 1%; padding :14px; position: relative;}
+.booking_info .booking_payment .bookinghost_tit{display : inline-block;}
+.booking_info .booking_payment .bookinghost_name{display : inline-block;float :right;}
+
+.booking_info .booking_payment .bookinghost_phone{display : inline-block;}
+.booking_info .booking_payment .bookinghost_number{display : inline-block;float :right;} 
+
+.booking_info .booking_payment .payment_tit{}
+
+.booking_info .booking_payment .payment_checkin{display : inline-block;}
+.booking_info .booking_payment .payment_what{position :absolute; display : inline-block; left : 50%;}
+.booking_info .booking_payment .payment_checkout{display : inline-block;float :right;}
+
+.booking_info .booking_payment .payment_paytit{display : inline-block;}
+.booking_info .booking_payment .payment_info{display : inline-block;float :right;}
+
+.booking_box .bookingmapbox {text-align : center; margin : 0 auto;}

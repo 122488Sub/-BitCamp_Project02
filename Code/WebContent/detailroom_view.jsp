@@ -14,6 +14,8 @@
 <meta name="keywords"
 	content="airbnb, share house, zigbang, seoul, city, room">
 
+
+
 <!-- css -->
 <link rel="stylesheet" href="bnb_css/reset.css">
 <link rel="stylesheet" href="bnb_css/style.css">
@@ -28,8 +30,19 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean"
 	rel="stylesheet">
+	
+	<%@ include file="/main/navCssLink.html" %>
 </head>
 <body>
+<c:choose>
+	<c:when test="${not empty sessionScope.id}">
+		<%@ include file="/main/navLogOutBody.html" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="/main/navBody.html" %>
+	</c:otherwise>
+</c:choose>
+
 	<header id="header">
 		<nav id="mNav">
 			<h2 class="ir_so">Searching the share house</h2>
@@ -58,7 +71,7 @@
 	<!-- //pic_area -->
 
 	<section id="roomdetail">
-		<div class="container clearfix">
+		<div class="container3 clearfix">
 			<div class="row">
 				<div class="room_box">
 					<div class="room_dtit">
@@ -79,7 +92,7 @@
 							<a href="#" class="ham"><span></span></a>
 						</nav>
 						<div class="info_rtype">
-							<strong>${rinfo.room_type }</strong>
+							<img src="img/houseimg.jpg" alt="houseimg"> <strong>${rinfo.room_type }</strong>
 						</div>
 						<div class="info_rpersoncnt">인원 ${rinfo.person_cn }명</div>
 						<div class="info_rcnt">침실 ${rinfo.room_cn }개</div>
@@ -114,6 +127,11 @@
 						</div>
 					</div>
 					<hr>
+					
+					
+					
+					<c:forEach var="btag" items="${tag_list }">
+					
 					<div class="dtag_box">
 						<div class="dtag_main">
 							<div class="dtag_tit">
@@ -122,7 +140,7 @@
 								</h2>
 							</div>
 							<div class="dtag_totalpoint">
-								별 <strong>${rinfo.total_eq}</strong>
+								<img src="img/greenstar.png" alt="eq_star"> <strong>${rinfo.total_eq}</strong>
 							</div>
 							<div class="dtag_count">
 								<strong>134</strong> 후기
@@ -163,14 +181,19 @@
 								<div class="dguest_taginfo">
 									<div class="dguest_tagpic"></div>
 									<div class="dguest_name_date">
-										<strong>혜리</strong><br> 2019년 12월
+										<strong>${btag.write_date }</strong><br> 
 									</div>
 								</div>
-								<div class="dguest_tagcont">Hello, I am hea-li. we were so
+								<div class="dguest_tagcont">
+								${btag.tag_cont }
+								<!-- 
+								Hello, I am hea-li. we were so
 									friendly. you were willing to help me whenever i need help. The
 									room was so luxury and clean. Sometimes i think it will be so
 									nice if i can live in your house's room forever. I definitely
 									would visit your house for meeting you again. Thank you na-eun.
+									
+									 -->
 								</div>
 							</div>
 							<div class="dhost_replybox">
@@ -188,6 +211,10 @@
 							<div class="dpaging_area">페이징 처리 부분</div>
 						</div>
 					</div>
+					</c:forEach>
+					<!-- //후기 -->
+					
+					
 					<div class="dhost_infobox">호스트 정보 표시</div>
 					<hr>
 					<div class="dlocation_infobox">
@@ -216,25 +243,32 @@
 					<div class="cal_box">
 						<div class="cal_header">
 							<div class="cal_headertit">
-								<span>&#8361; ${rinfo.r_price } </span> &#47; 박
+							<c:choose>
+							  		<c:when test="${diffdate >= 7 }">
+										<span>&#8361; ${rinfo.discount_price } </span> &#47; 박
+									</c:when>
+									<c:otherwise>
+										<span>&#8361; ${rinfo.r_price } </span> &#47; 박
+									</c:otherwise>
+							</c:choose> 
 							</div>
 							<div class="cal_point">
-								별 4.71 <span>후기 &#40;189개&#41;</span>
+								<img src="img/greenstar.png" alt="eq_star"> 4.71 <span>후기 &#40;189개&#41;</span>
 							</div>
 						</div>
 						<hr>
-						<form action="" method="post">
+						<form action="reserv_confirm.do?room_serial=${rinfo.room_serial}&id=${id}&total_payment=${diffdate * rinfo.r_price }&total_payment_disc= ${diffdate * rinfo.discount_price }" method="post">
 							<div class="cal_date">
 								<div class="cdate_tit">날짜</div>
 								<div class="cdate_inputbox">
 									<div class="checkin">
-										<input type="text" name="checkin" placeholder="   년 / 월 / 일"
-											readonly style="border: 0px"; >${checkin }
+										<input type="text" name="checkin" placeholder="   년 / 월 / 일" value="${checkin }"
+											readonly style="border: 0px"; >
 									</div>
 									<span>&#187;</span>
 									<div class="chekcout">
-										<input type="text" name="checkout" placeholder="   년 / 월 / 일"
-											readonly style="border: 0px"; >${checkout }
+										<input type="text" name="checkout" placeholder="   년 / 월 / 일" value="${checkout }"
+											readonly style="border: 0px;" >
 									</div>
 								</div>
 							</div>
@@ -251,15 +285,28 @@
 
 								</div>
 							</div>
-							<div class="cal_price">
-								<div class="cprice_cal">&#8361; 50000 X 10 박</div>
-								<hr>
-								<div class="cp_totalname">합계</div>
-								<div class="cprice_result">&#8361; 565658</div>
-							</div>
+							
+							<c:choose>
+							  		<c:when test="${diffdate >= 7 }">
+										<div class="cal_price">
+											<div class="cprice_cal">&#8361; ${rinfo.discount_price } X ${diffdate} 박</div>
+											<hr>
+											<div class="cp_totalname">합계</div>
+											<div class="cprice_result" name="total_payment_disc">&#8361; ${diffdate * rinfo.discount_price }</div>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="cal_price">
+											<div class="cprice_cal">&#8361; ${rinfo.r_price } X ${diffdate} 박</div>
+											<hr>
+											<div class="cp_totalname">합계</div>
+											<div class="cprice_result" name="total_payment" >&#8361; ${diffdate * rinfo.r_price }</div>
+										</div>
+									</c:otherwise>
+							</c:choose> 
 							<div class="cal_buttonbox">
 								<div class="cal_button">
-									<button type="button" class="cal_buttonaction">
+									<button type="submit" class="cal_buttonaction">
 										<span>예약하기</span>
 									</button>
 								</div>
@@ -286,6 +333,7 @@ var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지
 // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
 var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 </script>
+
 
 </body>
 </html>
