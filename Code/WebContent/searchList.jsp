@@ -21,6 +21,7 @@
 </c:choose>
 
 <body>
+	<div id="container">
 	<h2 class="review_h2">검색결과</h2>
 	<table class="review_table">
 		<colgroup>
@@ -77,5 +78,6 @@
 		</tbody>
 	</table>
 	<p><a href="MyController?type=list">[목록으로 이동]</a></p>
+	</div>
 </body>
 </html>
