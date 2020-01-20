@@ -17,7 +17,9 @@ public class CommunityInsertPostCommand implements Command {
 		CommunityVO vo = new CommunityVO();
 		vo.setmember_id(id);
 		vo.setC_title(request.getParameter("c_title"));
-		vo.setC_content(request.getParameter("c_content"));
+		String nod = request.getParameter("c_content");
+		System.out.println(nod);
+		vo.setC_content(nod);
 		int count = new CommunityDAO().insertData(vo);
 		
 		return new CommunityPageCommand().exec(request, response);

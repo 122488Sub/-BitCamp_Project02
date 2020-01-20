@@ -33,7 +33,7 @@
 		<div id="detailBtn">
 				<c:if test="${not empty sessionScope.id}">
 					<input type="button" id="editBtn" value="수정" onclick="javascript:location.href='ResaleController?type=postEdit&rs_seq=${rsVO.rs_seq}&postId=${rsVO.id}'">
-					<input type="button" id="deleteBtn" value="삭제" onclick="javascript:location.href='ResaleController?type=delete&postId=${rsVO.id}'">
+					<input type="button" id="deleteBtn" value="삭제" onclick="javascript:location.href='ResaleController?type=delete&rs_seq=${rsVO.rs_seq}&postId=${rsVO.id}'">
 				</c:if>
 		</div>
 		<br>
@@ -51,7 +51,7 @@
 						     </c:when>
 						     <c:otherwise>
 							     <c:forEach items="${imgList}" var="img" >
-							        <img id="imgFile" src="${pageContext.request.contextPath}/images/resale/${img.rs_file_name}">
+							        <li><img id="imgFile" src="./images/resale/${img.rs_file_name}"></li>
 							     </c:forEach>
 						     </c:otherwise>
 					     </c:choose>
@@ -63,7 +63,7 @@
 						     	<li></li>
 						     </c:when>
 						     <c:otherwise>
-							     <c:forEach items="${imgList}" var="img">
+							     <c:forEach begin="1" end="${imgList.size()-1}" step="1" var="img">
 							        <li></li>
 							     </c:forEach>
 						     </c:otherwise>
