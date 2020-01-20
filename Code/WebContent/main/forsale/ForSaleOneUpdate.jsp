@@ -18,8 +18,15 @@
 		frm.submit();
 	}
 </script>
+
 <link rel="stylesheet" type="text/css" href="css/forsaleUpdate.css">
 <link rel="stylesheet" type="text/css" href="css/forsaleBtn.css">
+<style type="text/css">
+			 a:link { color: red; text-decoration: none;}
+			 a:visited { color: black; text-decoration: none;}
+			 a:hover { color: blue; text-decoration: underline;}
+		</style>
+
 </head>
 <body>
 <div id="container">
@@ -184,8 +191,9 @@
 						<td colspan="2" align="right" style="padding-right: 45px">
 							<button class="snip1535" value="수 정" style="margin-right: 20px" onclick="save_go(this.form)">수 정</button>
 							<button type="reset" class="snip1535" style="margin-right: 20px" value="">복 구</button>
+							
 							<a href="javascript:window.history.back()">
-								<button class="snip1535" value="취 소" style="margin-right: 20px">이 전</button>
+								<button type="button" class="snip1535" value="이 전" style="margin-right: 20px" onclick="">이 전</button>
 							</a>
 							
 							

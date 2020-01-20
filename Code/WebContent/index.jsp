@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <title>Harbor &mdash; Website Template by Colorlib</title>
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/mainBtn.css">
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -51,25 +52,9 @@
 	</c:otherwise>
 </c:choose>
     <div class="owl-carousel-wrapper">
-
-      
-
       <div class="box-92819 shadow-lg">
-        
-
-          <div>
-            <h1 class=" mb-3 text-black">비트캠프, 방을찾다.</h1>
-            <p>방을 찾고싶으세요?</p>
-            <p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Get In Touch</a></p>
-          </div>
-
-          
-
-        
+          <%@ include file="/main/mainBtn.html" %>
       </div>
-
-
-
       <div class="owl-carousel owl-1 ">
         <div class="ftco-cover-1" style="background-image: url('images/hero_1.jpg');"></div>
         <div class="ftco-cover-1" style="background-image: url('images/hero_2.jpg');"></div>

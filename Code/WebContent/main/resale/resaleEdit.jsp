@@ -19,7 +19,7 @@
 	}
 </style>
 <script type="text/javascript">
-function sendData(){
+function editData(){
 	var firstForm = document.forms[0];
 	console.log("firstForm : " + firstForm);
 	console.log("firstForm.elements.length : " + firstForm.elements.length);
@@ -95,7 +95,7 @@ function sendData(){
 	</c:otherwise>
 </c:choose>
 	<div id="content">
-		<form action="${pageContext.request.contextPath}/ResaleController?type=write" method="post" enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath}/ResaleController?type=edit" method="post" enctype="multipart/form-data">
 			<h2>기본 정보</h2>
 			<hr>
 			<div id="imgBox">
@@ -109,7 +109,7 @@ function sendData(){
 			</div><!-- imgBox End -->
 			<hr>
 			<label>제목 : </label>
-			<input type="text" name="subject" placeholder="제목을 입력하세요." title="제목">
+			<input type="text" name="subject" value="${rsVO.subject}"  title="제목">
 			<hr>
 			<div id="cateMain">
 			<label id="cateLabel">카테고리 : &nbsp;</label>
@@ -199,25 +199,25 @@ function sendData(){
 				<div class="pac-card" id="pac-card">
 			      <div id="pac-container">
 			        <input id="pac-input" type="text" name="address"
-			            placeholder="주소를 입력하세요" title="주소">
+			            value="${rsVO.address}" title="주소">
 			      </div>
 			    </div>
 		    </div>
 			<div id="map"></div>
 			<hr>
 			<label>가격 : &nbsp;</label>
-			<input type="text" name="price" placeholder="숫자만 입력하세요" title="가격">
+			<input type="text" name="price" value="${rsVO.price}" title="가격">
 			<label>&nbsp; 원</label>
 			<hr>
 			<label>설명 : &nbsp;</label>
-			<input type="text" id="contentBox" name="content" placeholder="제품에 대한 설명을 입력하세요." title="설명">
+			<input type="text" id="contentBox" name="content" value="${rsVO.content}" title="설명">
 			<hr>
 			<label>해시태그 : &nbsp;</label>
-			<input type="text" name="hashtags" placeholder="최대 5개 입력 가능합니다." title="해시태그">
+			<input type="text" name="hashtags" value="${rsVO.hash_tag}" title="해시태그">
 			<hr>
-			<input type="hidden" id="hiddenCate1" name="cate1" title="카테고리">
-			<input type="hidden" id="hiddenCate2" name="cate2" title="하위 카테고리"> 
-			<input type="button" value="등록하기" onclick="sendData()">
+			<input type="hidden" id="hiddenCate1" name = "cate1" value="${rsVO.category}" title="카테고리">
+			<input type="hidden" id="hiddenCate2" name = "cate2" value="${rsVO.category_child}" title="하위 카테고리"> 
+			<input type="button" value="수정하기" onclick="editData()">
 		</form>
 	</div>
 	

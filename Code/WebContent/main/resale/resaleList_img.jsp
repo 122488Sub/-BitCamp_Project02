@@ -205,9 +205,10 @@
 	<div id="img_content">
 		<div id="listBox">
 			<div id="write">
-				<input type="button" id="writeBtn" value="글쓰기" onclick="javascript:location.href='ResaleController?type=newPost'">
+				<c:if test="${not empty sessionScope.id}">
+					<input type="button" id="writeBtn" value="글쓰기" onclick="javascript:location.href='ResaleController?type=newPost'">
+				</c:if>
 			</div>
-			
 			<c:forEach var="vo" begin="0" end="${list.size()-2}" step="1" varStatus="voCnt">
 			  <a href="ResaleController?type=detail&rs_seq=${list.get(voCnt.index).rs_seq}&cPage=${pvo.getNowPage()}">
 				<div id="onePostBox">

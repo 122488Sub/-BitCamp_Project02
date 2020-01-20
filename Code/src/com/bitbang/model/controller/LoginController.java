@@ -17,6 +17,7 @@ import com.bitbang.model.command.ResaleDetailCommand;
 import com.bitbang.model.command.ResaleListCommand;
 import com.bitbang.model.command.ResaleNewPostCommand;
 import com.bitbang.model.command.ResaleReCommCommand;
+import com.bitbang.model.command.ResaleUpdateCommand;
 import com.bitbang.model.command.ResaleWriteCommand;
 import com.bitbang.model.command.ResalelistPageCommand;
 import com.bitbang.model.command.SignupCommand;
@@ -44,6 +45,7 @@ public class LoginController extends HttpServlet {
 			case "signup": comm = new SignupCommand(); break;
 			case "signup_go": comm = new SignupGoCommand(); break;
 			case "idCheck": comm = new IdCheckDBCommand(); break;
+			
 			default : break;
 		}
 		
