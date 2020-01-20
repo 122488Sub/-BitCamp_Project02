@@ -109,8 +109,8 @@
 	</div>
 	
 <!-- 	<div class="space"></div> -->
-	<div class="detail">
-		<ul class="ul_detail">
+	<div class="detail" style="border-bottom: 1px solid black;">
+		<ul class="ul_detail" >
 
 			<li class="li_detail">
 				<p class="p_detail">해당층/건물층</p>
@@ -143,8 +143,8 @@
 			<li></li>
 		</ul>
 	</div>
-	<div class="imageView">
-		<div class="imgBox">
+	<div class="imageView" >
+		<div class="imgBox" style="border-bottom: 1px solid black;">
 			<div class="big-smallView">
 				<%-- <div class="bigView"> <img alt="aa" src="${FSoneVO.imgscr[0]}"></div>--%>
 				<div class="bigView" style="background: url(${FSoneVO.imgscr[0]}) center center / cover no-repeat;"> </div>
@@ -156,7 +156,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="fsContent">${FSoneVO.content }</div>
+	
+	<div class="fsContent" style="border-bottom: 1px solid black;">
+		<p style="font-size: 1.2em; font-weight: bold;">상세내용</p>
+		${FSoneVO.content }
+		<p style="height: 10px;"></p>
+	</div>
 	<div class="categoryMapInfo">주변시설정보</div>
 	<div class="fsOneMap">
 	

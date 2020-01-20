@@ -72,22 +72,49 @@
    				var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
    				if(!regExp.test(id)){
    					
-   					alert(id+"잘못된 아이디입니다!\n아이디는 이메일의 양식으로 입력하세요")
+   					alert(id+"잘못된 아이디입니다!\n아이디는 이메일의 양식으로 입력하세요");
    					return;
    				}
    				
+   				// 이름 체크
+   				var nameKor=true;
+   				var nameEng=true;
+   				regExp = /^[가-힣]+$/;
+				if(!regExp.test(name)){
+					nameKor=false;
+   				}
+   				regExp = /^[a-zA-Z]+$/;
+   				if(!regExp.test(name)){
+   					nameEng=false;
+   				}
+   				if( !((nameKor||nameEng) && name.length<=10) ){
+   					alert("잘못된 이름입니다.\n영문 혹은 한글만 10자이내로 입력해주세요");
+   				}
+   				
+   				// 휴대전화 체크
    				regExp = /^01([0|1|6|7|8|9]?)?([0-9]{8})$/;
 				if( !regExp.test(phone)){
    					
-   					alert("숫자만 입력해주세요.\nex 01012345678");
+   					alert("휴대폰번호는 숫자만 입력해주세요.\nex 01012345678");
    					return;
    				}
-   				
 				if(phone.length!=11){
-					alert("자릿수를 지켜주세요.\nex) 01012345678");
+					alert("휴대폰번호 자릿수를 지켜주세요.\nex) 01012345678");
 					return;
    				}
-   				
+			
+				//비밀번호 체크
+				regExp = /(?=.*\d{1,20})(?=.*[~`!@#$%\^&*()-+=]{1,20})(?=.*[a-zA-Z]{1,20}).{10,20}$/
+				if(password!=password_conform){
+					alert("비밀번호가 서로 다릅니다. 다시한번 확인해주세요.");
+   					return;
+				}
+				if( !regExp.test(password)){
+   					
+   					alert("비밀번호는 10자리이상 20자리이하의\n영문자+숫자+특수문자 조합으로  입력해주세요.");
+   					return;
+   				}
+				
    				firstForm.submit();
    			}
       		
