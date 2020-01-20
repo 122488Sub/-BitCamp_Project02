@@ -43,6 +43,19 @@
 		   	   DETAIL = #{detail}
 		 WHERE FORSALE_SEQ = #{seq} 
 	</update>
+	
+	<insert id="FSInsert" parameterType="com.bitbang.model.vo.ForSaleVO">
+		INSERT INTO 
+			FORSALE_BOARD(
+				FORSALE_SEQ, SUBJECT, ADDRESS, DETAIL
+			)
+			VALUES(
+				FS_SEQ.NEXTVAL,#{subject},#{address},#{detail}
+			)   
+	</insert>
+	<select id="FSSeclectCurrentSeq" resultType="int">
+		SELECT MAX(FORSALE_SEQ) FROM FORSALE_BOARD
+	</select>
 </mapper>
 
 

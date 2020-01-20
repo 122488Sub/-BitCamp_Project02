@@ -8,7 +8,7 @@
     pageEncoding="UTF-8"%>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link href="css/forsale.map.css" rel="stylesheet" type="text/css">
-
+<link href="css/forsaleBtn.css" rel="stylesheet" type="text/css">
 <style>
 
 #map{
@@ -19,8 +19,55 @@
 	width: 80%;
 	left:50%; 
 	transform:translateX(-50%);
+	z-index: 0;
 }
+#newFsBtn{
+	position: absolute;
+	left:10%; 
+	z-index: 1;
+	background-color: #ff0080;
+}
+
+.snip1535::before {
+  border-color: #ff0080;
+  border-right-width: 3px;
+  border-top-width: 3px;
+  right: -5px;
+  top: -5px;
+}
+.snip1535::after {
+  border-bottom-width: 3px;
+  border-color: #ff0080;
+  border-left-width: 3px;
+  bottom: -5px;
+  left: -5px;
+}
+.snip1535:hover {
+  background-color: #ff0080;
+}
+
 </style>
+<script>
+
+function insert_go() {
+	
+	var form = document.createElement("form");
+	var parm = new Array();
+    var input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.setAttribute('name', 'type');
+    input.setAttribute("value", 'FsInput');
+    
+    form.action = "ForSaleController";
+    form.method = "post";
+ 	form.appendChild(input);
+    
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>
+
+<button id="newFsBtn" class="snip1535" onclick="insert_go()" style="padding: 12px 15px 10px;">New Rent</button>
 <div id="map" ></div>
 
    <!-- ★ 키입력 뒷편 &libraries=services 필수입력 --> 
