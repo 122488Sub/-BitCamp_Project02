@@ -30,9 +30,7 @@ public class UpdateOkCommand implements Command {
 		String a_period = request.getParameter("a_period");
 		String annoucement = request.getParameter("annoucement");
 		String moving_in = request.getParameter("moving_in");
-		String a_image = request.getParameter("a_image");
-		String a_images = request.getParameter("a_images");
-		
+
 		if (vo != null) {
 			vo.setStep(step);
 			vo.setA_type(a_type);
@@ -49,8 +47,7 @@ public class UpdateOkCommand implements Command {
 			vo.setA_period(a_period);
 			vo.setAnnoucement(annoucement);
 			vo.setMoving_in(moving_in);
-			vo.setA_image(a_image);
-			vo.setA_images(a_images);
+
 			result = DAO.updateGuestbook(vo);
 		}
 		

@@ -112,16 +112,6 @@
 						<td><input type="text" name="moving_in"
 									 value="${sub_divisionVO.getMoving_in() }" class="review_input"></td>
 					</tr>
-					<tr>
-						<th class="review_step">리스트사진이미지</th>
-						<td><input type="text" name="a_image"
-									 value="${sub_divisionVO.getA_image() }" class="review_input"></td>
-					</tr>
-					<tr>
-						<th class="review_step">디테일에사진이미지들</th>
-						<td><input type="text" name="a_images"
-									 value="${sub_divisionVO.getA_images() }" class="review_input"></td>
-					</tr>
 				</tbody>
 				<tfoot>
 					<tr>
