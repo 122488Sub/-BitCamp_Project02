@@ -1,0 +1,36 @@
+Multi_imgCommand 사용법
+=========================================================================
+- 기능 : form태그에서 전해진 텍스트 값과 
+	       이미지 파일을 식별하여 모두 전달 받을 수 있다
+=========================================================================
+- 사용 라이브러리
+	commons-fileupload-1.4.jar
+	commons-io-2.6.jar
+=========================================================================
+- 사용 방법 
+
+1. form태그에서 버튼을 클릭하면 controller로 연결하는 view를 만든다. 
+	ex) resale.jsp > ResaleController?type=write
+	
+2. Multi_imgCommand를 복사하여 각자의 command를 만든다 
+	ex) ResaleController.java 
+	
+3. 각자의 컨트롤러에서 각자 만든 Multi_imgCommand에 1번에서 만든 form을 전달 받게 한다.
+    ex) type : write > ResaleWriteCommand.java
+4. 각자가 파일을 저장할 물리적 경로를 dir에 저장한다 
+
+5. Multi_imgCommand에 있는 value는 텍스트 값들을 리턴하고 
+   imgName은 저장 파일 명이고, originFileName은 원본파일 명을 리턴 한다.
+
+=========================================================================
+* 다중이미지 전달 방법
+- form 태그에 enctype="multipart/form-data" 꼭 삽입
+
+- <input type="file" name="filename" multiple/>
+	> 사용 file업로드 input태그에 multipe꼭 삽입
+
+- 위의 사용방법으로 실행 시키면 원본 파일명과 저장 파일명을 리턴 받고
+    지정한 path에 저장 된다.
+=========================================================================
+P.S  form태그에서 전달 해오는 모든 값들을 가지고 있어서
+	  글쓰기에 쓰시면 좋을 듯 합니다. 

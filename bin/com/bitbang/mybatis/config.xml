@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<typeAliases>
+	<typeAlias type="com.bitbang.model.vo.ResaleVO" alias="rsVO"/>
+	<typeAlias type="com.bitbang.model.vo.ResaleCommVO" alias="rsCommVO"/>
+	<typeAlias type="com.bitbang.model.vo.ResaleImgVO" alias="rsImgVO"/>
+	<typeAlias type="com.bitbang.model.vo.MemberVO" alias="mVO"/>
+
+</typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="oracle.jdbc.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@112.169.196.125:1521:xe"/>
+        <property name="username" value="mystudy"/>
+        <property name="password" value="mystudypw"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <!-- SQL 작성파일인 매퍼 파일 위치 지정 -->
+  <mappers>
+     <mapper resource="com/bitbang/mybatis/mapperBnb.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperCommunity.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperForSale.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperReSale.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperReview.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapperLogin.xml"/>
+    <mapper resource="com/bitbang/mybatis/mapper.xml"/>
+  </mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

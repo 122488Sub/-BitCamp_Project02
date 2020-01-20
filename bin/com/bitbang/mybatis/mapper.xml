@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sub_division">
+  
+	<select id="AllCount" resultType="Int">
+		SELECT COUNT(*) 
+		  FROM SUB_DIVISION
+	</select>
+	
+	<!--
+	<select id="all" resultType="com.bitbang.model.vo.sub_divisionVO">
+		SELECT IDX, STEP, A_TYPE, SUPPLY_TYPE, A_LOCATION, 
+        	   PRICE, HOUSEHOLDS, BUILDING_AREA, CONSTRUCTION, DEVELOPER,
+        	   MONOPOLY, A_RESTRICT, PRICE_UP, A_PERIOD, ANNOUCEMENT,
+               MOVING_IN, A_IMAGE, A_IMAGES 
+		  FROM SUB_DIVISION
+		 ORDER BY IDX
+	</select>
+	 -->
+	
+	<!-- 리스트 및 페이징 -->
+	<select id="all" resultType="com.bitbang.model.vo.sub_divisionVO">
+		SELECT *
+		  FROM (SELECT ROWNUM R_NUM, R.*
+		          FROM (SELECT *
+		                  FROM SUB_DIVISION
+		                 ORDER BY IDX DESC
+		                ) R
+		       )
+		 WHERE R_NUM BETWEEN #{BEGIN} AND #{END}
+	</select>
+	
+	 
+	<!-- 세부정보  -->
+	<select id="one" parameterType="string"
+			resultType="com.bitbang.model.vo.sub_divisionVO">
+		SELECT IDX, STEP, A_TYPE, SUPPLY_TYPE, A_LOCATION, 
+        	   PRICE, HOUSEHOLDS, BUILDING_AREA, CONSTRUCTION, DEVELOPER,
+        	   MONOPOLY, A_RESTRICT, PRICE_UP, A_PERIOD, ANNOUCEMENT,
+               MOVING_IN, A_IMAGE, A_IMAGES, A_MAP
+		  FROM SUB_DIVISION
+		 WHERE IDX = #{idx}
+	</select>
+	
+	<!-- 데이터 입력 -->
+	<insert id="insert" parameterType="com.bitbang.model.vo.sub_divisionVO">
+		INSERT INTO SUB_DIVISION
+		       (IDX, STEP, A_TYPE, SUPPLY_TYPE, A_LOCATION, 
+        	    PRICE, HOUSEHOLDS, BUILDING_AREA, CONSTRUCTION, DEVELOPER,
+        	    MONOPOLY, A_RESTRICT, PRICE_UP, A_PERIOD, ANNOUCEMENT,
+                MOVING_IN, A_IMAGE, A_IMAGES)
+		VALUES (SUB_DIVISION_SEQ.NEXTVAL, #{step}, #{a_type}, #{supply_type}, #{a_location}, 
+		        #{price}, #{households}, #{building_area}, #{construction}, #{developer},
+		        #{monopoly}, #{a_restrict}, #{price_up}, #{a_period}, #{annoucement},
+		        #{moving_in}, #{a_image}, #{a_images})     
+	</insert>
+		
+	<!-- 게시글 삭제 -->
+	<delete id="delete" parameterType="com.bitbang.model.vo.sub_divisionVO">
+		DELETE FROM SUB_DIVISION
+		 WHERE IDX = #{idx}
+	</delete>	
+	
+	<!-- 게시글 수정 -->
+	<update id="update" parameterType="com.bitbang.model.vo.sub_divisionVO">
+		UPDATE SUB_DIVISION
+		   SET STEP = #{step}, 
+		   	   A_TYPE = #{a_type}, 
+		   	   SUPPLY_TYPE = #{supply_type}, 
+		   	   A_LOCATION = #{a_location}, 
+		   	   PRICE = #{price}, 
+		   	   HOUSEHOLDS = #{households}, 
+		   	   BUILDING_AREA = #{building_area}, 
+		   	   CONSTRUCTION = #{construction}, 
+		   	   DEVELOPER = #{developer},
+		   	   MONOPOLY = #{monopoly},
+		   	   A_RESTRICT = #{a_restrict},
+		   	   PRICE_UP = #{price_up},
+		   	   A_PERIOD = #{a_period},
+		   	   ANNOUCEMENT = #{annoucement},
+		   	   MOVING_IN = #{moving_in},
+		   	   A_IMAGE = #{a_image},
+		   	   A_IMAGES = #{a_images}
+		 WHERE IDX = #{idx} 
+	</update>
+	
+	<!-- 동적검색으로 분양정보 조회 -->
+	<select id="search" parameterType="map" resultType="com.bitbang.model.vo.sub_divisionVO">
+		SELECT *
+		  FROM SUB_DIVISION
+		  <choose>
+		  	<when test="idx == 0">
+		  		WHERE A_LOCATION = #{keyword}
+		  	</when>
+		  	<when test="idx == 1">
+		  		WHERE A_TYPE = #{keyword}
+		  	</when>
+		  	<when test="idx == 2">
+		  		WHERE STEP = #{keyword}
+		  	</when>
+		  	<when test="idx == 3">
+		  		WHERE SUPPLY_TYPE = #{keyword}
+		  	</when>
+		  </choose>
+	</select>
+		
+</mapper>
+
+
+
+
+
+
+
+
