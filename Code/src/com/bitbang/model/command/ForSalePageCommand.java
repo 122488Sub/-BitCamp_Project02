@@ -18,7 +18,7 @@ public class ForSalePageCommand implements Command {
 		if(!commonUtil.fs_Bool) {
 			commonUtil.fs_x=37.50192426050855;
 			commonUtil.fs_y=127.02562676562276;
-			commonUtil.fs_level=10;
+			commonUtil.fs_level=13;
 		}
 		return "main/forsale/ForSale.jsp";
 	}

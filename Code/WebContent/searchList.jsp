@@ -8,8 +8,18 @@
 <title>검색결과</title>
 	<link href="css/price.css" rel="stylesheet" type="text/css"></link>
 <%@ include file="main/navCssLink.html" %>
-<%@ include file="main/navBody.html" %>	
+
 </head>
+
+<c:choose>
+	<c:when test="${not empty sessionScope.id}">
+		<%@ include file="/main/navLogOutBody.html" %>
+	</c:when>
+	<c:otherwise>
+		<%@ include file="/main/navBody.html" %>
+	</c:otherwise>
+</c:choose>
+
 <body>
 	<h2 class="review_h2">검색결과</h2>
 	<table class="review_table">

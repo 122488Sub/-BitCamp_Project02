@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bitbang.common.commonUtil;
 import com.bitbang.model.dao.forsaleDAO;
 import com.bitbang.model.vo.ForSaleOneVO;
 
@@ -34,6 +35,7 @@ public class ForSaleOneUpdateOkCommand implements Command {
 				);
 		fsovo.setImgscr(Integer.parseInt(request.getParameter("seq")));
 		
+		map.put("address", fsovo.getAddress());
 		map.put("seq", (String)request.getSession().getAttribute("seq"));
 		map.put("subject", request.getParameter("subject"));
 		map.put("detail", fsovo.getAll());
@@ -42,7 +44,6 @@ public class ForSaleOneUpdateOkCommand implements Command {
 		forsaleDAO.updateData(map);
 		System.out.println(fsovo.getAll());
 		request.getSession().setAttribute("FSoneVO", fsovo);
-		
 		
 		return "main/forsale/ForSaleOne.jsp";
 	}

@@ -18,7 +18,7 @@
 			<tbody>
 				<tr>
 					<th>가입 id</th>
-					<td><input type="text" name="id" placeholder="${id }"></td>
+					<td><input type="text" name="id" placeholder="${id }" value=${id }></td>
 				</tr>
 				
 				<tr>

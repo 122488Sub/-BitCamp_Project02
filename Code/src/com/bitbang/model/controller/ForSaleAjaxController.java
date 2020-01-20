@@ -32,12 +32,11 @@ public class ForSaleAjaxController extends HttpServlet {
 			result += "{";
 			result += "\"forsale_seq\" : \""+ vo.getForsale_seq() +"\"," + 
 					  "\"forsale_idx\" : \""+ vo.getForsale_idx()+"\"," + 
-					  "\"rea_idx\" : \""+ vo.getRea_idx()+"\"," + 
+					 
 					  "\"subject\" : \"" + vo.getSubject()+"\","+
 					  "\"address\" : \""+vo.getAddress()+"\"," +
 					  "\"detail\" : \""+vo.getDetail()+"\"," +
-					  "\"pos_x\" : \""+vo.getPos_x()+"\"," +
-					  "\"pos_y\" : \""+vo.getPos_y()+"\"," +
+				
 					  "\"regdate\" : \""+vo.getRegdate()+"\"";
 			result += "},";
 		}
