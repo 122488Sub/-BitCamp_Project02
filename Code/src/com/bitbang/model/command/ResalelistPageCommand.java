@@ -10,7 +10,7 @@ public class ResalelistPageCommand implements Command{
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		return "main/resale/resaleList_img.jsp";
+		return "main/resale/resaleList_img2.jsp";
 	}
 
 }

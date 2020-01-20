@@ -10,6 +10,7 @@ import com.bitbang.model.vo.MemberVO;
 import com.bitbang.model.vo.ResaleCommVO;
 import com.bitbang.model.vo.ResaleImgVO;
 import com.bitbang.model.vo.ResaleVO;
+import com.bitbang.model.vo.sub_divisionVO;
 import com.bitbang.mybatis.DBService;
 
 public class resaleDAO {
@@ -97,6 +98,18 @@ public class resaleDAO {
 		ss.close();
 		return rsVO;
 	}
+	
+	
+	//동적검색
+	public static List<ResaleVO> getRsSearch(String idx, String keyword) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		Map<String, String> map = new HashMap<>();
+		map.put("idx", idx);
+		map.put("keyword", "%" + keyword + "%");
+		List<ResaleVO> list = ss.selectList("rs_search", map);
+		ss.close();
+		return list;
+	}
 	//--------------------------------select End-----------------------------------------
 	
 	
@@ -165,10 +178,19 @@ public class resaleDAO {
 	//--------------------------------update End-----------------------------------------
 	//--------------------------------delete-----------------------------------------
 	
-	public static void deletePost(String in_userId) {
+	public static void rs_delete_post(Map<String, String> map) {
 		
 		SqlSession ss = DBService.getFactory().openSession(true);
-		ss.delete("in_userId", in_userId);
+		
+		ss.delete("rs_delete_comm", map);
+		ss.delete("rs_delete_post", map);
+		ss.close();
+	}
+	
+	public static void rs_delete_img(int in_userId) {
+		
+		SqlSession ss = DBService.getFactory().openSession(true);
+		ss.delete("rs_delete_img", in_userId);
 		ss.close();
 	}
 	

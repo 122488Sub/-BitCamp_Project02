@@ -16,6 +16,7 @@ import com.bitbang.model.command.ResaleEditCommand;
 import com.bitbang.model.command.ResaleListCommand;
 import com.bitbang.model.command.ResaleNewPostCommand;
 import com.bitbang.model.command.ResaleReCommCommand;
+import com.bitbang.model.command.ResaleSearchCommand;
 import com.bitbang.model.command.ResaleUpdateCommand;
 import com.bitbang.model.command.ResaleWriteCommand;
 import com.bitbang.model.command.ResalelistPageCommand;
@@ -46,6 +47,8 @@ public class ResaleController extends HttpServlet {
 			case "delete": comm = new ResaleDeleteCommand(); break;
 			case "edit": comm = new ResaleUpdateCommand(); break;
 			case "postEdit": comm = new ResaleEditCommand(); break;
+			case "search": comm = new ResaleSearchCommand(); break;
+			
 			default : break;
 		}
 

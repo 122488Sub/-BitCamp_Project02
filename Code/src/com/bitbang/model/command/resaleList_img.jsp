@@ -209,6 +209,7 @@
 					<input type="button" id="writeBtn" value="글쓰기" onclick="javascript:location.href='ResaleController?type=newPost'">
 				</c:if>
 			</div>
+			<c:if test="${not empty list }">
 			<c:forEach var="vo" begin="0" end="${list.size()-2}" step="1" varStatus="voCnt">
 			  <a href="ResaleController?type=detail&rs_seq=${list.get(voCnt.index).rs_seq}&cPage=${pvo.getNowPage()}">
 				<div id="onePostBox">
@@ -248,6 +249,7 @@
 				</div>
 		      </a>
 			</c:forEach>
+			</c:if>
 		</div>
 		<div id="pagingBox">
 			<div id="olPaging">

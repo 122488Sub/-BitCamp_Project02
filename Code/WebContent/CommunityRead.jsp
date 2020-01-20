@@ -8,53 +8,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
+<%@ include file="main/navCssLink.html"%>
 <head>
+<%@ include file="main/navBody.html"%>
 <meta charset=UTF-8>
-<title>선택한 매물</title>
-<link href="css/guestbook.css" rel="stylesheet" type="text/css">
+<title>글내용</title>
 
 </head>
 <body>
-	<div id="container">
-		<h2>상세화면</h2>
+	<div style="margin: 0 40px 0 40px" id="container">
+		<h2 style="">${vo.c_title }</h2>
 		<hr>
 		<p>
-			<a href="ForSaleController?type=FsPage">[목록으로 이동]</a>
+			<a href="ControllerCommunity">[목록으로 이동]</a>
 		</p>
-		<form method="post">
-			<table>
-				<tbody>
-					<tr>
-						<th>제목</th>
-						<td>${vo.c_title } </td>
-						<th>작성자</th>
-						<td>${vo.member_id }</td>
-					</tr>
-					<tr>
-						<th>조회수</th>
-						<td>${vo.c_hit }  </td>
-						<th>작성일시</th>
-						<td>${vo.c_date } </td>
-					</tr>
-					<tr>
-						<th colspan="4">내용</th>
-					</tr>
-					<tr>
-						<td colspan="4">${vo.c_content }</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="4">
-						<input type="button" value="수 정" onclick="update_go(this.form)"> 
-						<input type="button" value="삭 제 " onclick="delete_go(this.form)">
-						<input type="button" value="답 글" onclick="location.href='ControllerCommunity?type=writepost&seq=${vo.c_seq }'"></td>
-					</tr>
-					
-				</tfoot>
-				</table>
-		</form>
+		<p><div class="container"><span style="margin-left: 10%;">작성자 : ${vo.member_id }</span><span style="margin-left: 10%;">조회수 : ${vo.c_hit }</span><span style="margin-left: 10%;">작성일시 : <fmt:formatDate value="${vo.c_date }" pattern="M월d일h시mm분ss초" /></span></div></p>
+		<div>${vo.c_content }</div>
+						
+						<input style="margin: 10px" class="btn btn-warning" type="button" value="수 정" onclick="update_go(this.form)"> 
+						<input style="margin: 10px" class="btn btn-danger" type="button" value="삭 제 " onclick="delete_go(this.form)">
+						<input style="margin: 10px" class="btn btn-info" type="button" value="답 글" onclick="location.href='ControllerCommunity?type=writepost&seq=${vo.c_seq }'">
 	</div>
 </html>
