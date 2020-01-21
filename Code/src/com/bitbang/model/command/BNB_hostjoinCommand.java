@@ -18,8 +18,8 @@ public class BNB_hostjoinCommand implements Command{
 
 
 		//파일을 저장할 위치 지정(bnbupload)
-		String path = "D:\\jsp&servlet\\jsp_practice\\-BitCamp_Project02\\Code\\WebContent\\bnbupload\\hostpic";
-
+		String path = request.getRealPath("bnbupload/hostpic");
+		System.out.println("반환받았어: "+path);
 		//MultipartRequest 객체 생성
 		MultipartRequest mr = new MultipartRequest(
 				request, path, 10 * 1024 * 1024, "UTF-8", new DefaultFileRenamePolicy()	

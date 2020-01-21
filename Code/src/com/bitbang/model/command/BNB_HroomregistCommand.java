@@ -28,8 +28,8 @@ public class BNB_HroomregistCommand implements Command{
 		
 		
 		//파일을 저장할 위치 지정(bnbupload)
-				String path = "D:\\jsp&servlet\\jsp_practice\\-BitCamp_Project02\\Code\\WebContent\\bnbupload";
-		
+				//String path = "C:\\Users\\bitcamp\\Desktop\\5조 2차 프로젝트\\Project Code\\-BitCamp_Project02\\Code\\WebContent\\bnbupload";
+				String path = request.getRealPath("bnbupload");
 		//MultipartRequest 객체 생성
 		MultipartRequest mr = new MultipartRequest(
 				request, path, 10 * 1024 * 1024, "UTF-8", new DefaultFileRenamePolicy()	
