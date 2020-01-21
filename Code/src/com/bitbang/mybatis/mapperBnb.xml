@@ -11,7 +11,7 @@
 	<select id = "roomlist" resultType="com.bitbang.model.vo.BNB_ROOM_INFOVO" parameterType="com.bitbang.model.vo.BNB_PAGEVO">
 		SELECT * FROM 
 		(SELECT ROWNUM R_NUM, R_LIST.* FROM
-		(SELECT * FROM BNB_ROOM_INFO WHERE CITY_NAME LIKE '%'||#{city_name}||'%' ORDER BY TOTAL_EQ DESC)R_LIST
+		(SELECT * FROM BNB_ROOM_INFO WHERE CITY_NAME LIKE '%'||#{city_name}||'%' ORDER BY TOTAL_EQ asc)R_LIST
 		) WHERE R_NUM BETWEEN #{begin} AND #{end}
 		
 	</select>
@@ -80,6 +80,11 @@
 	 	SELECT * FROM BNB_HOST_INFO WHERE H_NUM = #{rSerial}
 	 </select>
 	
+	
+	<insert id="equpdate" parameterType="com.bitbang.model.vo.BNB_ROOM_INFOVO">
+		UPDATE BNB_ROOM_INFO SET TOTAL_EQ = #{total_eq}, FACILITY_EQ = #{facility_eq} ,HOST_EQ = #{host_eq} ,CLEAN_EQ  =#{clean_eq} ,COMMUNICATION_EQ = #{communication_eq} , LOCATION_EQ =#{location_eq} , ACCURACY_EQ=#{accuracy_eq}, TAG_COUNT=#{tag_count}
+		WHERE ROOM_SERIAL = #{room_serial}
+	</insert>
 	
 </mapper>
 

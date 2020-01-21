@@ -194,7 +194,7 @@
 							</div>
 								</c:forEach>
 							<div class="dhost_replybox">
-								<div class="dhost_replypic"></div>
+								<div class="dhost_replypic"  style="background: url(bnbupload/hostpic/${hinfo.h_pic })  no-repeat center center; background-size: cover;"></div>
 								<div class="dhost_replycont">
 									<strong>${rinfo.h_name } 님의 답변 : </strong><br> My lovely
 									hea-li!!. I have been missing you so much by you leaving

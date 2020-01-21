@@ -108,4 +108,10 @@ public class BNB_DAO {
 		return hlistone; 
 	}
 	
+	public static int getEqinsert(BNB_ROOM_INFOVO breq) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int getEqinsert = ss.update("equpdate", breq);
+		ss.close();
+		return getEqinsert;
+	}
 }
