@@ -220,7 +220,7 @@
 					<option value="2">제목+내용</option>
 				</select>
 				<input type="text" id="searchBar" name="keyword">
-				<input class=select_search type="image" src="images/icon.png" 
+				<input class=select_search type="image" src="images/search.png" 
 						width="40px" height="40px" onclick="search_go(this.form)">
 			</form>
 		</div>

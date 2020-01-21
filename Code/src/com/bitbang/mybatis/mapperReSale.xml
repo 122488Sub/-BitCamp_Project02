@@ -155,7 +155,7 @@
 	</delete>
 	
 	<delete id="rs_delete_comm" parameterType="string">
-		DELETE FROM RESALE_COMMENT WHERE ID = #{id} AND RS_SEQ = #{rs_seq}  
+		DELETE FROM RESALE_COMMENT WHERE RS_SEQ = #{rs_seq}  
 	</delete>
 	
 	<delete id="rs_delete_img" parameterType="int">

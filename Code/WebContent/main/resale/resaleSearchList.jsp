@@ -199,7 +199,7 @@
 		frm.submit();
 }
 </script>
-<link href="css/price.css" rel="stylesheet" type="text/css"></link>
+<link href="css/resaleSearch.css" rel="stylesheet" type="text/css"></link>
 <%@ include file="/main/navCssLink.html" %>
 </head>
 <body>
@@ -219,9 +219,9 @@
 					<option value="1">내용</option>
 					<option value="2">제목+내용</option>
 				</select>
-				<input type="text" name="keyword">
-				<input class=select_search type="image" src="images/icon.png" 
-						width="20px" height="20px" onclick="search_go(this.form)">
+				<input type="text" id="searchBar" name="keyword">
+				<input class=select_search type="image" src="images/search.png" 
+						width="40px" height="40px" onclick="search_go(this.form)">
 			</form>
 		</div>
 	<div id="img_content">
