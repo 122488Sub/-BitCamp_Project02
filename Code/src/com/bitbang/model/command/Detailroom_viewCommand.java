@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bitbang.model.dao.BNB_DAO;
+import com.bitbang.model.vo.BNB_PAGEVO;
 import com.bitbang.model.vo.BNB_ROOM_INFOVO;
 import com.bitbang.model.vo.BNB_TAGVO;
 
@@ -102,11 +103,72 @@ public class Detailroom_viewCommand implements Command {
 		request.setAttribute("total_cn", total_cn);
 		
 		
+		int room_serial = Integer.parseInt(rSerial);
+		
+		BNB_ROOM_INFOVO breq = new BNB_ROOM_INFOVO();
+		breq.setFacility_eq(fc_eq);
+		breq.setHost_eq(h_eq);   
+		breq.setClean_eq(cl_eq);
+		breq.setCommunication_eq(cm_eq);
+		breq.setLocation_eq(lo_eq);
+		breq.setAccuracy_eq(ac_eq);
+		breq.setTotal_eq(total_cn);
+		breq.setTag_count(tag_cn);
+		breq.setRoom_serial(room_serial);
+		
+		System.out.println("breq :"+breq);
+		BNB_DAO.getEqinsert(breq);
+		
 		BNB_ROOM_INFOVO hinfoOne = BNB_DAO.getHostinfo(rSerial);
 		
 		System.out.println(hinfoOne);
 		
 		request.setAttribute("hinfo", hinfoOne);
+		
+		/*
+		BNB_PAGEVO  bnb_pvo = new BNB_PAGEVO();
+		
+		// 1. 총 게시물의 수
+		bnb_pvo.setTotalRecord(BNB_DAO.getTotalCount(room_num));
+		
+		
+		// 1-1 전체 페이지 갯수 
+		bnb_pvo.setTotalPage();
+		
+		
+		// 2. 현재 페이지 구하기
+		String cPage = request.getParameter("cPage");
+		if(cPage != null) {
+			bnb_pvo.setNowPage(Integer.parseInt(cPage));
+		}
+		
+		
+		// 3. 현재 페이지의 시작번호와 끝 번호를 구하기
+		bnb_pvo.setBegin((bnb_pvo.getNowPage()-1 )* bnb_pvo.getNumPerPage() + 1);
+		bnb_pvo.setEnd((bnb_pvo.getBegin() -1 ) + bnb_pvo.getNumPerPage());
+		
+		
+		// 4. 현재 페이지를 이용한 블록의 시작번호화 끝번호
+		bnb_pvo.setBeginPage((int)(((bnb_pvo.getNowPage() - 1) / bnb_pvo.getPagePerBlock()) * bnb_pvo.getPagePerBlock() + 1));
+		bnb_pvo.setEndPage(bnb_pvo.getBeginPage() + bnb_pvo.getPagePerBlock() - 1);
+		
+		// 주의 사항 : endPage가 totalPage 보다 클 수 있으므로 endPage를 totalPage에 맞춰줌
+		if(bnb_pvo.getEndPage() > bnb_pvo.getTotalPage()) {
+			bnb_pvo.setEndPage(bnb_pvo.getTotalPage());
+		}
+		
+		
+		// 여러개의 파라미터 값을 DTO와 상관없이 매개변수로 사용하는 방법 : map 형식
+//		Map<String, Integer> map = new HashMap<String, Integer>();
+//		map.put("begin", bnb_pvo.getBegin());
+//		map.put("end", bnb_pvo.getEnd());
+		
+		bnb_pvo.setCity_name(room_num);
+		
+		
+		*/
+		
+		
 		
 		
 		

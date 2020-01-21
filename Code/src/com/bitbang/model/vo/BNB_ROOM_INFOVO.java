@@ -8,12 +8,13 @@ public class BNB_ROOM_INFOVO {
 	private String r_name, r_info, checkin_time, checkout_time;
 	private String r_price, discount_price;
 	private double total_eq; 
-	private int facility_eq, host_eq, clean_eq, communication_eq, location_eq, accuracy_eq;
+	private double facility_eq, host_eq, clean_eq, communication_eq, location_eq, accuracy_eq;
 	private String r_pic1, r_pic2, r_pic3, r_pic4, r_pic5;
 	private int bed_cn;
 	private String room_type, address;
 	private int room_cn, person_cn;
 	private String facility, city_name, centerpoint;
+	private int tag_count;
 	
 	private String id;
 	private int h_num;
@@ -21,7 +22,6 @@ public class BNB_ROOM_INFOVO {
 	private Date h_joindate;
 	private String h_intro;
 	private String h_pic;
-	
 	public int getR_num() {
 		return r_num;
 	}
@@ -82,40 +82,40 @@ public class BNB_ROOM_INFOVO {
 	public void setTotal_eq(double total_eq) {
 		this.total_eq = total_eq;
 	}
-	public int getFacility_eq() {
+	public double getFacility_eq() {
 		return facility_eq;
 	}
-	public void setFacility_eq(int facility_eq) {
+	public void setFacility_eq(double facility_eq) {
 		this.facility_eq = facility_eq;
 	}
-	public int getHost_eq() {
+	public double getHost_eq() {
 		return host_eq;
 	}
-	public void setHost_eq(int host_eq) {
+	public void setHost_eq(double host_eq) {
 		this.host_eq = host_eq;
 	}
-	public int getClean_eq() {
+	public double getClean_eq() {
 		return clean_eq;
 	}
-	public void setClean_eq(int clean_eq) {
+	public void setClean_eq(double clean_eq) {
 		this.clean_eq = clean_eq;
 	}
-	public int getCommunication_eq() {
+	public double getCommunication_eq() {
 		return communication_eq;
 	}
-	public void setCommunication_eq(int communication_eq) {
+	public void setCommunication_eq(double communication_eq) {
 		this.communication_eq = communication_eq;
 	}
-	public int getLocation_eq() {
+	public double getLocation_eq() {
 		return location_eq;
 	}
-	public void setLocation_eq(int location_eq) {
+	public void setLocation_eq(double location_eq) {
 		this.location_eq = location_eq;
 	}
-	public int getAccuracy_eq() {
+	public double getAccuracy_eq() {
 		return accuracy_eq;
 	}
-	public void setAccuracy_eq(int accuracy_eq) {
+	public void setAccuracy_eq(double accuracy_eq) {
 		this.accuracy_eq = accuracy_eq;
 	}
 	public String getR_pic1() {
@@ -196,6 +196,12 @@ public class BNB_ROOM_INFOVO {
 	public void setCenterpoint(String centerpoint) {
 		this.centerpoint = centerpoint;
 	}
+	public int getTag_count() {
+		return tag_count;
+	}
+	public void setTag_count(int tag_count) {
+		this.tag_count = tag_count;
+	}
 	public String getId() {
 		return id;
 	}
@@ -248,12 +254,10 @@ public class BNB_ROOM_INFOVO {
 				+ accuracy_eq + ", r_pic1=" + r_pic1 + ", r_pic2=" + r_pic2 + ", r_pic3=" + r_pic3 + ", r_pic4="
 				+ r_pic4 + ", r_pic5=" + r_pic5 + ", bed_cn=" + bed_cn + ", room_type=" + room_type + ", address="
 				+ address + ", room_cn=" + room_cn + ", person_cn=" + person_cn + ", facility=" + facility
-				+ ", city_name=" + city_name + ", centerpoint=" + centerpoint + ", id=" + id + ", h_num=" + h_num
-				+ ", h_name=" + h_name + ", h_phone=" + h_phone + ", h_joindate=" + h_joindate + ", h_intro=" + h_intro
-				+ ", h_pic=" + h_pic + "]";
+				+ ", city_name=" + city_name + ", centerpoint=" + centerpoint + ", tag_count=" + tag_count + ", id="
+				+ id + ", h_num=" + h_num + ", h_name=" + h_name + ", h_phone=" + h_phone + ", h_joindate=" + h_joindate
+				+ ", h_intro=" + h_intro + ", h_pic=" + h_pic + "]";
 	}
-	
-	
 	
 	
 	

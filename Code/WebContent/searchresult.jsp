@@ -98,8 +98,7 @@
 								<div class="room_simpleinfo">
 									<div class="sroom_type">${rvo.room_type }</div>
 									<div class="sroom_point">
-										<img src="img/redstar.jpg" alt="eq_star"> ${ rvo.total_eq }(
-										5 )
+										<img src="img/redstar.jpg" alt="eq_star"> ${ rvo.total_eq } (${rvo.tag_count })
 									</div>
 									<div class="sroom_tit">${rvo.r_name }</div>
 									<%--<div class="sroom_option">편의시설 리스트  </div> --%>
