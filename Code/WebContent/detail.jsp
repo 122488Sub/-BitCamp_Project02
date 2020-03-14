@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link href="css/price.css" rel="stylesheet" type="text/css"></link>
 
 
@@ -19,6 +20,134 @@
 		frm.submit();
 	}
 </script>
+
+<script>
+$(window).on("load", function() {
+	//$(window).on({load: function() {
+	//$(window).load(function() {
+	//$(document).ready(function(){
+
+	   console.log("페이지.fffff");
+	   	  $( '#detail_map_div2' ).css('display','none');
+	      $( '#detail_map_div3' ).css('display','none'); 
+	});
+
+	 function viewDiv1(){
+	    	console.log("1");
+	    	$('#detail_map_div1').css('display','block ');
+	    	$('#detail_map_div2').css('display','none');
+	    	$('#detail_map_div3').css('display','none');
+	    	
+	    }
+	    function viewDiv2(){
+	    	console.log("2");
+	    	$('#detail_map_div1').css('display','none');
+	    	$('#detail_map_div2').css('display','block ');
+	    	$('#detail_map_div3').css('display','none');
+	    	
+	    }
+	    function viewDiv3(){
+	    	console.log("3");
+	    	$('#detail_map_div1').css('display','none');
+	    	$('#detail_map_div2').css('display','none');
+	    	$('#detail_map_div3').css('display','block ');	
+	    }
+/*
+$(window).on("load", function() {
+	//$(window).on({load: function() {
+	//$(window).load(function() {
+	//$(document).ready(function(){
+
+	   console.log("페이지.ddd");
+	   	  $( '#map1' ).hide();
+	      $( '#map2' ).hide(); 
+	});
+
+	function viewDiv1(){
+    	console.log("1");
+    	$('#map').show();
+    	$('#map1').hide();
+    	$('#map2').hide();
+    	
+    }
+    function viewDiv2(){
+    	console.log("2");
+    	$('#map').hide();
+    	$('#map1').show();
+    	$('#map2').hide();
+    	
+    }
+    function viewDiv3(){
+    	console.log("3");
+    	$('#map').hide();
+    	$('#map1').hide();
+    	$('#map2').show();	
+    }
+    */
+/*
+	$(window).on("load", function() {
+	//$(window).on({load: function() {
+	//$(window).load(function() {
+	//$(document).ready(function(){
+
+	   console.log("페이지.");
+	   $( '#detail_map_div2' ).hide();
+	      $( '#detail_map_div3' ).hide(); 
+	});
+
+	function viewDiv1(){
+    	console.log("1");
+    	$('#detail_map_div1').show();
+    	$('#detail_map_div2').hide();
+    	$('#detail_map_div3').hide();
+    	
+    }
+    function viewDiv2(){
+    	console.log("2");
+    	$('#detail_map_div1').hide();
+    	$('#detail_map_div2').show();
+    	$('#detail_map_div3').hide();
+    	
+    }
+    function viewDiv3(){
+    	console.log("3");
+    	$('#detail_map_div1').hide();
+    	$('#detail_map_div2').hide();
+    	$('#detail_map_div3').show();	
+    }*/
+	/*
+    function viewDiv1(){
+    	console.log("1");
+    	$('#detail_map_div1').css('display','block ');
+    	$('#detail_map_div2').css('display','none');
+    	$('#detail_map_div3').css('display','none');
+    	
+    }
+    function viewDiv2(){
+    	console.log("2");
+    	$('#detail_map_div1').css('display','none');
+    	$('#detail_map_div2').css('display','block ');
+    	$('#detail_map_div3').css('display','none');
+    	
+    }
+    function viewDiv3(){
+    	console.log("3");
+    	$('#detail_map_div1').css('display','none');
+    	$('#detail_map_div2').css('display','none');
+    	$('#detail_map_div3').css('display','block ');	
+    }
+    */
+</script>
+
+
+<style>
+    .c_hidden { display: none; }
+    .detail_map{
+    	//position: absolute;
+    
+    }
+</style>
+
 <%request.setCharacterEncoding("UTF-8");%>
 
 <%@ include file="main/navCssLink.html" %>
@@ -109,13 +238,30 @@
         <div>
             <h2 class="review_h2 matTitle">위치 및 주변 시설</h2>   
             <p class="detail_map_txt">${sub_divisionVO.getA_location() }</p>
-            <div class="detail_map">
-            	<jsp:include page="map/kakaoAddressFacilities.jsp">
+            
+            <div class="eDvYCD">
+            	<input type="button" id="btn1" value="편의시설" onclick="viewDiv1()">
+            	<input type="button" id="btn2" value="교육시설" onclick="viewDiv2()">
+            	<input type="button" id="btn3" value="기타시설" onclick="viewDiv3()">
+            </div>
+            
+            <div id="detail_map_div1" class="detail_map">
+	            <jsp:include page="map/kakaoAddressFacilitiesCon.jsp">
 					<jsp:param value="${sub_divisionVO.getA_map() }" name="address"/>
 				</jsp:include>
             </div>
             
-
+            <div id="detail_map_div2" class="detail_map" >
+            	<jsp:include page="map/kakaoAddressFacilitiesSchool.jsp">
+					<jsp:param value="${sub_divisionVO.getA_map() }" name="school"/>
+				</jsp:include>
+	        </div>
+	        
+	   		<div id="detail_map_div3" class="detail_map">
+            	<jsp:include page="map/kakaoAddressFacilitiesSafe.jsp">
+					<jsp:param value="${sub_divisionVO.getA_map() }" name="safe"/>
+				</jsp:include>
+			</div>
 			
         </div>
 	</div>

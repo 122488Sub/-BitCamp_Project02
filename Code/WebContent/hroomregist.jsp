@@ -7,17 +7,49 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- css -->
+<link rel="stylesheet" href="bnb_css/reset.css">
+<link rel="stylesheet" href="bnb_css/style.css">
+<link rel="stylesheet" href="bnb_css/swiper.css">
+
+<!-- 웹 폰트 -->
+<link
+	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean"
+	rel="stylesheet">
+
+
 <!-- kakao map -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=429fc0ee66eceb779b718468942bf109&libraries=services,clusterer,drawing"></script>
 
+	<link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.min.css">
+	<%@ include file="/main/navCssLink.html"%>
 </head>
 <body>
+	<c:choose>
+		<c:when test="${not empty sessionScope.id}">
+			<%@ include file="/main/navLogOutBody.html"%>
+		</c:when>
+		<c:otherwise>
+			<%@ include file="/main/navBody.html"%>
+		</c:otherwise>
+	</c:choose>
+	<hr>
+<header id="header">
+		<div class="container3">
+			<div class="row">
+				<nav id="mNav">
+					<h2 class="ir_so">Searching the share house</h2>
+					<a href="#" class="ham"><span></span></a>
+				</nav>
+
+<div class="room_registbox">
+
 <form method="post" naem="form" action="hroomregist.do?id=${id}&r_serial=${h_num}&keyValue=multipart"  enctype="multipart/form-data">
 		<table>
 			<thead>
-				<tr>
-					<th>방등록 등록 페이지 입니다. <th>
+				<tr class="room_regtit">
+					<th colspan="2" >등록할 방 정보를 입력해 주세요. <br><th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,7 +57,7 @@
 					<th>host id</th>
 					<td><input type="text" name="id" placeholder="${id }" readonly></td>
 				</tr>
-				<tr>
+				<tr >
 					<th>룸 고유번호</th>
 					<td><input type="text" name="r_serial" placeholder="${h_num }" readonly></td>
 				</tr>
@@ -36,15 +68,17 @@
 				<tr>
 					<th>Room Type</th>
 					<td>
-						<input type="radio" name="room_type" value="privychamber"/>개인실
-						<input type="radio" name="room_type" value="multichamber"/>다인실
-						<input type="radio" name="room_type" value="apartment"/>아파트 전체
-						<input type="radio" name="room_type" value="hotelroom"/>호텔 객실
+						<input type="radio" name="room_type" value="개인실"/>개인실
+						<input type="radio" name="room_type" value="다인실"/>다인실
+						<input type="radio" name="room_type" value="아파트 전체"/>아파트 전체
+						<input type="radio" name="room_type" value="호텔 객실"/>호텔 객실
 					</td>
 				</tr>
 				<tr>
-					<th>Room Introduction</th>
-					<td><input type="text" name="r_info"></td>
+					<th>방 소개</th>
+					<td>
+						<textarea cols="25" row="5" name="r_info"></textarea>
+					</td>
 				</tr>
 				<tr>
 					<th>1박당 가격</th>
@@ -55,7 +89,7 @@
 					<td><input type="text" name="discount_price"></td>
 				</tr>
 				<tr>
-					<th>Room picture 5장</th>
+					<th>최고의 방 사진(5장)</th>
 					<td>
 						<div>
 							<input type="file" name="r_pic1">
@@ -95,7 +129,7 @@
 					<td><input type="text" name="checkout_time"></td>
 				</tr>
 				<tr>
-					<th>시설</th>
+					<th>편의 시설</th>
 					<td>
 						<div>
 							<input type="checkbox" class="WIFI" name="facility" value="WIFI">
@@ -106,27 +140,27 @@
 							<label for="facility">TV</label>	
 						</div>
 						<div>
-							<input type="checkbox" class="elevator" name="facility" value="elevator">
+							<input type="checkbox" class="elevator" name="facility" value="엘리베이터">
 							<label for="facility">Elevator</label>
 						</div>
 						<div>
-							<input type="checkbox" class="airconditional" name="facility" value="airconditional">
+							<input type="checkbox" class="airconditional" name="facility" value="에어컨">
 							<label for="facility">에어컨</label>
 						</div>
 						<div>
-							<input type="checkbox" class="laundry" name="facility" value="laundry">
+							<input type="checkbox" class="laundry" name="facility" value="세탁기">
 							<label for="facility">세탁기</label>
 						</div>
 						<div>
-							<input type="checkbox" class="kitchen" name="facility" value="kitchen">
+							<input type="checkbox" class="kitchen" name="facility" value="주방이용가능">
 							<label for="facility">주방사용가능</label>
 						</div>
 						<div>
-							<input type="checkbox" class="refrigerator" name="facility" value="refrigerator">
+							<input type="checkbox" class="refrigerator" name="facility" value="냉장고">
 							<label for="facility">냉장고</label>
 						</div>
 						<div>
-							<input type="checkbox" class="breakfast" name="facility" value="breakfast">
+							<input type="checkbox" class="breakfast" name="facility" value="조식제공">
 							<label for="facility">아침식사제공</label>
 						</div>
 					</td>
@@ -136,8 +170,8 @@
 					<td><input type="text" name="city_name"></td>
 				</tr>
 				<tr>
-					<th>total address</th>
-					<td>
+					<th>상세주소를 입력해주세요</th>
+					<td >
 						<input type="text" name="address" id="address"><button type="button" name="좌표값호출" id="pointbtn">좌표값호출</button>
 					</td>
 				</tr>
@@ -152,13 +186,21 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<button type = "submit"  >
-						등록하기
-					</button>
+					<td colspan="2" >
+						<button type = "submit"  >
+							등록하기
+						</button>
+					</td>
 				</tr>
 			</tfoot>
 		</table>
 	</form>
+	</div>
+		</div>
+		</div>
+
+	</header>
+	
 	
 	<script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

@@ -30,10 +30,8 @@ public class CommunityController extends HttpServlet {
 		
 		case "writepost" : comm = new CommunityWritePostCommand(); break;
 		case "readpost" : comm = new CommunityReadPostCommand(); break;
-		
-		case "insertpost" : comm = new CommunityInsertPostCommand();
-		default : 
-		case "list" : comm = new CommunityPageCommand(); break;
+		case "insertpost" : comm = new CommunityInsertPostCommand(); break;
+		default : case "list" : comm = new CommunityPageCommand(); break;
 		}
 		
 		path+=comm.exec(request, response);

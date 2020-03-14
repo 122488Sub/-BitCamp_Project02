@@ -3,7 +3,7 @@
 
 div#content {
 		position: absolute;
-		left: 20%;
+		left: 25%;
 		right: 80%;
 		width: 800px;
 		height: 600px;
@@ -16,17 +16,27 @@ div#content {
 	
 	.cateBox {
 		
-		border: 1px solid black;
+		
 		width: 100px;
 		height: 150px;
 	}
+	#pac-input {
+		float:left;
+	}
+	#addrBox {
+		
+	}
 	
-	
+	#btn {
+		margin-left:700px;
+		margin-bottom: 100px;
+	}
 	#cateBox1 {
+		
 		float: left; 
 				 }
 	#cateBox2 {
-		margin-left: 153px; 
+		margin-left: 200px; 
 		position:absolute;
 		float: left;
 				 }
@@ -51,13 +61,18 @@ div#content {
 	div#cateBox1 > ul, div#cateBox2 > ul { 
 		margin: 0;
 		padding: 0;
-		width: 100px;
+		width: 150px;
 		height: 150px;
 		list-style:none;
  		overflow: scroll;
     	overflow-x: hidden;
+    	border: 1px solid black;
  		}
  		
+ 		 div#cateBox2 > ul {
+ 		 	
+ 		 	width: 150px;
+ 		 }
 	li {
 		display: inline;
 		
@@ -89,6 +104,6 @@ div#content {
 	
 	#cateResult2 {
 		position: absolute;
-		margin-top: 105px;
+		margin-top: 117px;
 		margin-left: 230px;
 	}

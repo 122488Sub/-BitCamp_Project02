@@ -68,6 +68,22 @@
 		  FROM RESALE_BOARD
 		  WHERE RS_SEQ = #{rs_seq}
 	</select>
+	<!-- 검색 하기 -->
+	<select id="rs_search" parameterType="map" resultType="rsVO">
+		SELECT *
+		  FROM RESALE_BOARD
+		  <choose>
+		  	<when test="idx == 0">
+		  		WHERE SUBJECT LIKE #{keyword}
+		  	</when>
+		  	<when test="idx == 1">
+		  		WHERE CONTENT LIKE #{keyword}
+		  	</when>
+		  	<when test="idx == 2">
+		  		WHERE SUBJECT LIKE #{keyword} OR CONTENT LIKE #{keyword}
+		  	</when>
+		  </choose>
+	</select>
 
 	<!-- <select id="detail" parameterType="String" resultType="rsVO">
 		SELECT * FROM MAC_BANG WHERE RS_SEQ = #{rs_seq}
@@ -134,8 +150,16 @@
 <!-- ===============================delete=================================== -->
 
 	
-	<delete id="in_userId" parameterType="string">
-		DELETE FROM RESALE_BOARD WHERE ID = #{in_userId} CASCADE
+	<delete id="rs_delete_post" parameterType="map">
+		DELETE FROM RESALE_BOARD WHERE ID = #{id} AND RS_SEQ = #{rs_seq} 
+	</delete>
+	
+	<delete id="rs_delete_comm" parameterType="string">
+		DELETE FROM RESALE_COMMENT WHERE RS_SEQ = #{rs_seq}  
+	</delete>
+	
+	<delete id="rs_delete_img" parameterType="int">
+		DELETE FROM RESALE_IMG WHERE RS_SEQ = #{rs_seq} 
 	</delete>
 	
 	

@@ -61,11 +61,11 @@
 
 	<section id="pic_area">
 		<div class="roompic_box">
-			<div class="roompic1"></div>
-			<div class="roompic2"></div>
-			<div class="roompic3"></div>
-			<div class="roompic4"></div>
-			<div class="roompic5"></div>
+			<div class="roompic1" style="background: url(bnbupload//${rinfo.r_pic1 })  no-repeat center center; background-size: cover;"></div>
+			<div class="roompic2" style="background: url(bnbupload//${rinfo.r_pic2 })  no-repeat center center; background-size: cover;"></div>
+			<div class="roompic3" style="background: url(bnbupload//${rinfo.r_pic3 })  no-repeat center center; background-size: cover;"></div>
+			<div class="roompic4" style="background: url(bnbupload//${rinfo.r_pic4 })  no-repeat center center; background-size: cover;"></div>
+			<div class="roompic5" style="background: url(bnbupload//${rinfo.r_pic5 })  no-repeat center center; background-size: cover;"></div>
 		</div>
 	</section>
 	<!-- //pic_area -->
@@ -80,7 +80,7 @@
 							<p>${rinfo.city_name }</p>
 						</div>
 						<div class="droom_host">
-							<div class="dhost_pic"></div>
+							<div class="dhost_pic" style="background: url(bnbupload/hostpic/${hinfo.h_pic })  no-repeat center center; background-size: cover;"></div>
 							<div class="dhost_name">${rinfo.h_name }</div>
 						</div>
 						<div class="clearfix"></div>
@@ -117,7 +117,9 @@
 								<strong>예약 가능 여부</strong>
 							</div>
 						</div>
-						<div class="dreserv_date">예약날짜 구역</div>
+						<div class="dreserv_date">
+							<img src="img/fakepic.jpg" alt="fakecanlendar">
+						</div>
 						<div class="dreserv_deldate">
 							<span>
 								<button>
@@ -130,8 +132,6 @@
 					
 					
 					
-					<c:forEach var="btag" items="${tag_list }">
-					
 					<div class="dtag_box">
 						<div class="dtag_main">
 							<div class="dtag_tit">
@@ -140,10 +140,10 @@
 								</h2>
 							</div>
 							<div class="dtag_totalpoint">
-								<img src="img/greenstar.png" alt="eq_star"> <strong>${rinfo.total_eq}</strong>
+								<img src="img/greenstar.png" alt="eq_star"> <strong>${total_cn}</strong>
 							</div>
 							<div class="dtag_count">
-								<strong>134</strong> 후기
+								<strong>${tag_cn}</strong> 후기
 							</div>
 						</div>
 						<div class="dtag_list">
@@ -151,53 +151,50 @@
 								<div class="dlist_boxitems">
 									<div class="boxitem">
 										<div class="boxitem_name">시설</div>
-										<div class="boxitem_point">${rinfo.facility_eq}</div>
+										<div class="boxitem_point">${fc_eq}</div>
 									</div>
 									<div class="boxitem">
 										<div class="boxitem_name">호스트</div>
-										<div class="boxitem_point">${rinfo.host_eq}</div>
+										<div class="boxitem_point">${h_eq}</div>
 									</div>
 									<div class="boxitem">
 										<div class="boxitem_name">청결도</div>
-										<div class="boxitem_point">${rinfo.clean_eq}</div>
+										<div class="boxitem_point">${cl_eq}</div>
 									</div>
 									<div class="boxitem">
 										<div class="boxitem_name">의사소통</div>
-										<div class="boxitem_point">${rinfo.communication_eq}</div>
+										<div class="boxitem_point">${cm_eq}</div>
 									</div>
 									<div class="boxitem">
 										<div class="boxitem_name">위치</div>
-										<div class="boxitem_point">${rinfo.location_eq}</div>
+										<div class="boxitem_point">${lo_eq}</div>
 									</div>
 									<div class="boxitem">
 										<div class="boxitem_name">정확성</div>
-										<div class="boxitem_point">${rinfo.accuracy_eq}</div>
+										<div class="boxitem_point">${ac_eq}</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						
+						
+						
 						<div class="dtag_replybox">
+						<c:forEach var="tvo" items="${tag_list}" step="1">
 							<div class="dguest_replybox">
 								<div class="dguest_taginfo">
 									<div class="dguest_tagpic"></div>
 									<div class="dguest_name_date">
-										<strong>${btag.write_date }</strong><br> 
+										<strong>${tvo.guest_name}</strong><br><fmt:formatDate value="${tvo.write_date}" pattern="yyyy년 MM월 dd일"/>
 									</div>
 								</div>
 								<div class="dguest_tagcont">
-								${btag.tag_cont }
-								<!-- 
-								Hello, I am hea-li. we were so
-									friendly. you were willing to help me whenever i need help. The
-									room was so luxury and clean. Sometimes i think it will be so
-									nice if i can live in your house's room forever. I definitely
-									would visit your house for meeting you again. Thank you na-eun.
-									
-									 -->
+								${tvo.tag_cont }
 								</div>
 							</div>
+								</c:forEach>
 							<div class="dhost_replybox">
-								<div class="dhost_replypic"></div>
+								<div class="dhost_replypic"  style="background: url(bnbupload/hostpic/${hinfo.h_pic })  no-repeat center center; background-size: cover;"></div>
 								<div class="dhost_replycont">
 									<strong>${rinfo.h_name } 님의 답변 : </strong><br> My lovely
 									hea-li!!. I have been missing you so much by you leaving
@@ -207,15 +204,42 @@
 									Don't forget me! <br> <br> <span>2019년 12월</span>
 								</div>
 							</div>
+							
+							
 							<hr>
 							<div class="dpaging_area">페이징 처리 부분</div>
 						</div>
+						
 					</div>
-					</c:forEach>
+					
 					<!-- //후기 -->
 					
 					
-					<div class="dhost_infobox">호스트 정보 표시</div>
+					<div class="dhost_infobox">
+						<div class="dhost_header">
+							<div class= "dhost_join"">
+								<div class="d_host_name">
+									호스트 : ${hinfo.h_name } 님
+								</div>
+								<div class="d_host_join">
+									호스트 등록 : <fmt:formatDate value="${hinfo.h_joindate }" pattern="yyyy년 MM월 dd일"/>
+								</div>
+							</div>
+							<div class="d_host_pic clearfix">
+								<img  style="background: url(bnbupload/hostpic/${hinfo.h_pic })  no-repeat center center; background-size: cover;">
+							</div>
+						</div>
+						<div class="dhost_explain">
+							<div class="dhost_explain_cont">
+								${hinfo.h_intro }
+							</div>
+						</div>
+						<div class="dhost_lang">
+							<div class= "dhost_langlist">
+								언어 : <strong>Korean, English, Chinese</strong>
+							</div>
+						</div>
+					</div>
 					<hr>
 					<div class="dlocation_infobox">
 						<div id="staticMap" style="width:100%;height:350px;"></div>
@@ -253,7 +277,7 @@
 							</c:choose> 
 							</div>
 							<div class="cal_point">
-								<img src="img/greenstar.png" alt="eq_star"> 4.71 <span>후기 &#40;189개&#41;</span>
+								<img src="img/greenstar.png" alt="eq_star"> ${total_cn} <span>후기 &#40;${tag_cn}개&#41;</span>
 							</div>
 						</div>
 						<hr>
@@ -317,6 +341,9 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		
 	</section>
 	<!-- //section -->
 	<footer>

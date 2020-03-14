@@ -52,11 +52,8 @@ public class BNB_DAO {
 	}
 	
 	public static int getRoomInsert(BNB_ROOM_INFOVO rvo) {
-		System.out.println("rvo 저장준비1");
 		SqlSession ss = DBService.getFactory().openSession(true);
-		System.out.println("rvo 저장준비2");
 		int getRoomInsert = ss.insert("rinsert", rvo);
-		System.out.println("rvo 저장준비3");
 		ss.close();
 		return getRoomInsert;
 	}
@@ -102,5 +99,19 @@ public class BNB_DAO {
 		List<BNB_TAGVO> roomlist = ss.selectList("tag_list", rSerial);
 		ss.close();
 		return roomlist; 
+	}
+	
+	public static BNB_ROOM_INFOVO getHostinfo(String rSerial) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		BNB_ROOM_INFOVO hlistone = ss.selectOne("host_infoone", rSerial);
+		ss.close();
+		return hlistone; 
+	}
+	
+	public static int getEqinsert(BNB_ROOM_INFOVO breq) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int getEqinsert = ss.update("equpdate", breq);
+		ss.close();
+		return getEqinsert;
 	}
 }
